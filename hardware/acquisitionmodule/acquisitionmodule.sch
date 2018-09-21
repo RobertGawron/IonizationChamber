@@ -1,4 +1,237 @@
-EESchema Schematic File Version 2
-EELAYER 25 0
+EESchema Schematic File Version 4
+EELAYER 26 0
 EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Connector:Conn_Coaxial J1
+U 1 1 5BA4C499
+P 3100 4500
+F 0 "J1" H 3030 4738 50  0000 C CNN
+F 1 "Conn_Coaxial" H 3030 4647 50  0000 C CNN
+F 2 "Connectors:bnc-ci" H 3100 4500 50  0001 C CNN
+F 3 " ~" H 3100 4500 50  0001 C CNN
+	1    3100 4500
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R R2
+U 1 1 5BA4C559
+P 3700 4500
+F 0 "R2" V 3493 4500 50  0000 C CNN
+F 1 "R" V 3584 4500 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 3630 4500 50  0001 C CNN
+F 3 "~" H 3700 4500 50  0001 C CNN
+	1    3700 4500
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5BA4C5A3
+P 3450 4700
+F 0 "R1" H 3520 4746 50  0000 L CNN
+F 1 "R" H 3520 4655 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 3380 4700 50  0001 C CNN
+F 3 "~" H 3450 4700 50  0001 C CNN
+	1    3450 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 5BA4C63A
+P 3950 4750
+F 0 "C1" H 4065 4796 50  0000 L CNN
+F 1 "C" H 4065 4705 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 3988 4600 50  0001 C CNN
+F 3 "~" H 3950 4750 50  0001 C CNN
+	1    3950 4750
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 5BA4C7A0
+P 3100 4950
+F 0 "#PWR01" H 3100 4700 50  0001 C CNN
+F 1 "GND" H 3105 4777 50  0000 C CNN
+F 2 "" H 3100 4950 50  0001 C CNN
+F 3 "" H 3100 4950 50  0001 C CNN
+	1    3100 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 5BA4C7BC
+P 3450 4950
+F 0 "#PWR02" H 3450 4700 50  0001 C CNN
+F 1 "GND" H 3455 4777 50  0000 C CNN
+F 2 "" H 3450 4950 50  0001 C CNN
+F 3 "" H 3450 4950 50  0001 C CNN
+	1    3450 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 5BA4C7D1
+P 3950 4950
+F 0 "#PWR03" H 3950 4700 50  0001 C CNN
+F 1 "GND" H 3955 4777 50  0000 C CNN
+F 2 "" H 3950 4950 50  0001 C CNN
+F 3 "" H 3950 4950 50  0001 C CNN
+	1    3950 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 4950 3100 4700
+Wire Wire Line
+	3450 4950 3450 4850
+Wire Wire Line
+	3950 4950 3950 4900
+Wire Wire Line
+	3850 4500 3950 4500
+Wire Wire Line
+	3950 4500 3950 4600
+Wire Wire Line
+	3300 4500 3450 4500
+Wire Wire Line
+	3450 4550 3450 4500
+Connection ~ 3450 4500
+Wire Wire Line
+	3450 4500 3550 4500
+$Comp
+L Connector:USB_B_Mini J2
+U 1 1 5BA4C9B2
+P 5650 4500
+F 0 "J2" H 5705 4967 50  0000 C CNN
+F 1 "USB_B_Mini" H 5705 4876 50  0000 C CNN
+F 2 "Connectors:USB_Mini-B" H 5800 4450 50  0001 C CNN
+F 3 "~" H 5800 4450 50  0001 C CNN
+	1    5650 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Amplifier_Operational:LM358 U1
+U 2 1 5BA4CAC3
+P 4150 3800
+F 0 "U1" H 4150 4167 50  0000 C CNN
+F 1 "LM358" H 4150 4076 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23-8" H 4150 3800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2904-n.pdf" H 4150 3800 50  0001 C CNN
+	2    4150 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Amplifier_Operational:LM358 U2
+U 2 1 5BA4CAF9
+P 5200 3800
+F 0 "U2" H 5200 4167 50  0000 C CNN
+F 1 "LM358" H 5200 4076 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23-8" H 5200 3800 50  0001 C CNN
+F 3 "http://www.ti.com/lit/ds/symlink/lm2904-n.pdf" H 5200 3800 50  0001 C CNN
+	2    5200 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_Coaxial J3
+U 1 1 5BA4CD5F
+P 3100 5650
+F 0 "J3" H 3030 5888 50  0000 C CNN
+F 1 "Conn_Coaxial" H 3030 5797 50  0000 C CNN
+F 2 "Connectors:bnc-ci" H 3100 5650 50  0001 C CNN
+F 3 " ~" H 3100 5650 50  0001 C CNN
+	1    3100 5650
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R R4
+U 1 1 5BA4CD66
+P 3700 5650
+F 0 "R4" V 3493 5650 50  0000 C CNN
+F 1 "R" V 3584 5650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 3630 5650 50  0001 C CNN
+F 3 "~" H 3700 5650 50  0001 C CNN
+	1    3700 5650
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R3
+U 1 1 5BA4CD6D
+P 3450 5850
+F 0 "R3" H 3520 5896 50  0000 L CNN
+F 1 "R" H 3520 5805 50  0000 L CNN
+F 2 "Resistors_SMD:R_0805_HandSoldering" V 3380 5850 50  0001 C CNN
+F 3 "~" H 3450 5850 50  0001 C CNN
+	1    3450 5850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C2
+U 1 1 5BA4CD74
+P 3950 5900
+F 0 "C2" H 4065 5946 50  0000 L CNN
+F 1 "C" H 4065 5855 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0805_HandSoldering" H 3988 5750 50  0001 C CNN
+F 3 "~" H 3950 5900 50  0001 C CNN
+	1    3950 5900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR04
+U 1 1 5BA4CD7B
+P 3100 6100
+F 0 "#PWR04" H 3100 5850 50  0001 C CNN
+F 1 "GND" H 3105 5927 50  0000 C CNN
+F 2 "" H 3100 6100 50  0001 C CNN
+F 3 "" H 3100 6100 50  0001 C CNN
+	1    3100 6100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR05
+U 1 1 5BA4CD81
+P 3450 6100
+F 0 "#PWR05" H 3450 5850 50  0001 C CNN
+F 1 "GND" H 3455 5927 50  0000 C CNN
+F 2 "" H 3450 6100 50  0001 C CNN
+F 3 "" H 3450 6100 50  0001 C CNN
+	1    3450 6100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR06
+U 1 1 5BA4CD87
+P 3950 6100
+F 0 "#PWR06" H 3950 5850 50  0001 C CNN
+F 1 "GND" H 3955 5927 50  0000 C CNN
+F 2 "" H 3950 6100 50  0001 C CNN
+F 3 "" H 3950 6100 50  0001 C CNN
+	1    3950 6100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3100 6100 3100 5850
+Wire Wire Line
+	3450 6100 3450 6000
+Wire Wire Line
+	3950 6100 3950 6050
+Wire Wire Line
+	3850 5650 3950 5650
+Wire Wire Line
+	3950 5650 3950 5750
+Wire Wire Line
+	3300 5650 3450 5650
+Wire Wire Line
+	3450 5700 3450 5650
+Connection ~ 3450 5650
+Wire Wire Line
+	3450 5650 3550 5650
 $EndSCHEMATC
