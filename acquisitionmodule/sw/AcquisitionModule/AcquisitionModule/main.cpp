@@ -7,7 +7,7 @@
 
 #include <avr/io.h>
 
-#define F_CPU 20000000L
+//#define F_CPU 20000*1000
 
 #include "usbdrv/usbdrv.h"
 
