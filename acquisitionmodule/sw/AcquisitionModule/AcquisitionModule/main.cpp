@@ -7,8 +7,7 @@
 
 #include <avr/io.h>
 
-//#define F_CPU 20000*1000
-
+#include "i2cmaster/i2cmaster.h""
 #include "usbdrv/usbdrv.h"
 
 int main(void)
