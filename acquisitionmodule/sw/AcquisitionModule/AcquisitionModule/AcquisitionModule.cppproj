@@ -20,10 +20,10 @@
     <OverrideVtor>false</OverrideVtor>
     <CacheFlash>true</CacheFlash>
     <ProgFlashFromRam>true</ProgFlashFromRam>
-    <RamSnippetAddress />
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
     <UncachedRange />
     <preserveEEPROM>true</preserveEEPROM>
-    <OverrideVtorValue />
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
     <eraseonlaunchrule>0</eraseonlaunchrule>
@@ -109,6 +109,7 @@
   <avrgcc.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>DEBUG</Value>
+      <Value>FCPU=20000000</Value>
     </ListValues>
   </avrgcc.compiler.symbols.DefSymbols>
   <avrgcc.compiler.directories.IncludePaths>
@@ -126,6 +127,7 @@
   <avrgcccpp.compiler.symbols.DefSymbols>
     <ListValues>
       <Value>DEBUG</Value>
+      <Value>FCPU=20000000</Value>
     </ListValues>
   </avrgcccpp.compiler.symbols.DefSymbols>
   <avrgcccpp.compiler.directories.IncludePaths>
@@ -143,6 +145,7 @@
       <Value>libm</Value>
     </ListValues>
   </avrgcccpp.linker.libraries.Libraries>
+  <avrgcccpp.assembler.general.AssemblerFlags>-DF_CPU=20000000l</avrgcccpp.assembler.general.AssemblerFlags>
   <avrgcccpp.assembler.general.IncludePaths>
     <ListValues>
       <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.3.172\include</Value>
@@ -153,9 +156,104 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="ADS1110.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ADS1110.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Display.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Display.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Keyboard.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Keyboard.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="SerialPort.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="SerialPort.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\oddebug.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\oddebug.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\usbconfig.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\usbdrv.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\usbdrv.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\usbdrvasm.S">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="usbdrv\usbportability.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="usbdrv\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="usbdrv\asmcommon.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\Changelog.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\CommercialLicense.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\License.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\Readme.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\USB-ID-FAQ.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\USB-IDs-for-free.txt">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm.asm">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm12.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm128.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm15.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm16.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm165.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm18-crc.inc">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="usbdrv\usbdrvasm20.inc">
+      <SubType>compile</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
 </Project>
