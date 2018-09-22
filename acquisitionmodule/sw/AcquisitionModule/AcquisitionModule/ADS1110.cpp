@@ -11,9 +11,9 @@
 // default constructor
 ADS1110::ADS1110()
 {
-} //ADC
+} //ADS1110
 
 // default destructor
 ADS1110::~ADS1110()
 {
-} //~ADC
+} //~ADS1110
