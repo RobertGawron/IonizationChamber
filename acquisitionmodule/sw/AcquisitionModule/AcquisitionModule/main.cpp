@@ -7,7 +7,7 @@
 
 #include <avr/io.h>
 
-#include "i2cmaster/i2cmaster.h""
+#include "i2cmaster/i2cmaster.h"
 #include "usbdrv/usbdrv.h"
 
 int main(void)

@@ -6,11 +6,11 @@
 */
 
 
-#ifndef __ADS1110_H__
-#define __ADS1110_H__
+#ifndef __ADS1110Converter_H__
+#define __ADS1110Converter_H__
 
 
-class ADS1110
+class ADS1110Converter
 {
 //variables
 public:
@@ -19,12 +19,14 @@ private:
 
 //functions
 public:
-	ADS1110();
-	~ADS1110();
+	ADS1110Converter();
+	~ADS1110Converter();
+	
+	ADS1110Converter( const ADS1110Converter &c ) =  delete;
 protected:
 private:
-	ADS1110( const ADS1110 &c );
-	ADS1110& operator=( const ADS1110 &c );
+	
+	ADS1110Converter& operator=( const ADS1110Converter &c );
 
 }; //ADS1110
 

@@ -6,14 +6,14 @@
 */
 
 
-#include "ADS1110.h"
+#include "ADS1110Converter.h"
 
-// default constructor
-ADS1110::ADS1110()
-{
-} //ADS1110
 
-// default destructor
-ADS1110::~ADS1110()
+ADS1110Converter::ADS1110Converter()
 {
-} //~ADS1110
+}
+
+
+ADS1110Converter::~ADS1110Converter()
+{
+}
