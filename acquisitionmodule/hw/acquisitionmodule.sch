@@ -1116,6 +1116,28 @@ Text Label 7900 3000 0    50   ~ 0
 IO1
 Text Label 7900 3100 0    50   ~ 0
 IO2
+$Comp
+L Device:R R?
+U 1 1 5BA6A3DC
+P 4850 4050
+F 0 "R?" V 4643 4050 50  0000 C CNN
+F 1 "R" V 4734 4050 50  0000 C CNN
+F 2 "" V 4780 4050 50  0001 C CNN
+F 3 "~" H 4850 4050 50  0001 C CNN
+	1    4850 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5BA6FAC1
+P 4850 3950
+F 0 "R?" V 4643 3950 50  0000 C CNN
+F 1 "R" V 4734 3950 50  0000 C CNN
+F 2 "" V 4780 3950 50  0001 C CNN
+F 3 "~" H 4850 3950 50  0001 C CNN
+	1    4850 3950
+	0    1    1    0   
+$EndComp
 Wire Bus Line
 	5700 1150 6650 1150
 Wire Bus Line
