@@ -16,3 +16,8 @@ DriverUSB::DriverUSB()
 DriverUSB::~DriverUSB()
 {
 }
+
+bool DriverUSB::init()
+{
+    return true;
+}

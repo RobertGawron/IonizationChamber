@@ -17,3 +17,8 @@ DriverADS1110::DriverADS1110()
 DriverADS1110::~DriverADS1110()
 {
 }
+
+bool DriverADS1110::init()
+{
+    return true;
+}

@@ -18,7 +18,8 @@ public:
     DriverUSB( const DriverUSB &c ) = delete;
     DriverUSB& operator=( const DriverUSB &c ) = delete;
 
-protected:
+    bool init();
+
 private:
 
 };

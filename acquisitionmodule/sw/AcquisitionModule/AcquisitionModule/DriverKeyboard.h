@@ -12,20 +12,16 @@
 
 class DriverKeyboard
 {
-//variables
-public:
-protected:
-private:
-
-//functions
 public:
     DriverKeyboard();
     ~DriverKeyboard();
-protected:
-private:
-    DriverKeyboard( const DriverKeyboard &c );
-    DriverKeyboard& operator=( const DriverKeyboard &c );
+    DriverKeyboard( const DriverKeyboard &c ) = delete;
+    DriverKeyboard& operator=( const DriverKeyboard &c ) = delete;
 
-}; //Keyboard
+    bool init();
+
+private:
+
+};
 
 #endif //__KEYBOARD_H__

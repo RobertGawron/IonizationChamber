@@ -17,7 +17,9 @@ public:
     ~DriverLCD();
     DriverLCD( const DriverLCD &c ) = delete;
     DriverLCD& operator=( const DriverLCD &c ) = delete;
-protected:
+
+    bool init();
+
 private:
 
 

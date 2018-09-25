@@ -9,7 +9,11 @@
 #include "ApplicationBuilder.h"
 #include "usbdrv/usbdrv.h"
 
-ApplicationBuilder::ApplicationBuilder()
+ApplicationBuilder::ApplicationBuilder():
+    driverADS1110(),
+    driverKeyboard(),
+    driverLCD(),
+    driverUSB()
 {
 }
 
@@ -20,7 +24,28 @@ ApplicationBuilder::~ApplicationBuilder()
 bool ApplicationBuilder::init()
 {
     bool status = true;
-//    usbInit();
+
+    status = driverADS1110.init();
+
+    if(status)
+    {
+        status = driverKeyboard.init();
+    }
+
+    if(status)
+    {
+        status = driverLCD.init();
+    }
+
+    if(status)
+    {
+        status = driverUSB.init();
+    }
 
     return status;
+}
+
+void ApplicationBuilder::run()
+{
+
 }

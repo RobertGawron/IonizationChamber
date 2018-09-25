@@ -12,22 +12,16 @@
 
 class DriverADS1110
 {
-//variables
-public:
-protected:
-private:
-
-//functions
 public:
     DriverADS1110();
     ~DriverADS1110();
-
     DriverADS1110( const DriverADS1110 &c ) =  delete;
-protected:
+    DriverADS1110& operator=( const DriverADS1110 &c ) = delete;;
+
+    bool init();
 private:
 
-    DriverADS1110& operator=( const DriverADS1110 &c );
 
-}; //ADS1110
+};
 
 #endif //__ADS1110_H__

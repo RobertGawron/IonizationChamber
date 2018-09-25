@@ -8,12 +8,16 @@
 
 #include "DriverKeyboard.h"
 
-// default constructor
+
 DriverKeyboard::DriverKeyboard()
 {
-} //Keyboard
+}
 
-// default destructor
 DriverKeyboard::~DriverKeyboard()
 {
-} //~Keyboard
+}
+
+bool DriverKeyboard::init()
+{
+    return true;
+}

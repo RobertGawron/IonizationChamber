@@ -8,12 +8,16 @@
 
 #include "DriverLCD.h"
 
-// default constructor
+
 DriverLCD::DriverLCD()
 {
-} //Display
+}
 
-// default destructor
 DriverLCD::~DriverLCD()
 {
-} //~Display
+}
+
+bool DriverLCD::init()
+{
+    return true;
+}
