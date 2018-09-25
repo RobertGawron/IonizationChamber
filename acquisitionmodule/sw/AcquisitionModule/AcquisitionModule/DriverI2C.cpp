@@ -22,7 +22,7 @@ bool DriverI2C::init()
 {
     TinyWireM.begin();
 
-    // no way to check if it pass or failed, but for future I'm adding returning
-    // status of initialization in all drivers
+    // no way to check if it pass or failed, but for future
+    //I'm adding returning status of initialization in all drivers
     return true;
 }

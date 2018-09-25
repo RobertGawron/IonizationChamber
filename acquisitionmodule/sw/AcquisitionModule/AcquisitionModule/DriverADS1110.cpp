@@ -9,7 +9,8 @@
 #include "DriverADS1110.h"
 
 
-DriverADS1110::DriverADS1110()
+DriverADS1110::DriverADS1110(DriverI2C& driverI2C):
+    driverI2C(driverI2C)
 {
 }
 

@@ -8,12 +8,12 @@
 
 #ifndef __DISPLAY_H__
 #define __DISPLAY_H__
-
+#include "DriverI2C.h"
 
 class DriverLCD
 {
 public:
-    DriverLCD();
+    DriverLCD(DriverI2C& driverI2C);
     ~DriverLCD();
     DriverLCD( const DriverLCD &c ) = delete;
     DriverLCD& operator=( const DriverLCD &c ) = delete;
@@ -21,7 +21,7 @@ public:
     bool init();
 
 private:
-
+    DriverI2C& driverI2C;
 
 };
 
