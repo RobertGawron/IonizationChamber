@@ -7,8 +7,6 @@
 
 //#include <avr/io.h>
 #include "ApplicationBuilder.h"
-//#include "i2cmaster/i2cmaster.h"
-
 
 int main(void)
 {

@@ -9,6 +9,7 @@
 #ifndef __APPLICATIONBUILDER_H__
 #define __APPLICATIONBUILDER_H__
 
+#include "DriverI2C.h"
 #include "DriverADS1110.h"
 #include "DriverKeyboard.h"
 #include "DriverLCD.h"
@@ -29,6 +30,7 @@ public:
     void run();
 
 private:
+    DriverI2C driverI2C;
     DriverADS1110 driverADS1110;
     DriverKeyboard driverKeyboard;
     DriverLCD driverLCD;

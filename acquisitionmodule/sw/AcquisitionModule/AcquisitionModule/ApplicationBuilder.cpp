@@ -7,9 +7,9 @@
 
 
 #include "ApplicationBuilder.h"
-#include "usbdrv/usbdrv.h"
 
 ApplicationBuilder::ApplicationBuilder():
+    driverI2C(),
     driverADS1110(),
     driverKeyboard(),
     driverLCD(),
@@ -25,7 +25,12 @@ bool ApplicationBuilder::init()
 {
     bool status = true;
 
-    status = driverADS1110.init();
+    status = driverI2C.init();
+
+    if(status)
+    {
+        status = driverADS1110.init();
+    }
 
     if(status)
     {
