@@ -10,9 +10,9 @@
 
 ApplicationBuilder::ApplicationBuilder():
     driverI2C(),
-    driverADS1110(),
+    driverADS1110(driverI2C),
     driverKeyboard(),
-    driverLCD(),
+    driverLCD(driverI2C),
     driverUSB()
 {
 }

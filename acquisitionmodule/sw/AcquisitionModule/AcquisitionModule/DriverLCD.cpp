@@ -9,7 +9,8 @@
 #include "DriverLCD.h"
 
 
-DriverLCD::DriverLCD()
+DriverLCD::DriverLCD(DriverI2C& driverI2C):
+    driverI2C(driverI2C)
 {
 }
 
