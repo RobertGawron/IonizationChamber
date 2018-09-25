@@ -1,4 +1,4 @@
-/* 
+/*
 * AnalogToDigitalConverter.h
 *
 * Created: 22.09.2018 16:03:39
@@ -10,7 +10,7 @@
 #define __ADS1110Converter_H__
 
 
-class ADS1110Converter
+class DriverADS1110
 {
 //variables
 public:
@@ -19,14 +19,14 @@ private:
 
 //functions
 public:
-	ADS1110Converter();
-	~ADS1110Converter();
-	
-	ADS1110Converter( const ADS1110Converter &c ) =  delete;
+    DriverADS1110();
+    ~DriverADS1110();
+
+    DriverADS1110( const DriverADS1110 &c ) =  delete;
 protected:
 private:
-	
-	ADS1110Converter& operator=( const ADS1110Converter &c );
+
+    DriverADS1110& operator=( const DriverADS1110 &c );
 
 }; //ADS1110
 

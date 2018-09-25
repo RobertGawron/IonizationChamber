@@ -1,4 +1,4 @@
-/* 
+/*
 * SerialPort.h
 *
 * Created: 22.09.2018 16:03:06
@@ -10,22 +10,17 @@
 #define __SERIALPORT_H__
 
 
-class SerialPort
+class DriverUSB
 {
-//variables
 public:
+    DriverUSB();
+    ~DriverUSB();
+    DriverUSB( const DriverUSB &c ) = delete;
+    DriverUSB& operator=( const DriverUSB &c ) = delete;
+
 protected:
 private:
 
-//functions
-public:
-	SerialPort();
-	~SerialPort();
-protected:
-private:
-	SerialPort( const SerialPort &c );
-	SerialPort& operator=( const SerialPort &c );
-
-}; //SerialPort
+};
 
 #endif //__SERIALPORT_H__

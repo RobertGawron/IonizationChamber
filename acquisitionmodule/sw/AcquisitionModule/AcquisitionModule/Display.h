@@ -1,4 +1,4 @@
-/* 
+/*
 * Display.h
 *
 * Created: 22.09.2018 16:02:48
@@ -10,22 +10,17 @@
 #define __DISPLAY_H__
 
 
-class Display
+class DriverLCD
 {
-//variables
 public:
+    DriverLCD();
+    ~DriverLCD();
+    DriverLCD( const DriverLCD &c ) = delete;
+    DriverLCD& operator=( const DriverLCD &c ) = delete;
 protected:
 private:
 
-//functions
-public:
-	Display();
-	~Display();
-protected:
-private:
-	Display( const Display &c );
-	Display& operator=( const Display &c );
 
-}; //Display
+};
 
 #endif //__DISPLAY_H__

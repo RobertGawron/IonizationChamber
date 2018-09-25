@@ -1,4 +1,4 @@
-/* 
+/*
 * Keyboard.cpp
 *
 * Created: 22.09.2018 16:02:33
@@ -9,11 +9,11 @@
 #include "Keyboard.h"
 
 // default constructor
-Keyboard::Keyboard()
+DriverKeyboard::DriverKeyboard()
 {
 } //Keyboard
 
 // default destructor
-Keyboard::~Keyboard()
+DriverKeyboard::~DriverKeyboard()
 {
 } //~Keyboard

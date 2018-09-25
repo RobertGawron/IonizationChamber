@@ -1,4 +1,4 @@
-/* 
+/*
 * Keyboard.h
 *
 * Created: 22.09.2018 16:02:33
@@ -10,7 +10,7 @@
 #define __KEYBOARD_H__
 
 
-class Keyboard
+class DriverKeyboard
 {
 //variables
 public:
@@ -19,12 +19,12 @@ private:
 
 //functions
 public:
-	Keyboard();
-	~Keyboard();
+    DriverKeyboard();
+    ~DriverKeyboard();
 protected:
 private:
-	Keyboard( const Keyboard &c );
-	Keyboard& operator=( const Keyboard &c );
+    DriverKeyboard( const DriverKeyboard &c );
+    DriverKeyboard& operator=( const DriverKeyboard &c );
 
 }; //Keyboard
 

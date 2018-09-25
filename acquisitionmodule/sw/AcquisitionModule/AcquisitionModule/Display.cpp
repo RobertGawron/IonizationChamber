@@ -1,4 +1,4 @@
-/* 
+/*
 * Display.cpp
 *
 * Created: 22.09.2018 16:02:47
@@ -9,11 +9,11 @@
 #include "Display.h"
 
 // default constructor
-Display::Display()
+DriverLCD::DriverLCD()
 {
 } //Display
 
 // default destructor
-Display::~Display()
+DriverLCD::~DriverLCD()
 {
 } //~Display
