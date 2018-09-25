@@ -6,7 +6,7 @@
 */
 
 
-#include "SerialPort.h"
+#include "DriverUSB.h"
 
 
 DriverUSB::DriverUSB()

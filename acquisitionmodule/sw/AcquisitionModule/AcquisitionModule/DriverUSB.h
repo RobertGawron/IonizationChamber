@@ -1,5 +1,5 @@
 /*
-* SerialPort.h
+* DriverUSB.h
 *
 * Created: 22.09.2018 16:03:06
 * Author: robert

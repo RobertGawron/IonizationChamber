@@ -1,12 +1,12 @@
 /*
-* Display.cpp
+* DriverLCD.cpp
 *
 * Created: 22.09.2018 16:02:47
 * Author: robert
 */
 
 
-#include "Display.h"
+#include "DriverLCD.h"
 
 // default constructor
 DriverLCD::DriverLCD()

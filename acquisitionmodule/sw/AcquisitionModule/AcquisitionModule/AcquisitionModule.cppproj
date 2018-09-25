@@ -160,10 +160,10 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="ADS1110Converter.cpp">
+    <Compile Include="DriverADS1110.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="ADS1110Converter.h">
+    <Compile Include="DriverADS1110.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="ApplicationBuilder.cpp">
@@ -172,10 +172,10 @@
     <Compile Include="ApplicationBuilder.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Display.cpp">
+    <Compile Include="DriverLCD.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Display.h">
+    <Compile Include="DriverLCD.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="i2cmaster\i2cmaster.h">
@@ -184,19 +184,19 @@
     <Compile Include="i2cmaster\i2cmaster.S">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Keyboard.cpp">
+    <Compile Include="DriverKeyboard.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="Keyboard.h">
+    <Compile Include="DriverKeyboard.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SerialPort.cpp">
+    <Compile Include="DriverUSB.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="SerialPort.h">
+    <Compile Include="DriverUSB.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

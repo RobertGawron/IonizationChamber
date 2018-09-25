@@ -1,5 +1,5 @@
 /*
-* Display.h
+* DriverLCD.h
 *
 * Created: 22.09.2018 16:02:48
 * Author: robert
