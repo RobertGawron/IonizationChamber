@@ -9,15 +9,15 @@
 #include "DriverUSB.h"
 
 
-DriverUSB::DriverUSB()
+DriverUART::DriverUART()
 {
 }
 
-DriverUSB::~DriverUSB()
+DriverUART::~DriverUART()
 {
 }
 
-bool DriverUSB::init()
+bool DriverUART::init()
 {
 
     return true;

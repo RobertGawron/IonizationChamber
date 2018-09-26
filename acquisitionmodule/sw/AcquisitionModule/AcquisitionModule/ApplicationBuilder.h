@@ -34,7 +34,7 @@ private:
     DriverADS1110 driverADS1110;
     DriverKeyboard driverKeyboard;
     DriverLCD driverLCD;
-    DriverUSB driverUSB;
+    DriverUART driverUSB;
 };;
 
 #endif //__APPLICATIONBUILDER_H__

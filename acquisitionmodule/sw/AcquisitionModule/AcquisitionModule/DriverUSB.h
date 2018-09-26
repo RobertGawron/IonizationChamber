@@ -1,5 +1,5 @@
 /*
-* DriverUSB.h
+* DriverUART.h
 *
 * Created: 22.09.2018 16:03:06
 * Author: robert
@@ -10,13 +10,13 @@
 #define __SERIALPORT_H__
 
 
-class DriverUSB
+class DriverUART
 {
 public:
-    DriverUSB();
-    ~DriverUSB();
-    DriverUSB( const DriverUSB &c ) = delete;
-    DriverUSB& operator=( const DriverUSB &c ) = delete;
+    DriverUART();
+    ~DriverUART();
+    DriverUART( const DriverUART &c ) = delete;
+    DriverUART& operator=( const DriverUART &c ) = delete;
 
     bool init();
 
