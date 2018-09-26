@@ -13,10 +13,6 @@ DriverKeyboard::DriverKeyboard()
 {
 }
 
-DriverKeyboard::~DriverKeyboard()
-{
-}
-
 bool DriverKeyboard::init()
 {
     return true;

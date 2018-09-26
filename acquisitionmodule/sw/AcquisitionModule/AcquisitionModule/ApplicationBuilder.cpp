@@ -13,7 +13,7 @@ ApplicationBuilder::ApplicationBuilder():
     driverADS1110(driverI2C),
     driverKeyboard(),
     driverLCD(driverI2C),
-    driverUSB()
+    driverUART()
 {
 }
 
@@ -44,7 +44,7 @@ bool ApplicationBuilder::init()
 
     if(status)
     {
-        status = driverUSB.init();
+        status = driverUART.init();
     }
 
     return status;
@@ -52,5 +52,8 @@ bool ApplicationBuilder::init()
 
 void ApplicationBuilder::run()
 {
-
+    while(true)
+    {
+        // TODO: add buisness logic
+    }
 }

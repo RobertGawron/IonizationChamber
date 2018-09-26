@@ -14,7 +14,8 @@ class DriverKeyboard
 {
 public:
     DriverKeyboard();
-    ~DriverKeyboard();
+    ~DriverKeyboard() = default;
+
     DriverKeyboard( const DriverKeyboard &c ) = delete;
     DriverKeyboard& operator=( const DriverKeyboard &c ) = delete;
 

@@ -188,10 +188,10 @@
     <Compile Include="main.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="DriverUSB.cpp">
+    <Compile Include="DriverUART.cpp">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="DriverUSB.h">
+    <Compile Include="DriverUART.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="TinyWireM\TinyWireM.cpp">
