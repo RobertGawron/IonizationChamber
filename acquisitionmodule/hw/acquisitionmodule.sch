@@ -1108,10 +1108,10 @@ Wire Bus Line
 	6850 2900 6400 2900
 Connection ~ 6400 2900
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power024
 U 1 1 5BEFB857
 P 6100 4200
-F 0 "#power?" H 6100 4350 50  0001 C CNN
+F 0 "#power024" H 6100 4350 50  0001 C CNN
 F 1 "GND_digital" H 5950 4100 40  0000 L CNN
 F 2 "" H 6100 4200 50  0001 C CNN
 F 3 "" H 6100 4200 50  0001 C CNN
@@ -1119,10 +1119,10 @@ F 3 "" H 6100 4200 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power016
 U 1 1 5BEFB8FA
 P 5500 4200
-F 0 "#power?" H 5500 4350 50  0001 C CNN
+F 0 "#power016" H 5500 4350 50  0001 C CNN
 F 1 "GND_digital" H 5350 4100 40  0000 L CNN
 F 2 "" H 5500 4200 50  0001 C CNN
 F 3 "" H 5500 4200 50  0001 C CNN
@@ -1130,10 +1130,10 @@ F 3 "" H 5500 4200 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power027
 U 1 1 5BEFB951
 P 6100 5500
-F 0 "#power?" H 6100 5650 50  0001 C CNN
+F 0 "#power027" H 6100 5650 50  0001 C CNN
 F 1 "GND_digital" H 5950 5400 40  0000 L CNN
 F 2 "" H 6100 5500 50  0001 C CNN
 F 3 "" H 6100 5500 50  0001 C CNN
@@ -1141,10 +1141,10 @@ F 3 "" H 6100 5500 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power022
 U 1 1 5BEFB9A8
 P 5500 5500
-F 0 "#power?" H 5500 5650 50  0001 C CNN
+F 0 "#power022" H 5500 5650 50  0001 C CNN
 F 1 "GND_digital" H 5350 5400 40  0000 L CNN
 F 2 "" H 5500 5500 50  0001 C CNN
 F 3 "" H 5500 5500 50  0001 C CNN
@@ -1152,10 +1152,10 @@ F 3 "" H 5500 5500 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:Vcc_digital power?
+L IonizationChamber:Vcc_digital power3
 U 1 1 5BEFBA2A
 P 5500 4500
-F 0 "power?" H 5500 4650 50  0001 C CNN
+F 0 "power3" H 5500 4650 50  0001 C CNN
 F 1 "Vcc_digital" H 5300 4550 50  0000 L CNN
 F 2 "" H 5500 4500 50  0001 C CNN
 F 3 "" H 5500 4500 50  0001 C CNN
@@ -1163,10 +1163,10 @@ F 3 "" H 5500 4500 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:Vcc_digital power?
+L IonizationChamber:Vcc_digital power2
 U 1 1 5BEFBA81
 P 5500 3200
-F 0 "power?" H 5500 3350 50  0001 C CNN
+F 0 "power2" H 5500 3350 50  0001 C CNN
 F 1 "Vcc_digital" H 5300 3250 50  0000 L CNN
 F 2 "" H 5500 3200 50  0001 C CNN
 F 3 "" H 5500 3200 50  0001 C CNN
@@ -1174,10 +1174,10 @@ F 3 "" H 5500 3200 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power011
 U 1 1 5BEFC072
 P 2100 1950
-F 0 "#power?" H 2100 2100 50  0001 C CNN
+F 0 "#power011" H 2100 2100 50  0001 C CNN
 F 1 "GND_digital" H 1950 1850 40  0000 L CNN
 F 2 "" H 2100 1950 50  0001 C CNN
 F 3 "" H 2100 1950 50  0001 C CNN
@@ -1185,10 +1185,10 @@ F 3 "" H 2100 1950 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power05
 U 1 1 5BEFC161
 P 2100 1550
-F 0 "#power?" H 2100 1700 50  0001 C CNN
+F 0 "#power05" H 2100 1700 50  0001 C CNN
 F 1 "GND_digital" H 1950 1450 40  0000 L CNN
 F 2 "" H 2100 1550 50  0001 C CNN
 F 3 "" H 2100 1550 50  0001 C CNN
@@ -1204,10 +1204,10 @@ Wire Wire Line
 Wire Wire Line
 	2100 1450 2200 1450
 $Comp
-L IonizationChamber:Vcc_digital power?
+L IonizationChamber:Vcc_digital power1
 U 1 1 5BF2116B
 P 2950 700
-F 0 "power?" H 2950 850 50  0001 C CNN
+F 0 "power1" H 2950 850 50  0001 C CNN
 F 1 "Vcc_digital" H 2750 750 50  0000 L CNN
 F 2 "" H 2950 700 50  0001 C CNN
 F 3 "" H 2950 700 50  0001 C CNN
@@ -1215,10 +1215,10 @@ F 3 "" H 2950 700 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power014
 U 1 1 5BF211C2
 P 2950 1250
-F 0 "#power?" H 2950 1400 50  0001 C CNN
+F 0 "#power014" H 2950 1400 50  0001 C CNN
 F 1 "GND_digital" H 2800 1150 40  0000 L CNN
 F 2 "" H 2950 1250 50  0001 C CNN
 F 3 "" H 2950 1250 50  0001 C CNN
@@ -1226,10 +1226,10 @@ F 3 "" H 2950 1250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L IonizationChamber:GND_digital #power?
+L IonizationChamber:GND_digital #power028
 U 1 1 5BF212E2
 P 6350 1500
-F 0 "#power?" H 6350 1650 50  0001 C CNN
+F 0 "#power028" H 6350 1650 50  0001 C CNN
 F 1 "GND_digital" H 6200 1400 40  0000 L CNN
 F 2 "" H 6350 1500 50  0001 C CNN
 F 3 "" H 6350 1500 50  0001 C CNN
@@ -1270,10 +1270,10 @@ KEY0
 Text Label 6100 2200 0    50   ~ 0
 KEY1
 $Comp
-L Connector:Conn_01x06_Male J?
+L Connector:Conn_01x06_Male J4
 U 1 1 5C04EE57
 P 2900 4300
-F 0 "J?" H 2873 4273 50  0000 R CNN
+F 0 "J4" H 2873 4273 50  0000 R CNN
 F 1 "Conn_01x06_Male" H 2873 4182 50  0000 R CNN
 F 2 "" H 2900 4300 50  0001 C CNN
 F 3 "~" H 2900 4300 50  0001 C CNN
