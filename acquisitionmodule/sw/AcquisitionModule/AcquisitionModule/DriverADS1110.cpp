@@ -31,12 +31,12 @@ bool DriverADS1110::init()
     const uint8_t PGA1Value   = 0U;
     const uint8_t PGA0Value   = 0U;
 
-    uint8_t dataToSend = (STDRDYValue << I2CControlRegisterBits.SCBit)
-                         | (SCBValue  << I2CControlRegisterBits.SCBit)
-                         | (DR1Value  << I2CControlRegisterBits.DR1Bit)
-                         | (DR0Value  << I2CControlRegisterBits.DR0Bit)
-                         | (PGA1Value << I2CControlRegisterBits.PGA1Bit)
-                         | (PGA0Value << I2CControlRegisterBits.PGA0Bit);
+    uint8_t dataToSend = (STDRDYValue << I2CControlRegisterBits::SCBit)
+                         | (SCBValue  << I2CControlRegisterBits::SCBit)
+                         | (DR1Value  << I2CControlRegisterBits::DR1Bit)
+                         | (DR0Value  << I2CControlRegisterBits::DR0Bit)
+                         | (PGA1Value << I2CControlRegisterBits::PGA1Bit)
+                         | (PGA0Value << I2CControlRegisterBits::PGA0Bit);
 
     driverI2C.beginTransmission(i2cAddressADS1110);
     driverI2C.send(dataToSend);
@@ -59,8 +59,8 @@ bool DriverADS1110::doMeassurement()
     if(driverI2C.availableData() == i2cResponseSizeInBytes)
     {
         uint8_t controlRegisterData = driverI2C.receive();
-        uint8_t aDCValueLowByte = driverI2C.receive();
-        uint8_t aDCValueHighByte = driverI2C.receive();
+        uint8_t aDCValueLowByte     = driverI2C.receive();
+        uint8_t aDCValueHighByte    = driverI2C.receive();
 
         meassurementValue = (aDCValueHighByte << 8U) | aDCValueLowByte;
         readMeassurementStatus = true;
