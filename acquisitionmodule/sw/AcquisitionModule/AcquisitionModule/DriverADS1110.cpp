@@ -55,7 +55,7 @@ bool DriverADS1110::doMeassurement()
     driverI2C.beginTransmission(i2cAddressADS1110);
     driverI2C.requestFrom(i2cAddressADS1110, i2cResponseSizeInBytes);
 
-    // TODO: should check if data is available in controll register
+    // TODO: should check if data is available in control register
     if(driverI2C.availableData() == i2cResponseSizeInBytes)
     {
         uint8_t controlRegisterData = driverI2C.receive();
@@ -69,7 +69,6 @@ bool DriverADS1110::doMeassurement()
     {
         meassurementValue = 0xff;
         readMeassurementStatus = false;
-
     }
 
     return readMeassurementStatus;
