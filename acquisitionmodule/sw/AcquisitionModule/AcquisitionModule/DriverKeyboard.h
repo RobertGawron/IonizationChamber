@@ -6,8 +6,8 @@
 */
 
 
-#ifndef __KEYBOARD_H__
-#define __KEYBOARD_H__
+#ifndef __DRIVERKEYBOARD_H__
+#define __DRIVERKEYBOARD_H__
 
 
 class DriverKeyboard
@@ -25,4 +25,4 @@ private:
 
 };
 
-#endif //__KEYBOARD_H__
+#endif //__DRIVERKEYBOARD_H__
