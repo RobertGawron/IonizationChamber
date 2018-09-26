@@ -52,5 +52,8 @@ bool ApplicationBuilder::init()
 
 void ApplicationBuilder::run()
 {
-
+    while(true)
+    {
+        // TODO: add buisness logic
+    }
 }

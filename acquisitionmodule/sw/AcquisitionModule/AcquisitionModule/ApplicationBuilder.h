@@ -20,13 +20,14 @@ class ApplicationBuilder
 public:
     ApplicationBuilder();
     ~ApplicationBuilder();
+
     ApplicationBuilder( const ApplicationBuilder &c ) = delete;
     ApplicationBuilder& operator=( const ApplicationBuilder &c ) = delete;
 
     // all object creation logic that can fail should be here, not in the ctor
     bool init();
 
-    // runs forever
+    // main loop, runs forever
     void run();
 
 private:
@@ -35,6 +36,6 @@ private:
     DriverKeyboard driverKeyboard;
     DriverLCD driverLCD;
     DriverUART driverUART;
-};;
+};
 
 #endif //__APPLICATIONBUILDER_H__
