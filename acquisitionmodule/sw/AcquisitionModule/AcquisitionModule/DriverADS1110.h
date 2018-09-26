@@ -25,7 +25,9 @@ public:
     // getMeassurementValue(), because first one will be probably done
     // periodically, in some constant time intervals, however, data can be needed
     // later, not exactly in the time of measurement.
-    void doMeassurement();
+
+    // if there is no data to read, the return value is false, otherwise it's true
+    bool doMeassurement();
 
     // to get the measurement value, first it's needed to perform the measurement
     // using doMeassurement() method.
@@ -33,7 +35,18 @@ public:
 
 private:
     DriverI2C& driverI2C;
-    static const uint8_t i2cAddress = 0b1001000;
+
+    // ADS1110 has only one available address.
+    static const uint8_t i2cAddressADS1110 = 0b1001000;
+
+    // I2C control register bits
+    static const uint8_t STDRDYBit = (2U << 7U);
+    // 5 and 6 are reserved by chip manufacturer.
+    static const uint8_t SCBit     = (2U << 4U);
+    static const uint8_t DR1Bit    = (2U << 3U);
+    static const uint8_t DR0Bit    = (2U << 2U);
+    static const uint8_t PGA1Bit   = (2U << 1U);
+    static const uint8_t PGA0Bit   = (2U << 0U);
 
     uint16_t meassurementValue;
 };
