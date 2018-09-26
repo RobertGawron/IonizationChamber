@@ -39,14 +39,19 @@ private:
     // ADS1110 has only one available address.
     static const uint8_t i2cAddressADS1110 = 0b1001000;
 
-    // I2C control register bits
-    static const uint8_t STDRDYBit = (2U << 7U);
-    // 5 and 6 are reserved by chip manufacturer.
-    static const uint8_t SCBit     = (2U << 4U);
-    static const uint8_t DR1Bit    = (2U << 3U);
-    static const uint8_t DR0Bit    = (2U << 2U);
-    static const uint8_t PGA1Bit   = (2U << 1U);
-    static const uint8_t PGA0Bit   = (2U << 0U);
+    struct I2CControlRegisterBits
+    {
+        // I2C control register bits
+        static const uint8_t STDRDYBit = (2U << 7U);
+        // 5 and 6 are reserved by chip manufacturer.
+        static const uint8_t SCBit     = (2U << 4U);
+        static const uint8_t DR1Bit    = (2U << 3U);
+        static const uint8_t DR0Bit    = (2U << 2U);
+        static const uint8_t PGA1Bit   = (2U << 1U);
+        static const uint8_t PGA0Bit   = (2U << 0U);
+    };
+
+    static const i2cResponseSizeInBytes = 3U;
 
     uint16_t meassurementValue;
 };
