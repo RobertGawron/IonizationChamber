@@ -10,16 +10,22 @@
 
 
 DriverADS1110::DriverADS1110(DriverI2C& driverI2C):
-    driverI2C(driverI2C)
-{
-}
-
-
-DriverADS1110::~DriverADS1110()
+    driverI2C(driverI2C),
+    meassurementValue(0U)
 {
 }
 
 bool DriverADS1110::init()
 {
     return true;
+}
+
+void DriverADS1110::doMeassurement()
+{
+    meassurementValue = 0xff;
+}
+
+uint16_t DriverADS1110::getMeassurementValue()
+{
+    return meassurementValue;
 }

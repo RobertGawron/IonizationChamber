@@ -5,10 +5,10 @@
   Thanks to 'jkl' for the gcc version of Atmel's USI_TWI_Master code
   http://www.cs.cmu.edu/~dst/ARTSI/Create/PC%20Comm/
   I added Atmel's original Device dependant defines section back into USI_TWI_Master.h
- 
- 
+
+
  NOTE! - It's very important to use pullups on the SDA & SCL lines! More so than with the Wire lib.
- 
+
  USAGE is modeled after the standard Wire library . . .
   Put in setup():
 	TinyWireM.begin(){                               // initialize I2C lib
@@ -44,24 +44,22 @@
 
 class USI_TWI
 {
-  private:
-	static uint8_t USI_Buf[];           // holds I2C send and receive data
-	static uint8_t USI_BufIdx;          // current number of bytes in the send buff
-	static uint8_t USI_LastRead;        // number of bytes read so far
-	static uint8_t USI_BytesAvail;      // number of bytes requested but not read
-	
-  public:
- 	USI_TWI();
-	void begin();
+private:
+    static uint8_t USI_Buf[];           // holds I2C send and receive data
+    static uint8_t USI_BufIdx;          // current number of bytes in the send buff
+    static uint8_t USI_LastRead;        // number of bytes read so far
+    static uint8_t USI_BytesAvail;      // number of bytes requested but not read
+
+public:
+    USI_TWI();
+    void begin();
     void beginTransmission(uint8_t);
     void send(uint8_t);
     uint8_t endTransmission();
     uint8_t requestFrom(uint8_t, uint8_t);
-    uint8_t receive(); 
-    uint8_t available(); 
+    uint8_t receive();
+    uint8_t available();
 };
-
-extern USI_TWI TinyWireM;
 
 #endif
 
