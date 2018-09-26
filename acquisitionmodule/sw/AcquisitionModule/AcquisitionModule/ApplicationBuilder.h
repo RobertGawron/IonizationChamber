@@ -13,7 +13,7 @@
 #include "DriverADS1110.h"
 #include "DriverKeyboard.h"
 #include "DriverLCD.h"
-#include "DriverUSB.h"
+#include "DriverUART.h"
 
 class ApplicationBuilder
 {
@@ -34,7 +34,7 @@ private:
     DriverADS1110 driverADS1110;
     DriverKeyboard driverKeyboard;
     DriverLCD driverLCD;
-    DriverUART driverUSB;
+    DriverUART driverUART;
 };;
 
 #endif //__APPLICATIONBUILDER_H__

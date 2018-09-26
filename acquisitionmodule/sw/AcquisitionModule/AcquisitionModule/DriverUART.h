@@ -6,15 +6,16 @@
 */
 
 
-#ifndef __SERIALPORT_H__
-#define __SERIALPORT_H__
+#ifndef __DRIVERUART_H__
+#define __DRIVERUART_H__
 
 
 class DriverUART
 {
 public:
     DriverUART();
-    ~DriverUART();
+    ~DriverUART() = default;
+
     DriverUART( const DriverUART &c ) = delete;
     DriverUART& operator=( const DriverUART &c ) = delete;
 
@@ -24,4 +25,4 @@ private:
 
 };
 
-#endif //__SERIALPORT_H__
+#endif //__DRIVERUART_H__
