@@ -40,6 +40,11 @@ uint8_t DriverI2C::requestFrom(uint8_t slaveAddr, uint8_t numBytes)
     return tinyWire.requestFrom(slaveAddr, numBytes);
 }
 
+uint8_t DriverI2C::availableData()
+{
+    return tinyWire.available();
+}
+
 uint8_t DriverI2C::receive()
 {
     return tinyWire.receive();

@@ -5,7 +5,6 @@
  * Author : robert
  */
 
-//#include <avr/io.h>
 #include "ApplicationBuilder.h"
 
 int main(void)
@@ -14,7 +13,7 @@ int main(void)
 
     if(application.init())
     {
-        // runs forever in a loop
+        // runs forever in its loop
         application.run();
     }
 }

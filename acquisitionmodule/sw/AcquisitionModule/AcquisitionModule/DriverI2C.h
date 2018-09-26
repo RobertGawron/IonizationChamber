@@ -23,6 +23,7 @@ public:
     void send(uint8_t data);
     uint8_t endTransmission();
     uint8_t requestFrom(uint8_t, uint8_t);
+    uint8_t availableData();
     uint8_t receive();
 
 private:
