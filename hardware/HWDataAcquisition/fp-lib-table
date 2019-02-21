@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name IonizationChamber)(type KiCad)(uri ${KIPRJMOD}/IonizationChamber.pretty)(options "")(descr ""))
-)
