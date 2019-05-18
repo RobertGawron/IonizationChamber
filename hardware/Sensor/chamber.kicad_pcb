@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 8)
+    (drawings 7)
     (tracks 0)
     (zones 0)
     (modules 49)
@@ -130,10 +130,8 @@
     (add_net -BATT)
     (add_net GND)
     (add_net "Net-(BT1-Pad1)")
-    (add_net "Net-(BT10-Pad1)")
     (add_net "Net-(BT10-Pad2)")
     (add_net "Net-(BT2-Pad1)")
-    (add_net "Net-(BT7-Pad1)")
     (add_net "Net-(BT7-Pad2)")
     (add_net "Net-(C1-Pad1)")
     (add_net "Net-(C11-Pad1)")
@@ -159,7 +157,7 @@
   )
 
   (module Connector_Coaxial:SMA_Molex_73251-1153_EdgeMount_Horizontal (layer F.Cu) (tedit 5A1B666F) (tstamp 5CD8ACD8)
-    (at 156.21 29.21 180)
+    (at 69.55 78.726 180)
     (descr "Molex SMA RF Connectors, Edge Mount, (http://www.molex.com/pdm_docs/sd/732511150_sd.pdf)")
     (tags "sma edge")
     (path /5CD78402)
@@ -231,7 +229,7 @@
   )
 
   (module Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal (layer F.Cu) (tedit 5AE50CD5) (tstamp 5CD8AC74)
-    (at 62.23 64.77)
+    (at -24.43 114.286)
     (descr "Diode, DO-41_SOD81 series, Axial, Horizontal, pin pitch=10.16mm, , length*diameter=5.2*2.7mm^2, , http://www.diodes.com/_files/packages/DO-41%20(Plastic).pdf")
     (tags "Diode DO-41_SOD81 series Axial Horizontal pin pitch 10.16mm  length 5.2mm diameter 2.7mm")
     (path /5D193E12)
@@ -284,7 +282,7 @@
   )
 
   (module Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal (layer F.Cu) (tedit 5AE50CD5) (tstamp 5CD8941F)
-    (at 48.26 55.88)
+    (at -38.4 105.396)
     (descr "Diode, DO-41_SOD81 series, Axial, Horizontal, pin pitch=10.16mm, , length*diameter=5.2*2.7mm^2, , http://www.diodes.com/_files/packages/DO-41%20(Plastic).pdf")
     (tags "Diode DO-41_SOD81 series Axial Horizontal pin pitch 10.16mm  length 5.2mm diameter 2.7mm")
     (path /5D0E8F38)
@@ -337,7 +335,7 @@
   )
 
   (module Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm (layer F.Cu) (tedit 5A3EABFC) (tstamp 5CD8832D)
-    (at 78.74 60.96)
+    (at -7.92 110.476)
     (descr "SMD Solder Jumper, 1x1.5mm Pads, 0.3mm gap, open")
     (tags "solder jumper open")
     (path /5D05475B)
@@ -363,7 +361,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5CD8713B)
-    (at 42.38 44.76)
+    (at -44.28 94.276)
     (descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5CF71A9D)
@@ -404,7 +402,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal (layer F.Cu) (tedit 5AE5139B) (tstamp 5CD84136)
-    (at 75.82 56.73)
+    (at -10.84 106.246)
     (descr "Resistor, Axial_DIN0207 series, Axial, Horizontal, pin pitch=10.16mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Horizontal pin pitch 10.16mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5CD8E1C0)
@@ -445,7 +443,7 @@
   )
 
   (module Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P5.08mm_Vertical (layer F.Cu) (tedit 5AE5139B) (tstamp 5CD84114)
-    (at 81.28 52.48)
+    (at -5.38 101.996)
     (descr "Resistor, Axial_DIN0207 series, Axial, Vertical, pin pitch=5.08mm, 0.25W = 1/4W, length*diameter=6.3*2.5mm^2, http://cdn-reichelt.de/documents/datenblatt/B400/1_4W%23YAG.pdf")
     (tags "Resistor Axial_DIN0207 series Axial Vertical pin pitch 5.08mm 0.25W = 1/4W length 6.3mm diameter 2.5mm")
     (path /5CD8D9B7)
@@ -478,7 +476,7 @@
   )
 
   (module Diode_SMD:D_SOT-23_ANK (layer F.Cu) (tedit 587CCEF9) (tstamp 5CD86EE8)
-    (at 52.53 49.06)
+    (at -34.13 98.576)
     (descr "SOT-23, Single Diode")
     (tags SOT-23)
     (path /5CE169C8)
@@ -523,7 +521,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD86E92)
-    (at 47.93 48.26)
+    (at -38.73 97.776)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CF71640)
@@ -559,7 +557,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD86E81)
-    (at 43.18 48.26)
+    (at -43.48 97.776)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CF5796B)
@@ -595,7 +593,7 @@
   )
 
   (module Package_TO_SOT_THT:TO-220-3_Horizontal_TabUp (layer F.Cu) (tedit 5AC8BA0D) (tstamp 5CD85BC5)
-    (at 93.55 56.69)
+    (at -49.498 107.73)
     (descr "TO-220-3, Horizontal, RM 2.54mm, see https://www.vishay.com/docs/66542/to-220-1.pdf")
     (tags "TO-220-3 Horizontal RM 2.54mm")
     (path /5CDC4A25)
@@ -657,7 +655,7 @@
   )
 
   (module Inductor_THT:L_Radial_L8.0mm_W8.0mm_P5.00mm_Neosid_NE-CPB-07E (layer F.Cu) (tedit 5AE59B06) (tstamp 5CD85B72)
-    (at 105.41 64.77)
+    (at -37.638 115.81)
     (descr "Inductor, Radial series, Radial, pin pitch=5.00mm, , length*width=8*8mm^2, Neosid, NE-CPB-07E, http://www.neosid.de/produktblaetter/neosid_Festinduktivitaet_NE_CPB07E.pdf")
     (tags "Inductor Radial series Radial pin pitch 5.00mm  length 8mm width 8mm Neosid NE-CPB-07E")
     (path /5CDC7071)
@@ -694,7 +692,7 @@
   )
 
   (module Package_SO:SOIC-8_3.9x4.9mm_P1.27mm (layer F.Cu) (tedit 5C97300E) (tstamp 5CD841E4)
-    (at 69.22 55.53)
+    (at -17.44 105.046)
     (descr "SOIC, 8 Pin (JEDEC MS-012AA, https://www.analog.com/media/en/package-pcb-resources/package/pkg_pdf/soic_narrow-r/r_8.pdf), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOIC SO")
     (path /5CD8C19E)
@@ -745,7 +743,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD84158)
-    (at 80.57 55.43)
+    (at -6.09 104.946)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CF3DC76)
@@ -781,7 +779,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD84147)
-    (at 86.03 49.53)
+    (at -0.63 99.046)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CDD3604)
@@ -817,7 +815,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD84125)
-    (at 72.12 60.23)
+    (at -14.54 109.746)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CE1613E)
@@ -853,7 +851,7 @@
   )
 
   (module Package_TO_SOT_SMD:SOT-23 (layer F.Cu) (tedit 5A02FF57) (tstamp 5CD84063)
-    (at 85.88 53.28)
+    (at -0.78 102.796)
     (descr "SOT-23, Standard")
     (tags SOT-23)
     (path /5CDD4736)
@@ -894,7 +892,7 @@
   )
 
   (module Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal (layer F.Cu) (tedit 5AE50CD5) (tstamp 5CD83FD6)
-    (at 66.87 50.18)
+    (at -19.79 99.696)
     (descr "Diode, DO-41_SOD81 series, Axial, Horizontal, pin pitch=10.16mm, , length*diameter=5.2*2.7mm^2, , http://www.diodes.com/_files/packages/DO-41%20(Plastic).pdf")
     (tags "Diode DO-41_SOD81 series Axial Horizontal pin pitch 10.16mm  length 5.2mm diameter 2.7mm")
     (path /5CDC7CAD)
@@ -947,7 +945,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD83FB7)
-    (at 67.37 60.23)
+    (at -19.29 109.746)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CDD4031)
@@ -983,7 +981,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD83FA6)
-    (at 75.82 53.78)
+    (at -10.84 103.296)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD9E57B)
@@ -1019,7 +1017,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD83F95)
-    (at 81.28 49.53)
+    (at -5.38 99.046)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD8CBD9)
@@ -1055,7 +1053,7 @@
   )
 
   (module Battery:BatteryHolder_Keystone_2466_1xAAA (layer F.Cu) (tedit 5B254C39) (tstamp 5CD8B7EA)
-    (at 48.26 31.18)
+    (at -38.4 80.696)
     (descr "1xAAA Battery Holder, Keystone, Plastic Case, http://www.keyelco.com/product-pdf.cfm?p=1031")
     (tags "AAA battery holder Keystone")
     (path /5CF66088)
@@ -1124,7 +1122,7 @@
   )
 
   (module Battery:BatteryHolder_Keystone_2466_1xAAA (layer F.Cu) (tedit 5B254C39) (tstamp 5CD8B7BA)
-    (at 100.31 1.08)
+    (at 13.65 50.596)
     (descr "1xAAA Battery Holder, Keystone, Plastic Case, http://www.keyelco.com/product-pdf.cfm?p=1031")
     (tags "AAA battery holder Keystone")
     (path /5CF65D7A)
@@ -1194,7 +1192,7 @@
   )
 
   (module Battery:BatteryHolder_Keystone_2466_1xAAA (layer F.Cu) (tedit 5B254C39) (tstamp 5CD8B78A)
-    (at 48.26 16.13)
+    (at -38.4 65.646)
     (descr "1xAAA Battery Holder, Keystone, Plastic Case, http://www.keyelco.com/product-pdf.cfm?p=1031")
     (tags "AAA battery holder Keystone")
     (path /5CF86552)
@@ -1264,7 +1262,7 @@
   )
 
   (module Battery:BatteryHolder_Keystone_2466_1xAAA (layer F.Cu) (tedit 5B254C39) (tstamp 5CD8B75A)
-    (at 100.31 -13.97)
+    (at 7.828 35.8)
     (descr "1xAAA Battery Holder, Keystone, Plastic Case, http://www.keyelco.com/product-pdf.cfm?p=1031")
     (tags "AAA battery holder Keystone")
     (path /5CF869E4)
@@ -1333,7 +1331,7 @@
   )
 
   (module Battery:BatteryHolder_Keystone_2466_1xAAA (layer F.Cu) (tedit 5B254C39) (tstamp 5CD8B72A)
-    (at 48.26 1.08)
+    (at -38.4 50.596)
     (descr "1xAAA Battery Holder, Keystone, Plastic Case, http://www.keyelco.com/product-pdf.cfm?p=1031")
     (tags "AAA battery holder Keystone")
     (path /5CD816BD)
@@ -1403,7 +1401,7 @@
   )
 
   (module Battery:BatteryHolder_Keystone_2466_1xAAA (layer F.Cu) (tedit 5B254C39) (tstamp 5CD8B6FA)
-    (at 48.26 -13.97)
+    (at -43.988 35.546)
     (descr "1xAAA Battery Holder, Keystone, Plastic Case, http://www.keyelco.com/product-pdf.cfm?p=1031")
     (tags "AAA battery holder Keystone")
     (path /5CD81622)
@@ -1473,7 +1471,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD894D3)
-    (at 140.64 57.15)
+    (at 53.98 106.666)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CEB9F4A)
@@ -1509,7 +1507,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD894C2)
-    (at 128.27 55.88)
+    (at 41.61 105.396)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CEB9F44)
@@ -1545,7 +1543,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD89417)
-    (at 135.89 57.15)
+    (at 49.23 106.666)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CEB9F50)
@@ -1581,7 +1579,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD88184)
-    (at 148.865001 35.265001)
+    (at 62.205001 84.781001)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD06FD8)
@@ -1617,7 +1615,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD88154)
-    (at 144.115001 35.265001)
+    (at 57.455001 84.781001)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CCF4DE4)
@@ -1653,7 +1651,7 @@
   )
 
   (module Package_DIP:DIP-8_W7.62mm (layer F.Cu) (tedit 5A02E8C5) (tstamp 5CD82704)
-    (at 111.76 43.18)
+    (at 25.1 92.696)
     (descr "8-lead though-hole mounted DIP package, row spacing 7.62 mm (300 mils)")
     (tags "THT DIP DIL PDIP 2.54mm 7.62mm 300mil")
     (path /5CCF4B88)
@@ -1705,7 +1703,7 @@
   )
 
   (module Inductor_SMD:L_1812_4532Metric_Pad1.30x3.40mm_HandSolder (layer F.Cu) (tedit 5B301BBE) (tstamp 5CD82648)
-    (at 114.83 28.14)
+    (at 35.282 86.292)
     (descr "Capacitor SMD 1812 (4532 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.nikhef.nl/pub/departments/mt/projects/detectorR_D/dtddice/ERJ2G.pdf), generated with kicad-footprint-generator")
     (tags "inductor handsolder")
     (path /5CD9781A)
@@ -1741,7 +1739,7 @@
   )
 
   (module Inductor_SMD:L_1812_4532Metric_Pad1.30x3.40mm_HandSolder (layer F.Cu) (tedit 5B301BBE) (tstamp 5CD82637)
-    (at 107.54 28.14)
+    (at 27.992 86.292)
     (descr "Capacitor SMD 1812 (4532 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://www.nikhef.nl/pub/departments/mt/projects/detectorR_D/dtddice/ERJ2G.pdf), generated with kicad-footprint-generator")
     (tags "inductor handsolder")
     (path /5CD96E48)
@@ -1777,7 +1775,7 @@
   )
 
   (module Capacitor_SMD:CP_Elec_6.3x5.4 (layer F.Cu) (tedit 5BCA39D0) (tstamp 5CD82524)
-    (at 109.22 21.59)
+    (at 29.672 79.742)
     (descr "SMD capacitor, aluminum electrolytic, Panasonic C55, 6.3x5.4mm")
     (tags "capacitor electrolytic")
     (path /5CD94E6D)
@@ -1836,7 +1834,7 @@
   )
 
   (module Capacitor_SMD:CP_Elec_6.3x5.4 (layer F.Cu) (tedit 5BCA39D0) (tstamp 5BA1DC56)
-    (at 121.92 17.78 270)
+    (at 41.864 78.98 270)
     (descr "SMD capacitor, aluminum electrolytic, Panasonic C55, 6.3x5.4mm")
     (tags "capacitor electrolytic")
     (path /5BA235DF)
@@ -1895,7 +1893,7 @@
   )
 
   (module Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm (layer F.Cu) (tedit 5C56E16F) (tstamp 5CD819C3)
-    (at 151.13 46.99)
+    (at 64.47 96.506)
     (descr "SOIC, 8 Pin (https://www.analog.com/media/en/technical-documentation/data-sheets/ada4898-1_4898-2.pdf#page=29), generated with kicad-footprint-generator ipc_gullwing_generator.py")
     (tags "SOIC SO")
     (path /5CD2F7E9)
@@ -1951,7 +1949,7 @@
   )
 
   (module MountingHole:MountingHole_3.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5CD81A06)
-    (at 133.35 64.77)
+    (at 97.5 130)
     (descr "Mounting Hole 3.5mm")
     (tags "mounting hole 3.5mm")
     (path /5CD87293)
@@ -1971,8 +1969,8 @@
       (net 1 GND))
   )
 
-  (module MountingHole:MountingHole_3.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5CD8196D)
-    (at 162.56 64.77)
+  (module MountingHole:MountingHole_3.5mm_Pad locked (layer F.Cu) (tedit 56D1B4CB) (tstamp 5CE028BD)
+    (at 97.5 40)
     (descr "Mounting Hole 3.5mm")
     (tags "mounting hole 3.5mm")
     (path /5CD873AF)
@@ -1992,8 +1990,8 @@
       (net 1 GND))
   )
 
-  (module MountingHole:MountingHole_3.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5CD81982)
-    (at 153.67 63.5)
+  (module MountingHole:MountingHole_3.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5CE0272E)
+    (at 185 130)
     (descr "Mounting Hole 3.5mm")
     (tags "mounting hole 3.5mm")
     (path /5CD872F3)
@@ -2014,7 +2012,7 @@
   )
 
   (module MountingHole:MountingHole_3.5mm_Pad (layer F.Cu) (tedit 56D1B4CB) (tstamp 5CD81997)
-    (at 144.78 64.77)
+    (at 185 40)
     (descr "Mounting Hole 3.5mm")
     (tags "mounting hole 3.5mm")
     (path /5CD87355)
@@ -2035,7 +2033,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD804A9)
-    (at 136.5 48.67)
+    (at 49.84 98.186)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CD05F9A)
@@ -2071,7 +2069,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD80498)
-    (at 131.75 51.62)
+    (at 45.09 101.136)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CD05F00)
@@ -2107,7 +2105,7 @@
   )
 
   (module Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD80487)
-    (at 136.5 45.72)
+    (at 49.84 95.236)
     (descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "resistor handsolder")
     (path /5CCF4D7C)
@@ -2143,7 +2141,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD8044C)
-    (at 131.75 48.67)
+    (at 45.09 98.186)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD81865)
@@ -2179,7 +2177,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD8043B)
-    (at 127 51.62)
+    (at 40.34 101.136)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD817CB)
@@ -2215,7 +2213,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD8042A)
-    (at 131.75 45.72)
+    (at 45.09 95.236)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD36164)
@@ -2251,7 +2249,7 @@
   )
 
   (module Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder (layer F.Cu) (tedit 5B36C52B) (tstamp 5CD80419)
-    (at 127 48.67)
+    (at 40.34 98.186)
     (descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC_7351 nominal with elongated pad for handsoldering. (Body size source: https://docs.google.com/spreadsheets/d/1BsfQQcO9C6DZCsRaXUlFlo91Tg2WpOkGARC1WS5S8t0/edit?usp=sharing), generated with kicad-footprint-generator")
     (tags "capacitor handsolder")
     (path /5CD3762B)
@@ -2286,18 +2284,17 @@
     )
   )
 
-  (gr_line (start 39.37 -13.97) (end 64.77 -13.97) (layer Eco2.User) (width 0.15) (tstamp 5CD99BD4))
-  (gr_line (start 39.37 76.2) (end 39.37 -13.97) (layer Eco2.User) (width 0.15))
-  (gr_line (start 138.43 -13.97) (end 64.77 -13.97) (layer Eco2.User) (width 0.15))
-  (gr_line (start 138.43 76.2) (end 138.43 -13.97) (layer Eco2.User) (width 0.15))
-  (gr_line (start 39.37 76.2) (end 138.43 76.2) (layer Eco2.User) (width 0.15))
-  (gr_text GND (at 123.825 45.72 90) (layer F.SilkS) (tstamp 5BA22790)
+  (gr_line (start 191.288 135.56) (end 91.288 135.56) (layer Edge.Cuts) (width 0.15) (tstamp 5CE01056))
+  (gr_line (start 191.288 35.56) (end 191.288 135.56) (layer Edge.Cuts) (width 0.15))
+  (gr_line (start 91.288 35.56) (end 191.288 35.56) (layer Edge.Cuts) (width 0.15))
+  (gr_line (start 91.288 135.56) (end 91.288 35.56) (layer Edge.Cuts) (width 0.15))
+  (gr_text GND (at 37.165 95.236 90) (layer F.SilkS) (tstamp 5BA22790)
     (effects (font (size 1 1) (thickness 0.1)))
   )
-  (gr_text rev3.0 (at 142.24 44.45) (layer F.SilkS) (tstamp 5BA1A2D7)
+  (gr_text rev3.0 (at 55.58 93.966) (layer F.SilkS) (tstamp 5BA1A2D7)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
-  (gr_text "Ionization Chamber Sensor\n" (at 143.51 41.91) (layer F.SilkS) (tstamp 5BA1A2D4)
+  (gr_text "Ionization Chamber Sensor\n" (at 56.85 91.426) (layer F.SilkS) (tstamp 5BA1A2D4)
     (effects (font (size 1.5 1.5) (thickness 0.3)))
   )
 
