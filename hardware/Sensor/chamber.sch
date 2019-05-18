@@ -738,7 +738,7 @@ U 1 1 5CF2E667
 P 6200 2600
 F 0 "V10" V 5850 2550 50  0000 R CNN
 F 1 "Nuclear-Radiation_Detector" V 5962 2555 50  0000 R CNN
-F 2 "" H 6400 2700 50  0001 C CNN
+F 2 "IonizationChamber:IonizationChamberSensor" H 6400 2700 50  0001 C CNN
 F 3 "~" H 6200 2600 50  0001 C CNN
 	1    6200 2600
 	1    0    0    -1  
@@ -1479,7 +1479,7 @@ U 1 1 5CE2447D
 P 8400 1450
 F 0 "J10" H 9130 1514 50  0000 L CNN
 F 1 "RF_Shield_Two_Pieces" H 9130 1423 50  0000 L CNN
-F 2 "" H 8400 1350 50  0001 C CNN
+F 2 "IonizationChamber:IonizationChamberShield" H 8400 1350 50  0001 C CNN
 F 3 "~" H 8400 1350 50  0001 C CNN
 	1    8400 1450
 	1    0    0    -1  
@@ -1503,7 +1503,7 @@ U 1 1 5CE5ED89
 P 4100 1050
 F 0 "J20" H 4830 1114 50  0000 L CNN
 F 1 "RF_Shield_Two_Pieces" H 4830 1023 50  0000 L CNN
-F 2 "" H 4100 950 50  0001 C CNN
+F 2 "IonizationChamber:IonizationChamberHVShield" H 4100 950 50  0001 C CNN
 F 3 "~" H 4100 950 50  0001 C CNN
 	1    4100 1050
 	1    0    0    -1  
