@@ -1465,48 +1465,4 @@ Wire Wire Line
 Connection ~ 5850 2350
 Wire Wire Line
 	5850 2350 6200 2350
-$Comp
-L Mechanical:MountingHole H32
-U 1 1 5CF54792
-P 2250 7000
-F 0 "H32" H 2350 7046 50  0000 L CNN
-F 1 "MountingHole" H 2350 6955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 2250 7000 50  0001 C CNN
-F 3 "~" H 2250 7000 50  0001 C CNN
-	1    2250 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H33
-U 1 1 5CF551EC
-P 2950 7000
-F 0 "H33" H 3050 7046 50  0000 L CNN
-F 1 "MountingHole" H 3050 6955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 2950 7000 50  0001 C CNN
-F 3 "~" H 2950 7000 50  0001 C CNN
-	1    2950 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H35
-U 1 1 5CF55391
-P 3650 7000
-F 0 "H35" H 3750 7046 50  0000 L CNN
-F 1 "MountingHole" H 3750 6955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 3650 7000 50  0001 C CNN
-F 3 "~" H 3650 7000 50  0001 C CNN
-	1    3650 7000
-	1    0    0    -1  
-$EndComp
-$Comp
-L Mechanical:MountingHole H31
-U 1 1 5CF55556
-P 1550 7000
-F 0 "H31" H 1650 7046 50  0000 L CNN
-F 1 "MountingHole" H 1650 6955 50  0000 L CNN
-F 2 "MountingHole:MountingHole_3.5mm" H 1550 7000 50  0001 C CNN
-F 3 "~" H 1550 7000 50  0001 C CNN
-	1    1550 7000
-	1    0    0    -1  
-$EndComp
 $EndSCHEMATC
