@@ -123,10 +123,10 @@ Wire Wire Line
 Wire Wire Line
 	8350 2200 8300 2200
 $Comp
-L Analog_ADC:MCP3425A0T-ECH U1
+L Analog_ADC:MCP3425A0T-ECH U53
 U 1 1 5CE1FB53
 P 4100 2050
-F 0 "U1" H 4100 2631 50  0000 C CNN
+F 0 "U53" H 4100 2631 50  0000 C CNN
 F 1 "MCP3425A0T-ECH" H 4100 2540 50  0000 C CNN
 F 2 "Package_TO_SOT_SMD:SOT-23-6_Handsoldering" H 4100 2050 50  0001 C CIN
 F 3 "http://ww1.microchip.com/downloads/en/DeviceDoc/22072b.pdf" H 4100 2050 50  0001 C CNN
@@ -282,7 +282,7 @@ U 1 1 5CE32761
 P 3200 4150
 F 0 "D50" H 3200 4366 50  0000 C CNN
 F 1 "1n148" H 3200 4275 50  0000 C CNN
-F 2 "Diode_SMD:D_MiniMELF_Handsoldering" H 3200 4150 50  0001 C CNN
+F 2 "Diode_SMD:D_MiniMELF" H 3200 4150 50  0001 C CNN
 F 3 "~" H 3200 4150 50  0001 C CNN
 	1    3200 4150
 	1    0    0    -1  
@@ -719,4 +719,20 @@ Wire Wire Line
 	2850 1500 2700 1500
 Text GLabel 2700 1500 1    50   Input ~ 0
 analog_output
+Wire Wire Line
+	4600 1950 4750 1950
+Wire Wire Line
+	4600 2050 4750 2050
+Wire Wire Line
+	4600 4650 4750 4650
+Wire Wire Line
+	4600 4750 4750 4750
+Text Label 4750 4650 2    50   ~ 0
+SCL
+Text Label 4750 4750 2    50   ~ 0
+SDA
+Text Label 4750 1950 2    50   ~ 0
+SCL
+Text Label 4750 2050 2    50   ~ 0
+SDA
 $EndSCHEMATC
