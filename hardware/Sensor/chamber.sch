@@ -972,10 +972,6 @@ F 3 "http://www.vishay.com/docs/88503/1n4001.pdf" H 6200 2100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6200 1950 6200 1900
-Wire Wire Line
-	6200 2250 6200 2350
-Wire Wire Line
-	6200 2350 6200 2650
 $Comp
 L Device:CP C2
 U 1 1 5CE413AF
@@ -1068,7 +1064,6 @@ Wire Wire Line
 	5550 2350 5600 2350
 Wire Wire Line
 	5900 2350 6000 2350
-Connection ~ 6200 2350
 $Sheet
 S 9850 4800 500  150 
 U 5CF2BB44
@@ -1357,9 +1352,6 @@ F 3 "~" H 6200 2150 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6000 2150 6000 2350
-Connection ~ 6000 2350
-Wire Wire Line
-	6000 2350 6200 2350
 Wire Wire Line
 	10750 3150 10750 2950
 Text GLabel 10750 2950 1    50   Input ~ 0
@@ -1455,7 +1447,7 @@ U 1 1 5D1FFE32
 P 1050 1500
 F 0 "SW32" H 1050 1785 50  0000 C CNN
 F 1 "SW_DPDT_x2" H 1050 1694 50  0000 C CNN
-F 2 "Button_Switch_THT:SW_CuK_OS102011MA1QN1_SPDT_Angled" H 1050 1500 50  0001 C CNN
+F 2 "IonizationChamber:SwitchButtonGeneric" H 1050 1500 50  0001 C CNN
 F 3 "~" H 1050 1500 50  0001 C CNN
 	1    1050 1500
 	1    0    0    -1  
@@ -1573,4 +1565,6 @@ Wire Wire Line
 Connection ~ 6500 5550
 Wire Wire Line
 	6500 5550 6500 5250
+Wire Wire Line
+	6200 2250 6200 2650
 $EndSCHEMATC
