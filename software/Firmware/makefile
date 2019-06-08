@@ -1,72 +1,70 @@
-#Makefile for STM8 Examples with SDCC compiler
-#Author:	Saeid Yazdani
-#Website:	WWW.EMBEDONIX.COM
-#Copyright 2016
-#LICENSE:	GNU-LGPL
+################## SETUP  COMPILER ##################
+CC          = sdcc
+LD          = sdld
+AR          = sdar
+AS          = sdasstm8
+OBJCOPY     = sdobjcopy
+SIZE        = size
+MAKE        = make
+
+TARGET      = main
+STDLIB      = STM8S_StdPeriph_Lib/Libraries/STM8S_StdPeriph_Driver
+INCLUDEDIR  = $(STDLIB)/inc Inc
+LIBSRCDIR   = $(STDLIB)/src
+LIBSRC      = $(LIBSRCDIR)/stm8s_adc1.c  $(LIBSRCDIR)/stm8s_awu.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_beep.c  $(LIBSRCDIR)/stm8s_clk.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_exti.c  $(LIBSRCDIR)/stm8s_flash.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_gpio.c  $(LIBSRCDIR)/stm8s_i2c.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_itc.c   $(LIBSRCDIR)/stm8s_iwdg.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_rst.c   $(LIBSRCDIR)/stm8s_spi.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_tim1.c  $(LIBSRCDIR)/stm8s_tim3.c
+LIBSRC     += $(LIBSRCDIR)/stm8s_uart2.c $(LIBSRCDIR)/stm8s_wwdg.c
+LIBSRC     += $(SRCS)/stm8s_it.c
+LIBSRC     +=
+
+SRCS        = Src
+OBJS        = $(LIBSRC:.c=.rel)
+
+MCU         = STM8S105
+COMPILER    = __SDCC__
+DEFINES     = -D$(COMPILER) -D$(MCU) -DUSE_STDPERIPH_DRIVER
+
+CFLAGS      = -mstm8 --std-c99 $(DEFINES)
+LDFLAGS     = $(addprefix -I ,$(INCLUDEDIR))
+
+BUILD_DIR   = Build
+
+IHX         = $(BUILD_DIR)/$(TARGET).ihx
 
 
-# We're assuming POSIX conformance
-.POSIX:
 
-#Compiler
-CC = sdcc
+################### BUILD PROCESS ###################
+.PHONY: all build clean flash
 
-#Platform
-PLATFORM = stm8
+all: build
 
-#Product name
-PNAME = IonizationChamber
+build: $(OBJS) $(IHX)
 
-#Folders **** MAKE SURE TO CHANGE ACCORDING TO YOUR STRUCTURE!!! ****
-#Output directory for intermediate and final compiled file(s)
-ODIR = Bin
-#Directory for helpers
-IDIR = ./Inc
-SDIR = ./Src
+$(OBJS):
 
-# In case you ever want a different name for the main source file
-MAINSRC = $(PNAME).c
+%.rel: %.c
+	mkdir -p $(BUILD_DIR)
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $<
 
-# These are the sources that must be compiled to .rel files:
-EXTRASRCS = $(SDIR)/MCP3425A0T.rel
-
-# The list of .rel files can be derived from the list of their source files
-RELS = $(EXTRASRCS:.c=.rel)
-
-INCLUDES = -I$(IDIR)
-CFLAGS   = -m$(PLATFORM)
-LIBS     = -l$(PLATFORM)
-
-# This just provides the conventional target name "all"; it is optional
-# Note: I assume you set PNAME via some means not exhibited in your original file
-all: clean $(PNAME)
-
-# How to build the overall program
-$(PNAME): $(MAINSRC) $(RELS)
-	@mkdir -p $(ODIR)
-	$(CC) $(INCLUDES) $(CFLAGS) $(LIBS) $(MAINSRC) $(wildcard $(ODIR)/*.rel) -o$(ODIR)/
-
-# How to build any .rel file from its corresponding .c file
-# GNU would have you use a pattern rule for this, but that's GNU-specific
-.c.rel:
-	@mkdir -p $(ODIR)
-	$(CC) -c $(INCLUDES) $(CFLAGS) $(LIBS) $< -o$(ODIR)/
-
-# Suffixes appearing in suffix rules we care about.
-# Necessary because .rel is not one of the standard suffixes.
-.SUFFIXES: .c .rel
-
-
-#phonies
-
-.PHONY:	clean flash
+$(IHX): $(SRCS)/$(TARGET).c
+#	mkdir -p $(BUILD_DIR)
+#	$(CC) -c $(CFLAGS) -I$(INCLUDEDIR) -I. -L$(LIBSRCDIR) $(DEFINES) -o $(BUILD_DIR)/ $(LIBSRC)
+#	$(CC) -c $(CFLAGS) $(LDFLAGS) $(LIBSRCDIR)/stm8s_beep.c -o $(BUILD_DIR)/
+#	$(CC) -c $(CFLAGS) $(LDFLAGS) $(LIBSRCDIR)/stm8s_gpio.c -o $(BUILD_DIR)/
+#	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/*.rel
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_beep.rel \
+	                                               $(BUILD_DIR)/stm8s_gpio.rel \
+	                                               $(BUILD_DIR)/stm8s_it.rel
+	$(SIZE) $@
 
 clean:
-	@echo "Removing $(ODIR)..."
-	@rm -rf $(ODIR)
-	@echo "Done."
+	rm -rf $(BUILD_DIR)/*
 
-flash:
-	@echo "Uploading resulted " $(PNAME)".ihx to target board..." 
-	stm8flash -cstlinkv2 -pstm8s003 -w$(ODIR)/$(PNAME).ihx
-	@echo "Flash completed."
+flash: $(IHX)
+	stm8flash -c stlinkv2 -p stm8s105k4 -s flash -w $<
+
