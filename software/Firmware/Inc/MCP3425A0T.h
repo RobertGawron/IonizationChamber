@@ -8,7 +8,7 @@
 #ifndef SRC_MCP3425A0T_H_
 #define SRC_MCP3425A0T_H_
 
-#include "stm8s.h" // for bool type
+#include "CommonDataTypes.h"
 
 
 typedef struct MCP3425A0TConfig_t {

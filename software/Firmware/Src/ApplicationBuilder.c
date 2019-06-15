@@ -6,11 +6,9 @@
  */
 
 #include "ApplicationBuilder.h"
+#include "PinoutConfiguration.h"
 #include "MCP3425A0T.h"
 #include "PeakDetector.h"
-
-#define ADC_CHIP_1_PIN 1
-#define ADC_CHIP_2_PIN 2
 
 static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
 

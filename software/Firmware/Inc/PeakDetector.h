@@ -8,7 +8,7 @@
 #ifndef INC_PEAKDETECTOR_H_
 #define INC_PEAKDETECTOR_H_
 
-#include "stm8s.h" // for bool type
+#include "CommonDataTypes.h"
 
 bool PeakDetector_Init();
 
