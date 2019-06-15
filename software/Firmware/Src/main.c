@@ -7,19 +7,15 @@
 
 #include "stm8s.h"
 #include "stm8s_it.h"
-
-#include "MCP3425A0T.h"
+#include "ApplicationBuilder.h"
 
 int main( void )
 {
+	ApplicationBuilder_Init();
 
-	MCP3425A0TConfig_t c ;
-
-	MCP3425A0T_Init(&c);
-
-	while(1)
+	while(TRUE)
 	{
-		//MCP3425A0T_Tick();
+		ApplicationBuilder_Tick();
 	}
 }
 
@@ -30,7 +26,7 @@ void assert_failed(uint8_t* file, uint32_t line)
 	(void)file;
 	(void)line;
 
-	while (1)
+	while (TRUE)
 	{
 		// empty
 	}
