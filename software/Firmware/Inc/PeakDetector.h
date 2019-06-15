@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-bool PeakDetector_Init();
+bool PeakDetector_Init(uint8_t pin);
 
 void PeakDetector_Tick();
 

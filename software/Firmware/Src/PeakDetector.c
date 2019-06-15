@@ -7,7 +7,7 @@
 
 #include "PeakDetector.h"
 
-bool PeakDetector_Init()
+bool PeakDetector_Init(uint8_t pin)
 {
 
 }

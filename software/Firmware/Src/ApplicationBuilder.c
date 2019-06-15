@@ -22,6 +22,8 @@ bool ApplicationBuilder_Init()
 		MCP3425A0T_Init(&adcConfig[i]);
 	}
 
+	PeakDetector_Init(PEAK_DETECTOR_PIN);
+
 
 	return TRUE;
 }
