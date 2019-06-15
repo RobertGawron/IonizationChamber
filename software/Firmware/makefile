@@ -11,19 +11,7 @@ TARGET      = main
 STDLIB      = STM8S_StdPeriph_Lib/Libraries/STM8S_StdPeriph_Driver
 INCLUDEDIR  = $(STDLIB)/inc Inc
 LIBSRCDIR   = $(STDLIB)/src
-LIBSRC      = $(LIBSRCDIR)/stm8s_adc1.c  $(LIBSRCDIR)/stm8s_awu.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_beep.c  $(LIBSRCDIR)/stm8s_clk.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_exti.c  $(LIBSRCDIR)/stm8s_flash.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_gpio.c  $(LIBSRCDIR)/stm8s_i2c.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_itc.c   $(LIBSRCDIR)/stm8s_iwdg.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_rst.c   $(LIBSRCDIR)/stm8s_spi.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_tim1.c  $(LIBSRCDIR)/stm8s_tim3.c
-LIBSRC     += $(LIBSRCDIR)/stm8s_uart2.c $(LIBSRCDIR)/stm8s_wwdg.c
-LIBSRC     += $(SRCS)/stm8s_it.c
-LIBSRC     +=
-
 SRCS        = Src
-OBJS        = $(LIBSRC:.c=.rel)
 
 MCU         = STM8S105
 COMPILER    = __SDCC__
@@ -37,30 +25,43 @@ BUILD_DIR   = Build
 IHX         = $(BUILD_DIR)/$(TARGET).ihx
 
 
-
 ################### BUILD PROCESS ###################
 .PHONY: all build clean flash
 
 all: build
 
-build: $(OBJS) $(IHX)
+build:$(IHX)
 
-$(OBJS):
 
-%.rel: %.c
+
+$(BUILD_DIR)/stm8s_gpio.rel:
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_beep.rel $(STDLIB)/src/stm8s_beep.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_clk.rel  $(STDLIB)/src/stm8s_clk.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_gpio.rel $(STDLIB)/src/stm8s_gpio.c
+
+$(BUILD_DIR)/stm8s_it.rel:
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_i2c.rel $(STDLIB)/src/stm8s_i2c.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ -o Build/ "Src/stm8s_it.rel" "Src/stm8s_it.c"
+
+$(BUILD_DIR)/MCP3425A0T.rel: $(SRCS)/MCP3425A0T.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/MCP3425A0T.rel $(SRCS)/MCP3425A0T.c
+
+$(BUILD_DIR)/PeakDetector.rel: $(SRCS)/PeakDetector.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/PeakDetector.rel $(SRCS)/PeakDetector.c
+
+$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PeakDetector.rel 
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ApplicationBuilder.rel $(SRCS)/ApplicationBuilder.c
+
+
+
+
+
+$(IHX): $(SRCS)/$(TARGET).c $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/stm8s_gpio.rel $(BUILD_DIR)/stm8s_it.rel  
 	mkdir -p $(BUILD_DIR)
-	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $<
-
-$(IHX): $(SRCS)/$(TARGET).c
-#	mkdir -p $(BUILD_DIR)
-#	$(CC) -c $(CFLAGS) -I$(INCLUDEDIR) -I. -L$(LIBSRCDIR) $(DEFINES) -o $(BUILD_DIR)/ $(LIBSRC)
-#	$(CC) -c $(CFLAGS) $(LDFLAGS) $(LIBSRCDIR)/stm8s_beep.c -o $(BUILD_DIR)/
-#	$(CC) -c $(CFLAGS) $(LDFLAGS) $(LIBSRCDIR)/stm8s_gpio.c -o $(BUILD_DIR)/
-#	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/*.rel
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_beep.rel \
-	                                               $(BUILD_DIR)/stm8s_gpio.rel \
-	                                               $(BUILD_DIR)/stm8s_it.rel
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PeakDetector.rel 
 	$(SIZE) $@
+
+
 
 clean:
 	rm -rf $(BUILD_DIR)/*
