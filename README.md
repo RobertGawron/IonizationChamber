@@ -15,5 +15,5 @@ The device that is made here has:
 There is a lot of ionization chamber projects on YouTube based on Darlington transistor and antenna connected to its base (first electrode) where some grounded metal can is used as second electrode. I tried to make them and they seems to work, but they don't. Gain and lack of shielding makes them very sensitive to electromagnetic noise. 
 
 
-![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/chamber.png)
+![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/feature/rev_4_0/documentation/pictures/chamber.png)
 
