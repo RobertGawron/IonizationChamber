@@ -25,6 +25,10 @@ LIBSRC     +=
 SRCS        = Src
 OBJS        = $(LIBSRC:.c=.rel)
 
+LOCALSRC    = $(SRCS)/MCP3425A0T.c
+OBJS        += $(LOCALSRC:.c=.rel)
+
+
 MCU         = STM8S105
 COMPILER    = __SDCC__
 DEFINES     = -D$(COMPILER) -D$(MCU) -DUSE_STDPERIPH_DRIVER
@@ -35,7 +39,6 @@ LDFLAGS     = $(addprefix -I ,$(INCLUDEDIR))
 BUILD_DIR   = Build
 
 IHX         = $(BUILD_DIR)/$(TARGET).ihx
-
 
 
 ################### BUILD PROCESS ###################
@@ -59,7 +62,7 @@ $(IHX): $(SRCS)/$(TARGET).c
 #	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/*.rel
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_beep.rel \
 	                                               $(BUILD_DIR)/stm8s_gpio.rel \
-	                                               $(BUILD_DIR)/stm8s_it.rel
+	                                               $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel
 	$(SIZE) $@
 
 clean:

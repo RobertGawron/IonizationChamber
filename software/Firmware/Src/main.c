@@ -7,18 +7,19 @@
 
 #include "stm8s.h"
 #include "stm8s_it.h"
-#include "stm8s_gpio.h"
-#include "stm8s_beep.h"
 
 #include "MCP3425A0T.h"
 
 int main( void )
 {
-	//MCP3425A0T_Init();
+
+	MCP3425A0TConfig_t c ;
+
+	MCP3425A0T_Init(&c);
 
 	while(1)
 	{
-
+		//MCP3425A0T_Tick();
 	}
 }
 
