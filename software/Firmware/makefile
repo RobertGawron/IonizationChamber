@@ -13,7 +13,7 @@ INCLUDEDIR  = $(STDLIB)/inc Inc
 LIBSRCDIR   = $(STDLIB)/src
 SRCS        = Src
 
-MCU         = STM8S105
+MCU         = STM8S003
 COMPILER    = __SDCC__
 DEFINES     = -D$(COMPILER) -D$(MCU) -DUSE_STDPERIPH_DRIVER
 
@@ -49,7 +49,12 @@ $(BUILD_DIR)/MCP3425A0T.rel: $(SRCS)/MCP3425A0T.c
 $(BUILD_DIR)/PeakDetector.rel: $(SRCS)/PeakDetector.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/PeakDetector.rel $(SRCS)/PeakDetector.c
 
-$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PeakDetector.rel 
+
+$(BUILD_DIR)/DataLogger.rel: $(SRCS)/DataLogger.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/DataLogger.rel $(SRCS)/DataLogger.c
+
+
+$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PeakDetector.rel $(BUILD_DIR)/DataLogger.rel
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ApplicationBuilder.rel $(SRCS)/ApplicationBuilder.c
 
 
@@ -58,7 +63,7 @@ $(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/M
 
 $(IHX): $(SRCS)/$(TARGET).c $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/stm8s_gpio.rel $(BUILD_DIR)/stm8s_it.rel  
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PeakDetector.rel 
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PeakDetector.rel $(BUILD_DIR)/DataLogger.rel 
 	$(SIZE) $@
 
 
