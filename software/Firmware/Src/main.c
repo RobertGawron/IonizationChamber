@@ -10,32 +10,34 @@
 #include "ApplicationBuilder.h"
 
 #define LED_GPIO_PORT  (GPIOD)
-#define LED_GPIO_PINS  (GPIO_PIN_2 | GPIO_PIN_3)
+#define LED_GPIO_PINS  ( GPIO_PIN_0)
 
 int main( void )
 {
 	// just to test if the firmware is alive
-	 GPIO_Init(LED_GPIO_PORT, (GPIO_Pin_TypeDef)LED_GPIO_PINS, GPIO_MODE_OUT_PP_LOW_FAST);
-	 GPIO_WriteReverse(LED_GPIO_PORT, (GPIO_Pin_TypeDef)LED_GPIO_PINS);
+	 GPIO_Init(LED_GPIO_PORT, LED_GPIO_PINS,  GPIO_MODE_OUT_OD_LOW_FAST);
+	 //GPIO_WriteHigh(LED_GPIO_PORT, LED_GPIO_PINS);
+	 GPIO_WriteLow(LED_GPIO_PORT, LED_GPIO_PINS);
 
-	ApplicationBuilder_Init();
+//	ApplicationBuilder_Init();
 
 	while(TRUE)
 	{
-		ApplicationBuilder_Tick();
+		//ApplicationBuilder_Tick();
 	}
 }
 
 #ifdef USE_FULL_ASSERT
 
 void assert_failed(uint8_t* file, uint32_t line)
-{ 
+{
 	(void)file;
 	(void)line;
 
 	while (TRUE)
 	{
 		// empty
+	    GPIO_WriteHigh(LED_GPIO_PORT, LED_GPIO_PINS);
 	}
 }
 
