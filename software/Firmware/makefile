@@ -28,9 +28,13 @@ IHX         = $(BUILD_DIR)/$(TARGET).ihx
 ################### BUILD PROCESS ###################
 .PHONY: all build clean flash
 
-all: build
+all: make_build_dir build
 
-build:$(IHX)
+
+make_build_dir:
+	mkdir -p $(BUILD_DIR)
+
+build:	$(IHX)
 
 
 
@@ -72,5 +76,5 @@ clean:
 	rm -rf $(BUILD_DIR)/*
 
 flash: $(IHX)
-	stm8flash -c stlinkv2 -p stm8s105k4 -s flash -w $<
+	/opt/stm8flash -c stlink -p stm8s103f3 -w $<
 
