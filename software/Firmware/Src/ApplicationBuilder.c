@@ -10,7 +10,7 @@
 #include "MCP3425A0T.h"
 #include "PeakDetector.h"
 #include "DataLogger.h"
-
+#include "GUI.h"
 
 static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
 

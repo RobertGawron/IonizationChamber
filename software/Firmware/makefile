@@ -53,12 +53,14 @@ $(BUILD_DIR)/MCP3425A0T.rel: $(SRCS)/MCP3425A0T.c
 $(BUILD_DIR)/PeakDetector.rel: $(SRCS)/PeakDetector.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/PeakDetector.rel $(SRCS)/PeakDetector.c
 
+$(BUILD_DIR)/GUI.rel: $(SRCS)/GUI.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/GUI.rel $(SRCS)/GUI.c
 
 $(BUILD_DIR)/DataLogger.rel: $(SRCS)/DataLogger.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/DataLogger.rel $(SRCS)/DataLogger.c
 
 
-$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PeakDetector.rel $(BUILD_DIR)/DataLogger.rel
+$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PeakDetector.rel $(BUILD_DIR)/DataLogger.rel $(BUILD_DIR)/GUI.rel
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ApplicationBuilder.rel $(SRCS)/ApplicationBuilder.c
 
 
@@ -67,7 +69,7 @@ $(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/M
 
 $(IHX): $(SRCS)/$(TARGET).c $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/stm8s_gpio.rel $(BUILD_DIR)/stm8s_it.rel  
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PeakDetector.rel $(BUILD_DIR)/DataLogger.rel 
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PeakDetector.rel $(BUILD_DIR)/DataLogger.rel $(BUILD_DIR)/GUI.rel
 	$(SIZE) $@
 
 
