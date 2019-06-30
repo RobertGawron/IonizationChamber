@@ -17,8 +17,8 @@ MCU         = STM8S003
 COMPILER    = __SDCC__
 DEFINES     = -D$(COMPILER) -D$(MCU) -DUSE_STDPERIPH_DRIVER
 
-CFLAGS      = -mstm8 --std-c99 $(DEFINES)
-LDFLAGS     = $(addprefix -I ,$(INCLUDEDIR))
+CFLAGS      = -mstm8 --std-c99 $(DEFINES) 
+LDFLAGS     = $(addprefix -I ,$(INCLUDEDIR)) 
 
 BUILD_DIR   = Build
 
@@ -28,9 +28,13 @@ IHX         = $(BUILD_DIR)/$(TARGET).ihx
 ################### BUILD PROCESS ###################
 .PHONY: all build clean flash
 
-all: build
+all: make_build_dir build flash
 
-build:$(IHX)
+
+make_build_dir:
+	mkdir -p $(BUILD_DIR)
+
+build:	$(IHX)
 
 
 
@@ -72,5 +76,5 @@ clean:
 	rm -rf $(BUILD_DIR)/*
 
 flash: $(IHX)
-	stm8flash -c stlinkv2 -p stm8s105k4 -s flash -w $<
+	/opt/stm8flash -c stlink -p stm8s003f3 -w $<
 

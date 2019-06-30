@@ -17,7 +17,7 @@ static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
 
 bool ApplicationBuilder_Init()
 {
-	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
+/*	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
 
 	for(uint8_t i = 0U; i < amountOfADC; i++)
 	{
@@ -26,7 +26,7 @@ bool ApplicationBuilder_Init()
 
 	PeakDetector_Init(PEAK_DETECTOR_PIN);
 
-
+*/
 	return TRUE;
 }
 
