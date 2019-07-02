@@ -15,7 +15,7 @@
 static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
 
 
-bool ApplicationBuilder_Init()
+void ApplicationBuilder_Init()
 {
 	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
 
@@ -24,16 +24,16 @@ bool ApplicationBuilder_Init()
 		MCP3425A0T_Init(&adcConfig[i]);
 	}*/
 
+	DataLogger_Init();
 	PeakDetector_Init(PEAK_DETECTOR_PIN);
+
     GUI_Init();
 
     GUI_ShowMessage(GUI_INFO_MSG);
     GUI_ShowMessage(GUI_FAULT_MSG);
-
-	return TRUE;
 }
 
 void ApplicationBuilder_Tick()
 {
-
+    DataLogger_Tick();
 }
