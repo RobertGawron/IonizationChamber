@@ -10,27 +10,30 @@
 #include "MCP3425A0T.h"
 #include "PeakDetector.h"
 #include "DataLogger.h"
-
+#include "GUI.h"
 
 static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
 
 
-bool ApplicationBuilder_Init()
+void ApplicationBuilder_Init()
 {
-/*	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
+	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
 
-	for(uint8_t i = 0U; i < amountOfADC; i++)
+	/*for(uint8_t i = 0U; i < amountOfADC; i++)
 	{
 		MCP3425A0T_Init(&adcConfig[i]);
-	}
+	}*/
 
+	DataLogger_Init();
 	PeakDetector_Init(PEAK_DETECTOR_PIN);
 
-*/
-	return TRUE;
+    GUI_Init();
+
+    GUI_ShowMessage(GUI_INFO_MSG);
+    GUI_ShowMessage(GUI_FAULT_MSG);
 }
 
 void ApplicationBuilder_Tick()
 {
-
+    DataLogger_Tick();
 }

@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-bool DataLogger_Init();
+void DataLogger_Init();
 
 void DataLogger_Tick();
 

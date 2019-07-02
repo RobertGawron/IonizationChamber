@@ -11,7 +11,7 @@
 #include "CommonDataTypes.h"
 
 
-bool ApplicationBuilder_Init();
+void ApplicationBuilder_Init();
 
 void ApplicationBuilder_Tick();
 
