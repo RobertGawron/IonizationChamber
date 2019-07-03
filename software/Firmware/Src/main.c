@@ -10,8 +10,6 @@
 
 int main( void )
 {
-    GUI_Init();
-
 	ApplicationBuilder_Init();
 
 	while(TRUE)

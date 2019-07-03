@@ -5,14 +5,14 @@
  *      Author: robert
  */
 
-#include "PeakDetector.h"
+#include "PulseCounter.h"
 
-bool PeakDetector_Init(uint8_t pin)
+void PulseCounter_Init(uint8_t pin)
 {
 
 }
 
-void PeakDetector_Tick()
+void PulseCounter_Tick()
 {
 
 }
