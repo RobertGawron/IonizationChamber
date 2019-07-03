@@ -5,7 +5,8 @@
  *      Author: robert
  */
 
-#include "DataLogger.h"
+#include "../Inc/Logger.h"
+
 #include "stm8s_uart1.h"
 #include "stm8s_clk.h"
 
@@ -62,14 +63,14 @@ void UART1_setup(void)
 
 
 
-void DataLogger_Init()
+void Logger_Init()
 {
     clock_setup();
     GPIO_setup();
     UART1_setup();
 }
 
-void DataLogger_Tick()
+void Logger_Tick()
 {
     //        if(UART1_GetFlagStatus(UART1_FLAG_RXNE) == TRUE)
               {

@@ -5,16 +5,17 @@
  *      Author: robert
  */
 
-#include "GUI.h"
+#include "../Inc/UserInterface.h"
+
 #include "PinoutConfiguration.h"
 
-void GUI_Init()
+void UserInterface_Init()
 {
     GPIO_Init(LED_GPIO_PORT, (LED_GREEN_GPIO_PIN | LED_RED_GPIO_PIN),  GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LED_GPIO_PORT, (LED_GREEN_GPIO_PIN | LED_RED_GPIO_PIN));
 }
 
-void GUI_ShowMessage(GUI_Status status)
+void UserInterface_ShowMessage(GUI_Status status)
 {
     switch(status)
     {
