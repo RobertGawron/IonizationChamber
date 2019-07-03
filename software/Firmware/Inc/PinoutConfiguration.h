@@ -4,12 +4,18 @@
  *  Created on: 15 cze 2019
  *      Author: robert
  */
+#include "stm8s_it.h"
 
 #ifndef INC_PINOUTCONFIGURATION_H_
 #define INC_PINOUTCONFIGURATION_H_
 
-#define ADC_CHIP_1_PIN    1
-#define ADC_CHIP_2_PIN    2
-#define PEAK_DETECTOR_PIN 3
+#define PIN_ADC_CHIP_1    1
+#define PIN_ADC_CHIP_2    2
+
+#define PIN_PULSE_COUNTER 3
+
+#define PORT_GPIO_LED       GPIOD
+#define PIN_GPIO_LED_GREEN  GPIO_PIN_2
+#define PIN_GPIO_LED_RED    GPIO_PIN_3
 
 #endif /* INC_PINOUTCONFIGURATION_H_ */

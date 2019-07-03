@@ -7,30 +7,36 @@
 
 #include "ApplicationBuilder.h"
 #include "PinoutConfiguration.h"
+#include "ClockConfigurator.h"
+#include "Logger.h"
+#include "PulseCounter.h"
+#include "UserInterface.h"
 #include "MCP3425A0T.h"
-#include "PeakDetector.h"
-#include "DataLogger.h"
+
+static MCP3425A0TConfig_t adcConfig[]={{PIN_ADC_CHIP_1}, {PIN_ADC_CHIP_2}};
 
 
-static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
-
-
-bool ApplicationBuilder_Init()
+void ApplicationBuilder_Init()
 {
-/*	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
+	uint8_t amountOfADC = sizeof(adcConfig) / sizeof(adcConfig[0]);
 
-	for(uint8_t i = 0U; i < amountOfADC; i++)
+	/*for(uint8_t i = 0U; i < amountOfADC; i++)
 	{
 		MCP3425A0T_Init(&adcConfig[i]);
-	}
+	}*/
 
-	PeakDetector_Init(PEAK_DETECTOR_PIN);
+	ClockConfigurator_Init();
 
-*/
-	return TRUE;
+	Logger_Init();
+	PulseCounter_Init(PIN_PULSE_COUNTER);
+
+    UserInterface_Init();
+
+    UserInterface_ShowMessage(GUI_INFO_MSG);
+    UserInterface_ShowMessage(GUI_FAULT_MSG);
 }
 
 void ApplicationBuilder_Tick()
 {
-
+    Logger_Tick();
 }
