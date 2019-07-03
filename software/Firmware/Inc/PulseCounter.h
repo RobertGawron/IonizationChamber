@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-bool PulseCounter_Init(uint8_t pin);
+void PulseCounter_Init(uint8_t pin);
 
 void PulseCounter_Tick();
 

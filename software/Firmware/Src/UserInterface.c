@@ -5,14 +5,14 @@
  *      Author: robert
  */
 
-#include "../Inc/UserInterface.h"
+#include "UserInterface.h"
 
 #include "PinoutConfiguration.h"
 
 void UserInterface_Init()
 {
-    GPIO_Init(LED_GPIO_PORT, (LED_GREEN_GPIO_PIN | LED_RED_GPIO_PIN),  GPIO_MODE_OUT_PP_LOW_SLOW);
-    GPIO_WriteLow(LED_GPIO_PORT, (LED_GREEN_GPIO_PIN | LED_RED_GPIO_PIN));
+    GPIO_Init(PORT_GPIO_LED, (PIN_GPIO_LED_GREEN | PIN_GPIO_LED_RED),  GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_WriteLow(PORT_GPIO_LED, (PIN_GPIO_LED_GREEN | PIN_GPIO_LED_RED));
 }
 
 void UserInterface_ShowMessage(GUI_Status status)
@@ -21,12 +21,12 @@ void UserInterface_ShowMessage(GUI_Status status)
     {
         case GUI_FAULT_MSG:
         {
-            GPIO_WriteHigh(LED_GPIO_PORT, LED_RED_GPIO_PIN);
+            GPIO_WriteHigh(PORT_GPIO_LED, PIN_GPIO_LED_RED);
             break;
         }
         case GUI_INFO_MSG:
         {
-            GPIO_WriteHigh(LED_GPIO_PORT, LED_GREEN_GPIO_PIN);
+            GPIO_WriteHigh(PORT_GPIO_LED, PIN_GPIO_LED_GREEN);
             break;
         }
     }

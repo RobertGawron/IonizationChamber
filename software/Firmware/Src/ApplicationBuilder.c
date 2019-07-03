@@ -6,14 +6,14 @@
  */
 
 #include "ApplicationBuilder.h"
-
-#include "../Inc/Logger.h"
-#include "../Inc/PulseCounter.h"
-#include "../Inc/UserInterface.h"
 #include "PinoutConfiguration.h"
+#include "ClockConfigurator.h"
+#include "Logger.h"
+#include "PulseCounter.h"
+#include "UserInterface.h"
 #include "MCP3425A0T.h"
 
-static MCP3425A0TConfig_t adcConfig[]={{ADC_CHIP_1_PIN}, {ADC_CHIP_2_PIN}};
+static MCP3425A0TConfig_t adcConfig[]={{PIN_ADC_CHIP_1}, {PIN_ADC_CHIP_2}};
 
 
 void ApplicationBuilder_Init()
@@ -25,8 +25,10 @@ void ApplicationBuilder_Init()
 		MCP3425A0T_Init(&adcConfig[i]);
 	}*/
 
+	ClockConfigurator_Init();
+
 	Logger_Init();
-	PulseCounter_Init(PEAK_DETECTOR_PIN);
+	PulseCounter_Init(PIN_PULSE_COUNTER);
 
     UserInterface_Init();
 

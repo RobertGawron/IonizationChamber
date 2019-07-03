@@ -14,4 +14,8 @@ void Logger_Init();
 
 void Logger_Tick();
 
+
+// used to redirect printf to UART
+void putchar(char c);
+
 #endif /* INC_LOGGER_H_ */
