@@ -11,11 +11,9 @@
 int main( void )
 {
 	ApplicationBuilder_Init();
+	ApplicationBuilder_Run();
 
-	while(TRUE)
-	{
-		ApplicationBuilder_Tick();
-	}
+	return 0;
 }
 
 #ifdef USE_FULL_ASSERT
@@ -28,7 +26,6 @@ void assert_failed(uint8_t* file, uint32_t line)
 	while (TRUE)
 	{
 		// empty
-
 	}
 }
 

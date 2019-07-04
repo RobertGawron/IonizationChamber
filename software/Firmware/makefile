@@ -41,7 +41,7 @@ build:	$(IHX)
 
 
 $(BUILD_DIR)/stm8s_gpio.rel:
-	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_beep.rel $(STDLIB)/src/stm8s_beep.c
+#	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_beep.rel $(STDLIB)/src/stm8s_beep.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_clk.rel  $(STDLIB)/src/stm8s_clk.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_gpio.rel $(STDLIB)/src/stm8s_gpio.c
 
@@ -49,13 +49,24 @@ $(BUILD_DIR)/stm8s_uart1.rel:
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_clk.rel  $(STDLIB)/src/stm8s_clk.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_uart1.rel $(STDLIB)/src/stm8s_uart1.c
 
+$(BUILD_DIR)/stm8s_awu.rel:
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_clk.rel  $(STDLIB)/src/stm8s_clk.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_awu.rel $(STDLIB)/src/stm8s_awu.c
 
 $(BUILD_DIR)/stm8s_it.rel:
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_i2c.rel $(STDLIB)/src/stm8s_i2c.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ -o Build/ "Src/stm8s_it.rel" "Src/stm8s_it.c"
 
+$(BUILD_DIR)/stm8s_tim1.rel:
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_tim1.rel $(STDLIB)/src/stm8s_tim1.c
+#	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ -o Build/ "Src/stm8s_tim1.rel" "Src/stm8s_tim1.c"
+
+
 $(BUILD_DIR)/ClockConfigurator.rel: $(SRCS)/ClockConfigurator.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ClockConfigurator.rel $(SRCS)/ClockConfigurator.c
+
+$(BUILD_DIR)/AutoWakeupConfigurator.rel: $(SRCS)/AutoWakeupConfigurator.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/AutoWakeupConfigurator.rel $(SRCS)/AutoWakeupConfigurator.c
 
 $(BUILD_DIR)/MCP3425A0T.rel: $(SRCS)/MCP3425A0T.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/MCP3425A0T.rel $(SRCS)/MCP3425A0T.c
@@ -70,7 +81,7 @@ $(BUILD_DIR)/Logger.rel: $(SRCS)/Logger.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/Logger.rel $(SRCS)/Logger.c
 
 
-$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel
+$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/AutoWakeupConfigurator.rel $(BUILD_DIR)/stm8s_awu.rel 
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ApplicationBuilder.rel $(SRCS)/ApplicationBuilder.c
 
 
@@ -79,7 +90,7 @@ $(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/M
 
 $(IHX): $(SRCS)/$(TARGET).c $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/stm8s_gpio.rel $(BUILD_DIR)/stm8s_it.rel  $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/stm8s_clk.rel $(BUILD_DIR)/ClockConfigurator.rel
 	mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/stm8s_clk.rel $(BUILD_DIR)/ClockConfigurator.rel
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< $(BUILD_DIR)/stm8s_gpio.rel  $(BUILD_DIR)/stm8s_it.rel $(BUILD_DIR)/MCP3425A0T.rel $(BUILD_DIR)/ApplicationBuilder.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/stm8s_clk.rel $(BUILD_DIR)/ClockConfigurator.rel $(BUILD_DIR)/AutoWakeupConfigurator.rel $(BUILD_DIR)/stm8s_awu.rel 
 	$(SIZE) $@
 
 

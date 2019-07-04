@@ -132,11 +132,13 @@ typedef enum
   */
 void AWU_DeInit(void);
 void AWU_Init(AWU_Timebase_TypeDef AWU_TimeBase);
-void AWU_Cmd(FunctionalState NewState);
 void AWU_LSICalibrationConfig(uint32_t LSIFreqHz);
+#if 0
+void AWU_Cmd(FunctionalState NewState);
+
 void AWU_IdleModeEnable(void);
 FlagStatus AWU_GetFlagStatus(void);
-
+#endif
 /**
   * @}
   */

@@ -13,7 +13,7 @@
 
 void ApplicationBuilder_Init();
 
-void ApplicationBuilder_Tick();
+void ApplicationBuilder_Run();
 
 
 #endif /* INC_APPLICATIONBUILDER_H_ */

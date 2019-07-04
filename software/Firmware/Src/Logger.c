@@ -45,7 +45,9 @@ void Logger_Init()
 
 void Logger_Tick()
 {
-    printf ("success");
+    printf ("xyz");
+    //printf ('y');
+    //printf ('z');
 }
 
 

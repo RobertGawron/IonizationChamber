@@ -101,7 +101,7 @@ void AWU_Init(AWU_Timebase_TypeDef AWU_TimeBase)
   AWU->APR &= (uint8_t)(~AWU_APR_APR);
   AWU->APR |= APR_Array[(uint8_t)AWU_TimeBase];
 }
-
+#if 0
 /**
   * @brief  Enable or disable the AWU peripheral.
   * @param   NewState Indicates the new state of the AWU peripheral.
@@ -136,6 +136,7 @@ void AWU_Cmd(FunctionalState NewState)
   * @par Required preconditions:
   * - AWU must be disabled to avoid unwanted interrupts.
   */
+#endif
 void AWU_LSICalibrationConfig(uint32_t LSIFreqHz)
 {
   uint16_t lsifreqkhz = 0x0;
@@ -159,7 +160,7 @@ void AWU_LSICalibrationConfig(uint32_t LSIFreqHz)
     AWU->APR = (uint8_t)(A - 1U);
   }
 }
-
+#if 0
 /**
   * @brief  Configures AWU in Idle mode to reduce power consumption.
   * @param  None
@@ -194,5 +195,5 @@ FlagStatus AWU_GetFlagStatus(void)
   * @}
   */
   
-
+#endif
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
