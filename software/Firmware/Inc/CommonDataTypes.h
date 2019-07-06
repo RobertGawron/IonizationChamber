@@ -12,6 +12,6 @@
 	#error bool is already defined
 #endif
 
-#include "stm8s.h" // for bool type
+#include "stm8s.h"
 
 #endif /* INC_COMMONDATATYPES_H_ */

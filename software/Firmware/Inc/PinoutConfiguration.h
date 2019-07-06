@@ -4,7 +4,7 @@
  *  Created on: 15 cze 2019
  *      Author: robert
  */
-#include "stm8s_it.h"
+#include "CommonDataTypes.h"
 
 #ifndef INC_PINOUTCONFIGURATION_H_
 #define INC_PINOUTCONFIGURATION_H_

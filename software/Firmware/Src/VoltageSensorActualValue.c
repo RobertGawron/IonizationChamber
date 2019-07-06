@@ -5,7 +5,7 @@
  *      Author: robert
  */
 
-#include "MCP3425A0T.h"
+#include "VoltageSensorActualValue.h"
 
 #include "stm8s_i2c.h"
 
