@@ -12,7 +12,8 @@
 #include "Logger.h"
 #include "PulseCounter.h"
 #include "UserInterface.h"
-#include "MCP3425A0T.h"
+#include "VoltageSensorActualValue".h
+#include "VoltageSensorPeakValue.h"
 
 static MCP3425A0TConfig_t adcConfig[]={{PIN_ADC_CHIP_1}, {PIN_ADC_CHIP_2}};
 
