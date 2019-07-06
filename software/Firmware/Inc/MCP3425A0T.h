@@ -10,17 +10,15 @@
 
 #include "CommonDataTypes.h"
 
+#define  MCP3425A0TMeasurementData_t int
 
 typedef struct MCP3425A0TConfig_t {
 	int pinId;
 } MCP3425A0TConfig_t;
 
-#define  MCP3425A0TMeasurementData_t int
-
-//bool MCP3425A0T_Init(MCP3425A0TConfig_t *config);
 
 
-bool MCP3425A0T_Init(MCP3425A0TConfig_t *config);
+void MCP3425A0T_Init(MCP3425A0TConfig_t *config);
 
 bool MCP3425A0T_GeMeasurementData(/*MCP3425A0TConfig_t *config, MCP3425A0TMeasurementData_t *measurementData*/);
 

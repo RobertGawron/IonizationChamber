@@ -19,17 +19,16 @@ void ClockConfigurator_Init()
 
     CLK_ClockSwitchCmd(ENABLE);
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV8);
-    CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+    //CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+    CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
 
-    CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI,
-    DISABLE, CLK_CURRENTCLOCKSTATE_ENABLE);
+    CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO,
+        CLK_SOURCE_HSI,
+        DISABLE,
+        CLK_CURRENTCLOCKSTATE_ENABLE);
 
-    //      CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, DISABLE);
-    //      CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
-    //      CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
+    CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, ENABLE);
+    CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, ENABLE);
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, ENABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER4, DISABLE);
+    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
 }
