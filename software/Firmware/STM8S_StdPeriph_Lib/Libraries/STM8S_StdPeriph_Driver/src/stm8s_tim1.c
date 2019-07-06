@@ -55,7 +55,7 @@ static void TI4_Config(uint8_t TIM1_ICPolarity, uint8_t TIM1_ICSelection,
   * @param  None
   * @retval None
   */
-#if 0
+#if 1
 void TIM1_DeInit(void)
 {
   TIM1->CR1  = TIM1_CR1_RESET_VALUE;
@@ -110,7 +110,7 @@ void TIM1_DeInit(void)
   * @param  TIM1_RepetitionCounter specifies the Repetition counter value
   * @retval None
   */
-#if 0
+#if 1
 void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
                        TIM1_CounterMode_TypeDef TIM1_CounterMode,
                        uint16_t TIM1_Period,
@@ -636,7 +636,7 @@ void TIM1_CtrlPWMOutputs(FunctionalState NewState)
   * @param  NewState new state of the TIM1 peripheral.
   * @retval None
   */
-#if 0
+#if 1
 void TIM1_ITConfig(TIM1_IT_TypeDef  TIM1_IT, FunctionalState NewState)
 {
   /* Check the parameters */
@@ -2292,7 +2292,7 @@ ITStatus TIM1_GetITStatus(TIM1_IT_TypeDef TIM1_IT)
   *                       - TIM1_IT_BREAK: TIM1 Break Interrupt source
   * @retval None.
   */
-#if 0
+#if 1
 void TIM1_ClearITPendingBit(TIM1_IT_TypeDef TIM1_IT)
 {
   /* Check the parameters */

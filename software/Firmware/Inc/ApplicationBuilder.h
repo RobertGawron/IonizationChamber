@@ -15,5 +15,6 @@ void ApplicationBuilder_Init();
 
 void ApplicationBuilder_Run();
 
+void ApplicationBuilder_Tick();
 
 #endif /* INC_APPLICATIONBUILDER_H_ */

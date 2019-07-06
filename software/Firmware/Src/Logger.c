@@ -10,6 +10,23 @@
 #include "stm8s_uart1.h"
 
 
+#ifdef USE_FULL_ASSERT
+
+void assert_failed(uint8_t* file, uint32_t line)
+{
+    (void)file;
+    (void)line;
+
+    printf("[error] asset failed %s %d\r\n", file, line);
+
+    while (TRUE)
+    {
+        // empty
+    }
+}
+
+#endif
+
 void GPIO_setup(void)
 {
     // TODO: magic numbers

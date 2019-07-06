@@ -8,7 +8,7 @@
 #include "ApplicationBuilder.h"
 #include "PinoutConfiguration.h"
 #include "ClockConfigurator.h"
-#include "AutoWakeupConfigurator.h"
+#include "TimerConfigurator.h"
 #include "Logger.h"
 #include "PulseCounter.h"
 #include "UserInterface.h"
@@ -16,7 +16,6 @@
 
 static MCP3425A0TConfig_t adcConfig[]={{PIN_ADC_CHIP_1}, {PIN_ADC_CHIP_2}};
 
-static void ApplicationBuilder_Tick();
 
 void ApplicationBuilder_Init()
 {
@@ -27,14 +26,14 @@ void ApplicationBuilder_Init()
 		MCP3425A0T_Init(&adcConfig[i]);
 	}*/
 
-	ClockConfigurator_Init();
-	//AutoWakeupConfigurator_Init();
+	//ClockConfigurator_Init();
+	TimerConfigurator_Init();
 
 	Logger_Init();
 	PulseCounter_Init(PIN_PULSE_COUNTER);
-
     UserInterface_Init();
 
+    enableInterrupts();
 
     UserInterface_ShowMessage(GUI_FAULT_MSG);
 }
@@ -43,9 +42,8 @@ void ApplicationBuilder_Run()
 {
     while(TRUE)
     {
-        ApplicationBuilder_Tick();
-        //halt();
-        UserInterface_ShowMessage(GUI_INFO_MSG);
+        /* Wait in idle state. Business logic is triggered via interrupt. */
+        wfi();
     }
 }
 

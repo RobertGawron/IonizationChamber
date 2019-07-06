@@ -4,9 +4,8 @@
  *  Created on: 04.06.2019
  *  Author: robert. Based on stm8s-sdcc-template.
  */
-
 #include "stm8s.h"
-#include <stdio.h>
+#include "stm8s_it.h"
 #include "ApplicationBuilder.h"
 
 int main( void )
@@ -16,20 +15,3 @@ int main( void )
 
 	return 0;
 }
-
-#ifdef USE_FULL_ASSERT
-// TODO move this to logger module
-void assert_failed(uint8_t* file, uint32_t line)
-{
-	(void)file;
-	(void)line;
-
-	printf("[error] asset failed %s %d\r\n", file, line);
-
-	while (TRUE)
-	{
-		// empty
-	}
-}
-
-#endif
