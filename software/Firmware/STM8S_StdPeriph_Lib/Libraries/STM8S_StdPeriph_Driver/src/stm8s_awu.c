@@ -160,12 +160,13 @@ void AWU_LSICalibrationConfig(uint32_t LSIFreqHz)
     AWU->APR = (uint8_t)(A - 1U);
   }
 }
-#if 0
+
 /**
   * @brief  Configures AWU in Idle mode to reduce power consumption.
   * @param  None
   * @retval None
   */
+#if 0
 void AWU_IdleModeEnable(void)
 {
   /* Disable AWU peripheral */
@@ -174,6 +175,7 @@ void AWU_IdleModeEnable(void)
   /* No AWU timebase */
   AWU->TBR = (uint8_t)(~AWU_TBR_AWUTB);
 }
+#endif
 
 /**
   * @brief  Returns status of the AWU peripheral flag.
@@ -195,5 +197,5 @@ FlagStatus AWU_GetFlagStatus(void)
   * @}
   */
   
-#endif
+
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
