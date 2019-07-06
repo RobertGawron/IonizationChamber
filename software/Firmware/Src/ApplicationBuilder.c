@@ -26,7 +26,7 @@ void ApplicationBuilder_Init()
 		MCP3425A0T_Init(&adcConfig[i]);
 	}*/
 
-	//ClockConfigurator_Init();
+	ClockConfigurator_Init();
 	TimerConfigurator_Init();
 
 	Logger_Init();
