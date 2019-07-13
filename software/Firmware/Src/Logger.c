@@ -8,7 +8,7 @@
 #include "Logger.h"
 #include <stdio.h>
 #include "stm8s_uart1.h"
-
+#include "PinoutConfiguration.h"
 
 #ifdef USE_FULL_ASSERT
 
@@ -29,11 +29,10 @@ void assert_failed(uint8_t* file, uint32_t line)
 
 void GPIO_setup(void)
 {
-    // TODO: magic numbers
-    GPIO_DeInit(GPIOD);
+    GPIO_DeInit(PORT_UART);
 
-    GPIO_Init(GPIOD, GPIO_PIN_5, GPIO_MODE_OUT_PP_HIGH_FAST);
-    GPIO_Init(GPIOD, GPIO_PIN_6, GPIO_MODE_IN_PU_NO_IT);
+    GPIO_Init(PORT_UART, PIN_TX, GPIO_MODE_OUT_PP_HIGH_FAST);
+    GPIO_Init(PORT_UART, PIN_RX, GPIO_MODE_IN_PU_NO_IT);
 }
 
 
@@ -62,9 +61,7 @@ void Logger_Init()
 
 void Logger_Tick()
 {
-    printf ("xyz");
-    //printf ('y');
-    //printf ('z');
+    printf ("ok ");
 }
 
 

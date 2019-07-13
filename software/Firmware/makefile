@@ -92,8 +92,6 @@ $(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/V
 
 
 
-
-
 $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/ApplicationBuilder.rel \
     	$(BUILD_DIR)/stm8s_gpio.rel \
@@ -104,7 +102,6 @@ $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/stm8s_tim1.rel \
         $(BUILD_DIR)/stm8s_it.rel \
         $(BUILD_DIR)/VoltageSensorPeakValue.rel
-	mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< \
     	$(BUILD_DIR)/stm8s_gpio.rel \
     	$(BUILD_DIR)/stm8s_it.rel \
@@ -129,5 +126,5 @@ clean:
 	rm -rf $(BUILD_DIR)/*
 
 flash: $(IHX)
-	/opt/stm8flash -c stlink -p stm8s003f3 -w $<
+	stm8flash -c stlink -p stm8s003f3 -w $<
 
