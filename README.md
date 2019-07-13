@@ -10,12 +10,12 @@ Hardware is made of:
 * Amplifier (first stage is transimpedance amplifier, not FET transistor like most projects use)
 * DC/DC converter to create 400V DC voltage for polarization of ionization chamber
 * Data acquisition
-* Peak value measurement
-* Actual value measurement
-* Pulse counter
-* Three diodes as user interface
-* STM8 chip to collect data
-* UART interface to send data to PC.
+  * Peak value measurement
+  * Actual value measurement
+  * Pulse counter
+  * Three diodes as user interface
+  * STM8 chip to collect data
+  * UART interface to send data to PC.
 
 Software is made of:
 * Compilation via sdcc (has to be installed)
