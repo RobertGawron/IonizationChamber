@@ -7,7 +7,7 @@
 
 #include "PulseCounter.h"
 
-void PulseCounter_Init(uint8_t pin)
+void PulseCounter_Init()
 {
 
 }

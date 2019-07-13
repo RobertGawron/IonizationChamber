@@ -18,9 +18,9 @@ typedef struct MCP3425A0TConfig_t {
 
 
 
-void MCP3425A0T_Init(MCP3425A0TConfig_t *config);
+void MCP3425A0T_Init();
 
-bool MCP3425A0T_GeMeasurementData(/*MCP3425A0TConfig_t *config, MCP3425A0TMeasurementData_t *measurementData*/);
+bool MCP3425A0T_GeMeasurementData(MCP3425A0TMeasurementData_t *measurementData);
 
 
 #endif /* SRC_MCP3425A0T_H_ */

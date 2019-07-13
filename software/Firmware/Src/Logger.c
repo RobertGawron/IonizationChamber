@@ -61,9 +61,7 @@ void Logger_Init()
 
 void Logger_Tick()
 {
-    printf ("xyz");
-    //printf ('y');
-    //printf ('z');
+    printf ("ok ");
 }
 
 

@@ -8,9 +8,7 @@
 #ifndef INC_PULSECOUNTER_H_
 #define INC_PULSECOUNTER_H_
 
-#include "CommonDataTypes.h"
-
-void PulseCounter_Init(uint8_t pin);
+void PulseCounter_Init();
 
 void PulseCounter_Tick();
 
