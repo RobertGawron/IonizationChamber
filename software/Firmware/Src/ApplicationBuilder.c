@@ -23,7 +23,7 @@ void ApplicationBuilder_Init()
     Logger_Init();
     PulseCounter_Init();
     UserInterface_Init();
-    MCP3425A0T_Init();
+    VoltageSensorActualValue_Init();
     
     enableInterrupts();
 
