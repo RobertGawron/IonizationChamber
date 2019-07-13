@@ -9,14 +9,14 @@
 
 #include "stm8s_i2c.h"
 
-void MCP3425A0T_Init(MCP3425A0TConfig_t *config)
+void MCP3425A0T_Init()
 {
     I2C_DeInit();
 }
 
 
 
-bool MCP3425A0T_GeMeasurementData(/*MCP3425A0TConfig_t *config, MCP3425A0TMeasurementData_t *measurementData*/)
+bool MCP3425A0T_GeMeasurementData(MCP3425A0TMeasurementData_t *measurementData)
 {
 	return TRUE;
 }

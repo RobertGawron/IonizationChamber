@@ -15,18 +15,16 @@
 #include "VoltageSensorActualValue.h"
 #include "VoltageSensorPeakValue.h"
 
-static MCP3425A0TConfig_t adcConfig[]={{PIN_ADC_CHIP_1}, {PIN_ADC_CHIP_2}};
-
-
 void ApplicationBuilder_Init()
 {
     ClockConfigurator_Init();
     TimerConfigurator_Init();
 
     Logger_Init();
-    PulseCounter_Init(PIN_PULSE_COUNTER);
+    PulseCounter_Init();
     UserInterface_Init();
-
+    MCP3425A0T_Init();
+    
     enableInterrupts();
 
     UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
