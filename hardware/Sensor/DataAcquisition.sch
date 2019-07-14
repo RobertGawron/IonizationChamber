@@ -619,8 +619,8 @@ SWIM
 Text Label 10100 5350 0    50   ~ 0
 RST
 Wire Wire Line
-	7600 3700 7350 3700
-Text Label 7350 3700 0    50   ~ 0
+	7600 3700 6950 3700
+Text Label 6550 3700 0    50   ~ 0
 RST
 $Comp
 L power:GND #PWR074
@@ -1175,4 +1175,33 @@ F 3 "~" H 4300 4050 50  0001 C CNN
 	1    4300 4050
 	0    1    1    0   
 $EndComp
+$Comp
+L Device:C C3
+U 1 1 5D2F6D24
+P 6950 4000
+F 0 "C3" V 6698 4000 50  0000 C CNN
+F 1 "10n" V 6789 4000 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 6988 3850 50  0001 C CNN
+F 3 "~" H 6950 4000 50  0001 C CNN
+	1    6950 4000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR05
+U 1 1 5D2F704C
+P 6950 4200
+F 0 "#PWR05" H 6950 3950 50  0001 C CNN
+F 1 "GND" V 6955 4072 50  0000 R CNN
+F 2 "" H 6950 4200 50  0001 C CNN
+F 3 "" H 6950 4200 50  0001 C CNN
+	1    6950 4200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6950 3850 6950 3700
+Connection ~ 6950 3700
+Wire Wire Line
+	6950 3700 6550 3700
+Wire Wire Line
+	6950 4200 6950 4150
 $EndSCHEMATC
