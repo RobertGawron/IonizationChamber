@@ -42,5 +42,5 @@ void ApplicationBuilder_Run()
 
 void ApplicationBuilder_Tick()
 {
-    Logger_Tick();
+    //Logger_Tick();
 }

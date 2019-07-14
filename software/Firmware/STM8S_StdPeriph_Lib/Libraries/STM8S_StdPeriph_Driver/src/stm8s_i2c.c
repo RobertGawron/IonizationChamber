@@ -27,7 +27,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8s_i2c.h"
-
+#include <stdio.h>
 /** @addtogroup STM8S_StdPeriph_Driver
   * @{
   */
@@ -716,7 +716,7 @@ FlagStatus I2C_GetFlagStatus(I2C_Flag_TypeDef I2C_Flag)
 
   /* Check the parameters */
   assert_param(IS_I2C_FLAG_OK(I2C_Flag));
-
+//printf("aaaaa\n");
   /* Read flag register index */
   regindex = (uint8_t)((uint16_t)I2C_Flag >> 8);
   /* Check SRx index */
