@@ -124,3 +124,6 @@ clean:
 flash: $(IHX)
 	stm8flash -c stlink -p stm8s003f3 -w $<
 
+doc:
+	doxygen Doxyfile 
+
