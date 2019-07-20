@@ -6,7 +6,7 @@
  */
 
 #include "Logger.h"
-#include <stdio.h>
+//#include <stdio.h>
 #include "stm8s_uart1.h"
 #include "PinoutConfiguration.h"
 
@@ -20,7 +20,7 @@ void assert_failed(uint8_t* file, uint32_t line)
     (void)file;
     (void)line;
 
-    printf("[error] asset failed %s %d\r\n", file, line);
+    //printf("[error] asset failed %s %d\r\n", file, line);
 
     while (TRUE)
     {
@@ -40,7 +40,7 @@ void Logger_Init()
 
 void Logger_Tick()
 {
-    printf ("ok ");
+   // printf ("ok ");
 }
 
 

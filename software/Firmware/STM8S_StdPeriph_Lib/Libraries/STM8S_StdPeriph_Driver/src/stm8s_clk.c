@@ -521,7 +521,7 @@ void CLK_ITConfig(CLK_IT_TypeDef CLK_IT, FunctionalState NewState)
   * @param   ClockPrescaler Specifies the HSI or CPU clock divider to apply.
   * @retval None
   */
-#if 0   
+#if 1   
 void CLK_SYSCLKConfig(CLK_Prescaler_TypeDef CLK_Prescaler)
 {
   /* check the parameters */

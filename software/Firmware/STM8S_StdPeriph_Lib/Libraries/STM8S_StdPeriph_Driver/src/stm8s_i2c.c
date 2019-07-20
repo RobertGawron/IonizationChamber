@@ -64,7 +64,7 @@
   * @param  None
   * @retval None
   */
-#if 0
+#if 1
 void I2C_DeInit(void)
 {
   I2C->CR1 = I2C_CR1_RESET_VALUE;
@@ -255,7 +255,7 @@ void I2C_GeneralCallCmd(FunctionalState NewState)
   *         This parameter can be any of the @ref FunctionalState enumeration.
   * @retval None
   */
-#if 0  
+#if 1  
 void I2C_GenerateSTART(FunctionalState NewState)
 {
   /* Check function parameters */
@@ -280,7 +280,7 @@ void I2C_GenerateSTART(FunctionalState NewState)
   *          This parameter can be any of the @ref FunctionalState enumeration.
   * @retval None
   */
-#if 0  
+#if 1  
 void I2C_GenerateSTOP(FunctionalState NewState)
 {
   /* Check function parameters */
@@ -460,7 +460,7 @@ uint8_t I2C_ReceiveData(void)
   * This parameter can be any of the @ref I2C_Direction_TypeDef enumeration.
   * @retval None
   */
-#if 0  
+#if 1  
 void I2C_Send7bitAddress(uint8_t Address, I2C_Direction_TypeDef Direction)
 {
   /* Check function parameters */
@@ -480,7 +480,7 @@ void I2C_Send7bitAddress(uint8_t Address, I2C_Direction_TypeDef Direction)
   * @param   Data : Byte to be sent.
   * @retval None
   */
-#if 0  
+#if 1  
 void I2C_SendData(uint8_t Data)
 {
   /* Write in the DR register the data to be sent */
@@ -602,7 +602,7 @@ void I2C_SendData(uint8_t Data)
   * - SUCCESS: Last event is equal to the I2C_EVENT
   * - ERROR: Last event is different from the I2C_EVENT
   */
-#if 0  
+#if 1  
 ErrorStatus I2C_CheckEvent(I2C_Event_TypeDef I2C_Event)
 {
   __IO uint16_t lastevent = 0x00;
