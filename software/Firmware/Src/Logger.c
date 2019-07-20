@@ -10,6 +10,9 @@
 #include "stm8s_uart1.h"
 #include "PinoutConfiguration.h"
 
+static void GPIO_setup(void);
+static void UART1_setup(void);
+
 #ifdef USE_FULL_ASSERT
 
 void assert_failed(uint8_t* file, uint32_t line)
@@ -26,6 +29,29 @@ void assert_failed(uint8_t* file, uint32_t line)
 }
 
 #endif
+
+
+void Logger_Init()
+{
+    GPIO_setup();
+    UART1_setup();
+}
+
+
+void Logger_Tick()
+{
+    printf ("ok ");
+}
+
+
+void putchar(char c)
+{
+    /* Write a character to the UART1 */
+    UART1_SendData8(c);
+    /* Loop until the end of transmission */
+    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
+}
+
 
 void GPIO_setup(void)
 {
@@ -52,23 +78,3 @@ void UART1_setup(void)
 }
 
 
-void Logger_Init()
-{
-    GPIO_setup();
-    UART1_setup();
-}
-
-
-void Logger_Tick()
-{
-    printf ("ok ");
-}
-
-
-void putchar(char c)
-{
-    /* Write a character to the UART1 */
-    UART1_SendData8(c);
-    /* Loop until the end of transmission */
-    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
-}
