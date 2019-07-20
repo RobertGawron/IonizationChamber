@@ -5,12 +5,12 @@
  *      Author: robert
  */
 
-#ifndef SRC_MCP3425A0T_H_
-#define SRC_MCP3425A0T_H_
+#ifndef SRC_VOLTAGESENSORACTUALVALUE_H_
+#define SRC_VOLTAGESENSORACTUALVALUE_H_
 
 #include "CommonDataTypes.h"
 
-#define  MCP3425A0TMeasurementData_t int
+#define  VoltageSensorActualValue_MeasurementData_t int
 
 typedef struct MCP3425A0TConfig_t {
 	int pinId;
@@ -18,9 +18,9 @@ typedef struct MCP3425A0TConfig_t {
 
 
 
-void MCP3425A0T_Init();
+void VoltageSensorActualValue_Init();
 
-bool MCP3425A0T_GeMeasurementData(MCP3425A0TMeasurementData_t *measurementData);
+bool VoltageSensorActualValue_GeMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData);
 
 
-#endif /* SRC_MCP3425A0T_H_ */
+#endif /* SRC_VOLTAGESENSORACTUALVALUE_H_ */
