@@ -1,6 +1,7 @@
 # IonizationChamber
 
 **Current version not fully tested and has many HW bugs.**
+
 When air's atoms are hit by radioactive particles, an ion-pair is produced. Ions has electric charge, if they are in electric field create by positive and negative electrodes, negative ions will move to positive electrode and positive will move to negative electrode. They will try to "meet each other" (I don't know how to explain it) thus creating a current. This current can be measured.
 
 The current is proportional to amount of ion-pairs. Amount of ion-pairs is proportional to radioactivity level.
@@ -28,6 +29,6 @@ Software is done in a way so that it's possible to develop it remotely (I'm usin
 Below is the picture of actual version, it has digital part and DC/Dc converter, soldering is terrible, but it works.
 
 
-![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/pcb_13_07_2019.jpg)
+![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/pcb_20_07_2019.jpg)
 
  

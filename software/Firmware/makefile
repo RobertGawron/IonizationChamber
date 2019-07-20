@@ -50,9 +50,6 @@ $(BUILD_DIR)/stm8s_clk.rel:
 $(BUILD_DIR)/stm8s_uart1.rel:
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_uart1.rel $(STDLIB)/src/stm8s_uart1.c
 
-$(BUILD_DIR)/stm8s_awu.rel:
-	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_awu.rel $(STDLIB)/src/stm8s_awu.c
-
 $(BUILD_DIR)/stm8s_i2c.rel:
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(STDLIB)/src/stm8s_i2c.rel $(STDLIB)/src/stm8s_i2c.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ -o Build/ "Src/stm8s_it.rel" "Src/stm8s_it.c"
@@ -87,7 +84,7 @@ $(BUILD_DIR)/Logger.rel: $(SRCS)/Logger.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/Logger.rel $(SRCS)/Logger.c
 
 
-$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/VoltageSensorActualValue.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/TimerConfigurator.rel $(BUILD_DIR)/stm8s_awu.rel $(BUILD_DIR)/stm8s_i2c.rel 
+$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/VoltageSensorActualValue.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/TimerConfigurator.rel $(BUILD_DIR)/stm8s_i2c.rel 
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ApplicationBuilder.rel $(SRCS)/ApplicationBuilder.c
 
 
@@ -115,7 +112,6 @@ $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/stm8s_i2c.rel \
     	$(BUILD_DIR)/ClockConfigurator.rel \
     	$(BUILD_DIR)/TimerConfigurator.rel \
-    	$(BUILD_DIR)/stm8s_awu.rel \
     	$(BUILD_DIR)/stm8s_tim1.rel \
         $(BUILD_DIR)/VoltageSensorPeakValue.rel
 	$(SIZE) $@
@@ -127,4 +123,7 @@ clean:
 
 flash: $(IHX)
 	stm8flash -c stlink -p stm8s003f3 -w $<
+
+doc:
+	doxygen Doxyfile 
 
