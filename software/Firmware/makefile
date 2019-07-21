@@ -125,5 +125,11 @@ flash: $(IHX)
 	stm8flash -c stlink -p stm8s003f3 -w $<
 
 doc:
-	doxygen Doxyfile 
+	doxygen doxygen.cfg 
+
+formatting:
+	uncrustify -c uncrustify.cfg --no-backup $(SRCS)/*.c  
+	uncrustify -c uncrustify.cfg --no-backup Inc/*.h  
+
+
 
