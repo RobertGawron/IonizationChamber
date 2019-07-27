@@ -17,7 +17,7 @@
 
 void ApplicationBuilder_Init()
 {
-   // ClockConfigurator_Init();
+    ClockConfigurator_Init();
     TimerConfigurator_Init();
 
     Logger_Init();
@@ -42,7 +42,6 @@ void ApplicationBuilder_Run()
 
 void ApplicationBuilder_Tick()
 {
-//    Logger_Tick();
-
-VoltageSensorActualValue_GeMeasurementData(0);
+    //Logger_Tick();
+    VoltageSensorActualValue_GeMeasurementData(0);
 }
