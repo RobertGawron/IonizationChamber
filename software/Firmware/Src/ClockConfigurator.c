@@ -23,9 +23,9 @@ void ClockConfigurator_Init()
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
 
     CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO,
-        CLK_SOURCE_HSI,
-        DISABLE,
-        CLK_CURRENTCLOCKSTATE_ENABLE);
+                          CLK_SOURCE_HSI,
+                          DISABLE,
+                          CLK_CURRENTCLOCKSTATE_ENABLE);
 
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, ENABLE);
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, ENABLE);

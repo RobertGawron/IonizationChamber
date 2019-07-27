@@ -24,10 +24,10 @@ void ApplicationBuilder_Init()
     PulseCounter_Init();
     UserInterface_Init();
     VoltageSensorActualValue_Init();
-    
+
     enableInterrupts();
 
-   // UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
+    // UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
 }
 
 void ApplicationBuilder_Run()

@@ -131,5 +131,3 @@ formatting:
 	uncrustify -c uncrustify.cfg --no-backup $(SRCS)/*.c  
 	uncrustify -c uncrustify.cfg --no-backup Inc/*.h  
 
-
-
