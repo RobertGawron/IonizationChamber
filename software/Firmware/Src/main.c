@@ -10,8 +10,8 @@
 
 int main( void )
 {
-	ApplicationBuilder_Init();
-	ApplicationBuilder_Run();
+    ApplicationBuilder_Init();
+    ApplicationBuilder_Run();
 
-	return 0;
+    return 0;
 }
