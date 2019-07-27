@@ -13,7 +13,7 @@
 #define  VoltageSensorActualValue_MeasurementData_t int
 
 typedef struct MCP3425A0TConfig_t {
-	int pinId;
+    int pinId;
 } MCP3425A0TConfig_t;
 
 
