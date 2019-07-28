@@ -17,6 +17,12 @@ void UserInterface_Init()
     GPIO_WriteLow(PORT_GPIO_LED, GPIO_LED_PINS);
 }
 
+
+void UserInterface_Tick()
+{
+}
+
+
 void UserInterface_ShowMessage(UserInterface_Status status)
 {
     switch(status)
