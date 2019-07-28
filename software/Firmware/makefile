@@ -102,7 +102,7 @@ $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/stm8s_tim1.rel \
         $(BUILD_DIR)/stm8s_it.rel \
 		$(BUILD_DIR)/Logger.rel \
-        $(BUILD_DIR)/VoltageSensorPeakValue.rel
+        $(BUILD_DIR)/VoltageSensorPeakValue.rel \
 		$(BUILD_DIR)/MeasurementCollector.rel
 	
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< \
@@ -119,7 +119,7 @@ $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/ClockConfigurator.rel \
     	$(BUILD_DIR)/TimerConfigurator.rel \
     	$(BUILD_DIR)/stm8s_tim1.rel \
-        $(BUILD_DIR)/VoltageSensorPeakValue.rel
+        $(BUILD_DIR)/VoltageSensorPeakValue.rel \
 		$(BUILD_DIR)/MeasurementCollector.rel
 	       
 	$(SIZE) $@

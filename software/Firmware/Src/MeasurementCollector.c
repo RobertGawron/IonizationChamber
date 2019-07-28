@@ -7,6 +7,8 @@
 
 #include "MeasurementCollector.h"
 #include "VoltageSensorActualValue.h"
+#include "Logger.h"
+
 
 void MeasurementCollector_Init()
 {
@@ -15,5 +17,9 @@ void MeasurementCollector_Init()
 
 void MeasurementCollector_Tick()
 {
-    VoltageSensorActualValue_GetMeasurementData(0);
+    VoltageSensorActualValue_MeasurementData_t sample;
+    VoltageSensorActualValue_GetMeasurementData(&sample);
+
+    Logger_Print(sample);
 }
+

@@ -12,7 +12,8 @@ typedef enum UserInterface_Status { USER_INTERFACE_COLLECTING_DATA_MSG, USER_INT
 
 void UserInterface_Init();
 
-void UserInterface_ShowMessage(UserInterface_Status status);
+void UserInterface_Tick();
 
+void UserInterface_ShowMessage(UserInterface_Status status);
 
 #endif /* SRC_GUI_H_ */
