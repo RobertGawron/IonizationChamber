@@ -6,10 +6,10 @@
  */
 
 #include "VoltageSensorActualValue.h"
+#include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-#include "stm8s_i2c.h"
-#include "stm8s.h"
+//#include "stm8s.h"
 
 #define I2C_OWN_ADDRESS 0x10
 #define I2C_SLAVE_ADDRESS 0x68 // MCP3425 I2C address is 0x68(104)
@@ -45,9 +45,8 @@ bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_Measur
 
 void GPIO_setup(void)
 {
-    // TODO magic numbers
-    GPIO_Init(GPIOB, GPIO_PIN_4, GPIO_MODE_OUT_OD_HIZ_FAST);
-    GPIO_Init(GPIOB, GPIO_PIN_5, GPIO_MODE_OUT_OD_HIZ_FAST);
+    GPIO_Init(PORT_I2C, PIN_I2C_SCL, GPIO_MODE_OUT_OD_HIZ_FAST);
+    GPIO_Init(PORT_I2C, PIN_I2C_SDA, GPIO_MODE_OUT_OD_HIZ_FAST);
 }
 
 

@@ -7,10 +7,9 @@
 
 #include "MeasurementCollector.h"
 #include "VoltageSensorActualValue.h"
-#
+
 void MeasurementCollector_Init()
 {
-
 }
 
 

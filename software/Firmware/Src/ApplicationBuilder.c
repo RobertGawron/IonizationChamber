@@ -32,6 +32,7 @@ void ApplicationBuilder_Init()
     // UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
 }
 
+
 void ApplicationBuilder_Run()
 {
     while(TRUE)
@@ -46,5 +47,5 @@ void ApplicationBuilder_Tick()
 {
     MeasurementCollector_Tick();
     UserInterface_Tick();
- 
 }
+
