@@ -10,17 +10,16 @@
 
 #include "CommonDataTypes.h"
 
-#define  VoltageSensorActualValue_MeasurementData_t int
+#define  VoltageSensorActualValue_MeasurementData_t uint8_t
 
 typedef struct MCP3425A0TConfig_t {
-    int pinId;
+    int i2cAddress;
 } MCP3425A0TConfig_t;
-
 
 
 void VoltageSensorActualValue_Init();
 
-bool VoltageSensorActualValue_GeMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData);
+bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData);
 
 
 #endif /* SRC_VOLTAGESENSORACTUALVALUE_H_ */
