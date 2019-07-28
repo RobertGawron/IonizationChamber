@@ -6,29 +6,27 @@
  */
 
 #include "Logger.h"
-//#include <stdio.h>
+
+#define USE_PRINTF
+#if defined USE_PRINTF
+    #include <stdio.h>
+#endif
+
 #include "stm8s_uart1.h"
 #include "PinoutConfiguration.h"
+
+#define UART_SPEED 9600
 
 static void GPIO_setup(void);
 static void UART1_setup(void);
 
-#ifdef USE_FULL_ASSERT
-
-void assert_failed(uint8_t* file, uint32_t line)
+int putchar(int c)
 {
-    (void)file;
-    (void)line;
-
-    //printf("[error] asset failed %s %d\r\n", file, line);
-
-    while (TRUE)
-    {
-        // empty
-    }
+    /* Write a character to the UART1 */
+    UART1_SendData8(c);
+    /* Loop until the end of transmission */
+    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
 }
-
-#endif
 
 
 void Logger_Init()
@@ -38,19 +36,30 @@ void Logger_Init()
 }
 
 
-void Logger_Tick()
+void Logger_Print(uint8_t data)
 {
-    // printf ("ok ");
+    printf("%d\n\r", data);
+    //putchar(data);
 }
 
 
-void putchar(char c)
+#ifdef USE_FULL_ASSERT
+void assert_failed(uint8_t* file, uint32_t line)
 {
-    /* Write a character to the UART1 */
-    UART1_SendData8(c);
-    /* Loop until the end of transmission */
-    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
+    (void)file;
+    (void)line;
+
+#if defined USE_PRINTF
+    printf("[error] asset failed %s %d\r\n", file, line);
+#endif
+
+    while (TRUE)
+    {
+        // empty
+    }
 }
+#endif
+
 
 
 void GPIO_setup(void)
@@ -64,10 +73,9 @@ void GPIO_setup(void)
 
 void UART1_setup(void)
 {
-    // TODO: magic numbers
     UART1_DeInit();
 
-    UART1_Init(9600,
+    UART1_Init(UART_SPEED,
                UART1_WORDLENGTH_8D,
                UART1_STOPBITS_1,
                UART1_PARITY_NO,
@@ -76,5 +84,4 @@ void UART1_setup(void)
 
     UART1_Cmd(ENABLE);
 }
-
 

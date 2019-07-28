@@ -26,7 +26,7 @@ void ApplicationBuilder_Init()
     UserInterface_Init();
     VoltageSensorActualValue_Init();
     MeasurementCollector_Init();
-    
+
     enableInterrupts();
 
     // UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);

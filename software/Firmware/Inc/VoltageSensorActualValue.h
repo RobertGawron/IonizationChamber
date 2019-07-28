@@ -1,5 +1,5 @@
 /*
- * MCP3425A0T.h
+ * VoltageSensorActualValue.h
  *
  *  Created on: 04.06.2019
  *      Author: robert
@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-#define  VoltageSensorActualValue_MeasurementData_t uint8_t
+#define VoltageSensorActualValue_MeasurementData_t uint8_t
 
 typedef struct MCP3425A0TConfig_t {
     int i2cAddress;

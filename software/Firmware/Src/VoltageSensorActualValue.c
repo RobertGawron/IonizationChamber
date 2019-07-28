@@ -9,16 +9,16 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-//#include "stm8s.h"
 
 #define I2C_OWN_ADDRESS 0x10
-#define I2C_SLAVE_ADDRESS 0x68 // MCP3425 I2C address is 0x68(104)
-
+// MCP3425 I2C address is 0x68(104), this 7 bits, they need to be
+// shifted by one, to make 8 bits variable, where less signifant bit
+// is used to signalize communication direction (rx or tx)
+#define I2C_SLAVE_ADDRESS (0x68 << 1)
 
 static void GPIO_setup(void);
 static void I2C_setup(void);
 static uint8_t getRegisterValue(uint8_t registerId);
-
 
 
 void VoltageSensorActualValue_Init()
@@ -30,9 +30,9 @@ void VoltageSensorActualValue_Init()
 
 bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
-    measurementData = getRegisterValue(0x00);
+    *measurementData = getRegisterValue(0x00);
 
-    if (measurementData == 0)
+    if (*measurementData == 0)
     {
         // for temporary debug only
         UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
@@ -70,7 +70,7 @@ uint8_t getRegisterValue(uint8_t registerId)
     I2C_GenerateSTART(ENABLE);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
 
-    I2C_Send7bitAddress((I2C_SLAVE_ADDRESS << 1), I2C_DIRECTION_TX);
+    I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_TX);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
 
     I2C_SendData(registerId);
@@ -82,6 +82,6 @@ uint8_t getRegisterValue(uint8_t registerId)
     I2C_GenerateSTOP(ENABLE);
     while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
 
-    return registerValue; 
+    return registerValue;
 }
 
