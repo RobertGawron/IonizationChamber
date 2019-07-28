@@ -14,6 +14,7 @@
 #include "UserInterface.h"
 #include "VoltageSensorActualValue.h"
 #include "VoltageSensorPeakValue.h"
+#include "MeasurementCollector.h"
 
 void ApplicationBuilder_Init()
 {
@@ -24,7 +25,8 @@ void ApplicationBuilder_Init()
     PulseCounter_Init();
     UserInterface_Init();
     VoltageSensorActualValue_Init();
-
+    MeasurementCollector_Init();
+    
     enableInterrupts();
 
     // UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
@@ -42,6 +44,7 @@ void ApplicationBuilder_Run()
 
 void ApplicationBuilder_Tick()
 {
-    //Logger_Tick();
-    VoltageSensorActualValue_GeMeasurementData(0);
+    MeasurementCollector_Tick();
+    UserInterface_Tick();
+ 
 }

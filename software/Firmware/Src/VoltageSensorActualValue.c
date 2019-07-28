@@ -17,67 +17,28 @@
 
 static void GPIO_setup(void);
 static void I2C_setup(void);
+static uint8_t getRegisterValue(uint8_t registerId);
 
 
 
 void VoltageSensorActualValue_Init()
 {
-#if 0
-    CLK_DeInit();
-
-    CLK_HSECmd(DISABLE);
-    CLK_LSICmd(DISABLE);
-    CLK_HSICmd(ENABLE);
-    while(CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE);
-
-
-    CLK_ClockSwitchCmd(ENABLE);
-    CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV8);
-    CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV2);
-
-    CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO, CLK_SOURCE_HSI,
-                          DISABLE, CLK_CURRENTCLOCKSTATE_ENABLE);
-
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_SPI, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_I2C, ENABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_ADC, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_AWU, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, ENABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER2, DISABLE);
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER4, DISABLE);
-#endif
-
     GPIO_setup();
     I2C_setup();
 }
 
 
-bool VoltageSensorActualValue_GeMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
+bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
-    /////////// send dummy data //////////////////////////////////////////////
+    measurementData = getRegisterValue(0x00);
 
-    I2C_GenerateSTART(ENABLE);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
-
-    I2C_Send7bitAddress((I2C_SLAVE_ADDRESS << 1), I2C_DIRECTION_TX);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
-
-    I2C_SendData(0x0);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
-
-    if (0 == I2C_ReceiveData())
+    if (measurementData == 0)
     {
+        // for temporary debug only
         UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
     }
 
-    I2C_GenerateSTOP(ENABLE);
-    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
-
-
-    // for temporary debug only
-    UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
-
+    // getRegisterValue should return false on timeout and this should be later propagated to GUI component.
     return TRUE;
 }
 
@@ -100,5 +61,28 @@ void I2C_setup(void)
              I2C_ADDMODE_7BIT,
              (CLK_GetClockFreq() / 1000000));
     I2C_Cmd(ENABLE);
+}
+
+
+uint8_t getRegisterValue(uint8_t registerId)
+{
+    uint8_t registerValue = 0xFF;
+
+    I2C_GenerateSTART(ENABLE);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+
+    I2C_Send7bitAddress((I2C_SLAVE_ADDRESS << 1), I2C_DIRECTION_TX);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+
+    I2C_SendData(registerId);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+
+    //while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    registerValue = I2C_ReceiveData();
+
+    I2C_GenerateSTOP(ENABLE);
+    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
+
+    return registerValue; 
 }
 

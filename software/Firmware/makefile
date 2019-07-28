@@ -83,8 +83,11 @@ $(BUILD_DIR)/UserInterface.rel: $(SRCS)/UserInterface.c
 $(BUILD_DIR)/Logger.rel: $(SRCS)/Logger.c
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/Logger.rel $(SRCS)/Logger.c
 
+$(BUILD_DIR)/MeasurementCollector.rel: $(SRCS)/MeasurementCollector.c
+	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/MeasurementCollector.rel $(SRCS)/MeasurementCollector.c
 
-$(BUILD_DIR)/ApplicationBuilder.rel: $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/VoltageSensorActualValue.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/TimerConfigurator.rel $(BUILD_DIR)/stm8s_i2c.rel 
+
+$(BUILD_DIR)/ApplicationBuilder.rel:  $(SRCS)/ApplicationBuilder.c $(BUILD_DIR)/VoltageSensorActualValue.rel $(BUILD_DIR)/PulseCounter.rel $(BUILD_DIR)/Logger.rel $(BUILD_DIR)/UserInterface.rel $(BUILD_DIR)/stm8s_uart1.rel $(BUILD_DIR)/TimerConfigurator.rel $(BUILD_DIR)/stm8s_i2c.rel $(BUILD_DIR)/MeasurementCollector.rel 
 	$(CC) -c $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $(SRCS)/ApplicationBuilder.rel $(SRCS)/ApplicationBuilder.c
 
 
@@ -98,7 +101,10 @@ $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/ClockConfigurator.rel \
     	$(BUILD_DIR)/stm8s_tim1.rel \
         $(BUILD_DIR)/stm8s_it.rel \
+		$(BUILD_DIR)/Logger.rel \
         $(BUILD_DIR)/VoltageSensorPeakValue.rel
+		$(BUILD_DIR)/MeasurementCollector.rel
+	
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $(BUILD_DIR)/ $< \
     	$(BUILD_DIR)/stm8s_gpio.rel \
     	$(BUILD_DIR)/stm8s_it.rel \
@@ -114,6 +120,8 @@ $(IHX): $(SRCS)/$(TARGET).c \
     	$(BUILD_DIR)/TimerConfigurator.rel \
     	$(BUILD_DIR)/stm8s_tim1.rel \
         $(BUILD_DIR)/VoltageSensorPeakValue.rel
+		$(BUILD_DIR)/MeasurementCollector.rel
+	       
 	$(SIZE) $@
 
 
