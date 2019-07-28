@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-#define  VoltageSensorActualValue_MeasurementData_t int
+#define  VoltageSensorActualValue_MeasurementData_t uint8_t
 
 typedef struct MCP3425A0TConfig_t {
     int pinId;

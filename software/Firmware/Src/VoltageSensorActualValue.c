@@ -55,7 +55,7 @@ void VoltageSensorActualValue_Init()
 
 bool VoltageSensorActualValue_GeMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
-    // send dummy data
+    /////////// send dummy data //////////////////////////////////////////////
 
     I2C_GenerateSTART(ENABLE);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
@@ -63,25 +63,16 @@ bool VoltageSensorActualValue_GeMeasurementData(VoltageSensorActualValue_Measure
     I2C_Send7bitAddress((I2C_SLAVE_ADDRESS << 1), I2C_DIRECTION_TX);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
 
-    I2C_SendData(0xf);
+    I2C_SendData(0x0);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+
+    if (0 == I2C_ReceiveData())
+    {
+        UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
+    }
 
     I2C_GenerateSTOP(ENABLE);
     while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
-
-
-
-
-    // dummy receive
-
-
-//    I2C_Send7bitAddress((I2C_SLAVE_ADDRESS << 1), I2C_DIRECTION_RX);
-//    while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
-
-//    UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
-
-    //I2C_ReceiveData();
-
 
 
     // for temporary debug only

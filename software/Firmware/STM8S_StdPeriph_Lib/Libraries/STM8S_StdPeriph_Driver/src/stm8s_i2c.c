@@ -445,7 +445,7 @@ void I2C_FastModeDutyCycleConfig(I2C_DutyCycle_TypeDef I2C_DutyCycle)
   * @param  None
   * @retval uint8_t : The value of the received byte data.
   */
-#if 0  
+#if 1  
 uint8_t I2C_ReceiveData(void)
 {
   /* Return the data present in the DR register */
