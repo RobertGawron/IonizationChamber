@@ -30,7 +30,7 @@ void VoltageSensorActualValue_Init()
 
 bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
-    *measurementData = getRegisterValue(0x01);
+    *measurementData = getRegisterValue(0x03);
 
     if (*measurementData == 0)
     {

@@ -47,6 +47,9 @@ void Logger_Print(uint8_t data)
     printf("%d\n\r", data);
 #else    
     putchar(data);
+    putchar('\n');
+    putchar('\r');
+
 #endif    
 }
 
