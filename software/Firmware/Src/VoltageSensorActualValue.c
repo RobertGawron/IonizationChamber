@@ -18,8 +18,11 @@
 
 static void GPIO_setup(void);
 static void I2C_setup(void);
-static uint8_t getRegisterValue(uint8_t registerId);
+//static uint8_t getRegisterValue(uint8_t registerId);
 
+
+static void write(uint8_t registerId);
+static void read(uint8_t registerId);
 
 void VoltageSensorActualValue_Init()
 {
@@ -30,7 +33,10 @@ void VoltageSensorActualValue_Init()
 
 bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
-    *measurementData = getRegisterValue(0x0);
+    write(0x00);
+    write(0x10);
+
+    read(0);
 
     if (*measurementData == 0)
     {
@@ -62,11 +68,128 @@ void I2C_setup(void)
     I2C_Cmd(ENABLE);
 }
 
+static void write(uint8_t registerId)
+{
+    I2C_GenerateSTART(ENABLE);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+
+    I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_TX);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+
+    I2C_SendData(registerId);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+
+
+
+//    I2C_GenerateSTOP(ENABLE);
+//    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
+
+/*
+    I2C_GenerateSTART(ENABLE);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+    
+    I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+        
+        UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
+ 
+    I2C_AcknowledgeConfig(DISABLE);
+    I2C_GenerateSTOP(ENABLE);
+
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    registerValue = I2C_ReceiveData();
+
+
+    I2C_AcknowledgeConfig(ENABLE);
+*/
+    I2C_GenerateSTOP(ENABLE);
+    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
+}
+
+static void read(uint8_t registerId)
+{
+
+    I2C_GenerateSTART(ENABLE);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+    
+    I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+        
+    UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
+ 
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    int registerValue = I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    I2C_AcknowledgeConfig(DISABLE);
+    I2C_GenerateSTOP(ENABLE);
+
+
+    I2C_AcknowledgeConfig(ENABLE);
+
+}
 
 uint8_t getRegisterValue(uint8_t registerId)
 {
     uint8_t registerValue = 0xFF;
+/*
+registerId=0x10;
+static int i=0;
+i++;
+registerId=i;
+*/
 
+static int i=0;
+i++;
+
+
+    I2C_GenerateSTART(ENABLE);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+
+    I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_TX);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+
+    I2C_SendData(registerId);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+
+
+
+
+//    I2C_GenerateSTOP(ENABLE);
+//    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
+
+
+    I2C_GenerateSTART(ENABLE);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+if (i>2)
+{
+    I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+        
+        UserInterface_ShowMessage(USER_INTERFACE_COLLECTING_DATA_MSG);
+ 
+    I2C_AcknowledgeConfig(DISABLE);
+    I2C_GenerateSTOP(ENABLE);
+
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    registerValue = I2C_ReceiveData();
+
+
+    I2C_AcknowledgeConfig(ENABLE);
+//    I2C_GenerateSTOP(ENABLE);
+//    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
+
+}
+else
+{
+    I2C_GenerateSTOP(ENABLE);
+
+}
+
+
+
+
+#if 0
     I2C_GenerateSTART(ENABLE);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
 
@@ -101,7 +224,7 @@ uint8_t getRegisterValue(uint8_t registerId)
     I2C_AcknowledgeConfig(ENABLE);
 //    I2C_GenerateSTOP(ENABLE);
 //    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
-
+#endif
     return registerValue;
 }
 
