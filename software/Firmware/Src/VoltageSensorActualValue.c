@@ -9,7 +9,10 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-#include <stdio.h>
+//#include <stdio.h>
+#include "Logger.h"
+
+
 #define I2C_OWN_ADDRESS 0x10
 // MCP3425 I2C address is 0x68(104), this 7 bits, they need to be
 // shifted by one, to make 8 bits variable, where less signifant bit
@@ -87,23 +90,40 @@ static uint16_t read(uint8_t registerId)
     
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+   
 
-    for(int i=0; i<4; i++)
-    {
-        while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
-        uint16_t registerMSB = I2C_ReceiveData();
-    
-        printf("%d\n", registerMSB);
+    uint16_t registerMSB = I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    }
-//    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
-//    uint16_t registerLSB = I2C_ReceiveData();
+    uint16_t registerLSB = I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB1 = I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB2 = I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB3 = I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+
 
     I2C_AcknowledgeConfig(DISABLE);
     I2C_GenerateSTOP(ENABLE);
-//    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
 
-    uint16_t registerValue = 0;
+    I2C_AcknowledgeConfig(ENABLE);
+
+    Logger_Print( registerMSB);
+    Logger_Print( registerLSB);
+    Logger_Print( registerLSB1);
+    Logger_Print( registerLSB2);
+    Logger_Print( registerLSB3);
+
+
+//    printf("data: %d %d %d %d %d\r\n", registerMSB, registerLSB, registerLSB1, registerLSB2, registerLSB3);
+    uint16_t registerValue = 0; 
 
     return registerValue;
 }

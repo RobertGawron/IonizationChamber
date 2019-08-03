@@ -7,7 +7,7 @@
 
 #include "Logger.h"
 
-#define USE_PRINTF
+//#define USE_PRINTF
 #if defined USE_PRINTF
     #include <stdio.h>
 #endif
