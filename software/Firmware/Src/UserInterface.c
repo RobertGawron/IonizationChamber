@@ -32,6 +32,7 @@ void UserInterface_ShowMessage(UserInterface_Status status)
             GPIO_WriteHigh(PORT_GPIO_LED, PIN_GPIO_LED_RED);
             break;
         }
+
         case USER_INTERFAE_STATE_OK_MSG:
         {
             GPIO_WriteHigh(PORT_GPIO_LED, PIN_GPIO_LED_GREEN);

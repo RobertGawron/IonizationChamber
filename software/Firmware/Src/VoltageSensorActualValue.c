@@ -94,19 +94,19 @@ static uint16_t read(uint8_t registerId)
 
 
     uint16_t registerMSB = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
     uint16_t registerLSB = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
     uint16_t registerLSB1 = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
     uint16_t registerLSB2 = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
     uint16_t registerLSB3 = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
 
 

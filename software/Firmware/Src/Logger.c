@@ -30,7 +30,7 @@ void putchar(char c)
     /* Write a character to the UART1 */
     UART1_SendData8(c);
     /* Loop until the end of transmission */
-    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
+    while(UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
 }
 
 
@@ -64,7 +64,7 @@ void assert_failed(uint8_t* file, uint32_t line)
     printf("[error] asset failed %s %d\r\n", file, line);
 #endif
 
-    while (TRUE)
+    while(TRUE)
     {
         // empty
     }
