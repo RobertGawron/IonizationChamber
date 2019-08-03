@@ -87,11 +87,11 @@ static uint16_t read(uint8_t registerId)
 {
     I2C_GenerateSTART(ENABLE);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
-    
+
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
-   
+
 
     uint16_t registerMSB = I2C_ReceiveData();
     while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
@@ -123,7 +123,7 @@ static uint16_t read(uint8_t registerId)
 
 
 //    printf("data: %d %d %d %d %d\r\n", registerMSB, registerLSB, registerLSB1, registerLSB2, registerLSB3);
-    uint16_t registerValue = 0; 
+    uint16_t registerValue = 0;
 
     return registerValue;
 }

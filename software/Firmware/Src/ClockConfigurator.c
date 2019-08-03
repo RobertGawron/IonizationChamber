@@ -32,3 +32,4 @@ void ClockConfigurator_Init()
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, ENABLE);
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
 }
+

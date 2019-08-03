@@ -45,12 +45,12 @@ void Logger_Print(uint8_t data)
 {
 #if defined USE_PRINTF
     printf("%d\n\r", data);
-#else    
+#else
     putchar(data);
     putchar('\n');
     putchar('\r');
 
-#endif    
+#endif
 }
 
 
@@ -69,6 +69,8 @@ void assert_failed(uint8_t* file, uint32_t line)
         // empty
     }
 }
+
+
 #endif
 
 
