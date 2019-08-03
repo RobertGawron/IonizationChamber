@@ -7,7 +7,7 @@
 
 #include "Logger.h"
 
-//#define USE_PRINTF
+#define USE_PRINTF
 #if defined USE_PRINTF
     #include <stdio.h>
 #endif
@@ -21,7 +21,7 @@ static void GPIO_setup(void);
 static void UART1_setup(void);
 
 
-#if defined USE_PRINT
+#if defined USE_PRINTF
 int putchar(int c)
 #else
 void putchar(char c)
