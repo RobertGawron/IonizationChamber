@@ -9,7 +9,7 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-#include "Logger.h"
+//#include "Logger.h"
 
 
 #define I2C_MASTER_ADDRESS 0x10
@@ -30,12 +30,15 @@ void VoltageSensorActualValue_Init()
     I2C_setup();
 
     // select adc configuration and start measurement
-    write(0x00);
+//    write(0x00);
+    write(0x4c);
 }
 
 
 bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
+    write(0x48);
+
     write(0x10);
     *measurementData = read(0);
 
@@ -103,6 +106,9 @@ static uint16_t read(uint8_t registerId)
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
     uint16_t registerLSB3 = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB4 = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
 
