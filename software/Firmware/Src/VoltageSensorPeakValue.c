@@ -7,3 +7,5 @@
 
 #include "VoltageSensorPeakValue.h"
 
+// placeholder file, this sensor probably won't be used
+

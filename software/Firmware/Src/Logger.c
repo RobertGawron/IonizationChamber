@@ -6,16 +6,16 @@
  */
 
 #include "Logger.h"
+#include "stm8s_uart1.h"
+#include "PinoutConfiguration.h"
 
-#define USE_PRINTF
+//#define USE_PRINTF
 #if defined USE_PRINTF
     #include <stdio.h>
 #endif
 
-#include "stm8s_uart1.h"
-#include "PinoutConfiguration.h"
-
 #define UART_SPEED 9600
+
 
 static void GPIO_setup(void);
 static void UART1_setup(void);
@@ -30,7 +30,7 @@ void putchar(char c)
     /* Write a character to the UART1 */
     UART1_SendData8(c);
     /* Loop until the end of transmission */
-    while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
+    while(UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET);
 }
 
 
@@ -45,12 +45,12 @@ void Logger_Print(uint8_t data)
 {
 #if defined USE_PRINTF
     printf("%d\n\r", data);
-#else    
+#else
     putchar(data);
     putchar('\n');
     putchar('\r');
 
-#endif    
+#endif
 }
 
 
@@ -64,13 +64,11 @@ void assert_failed(uint8_t* file, uint32_t line)
     printf("[error] asset failed %s %d\r\n", file, line);
 #endif
 
-    while (TRUE)
-    {
-        // empty
-    }
+    while(TRUE);
 }
-#endif
 
+
+#endif
 
 
 void GPIO_setup(void)

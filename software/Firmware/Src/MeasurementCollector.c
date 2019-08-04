@@ -18,7 +18,7 @@ void MeasurementCollector_Init()
 void MeasurementCollector_Tick()
 {
     VoltageSensorActualValue_MeasurementData_t sample;
-    VoltageSensorActualValue_GetMeasurementData(&sample);
+    VoltageSensorActualValue_MeasureValue(&sample);
 
     Logger_Print(sample);
 }
