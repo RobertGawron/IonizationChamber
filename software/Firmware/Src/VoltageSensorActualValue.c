@@ -9,7 +9,6 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-#include "Logger.h"
 
 
 #define I2C_MASTER_ADDRESS 0x10
@@ -17,6 +16,16 @@
 // shifted by one, to make 8 bits variable, where less signifant bit
 // is used to signalize communication direction (rx or tx)
 #define I2C_SLAVE_ADDRESS (0x68u << 1)
+
+#define MCP3425_REG_BIT_READY             (1 << 7)
+#define MCP3425_REG_BIT_CONVERSION        (1 << 4)
+#define MCP3425_REG_BIT_SAMPLE_RATE_UPPER (1 << 3)
+#define MCP3425_REG_BIT_SAMPLE_RATE_LOWER (1 << 2)
+#define MCP3425_REG_BIT_GAIN_UPPER        (1 << 1)
+#define MCP3425_REG_BIT_GAIN_LOWER        (1 << 0)
+
+#define MCP3425_CONFIGURATION (MCP3425_REG_BIT_READY | MCP3425_REG_BIT_SAMPLE_RATE_UPPER)
+#define MCP3425_READ_MEASSUREMENT 0x10
 
 static void GPIO_setup(void);
 static void I2C_setup(void);
@@ -28,15 +37,14 @@ void VoltageSensorActualValue_Init()
 {
     GPIO_setup();
     I2C_setup();
-
-    // select adc configuration and start measurement
-    write(0x00);
 }
 
 
 bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
-    write(0x10);
+    // select adc configuration and start measurement
+    write(MCP3425_CONFIGURATION);
+
     *measurementData = read(0);
 
     // getRegisterValue should return false on timeout and this should be later propagated to GUI component
@@ -53,6 +61,7 @@ void GPIO_setup(void)
 
 void I2C_setup(void)
 {
+    // TODO magic numbers
     I2C_DeInit();
     I2C_Init(100000,
              I2C_MASTER_ADDRESS,
@@ -105,6 +114,9 @@ static uint16_t read(uint8_t registerId)
     uint16_t registerLSB3 = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
+    uint16_t registerLSB4 = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
 
 
     I2C_AcknowledgeConfig(DISABLE);
@@ -119,7 +131,6 @@ static uint16_t read(uint8_t registerId)
     Logger_Print( registerLSB3);
  */
 
-//    printf("data: %d %d %d %d %d\r\n", registerMSB, registerLSB, registerLSB1, registerLSB2, registerLSB3);
     uint16_t registerValue = (registerMSB << 8) +  registerLSB;
 
     return registerValue;
