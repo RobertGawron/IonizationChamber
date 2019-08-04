@@ -20,7 +20,6 @@ void ApplicationBuilder_Init()
 {
     ClockConfigurator_Init();
     TimerConfigurator_Init();
-
     Logger_Init();
     PulseCounter_Init();
     UserInterface_Init();
@@ -29,7 +28,7 @@ void ApplicationBuilder_Init()
 
     enableInterrupts();
 
-    // UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
+    UserInterface_ShowMessage(USER_INTERFAE_STATE_OK_MSG);
 }
 
 

@@ -9,10 +9,10 @@
 
 void PulseCounter_Init()
 {
-
 }
+
 
 void PulseCounter_Tick()
 {
-
 }
+

@@ -9,8 +9,10 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-#include <stdio.h>
-#define I2C_OWN_ADDRESS 0x10
+#include "Logger.h"
+
+
+#define I2C_MASTER_ADDRESS 0x10
 // MCP3425 I2C address is 0x68(104), this 7 bits, they need to be
 // shifted by one, to make 8 bits variable, where less signifant bit
 // is used to signalize communication direction (rx or tx)
@@ -27,17 +29,15 @@ void VoltageSensorActualValue_Init()
     GPIO_setup();
     I2C_setup();
 
-    // seleect adc configuration and start measurement
+    // select adc configuration and start measurement
     write(0x00);
 }
 
 
-bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
+bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
     write(0x10);
     *measurementData = read(0);
-//    read(0);
-
 
     // getRegisterValue should return false on timeout and this should be later propagated to GUI component.
     return TRUE;
@@ -55,7 +55,7 @@ void I2C_setup(void)
 {
     I2C_DeInit();
     I2C_Init(100000,
-             I2C_OWN_ADDRESS,
+             I2C_MASTER_ADDRESS,
              I2C_DUTYCYCLE_2,
              I2C_ACK_CURR,
              I2C_ADDMODE_7BIT,
@@ -84,25 +84,42 @@ static uint16_t read(uint8_t registerId)
 {
     I2C_GenerateSTART(ENABLE);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
-    
+
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED));
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    for(int i=0; i<4; i++)
-    {
-        while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
-        uint16_t registerMSB = I2C_ReceiveData();
-    
-        printf("%d\n", registerMSB);
 
-    }
-//    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
-//    uint16_t registerLSB = I2C_ReceiveData();
+    uint16_t registerMSB = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB1 = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB2 = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+    uint16_t registerLSB3 = I2C_ReceiveData();
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
+
+
 
     I2C_AcknowledgeConfig(DISABLE);
     I2C_GenerateSTOP(ENABLE);
-//    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY));
 
+    I2C_AcknowledgeConfig(ENABLE);
+
+    Logger_Print( registerMSB);
+    Logger_Print( registerLSB);
+    Logger_Print( registerLSB1);
+    Logger_Print( registerLSB2);
+    Logger_Print( registerLSB3);
+
+
+//    printf("data: %d %d %d %d %d\r\n", registerMSB, registerLSB, registerLSB1, registerLSB2, registerLSB3);
     uint16_t registerValue = 0;
 
     return registerValue;
