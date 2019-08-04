@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-typedef uint8_t VoltageSensorActualValue_MeasurementData_t;
+typedef uint16_t VoltageSensorActualValue_MeasurementData_t;
 
 void VoltageSensorActualValue_Init();
 
