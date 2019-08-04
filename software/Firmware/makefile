@@ -8,7 +8,7 @@ SIZE        = size
 MAKE        = make
 
 TARGET      = main
-STDLIB      = STM8S_StdPeriph_Lib/Libraries/STM8S_StdPeriph_Driver
+STDLIB      = STM8S_StdPeriph_Lib
 INCLUDEDIR  = $(STDLIB)/inc Inc
 LIBSRCDIR   = $(STDLIB)/src
 SRCS        = Src
