@@ -24,9 +24,7 @@
 #define MCP3425_REG_BIT_GAIN_UPPER        (1 << 1)
 #define MCP3425_REG_BIT_GAIN_LOWER        (1 << 0)
 
-//#define MCP3425_CONFIGURATION (MCP3425_REG_BIT_READY | MCP3425_REG_BIT_SAMPLE_RATE_UPPER)
-#define MCP3425_CONFIGURATION (MCP3425_REG_BIT_READY | MCP3425_REG_BIT_SAMPLE_RATE_LOWER)
-
+#define MCP3425_CONFIGURATION (MCP3425_REG_BIT_READY | MCP3425_REG_BIT_SAMPLE_RATE_UPPER)
 #define MCP3425_READ_MEASSUREMENT 0x10
 
 static void GPIO_setup(void);
@@ -47,7 +45,6 @@ bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementD
     // select adc configuration and start measurement
     write(MCP3425_CONFIGURATION);
 
-    write(MCP3425_READ_MEASSUREMENT);
     *measurementData = read(0);
 
     // getRegisterValue should return false on timeout and this should be later propagated to GUI component
