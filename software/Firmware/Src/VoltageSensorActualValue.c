@@ -9,11 +9,10 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-//#include <stdio.h>
 #include "Logger.h"
 
 
-#define I2C_OWN_ADDRESS 0x10
+#define I2C_MASTER_ADDRESS 0x10
 // MCP3425 I2C address is 0x68(104), this 7 bits, they need to be
 // shifted by one, to make 8 bits variable, where less signifant bit
 // is used to signalize communication direction (rx or tx)
@@ -30,17 +29,15 @@ void VoltageSensorActualValue_Init()
     GPIO_setup();
     I2C_setup();
 
-    // seleect adc configuration and start measurement
+    // select adc configuration and start measurement
     write(0x00);
 }
 
 
-bool VoltageSensorActualValue_GetMeasurementData(VoltageSensorActualValue_MeasurementData_t *measurementData)
+bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementData_t *measurementData)
 {
     write(0x10);
     *measurementData = read(0);
-//    read(0);
-
 
     // getRegisterValue should return false on timeout and this should be later propagated to GUI component.
     return TRUE;
@@ -58,7 +55,7 @@ void I2C_setup(void)
 {
     I2C_DeInit();
     I2C_Init(100000,
-             I2C_OWN_ADDRESS,
+             I2C_MASTER_ADDRESS,
              I2C_DUTYCYCLE_2,
              I2C_ACK_CURR,
              I2C_ADDMODE_7BIT,

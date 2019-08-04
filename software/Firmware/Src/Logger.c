@@ -6,16 +6,16 @@
  */
 
 #include "Logger.h"
+#include "stm8s_uart1.h"
+#include "PinoutConfiguration.h"
 
 //#define USE_PRINTF
 #if defined USE_PRINTF
     #include <stdio.h>
 #endif
 
-#include "stm8s_uart1.h"
-#include "PinoutConfiguration.h"
-
 #define UART_SPEED 9600
+
 
 static void GPIO_setup(void);
 static void UART1_setup(void);
@@ -64,15 +64,11 @@ void assert_failed(uint8_t* file, uint32_t line)
     printf("[error] asset failed %s %d\r\n", file, line);
 #endif
 
-    while(TRUE)
-    {
-        // empty
-    }
+    while(TRUE);
 }
 
 
 #endif
-
 
 
 void GPIO_setup(void)
