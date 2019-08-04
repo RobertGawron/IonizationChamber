@@ -29,6 +29,6 @@ Software is done in a way so that it's possible to develop it remotely (I'm usin
 Below is the picture of actual version, it has digital part and DC/Dc converter, soldering is terrible, but it works.
 
 
-![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/pcb_20_07_2019.jpg)
+![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/pcb_04_08_2019.jpg)
 
  
