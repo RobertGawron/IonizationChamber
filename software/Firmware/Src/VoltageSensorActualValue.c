@@ -117,7 +117,7 @@ static uint16_t read(uint8_t registerId)
     Logger_Print( registerLSB1);
     Logger_Print( registerLSB2);
     Logger_Print( registerLSB3);
-*/
+ */
 
 //    printf("data: %d %d %d %d %d\r\n", registerMSB, registerLSB, registerLSB1, registerLSB2, registerLSB3);
     uint16_t registerValue = (registerMSB << 8) +  registerLSB;

@@ -10,7 +10,7 @@
 
 #include "CommonDataTypes.h"
 
-typedef uint16_t Logger_DataFormat_t; 
+typedef uint16_t Logger_DataFormat_t;
 
 void Logger_Init();
 
