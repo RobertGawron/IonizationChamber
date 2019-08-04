@@ -2,6 +2,7 @@
 # assumed that gain = 1
 
 from enum import Enum
+
 class MCP3425_RESOLUTION(Enum):
     R12 = 1
     R13 = 2
@@ -12,7 +13,6 @@ def convert(upperByte, lowerByte, resolution):
 
     digitalOutput = (upperByte << 8) | lowerByte;
 
-
     if resolution == MCP3425_RESOLUTION.R12:
         return digitalToAnalog(digitalOutput, (1 * 0.01), 1)
         
@@ -21,3 +21,4 @@ def convert(upperByte, lowerByte, resolution):
  
     if resolution == MCP3425_RESOLUTION.R14:
         return digitalToAnalog(digitalOutput, (62.5 * 0.0001), 1)
+
