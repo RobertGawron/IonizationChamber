@@ -49,8 +49,8 @@ void Logger_Print(Logger_DataFormat_t data)
 #else
     putchar(GET_MSB(data));
     putchar(GET_LSB(data));
-    putchar('\n');
-    putchar('\r');
+//    putchar('\n');
+//    putchar('\r');
 #endif
 }
 
