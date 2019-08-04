@@ -41,15 +41,18 @@ void Logger_Init()
 }
 
 
-void Logger_Print(uint8_t data)
+void Logger_Print(Logger_DataFormat_t data)
 {
 #if defined USE_PRINTF
     printf("%d\n\r", data);
 #else
-    putchar(data);
+    uint8_t msb = (data >> 8);
+    uint8_t lsb = (data & 0xff);
+
+    putchar(msb);
+    putchar(lsb);
     putchar('\n');
     putchar('\r');
-
 #endif
 }
 

@@ -39,7 +39,7 @@ bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementD
     write(0x10);
     *measurementData = read(0);
 
-    // getRegisterValue should return false on timeout and this should be later propagated to GUI component.
+    // getRegisterValue should return false on timeout and this should be later propagated to GUI component
     return TRUE;
 }
 
@@ -111,16 +111,16 @@ static uint16_t read(uint8_t registerId)
     I2C_GenerateSTOP(ENABLE);
 
     I2C_AcknowledgeConfig(ENABLE);
-
+/*
     Logger_Print( registerMSB);
     Logger_Print( registerLSB);
     Logger_Print( registerLSB1);
     Logger_Print( registerLSB2);
     Logger_Print( registerLSB3);
-
+*/
 
 //    printf("data: %d %d %d %d %d\r\n", registerMSB, registerLSB, registerLSB1, registerLSB2, registerLSB3);
-    uint16_t registerValue = 0;
+    uint16_t registerValue = (registerMSB << 8) +  registerLSB;
 
     return registerValue;
 }
