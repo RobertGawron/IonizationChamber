@@ -17,8 +17,8 @@ def convert(upperByte, lowerByte, resolution):
         return digitalToAnalog(digitalOutput, (1 * 0.01), 1)
         
     if resolution == MCP3425_RESOLUTION.R13:
-        return digitalToAnalog(digitalOutput, (250 * 0.000001), 1)
+        return digitalToAnalog(digitalOutput, (250 * 0.0000001), 1)
  
     if resolution == MCP3425_RESOLUTION.R14:
-        return digitalToAnalog(digitalOutput, (62.5 * 0.00001), 1)
+        return digitalToAnalog(digitalOutput, (62.5 * 0.000001), 1)
 

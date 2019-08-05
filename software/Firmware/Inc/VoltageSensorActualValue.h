@@ -16,5 +16,6 @@ void VoltageSensorActualValue_Init();
 
 bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementData_t *measurementData);
 
+uint8_t VoltageSensorActualValue_GetConfiguration();
 
 #endif /* SRC_VOLTAGESENSORACTUALVALUE_H_ */
