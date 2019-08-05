@@ -17,28 +17,30 @@
 \pgfsetlayers{background,main}
 
 \node (chamber) [component] {Ionization chamber};
+\node (sample) [component, above=of chamber] {Radioactive sample};
+
 \node (hwpower) [component, right=of chamber] {HV power supply};
 \node (amplifier) [component, below=of chamber] {Amplifier};
 
 
 \node (adc) [component, below=of amplifier] {ADC\\  (MCP3425A0T-ECH)};
-\node (cpu) [component, right=of adc] {acquisition\\ (STM8S003F3P6TR)};
-\node (gui) [component, above=of cpu] {User Interface (3xLED)};
+\node (cpu) [component, right=of adc] {Acquisition\\ (STM8S003F3P6TR)};
+\node (gui) [component, above=of cpu] {User Interface\\ (3xLED)};
 
-\node (uartconverter) [system, right=of cpu] {UART to USB};
-\node (stm8programmer) [system, below=of cpu] {STM8 programmer};
+\node (uartconverter) [system, right=of cpu] {UART over USB\\ (USB UART FTDI Converter)};
+\node (stm8programmer) [system, below=of cpu] {STM8 programator\\ (STM8SVLDISCOVERY)};
 
-\node (pi) [system, below=of uartconverter] {Data processing\\ (RaspberryPi 3B)};
-\node (pc) [system, below=of pi] {Local PC};
+\node (pi) [system, below=of uartconverter] {Data processing and firmware flashing\\ (RaspberryPi 3B)};
+\node (pc) [system, below=of pi] {Local PC\\ (OS independent)};
 
 \begin{pgfonlayer}{background}
-\node[system ,  draw, thick,  inner xsep=1em, inner ysep=1em, fit=(chamber) (hwpower) (amplifier) (adc) (cpu) ] {};
+\node[system ,  draw, thick,  inner xsep=1em, inner ysep=1em, fit=(sample) (chamber) (hwpower) (amplifier) (adc) (cpu) ] {};
 \end{pgfonlayer}
 
 % Connectors
 \begin{scope}[->]
 
-
+\draw [-{Latex[scale=3.0]}] (sample) -- node[anchor=west, minimum width=.25cm, draw=none] {Radioactive decay} (chamber);
 \draw [-{Latex[scale=3.0]}] (hwpower) -- node[anchor=south, minimum width=.25cm, draw=none] {400V DC} (chamber);
 \draw [-{Latex[scale=3.0]}] (chamber) -- node[anchor=south, minimum height=.25cm, draw=none] {} (amplifier);
 \draw [-{Latex[scale=3.0]}] (amplifier) -- node[anchor=south, minimum height=.25cm, draw=none] {} (adc);
@@ -47,8 +49,10 @@
 \draw [-{Latex[scale=3.0]}] (adc) -- node[anchor=south, minimum height=.25cm, draw=none] {I2C} (cpu);
 \draw [-{Latex[scale=3.0]}] (stm8programmer) -- node[anchor=east, minimum height=.25cm, draw=none] {SWIM} (cpu);
 \draw [-{Latex[scale=3.0]}] (pi) -- node[anchor=south, minimum height=.25cm, draw=none] {USB} (stm8programmer);
-\draw [-{Latex[scale=3.0]}] (uartconverter) -- node[anchor=east, minimum height=.25cm, draw=none] {USB} (pi);
-\draw [-{Latex[scale=3.0]}] (pi) -- node[anchor=east, minimum height=.25cm, draw=none] {ethernet} (pc);
+\draw [-{Latex[scale=3.0]}] (uartconverter) -- node[anchor=west, minimum height=.25cm, draw=none] {USB} (pi);
+\draw [-{Latex[scale=3.0]}] (pi) -- node[anchor=west, minimum height=.25cm, draw=none] {Ethernet} (pc);
+\draw [-{Latex[scale=3.0]}] (pc) -- node[anchor=west, minimum height=.25cm, draw=none] {} (pi);
+
 
 
 
