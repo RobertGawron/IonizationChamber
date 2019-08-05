@@ -14,11 +14,11 @@
 #define GET_CRC(configuration, data) (configuration ^ GET_MSB(data) ^ GET_LSB(data))
 
 
-enum Frameffsets { FRAME_PREAMBLE=0, 
-                FRAME_CONFIGURATION=1, 
-                FRAME_DATA_MSB=2, 
-                FRAME_DATA_LSB=3, 
-                FRAME_CRC=4 };
+enum Frameffsets { FRAME_PREAMBLE=0,
+                   FRAME_CONFIGURATION=1,
+                   FRAME_DATA_MSB=2,
+                   FRAME_DATA_LSB=3,
+                   FRAME_CRC=4 };
 
 static uint8_t buffer[MAX_FRAME_LENGTH];
 
@@ -32,13 +32,14 @@ void MeassurementFrame_Create(uint8_t configuration, uint16_t data)
     buffer[FRAME_CRC] = GET_CRC(configuration, data);
 }
 
+
 bool MeassurementFrame_Send(void (*sendFunction)(uint8_t))
 {
-    for(uint8_t i=0; i< MAX_FRAME_LENGTH; i++)
+    for(uint8_t i = 0; i < MAX_FRAME_LENGTH; i++)
     {
         sendFunction(buffer[i]);
     }
-    
+
     // TODO this should return status of sending data
     return TRUE;
 }

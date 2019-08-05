@@ -19,7 +19,7 @@ void MeasurementCollector_Init()
 void MeasurementCollector_Tick()
 {
     uint8_t configuration = VoltageSensorActualValue_GetConfiguration();
-    
+
     VoltageSensorActualValue_MeasurementData_t sample;
     VoltageSensorActualValue_MeasureValue(&sample);
 
