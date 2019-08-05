@@ -12,12 +12,8 @@ logFile.write("Time,Counter\n")
 ser.flushInput()
 
 while True:
-    #dataIn = ser.readline().strip()
-    dataIn = ser.read(2)
-
-    print(dataIn)
-    print(len(dataIn))
-    (msb, lsb) = (dataIn[0], dataIn[1]) 
+    dataIn = ser.read(5)
+    (msb, lsb) = (dataIn[2], dataIn[3]) 
     voltage = mcp3425.convert(msb, lsb, mcp3425.MCP3425_RESOLUTION.R14)
     now = datetime.datetime.now()
 

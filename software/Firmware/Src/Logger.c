@@ -8,7 +8,7 @@
 #include "Logger.h"
 #include "stm8s_uart1.h"
 #include "PinoutConfiguration.h"
-#include "BitHandler.h"
+
 
 //#define USE_PRINTF
 #if defined USE_PRINTF
@@ -47,8 +47,7 @@ void Logger_Print(Logger_DataFormat_t data)
 #if defined USE_PRINTF
     printf("%d\n\r", data);
 #else
-    putchar(GET_MSB(data));
-    putchar(GET_LSB(data));
+    putchar(data);
 #endif
 }
 
