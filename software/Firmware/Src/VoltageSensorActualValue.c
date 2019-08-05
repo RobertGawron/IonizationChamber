@@ -51,6 +51,11 @@ bool VoltageSensorActualValue_MeasureValue(VoltageSensorActualValue_MeasurementD
     return TRUE;
 }
 
+uint8_t VoltageSensorActualValue_GetConfiguration()
+{
+    return MCP3425_CONFIGURATION;
+}
+
 
 void GPIO_setup(void)
 {
