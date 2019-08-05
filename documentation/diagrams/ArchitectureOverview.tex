@@ -17,11 +17,11 @@
 \pgfsetlayers{background,main}
 
 \node (chamber) [component] {Ionization chamber};
-\node (hwpower) [component, above=of chamber] {HV power supply};
-\node (amplifier) [component, right=of chamber] {Amplifier};
+\node (hwpower) [component, right=of chamber] {HV power supply};
+\node (amplifier) [component, below=of chamber] {Amplifier};
 
 
-\node (adc) [component, right=of amplifier] {ADC\\  (MCP3425A0T-ECH)};
+\node (adc) [component, below=of amplifier] {ADC\\  (MCP3425A0T-ECH)};
 \node (cpu) [component, right=of adc] {acquisition\\ (STM8S003F3P6TR)};
 \node (gui) [component, above=of cpu] {User Interface (3xLED)};
 
@@ -32,14 +32,14 @@
 \node (pc) [system, below=of pi] {Local PC};
 
 \begin{pgfonlayer}{background}
-\node[system ,  draw, thick,  inner xsep=1em, inner ysep=1em, fit=(chamber) (hwpower) (amplifier) (adc) (cpu) ] {\Large Ionization Chamber Board};
+\node[system ,  draw, thick,  inner xsep=1em, inner ysep=1em, fit=(chamber) (hwpower) (amplifier) (adc) (cpu) ] {};
 \end{pgfonlayer}
 
 % Connectors
 \begin{scope}[->]
 
 
-\draw [-{Latex[scale=3.0]}] (hwpower) -- node[anchor=east, minimum width=.25cm, draw=none] {400V DC} (chamber);
+\draw [-{Latex[scale=3.0]}] (hwpower) -- node[anchor=south, minimum width=.25cm, draw=none] {400V DC} (chamber);
 \draw [-{Latex[scale=3.0]}] (chamber) -- node[anchor=south, minimum height=.25cm, draw=none] {} (amplifier);
 \draw [-{Latex[scale=3.0]}] (amplifier) -- node[anchor=south, minimum height=.25cm, draw=none] {} (adc);
 \draw [-{Latex[scale=3.0]}] (cpu) -- node[anchor=south, minimum height=.25cm, draw=none] {UART} (uartconverter);
