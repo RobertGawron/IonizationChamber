@@ -19,7 +19,7 @@
 \node (chamber) [component] {Ionization chamber};
 \node (sample) [component, above=of chamber] {Radioactive sample};
 
-\node (hwpower) [component, right=of chamber] {HV power supply};
+\node (hwpower) [component, right=of chamber] {HV power supply\\ (400V DC)};
 \node (amplifier) [component, below=of chamber] {Amplifier};
 
 
@@ -41,7 +41,7 @@
 \begin{scope}[->]
 
 \draw [-{Latex[scale=3.0]}] (sample) -- node[anchor=west, minimum width=.25cm, draw=none] {Radioactive decay} (chamber);
-\draw [-{Latex[scale=3.0]}] (hwpower) -- node[anchor=south, minimum width=.25cm, draw=none] {400V DC} (chamber);
+\draw [-{Latex[scale=3.0]}] (hwpower) -- node[anchor=south, minimum width=.25cm, draw=none] {} (chamber);
 \draw [-{Latex[scale=3.0]}] (chamber) -- node[anchor=south, minimum height=.25cm, draw=none] {} (amplifier);
 \draw [-{Latex[scale=3.0]}] (amplifier) -- node[anchor=south, minimum height=.25cm, draw=none] {} (adc);
 \draw [-{Latex[scale=3.0]}] (cpu) -- node[anchor=south, minimum height=.25cm, draw=none] {UART} (uartconverter);
