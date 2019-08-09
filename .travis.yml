@@ -1,0 +1,21 @@
+matrix:
+  include:
+    - language: r
+      sudo: false
+      cache: packages
+      dist: xenial
+      warnings_are_errors: false
+      before_install:
+       - cd ./software/DataAcquisitionFromDevice/packages/CSV2Diagrams
+
+
+    - language: minimal
+      dist: xenial
+      sudo: true
+      before_install:
+       - sudo apt-get update
+       - sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-extra-utils poppler-utils
+       - cd ./documentation/diagrams
+      script:
+       - chmod +x ./creatediagrams.sh
+       - ./creatediagrams.sh     
