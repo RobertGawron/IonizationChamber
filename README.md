@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.com/RobertGawron/IonizationChamber.svg?branch=master)](https://travis-ci.com/RobertGawron/IonizationChamber)
 
-**Current hardwarehas many bugs.**
+**Current hardware has many bugs.**
 
 ---
 
