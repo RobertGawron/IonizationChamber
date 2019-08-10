@@ -9,7 +9,6 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
-#include "stm8s.h"
 
 
 #define I2C_MASTER_ADDRESS 0x10
