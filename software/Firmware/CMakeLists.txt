@@ -25,7 +25,7 @@ set(CMAKE_DL_LIBS "")
 include_directories(${CMAKE_SOURCE_DIR}/Inc)
 include_directories(${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc)
 
-add_executable(main.ihx
+add_executable(IonizationChamber
         Src/main.c
         Src/ApplicationBuilder.c
         Src/ClockConfigurator.c
@@ -39,9 +39,19 @@ add_executable(main.ihx
         Src/TimerConfigurator.c
         Src/VoltageSensorActualValue.c
 
-
         STM8S_StdPeriph_Lib/src/stm8s_gpio.c
         STM8S_StdPeriph_Lib/src/stm8s_i2c.c
         STM8S_StdPeriph_Lib/src/stm8s_tim1.c
         STM8S_StdPeriph_Lib/src/stm8s_clk.c
         STM8S_StdPeriph_Lib/src/stm8s_uart1.c)
+
+# flash targets
+add_custom_target(flash ALL COMMAND stm8flash -c stlink -p stm8s003f3  -w IonizationChamber.ihx)
+
+
+# generate doxygen docs and dependency graphs
+#add_custom_target(doc ALL COMMAND doxygen doxygen.cfg)
+
+# format source code
+#add_custom_target(formatting ALL COMMAND uncrustify -c uncrustify.cfg --no-backup Src/*.c  Inc/*.h)
+
