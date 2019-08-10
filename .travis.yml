@@ -6,11 +6,13 @@ matrix:
       sudo: true
       before_install:
        - sudo apt-get update
-       - sudo apt-get install -y sdcc 
+       - sudo apt-get install -y sdcc cmake 
        - cd ./software/Firmware
       script:
-       - make make_build_dir
-       - make build
+       - sdcc --version
+       - mkdir build_directory
+       - cd build_directory
+       - cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc .. ; make VERBOSE=1
 
     - language: r
       sudo: false
