@@ -1,5 +1,19 @@
 matrix:
   include:
+    # check if firmware compiles
+    - language: minimal
+      dist: xenial
+      sudo: true
+      before_install:
+       - sudo apt-get update
+       - sudo apt-get install -y sdcc cmake 
+       - cd ./software/Firmware
+      script:
+       - sdcc --version
+       - mkdir build_directory
+       - cd build_directory
+       - cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc .. ; make VERBOSE=1
+
     - language: r
       sudo: false
       cache: packages
@@ -8,7 +22,7 @@ matrix:
       before_install:
        - cd ./software/DataAcquisitionFromDevice/packages/CSV2Diagrams
 
-
+    # check if latex files are correct
     - language: minimal
       dist: xenial
       sudo: true
@@ -18,4 +32,5 @@ matrix:
        - cd ./documentation/diagrams
       script:
        - chmod +x ./creatediagrams.sh
-       - ./creatediagrams.sh     
+       - ./creatediagrams.sh    
+
