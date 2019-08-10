@@ -9,6 +9,7 @@
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"
 #include "stm8s_i2c.h"
+#include "stm8s.h"
 
 
 #define I2C_MASTER_ADDRESS 0x10
@@ -97,6 +98,14 @@ static void write(uint8_t registerId)
 
 static uint16_t read(uint8_t registerId)
 {
+    uint16_t registerMSB = 0; 
+    uint16_t registerLSB = 0;
+    uint16_t registerLSB1 = 0; 
+    uint16_t registerLSB2 = 0;
+    uint16_t registerLSB3 = 0;
+    uint16_t registerLSB4 = 0;
+    uint16_t registerValue = 0;
+
     I2C_GenerateSTART(ENABLE);
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
 
@@ -105,24 +114,23 @@ static uint16_t read(uint8_t registerId)
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
 
-    uint16_t registerMSB = I2C_ReceiveData();
+    registerMSB = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    uint16_t registerLSB = I2C_ReceiveData();
+    registerLSB = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    uint16_t registerLSB1 = I2C_ReceiveData();
+    registerLSB1 = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    uint16_t registerLSB2 = I2C_ReceiveData();
+    registerLSB2 = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    uint16_t registerLSB3 = I2C_ReceiveData();
+    registerLSB3 = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    uint16_t registerLSB4 = I2C_ReceiveData();
+    registerLSB4 = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
-
 
 
     I2C_AcknowledgeConfig(DISABLE);
@@ -137,7 +145,7 @@ static uint16_t read(uint8_t registerId)
     Logger_Print( registerLSB3);
  */
 
-    uint16_t registerValue = (registerMSB << 8) +  registerLSB;
+    registerValue = (registerMSB << 8) +  registerLSB;
 
     return registerValue;
 }
