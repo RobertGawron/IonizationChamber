@@ -7,7 +7,7 @@ set(CMAKE_SYSTEM_NAME Generic) # No linux target etc
 set(CMAKE_C_FLAGS_INIT "")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "")
 project(STM8Blink C)
-SET(CMAKE_C_FLAGS "-mstm8 --std-c99 -DSTM8S003 -D__SDCC__")
+SET(CMAKE_C_FLAGS "-mstm8 --std-c99 -DSTM8S003 -D__SDCC__ -DUSE_STDPERIPH_DRIVER")
 
 # Flash targets
 #add_custom_target(flash ALL COMMAND stm8flash -c stlink -p stm8s105c6 -w main.ihx)
