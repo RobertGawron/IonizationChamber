@@ -25,12 +25,10 @@ set(CMAKE_DL_LIBS "")
 include_directories(${CMAKE_SOURCE_DIR}/Inc)
 link_directories(${CMAKE_SOURCE_DIR}/Src)
 
-#add_compile_definitions(MCU=STM8S003)
-#add_definitions(-DMCU STM8S003)
-#set(MCU STM8S003)
+add_compile_definitions(MCU=STM8S003)
 
 
 # dummy
-include_directories(${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc)
+#include_directories(${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc)
 
 add_executable(main.ihx Src/main.c)
