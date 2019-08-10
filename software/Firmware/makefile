@@ -31,11 +31,11 @@ IHX         = $(BUILD_DIR)/$(TARGET).ihx
 ################### BUILD PROCESS ###################
 .PHONY: all build clean flash
 
-all:  build flash
+all:  make_build_dir build flash
 
 
 make_build_dir:
-	mkdir  $(BUILD_DIR)
+	mkdir  -p $(BUILD_DIR)
 
 build:	$(IHX)
 
