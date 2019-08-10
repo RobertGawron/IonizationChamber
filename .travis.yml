@@ -9,6 +9,7 @@ matrix:
        - sudo apt-get install -y sdcc 
        - cd ./software/Firmware
       script:
+       - make make_build_dir
        - make build
 
     - language: r

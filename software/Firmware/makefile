@@ -35,7 +35,7 @@ all:  make_build_dir build flash
 
 
 make_build_dir:
-	mkdir  -p $(BUILD_DIR)
+	mkdir -p $(BUILD_DIR)
 
 build:	$(IHX)
 
