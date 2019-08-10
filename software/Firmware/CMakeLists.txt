@@ -7,7 +7,7 @@ set(CMAKE_SYSTEM_NAME Generic) # No linux target etc
 set(CMAKE_C_FLAGS_INIT "")
 set(CMAKE_EXE_LINKER_FLAGS_INIT "")
 project(STM8Blink C)
-SET(CMAKE_C_FLAGS "-mstm8 --std-c99")
+SET(CMAKE_C_FLAGS "-mstm8 -DSTM8S003 -D__SDCC__ -DUSE_STDPERIPH_DRIVER")
 
 # Flash targets
 #add_custom_target(flash ALL COMMAND stm8flash -c stlink -p stm8s105c6 -w main.ihx)
@@ -23,14 +23,35 @@ set(CMAKE_LINK_LIBRARY_SUFFIX ".lib")
 set(CMAKE_DL_LIBS "")
 
 include_directories(${CMAKE_SOURCE_DIR}/Inc)
-link_directories(${CMAKE_SOURCE_DIR}/Src)
-
-#add_compile_definitions(MCU=STM8S003)
-#add_definitions(-DMCU STM8S003)
-#set(MCU STM8S003)
-
-
-# dummy
 include_directories(${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc)
 
-add_executable(main.ihx Src/main.c)
+add_executable(IonizationChamber
+        Src/main.c
+        Src/ApplicationBuilder.c
+        Src/ClockConfigurator.c
+        Src/MeassurementFrame
+        Src/PulseCounter.c
+        Src/UserInterface.c
+        Src/VoltageSensorPeakValue.c
+        Src/stm8s_it.c
+        Src/Logger.c
+        Src/MeasurementCollector.c
+        Src/TimerConfigurator.c
+        Src/VoltageSensorActualValue.c
+
+        STM8S_StdPeriph_Lib/src/stm8s_gpio.c
+        STM8S_StdPeriph_Lib/src/stm8s_i2c.c
+        STM8S_StdPeriph_Lib/src/stm8s_tim1.c
+        STM8S_StdPeriph_Lib/src/stm8s_clk.c
+        STM8S_StdPeriph_Lib/src/stm8s_uart1.c)
+
+# flash targets
+#add_custom_target(flash ALL COMMAND stm8flash -c stlink -p stm8s003f3  -w IonizationChamber.ihx)
+
+
+# generate doxygen docs and dependency graphs
+#add_custom_target(doc ALL COMMAND doxygen doxygen.cfg)
+
+# format source code
+#add_custom_target(formatting ALL COMMAND uncrustify -c uncrustify.cfg --no-backup Src/*.c  Inc/*.h)
+

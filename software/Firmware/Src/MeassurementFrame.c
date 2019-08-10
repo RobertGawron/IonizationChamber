@@ -35,7 +35,8 @@ void MeassurementFrame_Create(uint8_t configuration, uint16_t data)
 
 bool MeassurementFrame_Send(void (*sendFunction)(uint8_t))
 {
-    for(uint8_t i = 0; i < MAX_FRAME_LENGTH; i++)
+    uint8_t i = 0; 
+    for(i = 0; i < MAX_FRAME_LENGTH; i++)
     {
         sendFunction(buffer[i]);
     }
