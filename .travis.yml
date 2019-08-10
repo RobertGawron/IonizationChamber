@@ -12,7 +12,8 @@ matrix:
        - sdcc --version
        - mkdir build_directory
        - cd build_directory
-       - cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc .. ; make VERBOSE=1
+       - cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc ..
+       - make VERBOSE=1
 
     - language: r
       sudo: false
