@@ -22,18 +22,11 @@ Remarks:
 * Amplifier has three stages (first stage is transimpedance amplifier, not FET transistor like most projects use). 
 * Amplifier has a separate power supply from 4x2V6 lithium batteries
 
- 
-
-### Power supply
 
 ## Hardware
 
 PCB project was done in KiCAD.
 
-It’s a two layer board in size 10cm x 10cm.
-
-
-TODO
 
 ## Software
 
@@ -42,8 +35,6 @@ Software is made of:
 * Flashing is done via stm8flash tool (has to installed)
 * Building project is done via makefile (has to be installed)
 * Communication with peripherals is done via STM8S_StdPeriph_Lib library (included in repository, no need to download it separably)
-
-TODO extend this section.
 
 
 ## Hazards
