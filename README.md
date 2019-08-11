@@ -1,7 +1,5 @@
 # Ionization Chamber (a device to measure radioactivity level)
 
----
-
 [![Build Status](https://travis-ci.com/RobertGawron/IonizationChamber.svg?branch=master)](https://travis-ci.com/RobertGawron/IonizationChamber)
 
 **Current hardware has many bugs.**
@@ -24,40 +22,21 @@ Remarks:
 * Amplifier has three stages (first stage is transimpedance amplifier, not FET transistor like most projects use). 
 * Amplifier has a separate power supply from 4x2V6 lithium batteries
 
- 
-
-### Power supply
 
 ## Hardware
 
 PCB project was done in KiCAD.
 
-It’s a two layer board in size 10cm x 10cm.
-
-
-TODO
 
 ## Software
 
-Software is made of:
-* Compilation via sdcc (has to be installed)
-* Flashing is done via stm8flash tool (has to installed)
-* Building project is done via makefile (has to be installed)
-* Communication with peripherals is done via STM8S_StdPeriph_Lib library (included in repository, no need to download it separably)
-
-TODO extend this section.
+* [Setting up development environment on Linux
+](https://github.com/RobertGawron/IonizationChamber/wiki/Setting-up-development-environment-on-Linux) 
+* [Firmware compilation and hardware flashing
+](https://github.com/RobertGawron/IonizationChamber/wiki/Firmware-compilation-and-hardware-flashing) 
 
 
 ## Hazards
 
 * **The device exposes high voltage to user, although maximum current is very limited, it still poses health risk if the sensor external electrode would be touch.**
 * **Pins of switch to turn on/off amplifier power supply are very close to metal chassis. It’s possible that pins will be shorted-out by chassis, shorting-out lithium batteries resulting in fire.** I flied off this part of chassis and used insulation tape to avoid it.
-
-
-## Current state
-
-Below is the picture of actual version, it has digital part and DC/Dc converter, soldering is terrible, but it works. There’s no really reason to put this section here, but I like images and graphs :-)
-
-![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/pcb_04_08_2019.jpg)
-
- 
