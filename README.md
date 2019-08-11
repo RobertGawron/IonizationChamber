@@ -30,11 +30,10 @@ PCB project was done in KiCAD.
 
 ## Software
 
-Software is made of:
-* Compilation via sdcc (has to be installed)
-* Flashing is done via stm8flash tool (has to installed)
-* Building project is done via makefile (has to be installed)
-* Communication with peripherals is done via STM8S_StdPeriph_Lib library (included in repository, no need to download it separably)
+* [Setting up development environment on Linux
+](https://github.com/RobertGawron/IonizationChamber/wiki/Setting-up-development-environment-on-Linux) 
+* [Firmware compilation and hardware flashing
+](https://github.com/RobertGawron/IonizationChamber/wiki/Firmware-compilation-and-hardware-flashing) 
 
 
 ## Hazards
