@@ -1,7 +1,5 @@
 # Ionization Chamber (a device to measure radioactivity level)
 
----
-
 [![Build Status](https://travis-ci.com/RobertGawron/IonizationChamber.svg?branch=master)](https://travis-ci.com/RobertGawron/IonizationChamber)
 
 **Current hardware has many bugs.**
