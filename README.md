@@ -12,7 +12,7 @@ When air's atoms are hit by radioactive particles, an ion-pair is produced. Ions
 
 They will try to "meet each other" (I don't know how to explain it) thus creating a current. This current can be measured. The current is proportional to amount of ion-pairs. Amount of ion-pairs is proportional to radioactivity level.
 
-## Overall system architecture
+## System architecture
 
 It is designed in a way that the device can work remotely, e.g. no connection via USB cable to user’s PC is needed.
 
