@@ -50,12 +50,3 @@ TODO extend this section.
 
 * **The device exposes high voltage to user, although maximum current is very limited, it still poses health risk if the sensor external electrode would be touch.**
 * **Pins of switch to turn on/off amplifier power supply are very close to metal chassis. It’s possible that pins will be shorted-out by chassis, shorting-out lithium batteries resulting in fire.** I flied off this part of chassis and used insulation tape to avoid it.
-
-
-## Current state
-
-Below is the picture of actual version, it has digital part and DC/Dc converter, soldering is terrible, but it works. There’s no really reason to put this section here, but I like images and graphs :-)
-
-![sensor render](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/pictures/pcb_04_08_2019.jpg)
-
- 
