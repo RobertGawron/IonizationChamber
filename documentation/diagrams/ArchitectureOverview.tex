@@ -6,7 +6,7 @@
 \definecolor{systemColor}{RGB}{230,230,230}
 
 \tikzset{component/.append style={fill=componentColor, align=center, draw, minimum width=2cm, minimum height=1.5cm, rounded corners=.3cm}}
-\tikzset{system/.style={ component, fill=systemColor, rounded corners=0cm}}
+\tikzset{system/.style={component, fill=systemColor, rounded corners=0cm}}
 
 
 \begin{document}
@@ -17,7 +17,7 @@
 \pgfsetlayers{background,main}
 
 \node (chamber) [component] {Ionization chamber};
-\node (sample) [component, above=of chamber] {Radioactive sample};
+\node (sample) [system, above=of chamber] {Radioactive sample};
 
 \node (hwpower) [component, right=of chamber] {HV power supply\\ (400V DC)};
 \node (amplifier) [component, below=of chamber] {Amplifier};
@@ -34,7 +34,7 @@
 \node (pc) [system, below=of pi] {Local PC\\ (OS independent)};
 
 \begin{pgfonlayer}{background}
-\node[system ,  draw, thick,  inner xsep=1em, inner ysep=1em, fit=(sample) (chamber) (hwpower) (amplifier) (adc) (cpu) ] {};
+\node[system, draw, thick, inner xsep=1em, inner ysep=1em, fit= (chamber) (hwpower) (amplifier) (adc) (cpu)] {};
 \end{pgfonlayer}
 
 % Connectors
@@ -52,9 +52,6 @@
 \draw [-{Latex[scale=3.0]}] (uartconverter) -- node[anchor=west, minimum height=.25cm, draw=none] {USB} (pi);
 \draw [-{Latex[scale=3.0]}] (pi) -- node[anchor=west, minimum height=.25cm, draw=none] {Ethernet} (pc);
 \draw [-{Latex[scale=3.0]}] (pc) -- node[anchor=west, minimum height=.25cm, draw=none] {} (pi);
-
-
-
 
 \end{scope}
 
