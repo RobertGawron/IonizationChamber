@@ -41,7 +41,7 @@ matrix:
       sudo: true
       before_install:
        - sudo apt-get update
-       - sudo apt-get install -y sdcc cmake 
+       - sudo apt-get install -y cppcheck 
        - cd ./software/Firmware
       script:
        - cppcheck  --enable=all --quiet --error-exitcode=1 Src/* Inc/* 
