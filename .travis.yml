@@ -1,6 +1,6 @@
 matrix:
   include:
-    # check if firmware compiles
+    # Check if firmware compiles
     - language: minimal
       dist: xenial
       sudo: true
@@ -23,7 +23,7 @@ matrix:
       before_install:
        - cd ./software/DataAcquisitionFromDevice/packages/CSV2Diagrams
 
-    # check if latex files are correct
+    # Check if latex files are correct
     - language: minimal
       dist: xenial
       sudo: true
@@ -35,7 +35,7 @@ matrix:
        - chmod +x ./creatediagrams.sh
        - ./creatediagrams.sh
 
-    # Use cppcheck (or other tool) to check statically C code
+    # Use cppcheck to check statically C code
     - language: minimal
       dist: xenial
       sudo: true
@@ -45,4 +45,16 @@ matrix:
        - cd ./software/Firmware
       script:
        - cppcheck  --enable=all --quiet --error-exitcode=1 Src/* Inc/* 
-    
+
+    # Use pyflakes (or other tool) to check statically Python code
+    - language: python
+      dist: xenial
+      sudo: true
+      before_install:
+       - sudo apt-get update
+       - sudo apt-get install -y python3-pip
+       - pip3 install pyflakes
+       - cd ./software/DataAcquisitionFromDevice
+      script:
+       - pyflakes *.py
+
