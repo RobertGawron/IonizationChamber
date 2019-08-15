@@ -15,14 +15,6 @@ matrix:
        - cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc ..
        - make VERBOSE=1
 
-    - language: r
-      sudo: false
-      cache: packages
-      dist: xenial
-      warnings_are_errors: false
-      before_install:
-       - cd ./software/DataAcquisitionFromDevice/packages/CSV2Diagrams
-
     # Check if latex files are correct
     - language: minimal
       dist: xenial
