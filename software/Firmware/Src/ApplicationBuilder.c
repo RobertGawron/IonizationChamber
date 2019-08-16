@@ -10,10 +10,8 @@
 #include "ClockConfigurator.h"
 #include "TimerConfigurator.h"
 #include "Logger.h"
-#include "PulseCounter.h"
 #include "UserInterface.h"
 #include "VoltageSensorActualValue.h"
-#include "VoltageSensorPeakValue.h"
 #include "MeasurementCollector.h"
 
 void ApplicationBuilder_Init()
@@ -21,7 +19,6 @@ void ApplicationBuilder_Init()
     ClockConfigurator_Init();
     TimerConfigurator_Init();
     Logger_Init();
-    PulseCounter_Init();
     UserInterface_Init();
     VoltageSensorActualValue_Init();
     MeasurementCollector_Init();

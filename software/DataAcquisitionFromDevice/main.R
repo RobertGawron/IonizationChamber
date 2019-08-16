@@ -4,7 +4,7 @@ source("drawDiagramSingle.R")
 Sys.setenv(LANG = "en")
 
 #load samples
-inputFileName ="data.log" 
+inputFileName ="data.csv" 
 samples <- read.delim(inputFileName, , sep=",")
 
 drawDiagramSingle(samples)
