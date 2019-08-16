@@ -19,13 +19,13 @@ It is designed in a way that the device can work remotely, e.g. no connection vi
 ![architecture](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/documentation/diagrams/ArchitectureOverview-1.png)
 
 Remarks:
-* Amplifier has three stages (first stage is transimpedance amplifier, not FET transistor like most projects use). 
+* Amplifier has three stages (first stage is transimpedance amplifier, not FET like most projects use). 
 * Amplifier has a separate power supply from 4x2V6 lithium batteries
 
 
 ## Hardware
 
-PCB project was done in KiCAD.
+PCB was done in KiCAD.
 
 
 ## Software
