@@ -688,7 +688,7 @@ F 3 "~" H 8700 5100 50  0001 C CNN
 	1    8700 5100
 	1    0    0    -1  
 $EndComp
-Text Label 8450 5100 2    50   ~ 0
+Text Label 8450 5200 2    50   ~ 0
 TX
 Wire Wire Line
 	8800 3200 8950 3200
@@ -728,16 +728,16 @@ F 3 "~" H 8900 2200 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8300 5400 8300 5300
-Text Label 8450 5200 2    50   ~ 0
+Text Label 8450 5100 2    50   ~ 0
 RX
 Text Label 8450 5000 2    50   ~ 0
 VCCIO
 Wire Wire Line
 	8500 5300 8300 5300
 Wire Wire Line
-	8500 5200 8300 5200
-Wire Wire Line
 	8500 5100 8300 5100
+Wire Wire Line
+	8500 5200 8300 5200
 Wire Wire Line
 	8500 5000 8300 5000
 $Comp
