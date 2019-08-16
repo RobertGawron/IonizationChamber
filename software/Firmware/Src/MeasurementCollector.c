@@ -7,7 +7,7 @@
 
 #include "MeasurementCollector.h"
 #include "VoltageSensorActualValue.h"
-#include "MeassurementFrame.h"
+#include "MeasurementFrame.h"
 #include "Logger.h"
 
 
@@ -23,7 +23,7 @@ void MeasurementCollector_Tick()
     VoltageSensorActualValue_MeasurementData_t sample;
     VoltageSensorActualValue_MeasureValue(&sample);
 
-    MeassurementFrame_Create(configuration, sample);
-    MeassurementFrame_Send(&Logger_Print);
+    MeasurementFrame_Create(configuration, sample);
+    MeasurementFrame_Send(&Logger_Print);
 }
 
