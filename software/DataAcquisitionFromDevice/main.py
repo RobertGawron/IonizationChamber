@@ -7,7 +7,7 @@ myBaudrate = 9600
 ser = Serial(myDeviceId, baudrate=9600, timeout=None)
 
 ser.isOpen()
-logFile = open('data.log', 'w')
+logFile = open('data.csv', 'w')
 logFile.write("Time,Counter\n")
 ser.flushInput()
 
