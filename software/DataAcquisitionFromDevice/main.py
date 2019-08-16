@@ -1,10 +1,9 @@
 from serial import Serial
 import datetime
 import mcp3425
+import config
 
-myDeviceId = '/dev/ttyUSB0'
-myBaudrate = 9600 
-ser = Serial(myDeviceId, baudrate=9600, timeout=None)
+ser = Serial(config.myDeviceId, baudrate = config.myBaudrate, timeout=None)
 
 ser.isOpen()
 logFile = open('data.csv', 'w')
