@@ -1,11 +1,11 @@
 /*
- * MeassurementFrame.c
+ * MeasurementFrame.c
  *
  *  Created on: 06.07.2019
  *      Author: robert
  */
 
-#include "MeassurementFrame.h"
+#include "MeasurementFrame.h"
 #include "BitHandler.h"
 
 #define MAX_FRAME_LENGTH 5
@@ -23,7 +23,7 @@ enum Frameffsets { FRAME_PREAMBLE=0,
 static uint8_t buffer[MAX_FRAME_LENGTH];
 
 
-void MeassurementFrame_Create(uint8_t configuration, uint16_t data)
+void MeasurementFrame_Create(uint8_t configuration, uint16_t data)
 {
     buffer[FRAME_PREAMBLE] = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
     buffer[FRAME_CONFIGURATION] = configuration;
@@ -33,7 +33,7 @@ void MeassurementFrame_Create(uint8_t configuration, uint16_t data)
 }
 
 
-bool MeassurementFrame_Send(void (*sendFunction)(uint8_t))
+bool MeasurementFrame_Send(void (*sendFunction)(uint8_t))
 {
     uint8_t i = 0; 
     for(i = 0; i < MAX_FRAME_LENGTH; i++)

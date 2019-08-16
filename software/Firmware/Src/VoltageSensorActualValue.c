@@ -99,10 +99,6 @@ static uint16_t read(uint8_t registerId)
 {
     uint16_t registerMSB = 0; 
     uint16_t registerLSB = 0;
-    uint16_t registerLSB1 = 0; 
-    uint16_t registerLSB2 = 0;
-    uint16_t registerLSB3 = 0;
-    uint16_t registerLSB4 = 0;
     uint16_t registerValue = 0;
 
     I2C_GenerateSTART(ENABLE);
@@ -119,16 +115,16 @@ static uint16_t read(uint8_t registerId)
     registerLSB = I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    registerLSB1 = I2C_ReceiveData();
+    I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    registerLSB2 = I2C_ReceiveData();
+    I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    registerLSB3 = I2C_ReceiveData();
+    I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
-    registerLSB4 = I2C_ReceiveData();
+    I2C_ReceiveData();
     while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED));
 
 
@@ -136,13 +132,6 @@ static uint16_t read(uint8_t registerId)
     I2C_GenerateSTOP(ENABLE);
 
     I2C_AcknowledgeConfig(ENABLE);
-/*
-    Logger_Print( registerMSB);
-    Logger_Print( registerLSB);
-    Logger_Print( registerLSB1);
-    Logger_Print( registerLSB2);
-    Logger_Print( registerLSB3);
- */
 
     registerValue = (registerMSB << 8) +  registerLSB;
 

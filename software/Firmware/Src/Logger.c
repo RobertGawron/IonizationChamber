@@ -51,21 +51,19 @@ void Logger_Print(Logger_DataFormat_t data)
 #endif
 }
 
-
 #ifdef USE_FULL_ASSERT
+// cppcheck-suppress unusedFunction
 void assert_failed(uint8_t* file, uint32_t line)
 {
     (void)file;
     (void)line;
 
 #if defined USE_PRINTF
-    printf("[error] asset failed %s %d\r\n", file, line);
+    printf("[error] asset failed %s %u\r\n", file, line);
 #endif
 
     while(TRUE);
 }
-
-
 #endif
 
 

@@ -29,10 +29,8 @@ add_executable(IonizationChamber
         Src/main.c
         Src/ApplicationBuilder.c
         Src/ClockConfigurator.c
-        Src/MeassurementFrame
-        Src/PulseCounter.c
+        Src/MeasurementFrame
         Src/UserInterface.c
-        Src/VoltageSensorPeakValue.c
         Src/stm8s_it.c
         Src/Logger.c
         Src/MeasurementCollector.c
