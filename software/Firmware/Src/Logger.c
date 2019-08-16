@@ -51,8 +51,8 @@ void Logger_Print(Logger_DataFormat_t data)
 #endif
 }
 
-
 #ifdef USE_FULL_ASSERT
+// cppcheck-suppress unusedFunction
 void assert_failed(uint8_t* file, uint32_t line)
 {
     (void)file;
@@ -64,8 +64,6 @@ void assert_failed(uint8_t* file, uint32_t line)
 
     while(TRUE);
 }
-
-
 #endif
 
 
