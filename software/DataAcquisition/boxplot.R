@@ -18,7 +18,7 @@ png(filename = paste0("results-", format(Sys.time(), "%d_%b_%Y_%H_%M"), ".png"),
 
 
 
-verticalLabels <- c("background level\nradiation", "Am isotope\n(somke detector)", "Ra isotope\n(old compass)")
+verticalLabels <- c("background level\nradiation", "Am isotope\n(smoke detector)", "Ra isotope\n(old compass)")
 
 boxplot(backgroundLevel, AmIsotope, RaIsotope, 
 col="grey", 
