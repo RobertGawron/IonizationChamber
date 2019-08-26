@@ -1,30 +1,14 @@
-import datetime
-import csv
 import usbtmc
 
 class DMM:
-    def __init__(self, instrumentId):
-        self.device = usbtmc.Instrument(instrumentId)
-
-    def sendCmd(self, command):
-        return self.device.ask(command)
+    def __init__(self, config):
+        self.config = config
 
 
-if __name__ == "__main__":
-    testIterations = 50000
-    idDMM = "USB0::0x2A8D::0x1601::INSTR"
-    testCommand = "READ?"
-    plotYLabel = "voltage"
+    def connect(self):
+        self.device = usbtmc.Instrument(self.config.idDMM)
 
-    dmm = DMM(idDMM)
 
-    with open('SampleOutputFile.csv', mode='w') as sampleOutputFile:
-        sampleOutputFileWriter = csv.writer(sampleOutputFile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        sampleOutputFileWriter.writerow(["Timestamp", "Measurement"])
+    def getMeasurement(self):
+         return self.device.ask(self.config.testCommand)
 
-        while(True):
-            sampleData = float(dmm.sendCmd(testCommand))
-            now = datetime.datetime.now()
-
-            sampleOutputFileWriter.writerow([now, sampleData])
-            sampleOutputFile.flush()
