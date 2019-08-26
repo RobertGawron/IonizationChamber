@@ -35,7 +35,7 @@ matrix:
       script:
        - cppcheck --enable=all --inline-suppr --force --quiet --error-exitcode=1 Src/* Inc/* 
 
-    # Use pyflakes (or other tool) to check statically Python code
+    # Use pyflakes to check statically Python code
     - language: python
       dist: xenial
       sudo: true

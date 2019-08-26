@@ -20,7 +20,7 @@ It is designed in a way that the device can work remotely, e.g. no connection vi
 
 Remarks:
 * Amplifier has three stages (first stage is transimpedance amplifier, not FET like most projects use). 
-* Amplifier has a separate power supply from 4x2V6 lithium batteries
+* Amplifier has a separate symmetric power supply from 2x2V6 lithium batteries
 
 
 ## Hardware
