@@ -9,3 +9,7 @@ samples <- read.delim(inputFileName, , sep=",")
 
 drawDiagramSingle(samples)
 
+# TODO move to a separate module
+library(Hmisc)
+rcorr(samples$Counter,samples$DMM, type="pearson")
+
