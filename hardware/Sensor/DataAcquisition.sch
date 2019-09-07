@@ -120,7 +120,7 @@ L Device:R R53
 U 1 1 5CE272E1
 P 2850 2200
 F 0 "R53" H 2780 2154 50  0000 R CNN
-F 1 "R" H 2780 2245 50  0000 R CNN
+F 1 "27k" H 2780 2245 50  0000 R CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 2780 2200 50  0001 C CNN
 F 3 "~" H 2850 2200 50  0001 C CNN
 	1    2850 2200
@@ -131,7 +131,7 @@ L Device:R R52
 U 1 1 5CE276BE
 P 2850 1700
 F 0 "R52" H 2780 1654 50  0000 R CNN
-F 1 "22k" H 2780 1745 50  0000 R CNN
+F 1 "0R" H 2780 1745 50  0000 R CNN
 F 2 "Resistor_SMD:R_0805_2012Metric_Pad1.15x1.40mm_HandSolder" V 2780 1700 50  0001 C CNN
 F 3 "~" H 2850 1700 50  0001 C CNN
 	1    2850 1700
@@ -585,17 +585,6 @@ Text Label 4750 1950 2    50   ~ 0
 SCL
 Text Label 4750 2050 2    50   ~ 0
 SDA
-$Comp
-L MCU_ST_STM8:STM8S003F3P U54
-U 1 1 5D06A76B
-P 8200 3100
-F 0 "U54" H 7900 4300 50  0000 C CNN
-F 1 "STM8S003F3P" H 7850 4200 50  0000 C CNN
-F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 8250 4200 50  0001 L CNN
-F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00024550.pdf" H 8150 2700 50  0001 C CNN
-	1    8200 3100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8200 2100 8200 2000
 $Comp
@@ -621,7 +610,7 @@ Text Label 10100 5350 0    50   ~ 0
 RST
 Wire Wire Line
 	7600 3700 6950 3700
-Text Label 6550 3700 0    50   ~ 0
+Text Label 6600 3700 0    50   ~ 0
 RST
 $Comp
 L power:GND #PWR074
@@ -647,17 +636,6 @@ F 3 "~" H 10500 5550 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	8800 2800 9000 2800
-$Comp
-L Device:D D51
-U 1 1 5D0AB3C5
-P 8200 1600
-F 0 "D51" H 8200 1816 50  0000 C CNN
-F 1 "1n148" H 8200 1725 50  0000 C CNN
-F 2 "Diode_SMD:D_MiniMELF" H 8200 1600 50  0001 C CNN
-F 3 "~" H 8200 1600 50  0001 C CNN
-	1    8200 1600
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
 	8200 2000 8200 1850
 Connection ~ 8200 2000
@@ -768,7 +746,7 @@ L Device:C C52
 U 1 1 5D108E10
 P 7450 4000
 F 0 "C52" V 7198 4000 50  0000 C CNN
-F 1 "100n" V 7289 4000 50  0000 C CNN
+F 1 "680n" V 7289 4000 50  0000 C CNN
 F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 7488 3850 50  0001 C CNN
 F 3 "~" H 7450 4000 50  0001 C CNN
 	1    7450 4000
@@ -896,71 +874,6 @@ F 3 "~" H 6900 2600 50  0001 C CNN
 	1    6700 2600
 	0    -1   -1   0   
 $EndComp
-$Comp
-L Connector:TestPoint TP53
-U 1 1 5D2DC88A
-P 6700 3100
-F 0 "TP53" V 6700 3400 50  0000 C CNN
-F 1 "TestPoint" V 6700 3700 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6900 3100 50  0001 C CNN
-F 3 "~" H 6900 3100 50  0001 C CNN
-	1    6700 3100
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Connector:TestPoint TP54
-U 1 1 5D2DCB61
-P 6700 3200
-F 0 "TP54" V 6700 3500 50  0000 C CNN
-F 1 "TestPoint" V 6700 3800 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6900 3200 50  0001 C CNN
-F 3 "~" H 6900 3200 50  0001 C CNN
-	1    6700 3200
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Connector:TestPoint TP55
-U 1 1 5D2DCCEB
-P 6700 3300
-F 0 "TP55" V 6700 3600 50  0000 C CNN
-F 1 "TestPoint" V 6700 3900 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6900 3300 50  0001 C CNN
-F 3 "~" H 6900 3300 50  0001 C CNN
-	1    6700 3300
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Connector:TestPoint TP56
-U 1 1 5D2DCE02
-P 6700 3400
-F 0 "TP56" V 6700 3700 50  0000 C CNN
-F 1 "TestPoint" V 6700 4000 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6900 3400 50  0001 C CNN
-F 3 "~" H 6900 3400 50  0001 C CNN
-	1    6700 3400
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Connector:TestPoint TP57
-U 1 1 5D2DCF7E
-P 6700 3500
-F 0 "TP57" V 6700 3800 50  0000 C CNN
-F 1 "TestPoint" V 6700 4100 50  0000 C CNN
-F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 6900 3500 50  0001 C CNN
-F 3 "~" H 6900 3500 50  0001 C CNN
-	1    6700 3500
-	0    -1   -1   0   
-$EndComp
-Wire Wire Line
-	6700 3100 7600 3100
-Wire Wire Line
-	7600 3200 6700 3200
-Wire Wire Line
-	7600 3300 6700 3300
-Wire Wire Line
-	7600 3400 6700 3400
-Wire Wire Line
-	7600 3500 6700 3500
 Wire Wire Line
 	6700 2600 7600 2600
 Wire Wire Line
@@ -1016,8 +929,8 @@ $Comp
 L Device:LED D2
 U 1 1 5D443DF6
 P 7500 1550
-F 0 "D2" V 7539 1433 50  0000 R CNN
-F 1 "LED" V 7448 1433 50  0000 R CNN
+F 0 "D2" V 7539 1432 50  0000 R CNN
+F 1 "yellow" V 7448 1432 50  0000 R CNN
 F 2 "LED_SMD:LED_0805_2012Metric" H 7500 1550 50  0001 C CNN
 F 3 "~" H 7500 1550 50  0001 C CNN
 	1    7500 1550
@@ -1061,28 +974,6 @@ Wire Wire Line
 	7500 1400 7500 1350
 Wire Wire Line
 	7500 1750 7500 1700
-$Comp
-L Device:LED D3
-U 1 1 5D48D2D6
-P 9450 3600
-F 0 "D3" V 9489 3483 50  0000 R CNN
-F 1 "LED" V 9398 3483 50  0000 R CNN
-F 2 "LED_SMD:LED_0805_2012Metric" H 9450 3600 50  0001 C CNN
-F 3 "~" H 9450 3600 50  0001 C CNN
-	1    9450 3600
-	0    -1   -1   0   
-$EndComp
-$Comp
-L Device:LED D4
-U 1 1 5D4A0303
-P 9800 3600
-F 0 "D4" V 9839 3483 50  0000 R CNN
-F 1 "LED" V 9748 3483 50  0000 R CNN
-F 2 "LED_SMD:LED_0805_2012Metric" H 9800 3600 50  0001 C CNN
-F 3 "~" H 9800 3600 50  0001 C CNN
-	1    9800 3600
-	0    -1   -1   0   
-$EndComp
 $Comp
 L Device:R R3
 U 1 1 5D4A05A5
@@ -1202,7 +1093,7 @@ Wire Wire Line
 	6950 3850 6950 3700
 Connection ~ 6950 3700
 Wire Wire Line
-	6950 3700 6550 3700
+	6950 3700 6600 3700
 Wire Wire Line
 	6950 4200 6950 4150
 Wire Notes Line
@@ -1215,4 +1106,113 @@ Wire Notes Line
 	650  7700 650  3100
 Text Notes 750  7550 0    79   ~ 16
 not mounted
+$Comp
+L Device:LED D4
+U 1 1 5D4A0303
+P 9800 3600
+F 0 "D4" V 9839 3482 50  0000 R CNN
+F 1 "red" V 9748 3482 50  0000 R CNN
+F 2 "LED_SMD:LED_0805_2012Metric" H 9800 3600 50  0001 C CNN
+F 3 "~" H 9800 3600 50  0001 C CNN
+	1    9800 3600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:LED D3
+U 1 1 5D48D2D6
+P 9450 3600
+F 0 "D3" V 9489 3679 50  0000 L CNN
+F 1 "green" V 9398 3679 50  0000 L CNN
+F 2 "LED_SMD:LED_0805_2012Metric" H 9450 3600 50  0001 C CNN
+F 3 "~" H 9450 3600 50  0001 C CNN
+	1    9450 3600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L MCU_ST_STM8:STM8S003F3P U54
+U 1 1 5D06A76B
+P 8200 3100
+F 0 "U54" H 7900 4300 50  0000 C CNN
+F 1 "STM8S003F3P" H 7850 4200 50  0000 C CNN
+F 2 "Package_SO:TSSOP-20_4.4x6.5mm_P0.65mm" H 8250 4200 50  0001 L CNN
+F 3 "http://www.st.com/st-web-ui/static/active/en/resource/technical/document/datasheet/DM00024550.pdf" H 8150 2700 50  0001 C CNN
+	1    8200 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:TestPoint TP53
+U 1 1 5D2DC88A
+P 7450 3100
+F 0 "TP53" V 7450 3400 50  0000 C CNN
+F 1 "TestPoint" V 7450 3700 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7650 3100 50  0001 C CNN
+F 3 "~" H 7650 3100 50  0001 C CNN
+	1    7450 3100
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP54
+U 1 1 5D2DCB61
+P 7450 3200
+F 0 "TP54" V 7450 3500 50  0000 C CNN
+F 1 "TestPoint" V 7450 3800 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7650 3200 50  0001 C CNN
+F 3 "~" H 7650 3200 50  0001 C CNN
+	1    7450 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP55
+U 1 1 5D2DCCEB
+P 7450 3300
+F 0 "TP55" V 7450 3600 50  0000 C CNN
+F 1 "TestPoint" V 7450 3900 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7650 3300 50  0001 C CNN
+F 3 "~" H 7650 3300 50  0001 C CNN
+	1    7450 3300
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP56
+U 1 1 5D2DCE02
+P 7450 3400
+F 0 "TP56" V 7450 3700 50  0000 C CNN
+F 1 "TestPoint" V 7450 4000 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7650 3400 50  0001 C CNN
+F 3 "~" H 7650 3400 50  0001 C CNN
+	1    7450 3400
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Connector:TestPoint TP57
+U 1 1 5D2DCF7E
+P 7450 3500
+F 0 "TP57" V 7450 3800 50  0000 C CNN
+F 1 "TestPoint" V 7450 4100 50  0000 C CNN
+F 2 "TestPoint:TestPoint_THTPad_1.0x1.0mm_Drill0.5mm" H 7650 3500 50  0001 C CNN
+F 3 "~" H 7650 3500 50  0001 C CNN
+	1    7450 3500
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	7450 3100 7600 3100
+Wire Wire Line
+	7600 3200 7450 3200
+Wire Wire Line
+	7600 3300 7450 3300
+Wire Wire Line
+	7600 3400 7450 3400
+Wire Wire Line
+	7600 3500 7450 3500
+$Comp
+L Device:D D51
+U 1 1 5D0AB3C5
+P 8200 1600
+F 0 "D51" H 8200 1816 50  0000 C CNN
+F 1 "0R resistor" H 8200 1725 50  0000 C CNN
+F 2 "Diode_SMD:D_MiniMELF" H 8200 1600 50  0001 C CNN
+F 3 "~" H 8200 1600 50  0001 C CNN
+	1    8200 1600
+	0    -1   -1   0   
+$EndComp
 $EndSCHEMATC
