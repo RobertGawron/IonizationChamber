@@ -1,10 +1,3 @@
-/*
- * MeasurementFrame.c
- *
- *  Created on: 06.07.2019
- *      Author: robert
- */
-
 #include "MeasurementFrame.h"
 #include "BitHandler.h"
 

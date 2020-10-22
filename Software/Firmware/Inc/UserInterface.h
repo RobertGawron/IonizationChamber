@@ -1,10 +1,3 @@
-/*
- * UserInterface.h
- *
- *  Created on: 30.06.2019
- *      Author: robert
- */
-
 #ifndef SRC_GUI_H_
 #define SRC_USER_INTERFACE_H_
 
@@ -16,4 +9,4 @@ void UserInterface_Tick();
 
 void UserInterface_ShowMessage(UserInterface_Status status);
 
-#endif /* SRC_GUI_H_ */
+#endif

@@ -1,10 +1,3 @@
-/*
- * ClockConfigurator.c
- *
- *  Created on: 03.07.2019
- *      Author: robert
- */
-
 #include "ClockConfigurator.h"
 #include "stm8s_clk.h"
 

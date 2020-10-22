@@ -1,10 +1,3 @@
-/*
- * UserInterface.c
- *
- *  Created on: 30.06.2019
- *      Author: robert
- */
-
 #include "UserInterface.h"
 
 #include "PinoutConfiguration.h"
