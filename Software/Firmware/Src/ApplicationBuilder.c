@@ -1,10 +1,3 @@
-/*
- * ApplicationBuilder.c
- *
- *  Created on: 15 cze 2019
- *      Author: robert
- */
-
 #include "ApplicationBuilder.h"
 #include "PinoutConfiguration.h"
 #include "ClockConfigurator.h"

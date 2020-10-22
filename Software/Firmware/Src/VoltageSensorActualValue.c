@@ -1,10 +1,3 @@
-/*
- * MCP3425A0T.c
- *
- *  Created on: 04.06.2019
- *      Author: robert
- */
-
 #include "VoltageSensorActualValue.h"
 #include "PinoutConfiguration.h"
 #include "UserInterface.h"

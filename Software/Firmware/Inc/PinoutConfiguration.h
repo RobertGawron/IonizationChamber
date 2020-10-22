@@ -1,9 +1,3 @@
-/*
- * PinoutConfiguration.h
- *
- *  Created on: 15 cze 2019
- *      Author: robert
- */
 #include "CommonDataTypes.h"
 
 #ifndef INC_PINOUTCONFIGURATION_H_
@@ -26,4 +20,4 @@
 #define PIN_I2C_SCL GPIO_PIN_4
 #define PIN_I2C_SDA GPIO_PIN_5
 
-#endif /* INC_PINOUTCONFIGURATION_H_ */
+#endif
