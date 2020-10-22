@@ -6,7 +6,7 @@ matrix:
       sudo: true
       before_install:
        - sudo apt-get install -y sdcc cmake 
-       - cd ./software/Firmware
+       - cd ./Software/Firmware
       script:
        - sdcc --version
        - mkdir build_directory
@@ -20,7 +20,7 @@ matrix:
       sudo: true
       before_install:
        - sudo apt-get install -y texlive-latex-base texlive-latex-extra texlive-extra-utils poppler-utils
-       - cd ./documentation/diagrams
+       - cd ./Documentation/Diagrams
       script:
        - chmod +x ./creatediagrams.sh
        - ./creatediagrams.sh
@@ -31,7 +31,7 @@ matrix:
       sudo: true
       before_install:
        - sudo apt-get install -y cppcheck 
-       - cd ./software/Firmware
+       - cd ./Software/Firmware
       script:
        - cppcheck --enable=all --inline-suppr --force --quiet --error-exitcode=1 Src/* Inc/* 
 
@@ -42,7 +42,7 @@ matrix:
       before_install:
        - sudo apt-get install -y python3-pip
        - pip3 install pyflakes
-       - cd ./software/DataAcquisition
+       - cd ./Software/DataAcquisition
       script:
        - pyflakes *.py
 
