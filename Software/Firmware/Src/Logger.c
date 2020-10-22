@@ -1,10 +1,3 @@
-/*
- * DataLogger.c
- *
- *  Created on: 16.06.2019
- *      Author: robert
- */
-
 #include "Logger.h"
 #include "stm8s_uart1.h"
 #include "PinoutConfiguration.h"
