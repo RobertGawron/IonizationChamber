@@ -1,8 +1,6 @@
 # Ionization Chamber (a device to measure radioactivity level)
 
-[![Build Status](https://travis-ci.com/RobertGawron/IonizationChamber.svg?branch=master)](https://travis-ci.com/RobertGawron/IonizationChamber)
-
----
+[![Build Firmware](https://github.com/RobertGawron/IonizationChamber/workflows/Build%20Firmware/badge.svg)](https://github.com/RobertGawron/IonizationChamber/actions?query=workflow%3A%22Build+Firmware%22) [![Static Code Analysis](https://github.com/RobertGawron/IonizationChamber/workflows/Static%20Code%20Analysis/badge.svg)](https://github.com/RobertGawron/IonizationChamber/actions?query=workflow%3A%22Static+Code+Analysis%22)
 
 ## Principle of operation
 
