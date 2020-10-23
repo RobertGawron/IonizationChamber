@@ -1,0 +1,27 @@
+name: Build Firmware
+
+on: [push]
+
+jobs:
+  build_and_test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Build and run tests      
+      run: |
+        sudo apt-get install -y sdcc cmake 
+        cd ./Software/Firmware
+        sdcc --version
+        mkdir build_directory
+        cd build_directory
+        cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc ..
+        make VERBOSE=1
+
+    - name: Archive firmware binary
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: Firmware binary
+        path: ./Software/Firmware/build_directory/IonizationChamber.ihx
