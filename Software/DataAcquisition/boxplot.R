@@ -1,10 +1,10 @@
 inputFileName ="DataNoSample.csv" 
 fileNoSample <- read.delim(inputFileName, , sep=",")
 
-inputFileName ="DataAmSample1.csv" 
+inputFileName ="DataSample1.csv" 
 fileAmSample1 <- read.delim(inputFileName, , sep=",")
 
-inputFileName ="DataRaSample2.csv" 
+inputFileName ="DataSample2.csv" 
 fileAmSample2 <- read.delim(inputFileName, , sep=",")
 
 
