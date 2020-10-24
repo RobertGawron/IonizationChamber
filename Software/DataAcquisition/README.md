@@ -9,8 +9,7 @@
 
 ## Architecture
 
-![architecture of the component](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Diagrams/HostArchitecture-1.png)
-
+<img src="./Documentation/Diagrams/HostArchitecture.svg"  width="100%">
 
 ## Collecting measurements
 
