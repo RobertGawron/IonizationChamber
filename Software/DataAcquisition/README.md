@@ -9,7 +9,7 @@
 
 ## Architecture
 
-<img src="./Documentation/Diagrams/HostArchitecture.svg"  width="100%">
+<img src="../../Documentation/Diagrams/HostArchitecture.svg"  width="100%">
 
 ## Collecting measurements
 
