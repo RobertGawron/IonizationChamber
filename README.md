@@ -8,14 +8,14 @@ When air's atoms are hit by radioactive particles, an ion-pair is produced. Ions
 
 They will try to "meet each other" (I don't know how to explain it) thus creating a current. This current can be measured. The current is proportional to amount of ion-pairs. Amount of ion-pairs is proportional to radioactivity level.
 
-![architecture](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Pictures/pcb_01_09_2019.jpg)
+![picture of device](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Pictures/pcb_01_09_2019.jpg)
 
 
 ## System architecture
 
 It is designed in a way that the device can work remotely, e.g. no connection via USB cable to user’s PC is needed.
 
-![architecture](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Diagrams/ArchitectureOverview-1.png)
+<img src="./Documentation/Diagrams/ArchitectureOverview.svg"  width="100%">
 
 Remarks:
 * Amplifier has three stages (first stage is transimpedance amplifier, not FET like most projects use). 
