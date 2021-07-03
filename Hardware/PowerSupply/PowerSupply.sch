@@ -1,0 +1,724 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:CP C33
+U 1 1 5BA235DF
+P 3350 3000
+F 0 "C33" H 3232 3046 50  0000 R CNN
+F 1 "100u/16V" H 3232 2955 50  0000 R CNN
+F 2 "Capacitor_SMD:CP_Elec_6.3x5.4" H 3388 2850 50  0001 C CNN
+F 3 "~" H 3350 3000 50  0001 C CNN
+	1    3350 3000
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:C C40
+U 1 1 5CD36164
+P 4150 3000
+F 0 "C40" H 4035 2954 50  0000 R CNN
+F 1 "100n" H 4035 3045 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4188 2850 50  0001 C CNN
+F 3 "~" H 4150 3000 50  0001 C CNN
+	1    4150 3000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Device:L_Core_Ferrite L32
+U 1 1 5CD96E48
+P 3650 2650
+F 0 "L32" V 3875 2650 50  0000 C CNN
+F 1 "u68" V 3784 2650 50  0000 C CNN
+F 2 "Inductor_SMD:L_1812_4532Metric_Pad1.30x3.40mm_HandSolder" H 3650 2650 50  0001 C CNN
+F 3 "~" H 3650 2650 50  0001 C CNN
+	1    3650 2650
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:CP C34
+U 1 1 5CD94E6D
+P 3350 3800
+F 0 "C34" H 3232 3846 50  0000 R CNN
+F 1 "100u/16V" H 3232 3755 50  0000 R CNN
+F 2 "Capacitor_SMD:CP_Elec_6.3x5.4" H 3388 3650 50  0001 C CNN
+F 3 "~" H 3350 3800 50  0001 C CNN
+	1    3350 3800
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:L_Core_Ferrite L33
+U 1 1 5CD9781A
+P 3650 4200
+F 0 "L33" V 3561 4200 50  0000 C CNN
+F 1 "u68" V 3470 4200 50  0000 C CNN
+F 2 "Inductor_SMD:L_1812_4532Metric_Pad1.30x3.40mm_HandSolder" H 3650 4200 50  0001 C CNN
+F 3 "~" H 3650 4200 50  0001 C CNN
+	1    3650 4200
+	0    1    -1   0   
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG032
+U 1 1 5CD9E263
+P 2150 2500
+F 0 "#FLG032" H 2150 2575 50  0001 C CNN
+F 1 "PWR_FLAG" H 2150 2674 50  0000 C CNN
+F 2 "" H 2150 2500 50  0001 C CNN
+F 3 "~" H 2150 2500 50  0001 C CNN
+	1    2150 2500
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 2550 2150 2500
+Wire Wire Line
+	3350 3650 3350 3300
+Wire Wire Line
+	3500 4200 3350 4200
+Wire Wire Line
+	3350 4200 3350 3950
+Wire Wire Line
+	3500 2650 3350 2650
+Wire Wire Line
+	3350 2650 3350 2850
+Wire Wire Line
+	3800 2650 4000 2650
+Connection ~ 4000 2650
+$Comp
+L power:GND #PWR042
+U 1 1 5CDF8D9C
+P 3000 3450
+F 0 "#PWR042" H 3000 3200 50  0001 C CNN
+F 1 "GND" H 3005 3277 50  0000 C CNN
+F 2 "" H 3000 3450 50  0001 C CNN
+F 3 "" H 3000 3450 50  0001 C CNN
+	1    3000 3450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 3300 3000 3300
+Wire Wire Line
+	3000 3300 3000 3450
+Connection ~ 3350 2650
+Connection ~ 3350 4200
+$Comp
+L power:PWR_FLAG #FLG034
+U 1 1 5CE2CCD8
+P 4000 2550
+F 0 "#FLG034" H 4000 2625 50  0001 C CNN
+F 1 "PWR_FLAG" H 4000 2724 50  0000 C CNN
+F 2 "" H 4000 2550 50  0001 C CNN
+F 3 "~" H 4000 2550 50  0001 C CNN
+	1    4000 2550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4350 2650 4350 2550
+Wire Wire Line
+	4000 2650 4150 2650
+Wire Wire Line
+	4350 4300 4350 4200
+Wire Wire Line
+	4000 2650 4000 2550
+Connection ~ 2150 2550
+$Comp
+L power:+BATT #PWR049
+U 1 1 5CFE9A02
+P 4350 2550
+F 0 "#PWR049" H 4350 2400 50  0001 C CNN
+F 1 "+BATT" H 4365 2723 50  0000 C CNN
+F 2 "" H 4350 2550 50  0001 C CNN
+F 3 "" H 4350 2550 50  0001 C CNN
+	1    4350 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:-BATT #PWR050
+U 1 1 5CFEAB3F
+P 4350 4300
+F 0 "#PWR050" H 4350 4150 50  0001 C CNN
+F 1 "-BATT" H 4365 4473 50  0000 C CNN
+F 2 "" H 4350 4300 50  0001 C CNN
+F 3 "" H 4350 4300 50  0001 C CNN
+	1    4350 4300
+	-1   0    0    1   
+$EndComp
+$Comp
+L Switch:SW_DPDT_x2 SW31
+U 1 1 5CF2C564
+P 2700 2550
+F 0 "SW31" H 2700 2835 50  0000 C CNN
+F 1 "SW_DPDT_x2" H 2700 2744 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_E-Switch_EG1271_DPDT" H 2700 2550 50  0001 C CNN
+F 3 "~" H 2700 2550 50  0001 C CNN
+	1    2700 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Switch:SW_DPDT_x2 SW31
+U 2 1 5CF2D41F
+P 2700 4100
+F 0 "SW31" H 2700 4385 50  0000 C CNN
+F 1 "SW_DPDT_x2" H 2700 4294 50  0000 C CNN
+F 2 "Button_Switch_THT:SW_E-Switch_EG1271_DPDT" H 2700 4100 50  0001 C CNN
+F 3 "~" H 2700 4100 50  0001 C CNN
+	2    2700 4100
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 4200 3350 4200
+Wire Wire Line
+	2900 2650 3350 2650
+Wire Wire Line
+	2150 2550 2450 2550
+Wire Wire Line
+	2150 2550 2150 2600
+Wire Wire Line
+	2150 4000 2150 4100
+$Comp
+L Device:Battery_Cell BT32
+U 1 1 5CD816BD
+P 2150 3900
+F 0 "BT32" H 2032 3996 50  0000 R CNN
+F 1 "3V6" H 2032 3905 50  0000 R CNN
+F 2 "PowerSupply:MR18650BatteryHolder" V 2150 3960 50  0001 C CNN
+F 3 "~" V 2150 3960 50  0001 C CNN
+	1    2150 3900
+	1    0    0    -1  
+$EndComp
+Connection ~ 2150 4100
+Wire Wire Line
+	2150 3300 2150 3350
+Connection ~ 2150 3300
+Wire Wire Line
+	1700 3300 1700 3350
+Wire Wire Line
+	2150 3300 1700 3300
+$Comp
+L power:GND #PWR033
+U 1 1 5CDF8594
+P 1700 3350
+F 0 "#PWR033" H 1700 3100 50  0001 C CNN
+F 1 "GND" H 1705 3177 50  0000 C CNN
+F 2 "" H 1700 3350 50  0001 C CNN
+F 3 "" H 1700 3350 50  0001 C CNN
+	1    1700 3350
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 4150 2150 4100
+$Comp
+L power:PWR_FLAG #FLG033
+U 1 1 5CD97E81
+P 2150 4150
+F 0 "#FLG033" H 2150 4225 50  0001 C CNN
+F 1 "PWR_FLAG" H 2150 4324 50  0000 C CNN
+F 2 "" H 2150 4150 50  0001 C CNN
+F 3 "~" H 2150 4150 50  0001 C CNN
+	1    2150 4150
+	1    0    0    1   
+$EndComp
+Wire Wire Line
+	2150 4100 2450 4100
+Wire Wire Line
+	2900 2450 2950 2450
+Wire Wire Line
+	2950 2450 2950 2400
+Wire Wire Line
+	2950 2400 2450 2400
+Wire Wire Line
+	2450 2400 2450 2550
+Connection ~ 2450 2550
+Wire Wire Line
+	2450 2550 2500 2550
+Wire Wire Line
+	2900 4000 2950 4000
+Wire Wire Line
+	2950 4000 2950 3950
+Wire Wire Line
+	2950 3950 2450 3950
+Wire Wire Line
+	2450 3950 2450 4100
+Connection ~ 2450 4100
+Wire Wire Line
+	2450 4100 2500 4100
+Wire Wire Line
+	4000 4200 4150 4200
+Wire Wire Line
+	3800 4200 4000 4200
+Connection ~ 4000 4200
+Wire Wire Line
+	4000 4300 4000 4200
+$Comp
+L power:PWR_FLAG #FLG035
+U 1 1 5CE2D1AE
+P 4000 4300
+F 0 "#FLG035" H 4000 4375 50  0001 C CNN
+F 1 "PWR_FLAG" H 4000 4474 50  0000 C CNN
+F 2 "" H 4000 4300 50  0001 C CNN
+F 3 "~" H 4000 4300 50  0001 C CNN
+	1    4000 4300
+	1    0    0    1   
+$EndComp
+Text Notes 900  7150 0    98   ~ 20
+Power supply= +2*3V6m -2*3V6
+$Comp
+L Device:Battery_Cell BT3
+U 1 1 60FA2573
+P 6800 2300
+F 0 "BT3" H 6682 2396 50  0000 R CNN
+F 1 "12V" H 6682 2305 50  0000 R CNN
+F 2 "PowerSupply:27ABatteryHolder" V 6800 2360 50  0001 C CNN
+F 3 "~" V 6800 2360 50  0001 C CNN
+	1    6800 2300
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT5
+U 1 1 610447D9
+P 2150 3550
+F 0 "BT5" H 2032 3646 50  0000 R CNN
+F 1 "3V6" H 2032 3555 50  0000 R CNN
+F 2 "PowerSupply:MR18650BatteryHolder" V 2150 3610 50  0001 C CNN
+F 3 "~" V 2150 3610 50  0001 C CNN
+	1    2150 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT4
+U 1 1 610491A7
+P 2150 3150
+F 0 "BT4" H 2032 3246 50  0000 R CNN
+F 1 "3V6" H 2032 3155 50  0000 R CNN
+F 2 "PowerSupply:MR18650BatteryHolder" V 2150 3210 50  0001 C CNN
+F 3 "~" V 2150 3210 50  0001 C CNN
+	1    2150 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT2
+U 1 1 6104DBBA
+P 2150 2800
+F 0 "BT2" H 2032 2896 50  0000 R CNN
+F 1 "3V6" H 2032 2805 50  0000 R CNN
+F 2 "PowerSupply:MR18650BatteryHolder" V 2150 2860 50  0001 C CNN
+F 3 "~" V 2150 2860 50  0001 C CNN
+	1    2150 2800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 3650 2150 3700
+Wire Wire Line
+	2150 3250 2150 3300
+Wire Wire Line
+	3350 3150 3350 3300
+Connection ~ 3350 3300
+Wire Wire Line
+	2150 2900 2150 2950
+$Comp
+L Connector:TestPoint TP31
+U 1 1 5D77DF7D
+P 8100 4700
+F 0 "TP31" V 8054 4888 50  0000 L CNN
+F 1 "TestPoint" V 8145 4888 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded" H 8300 4700 50  0001 C CNN
+F 3 "~" H 8300 4700 50  0001 C CNN
+	1    8100 4700
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C1
+U 1 1 60E42F76
+P 4150 3750
+F 0 "C1" H 4035 3704 50  0000 R CNN
+F 1 "100n" H 4035 3795 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric_Pad1.15x1.40mm_HandSolder" H 4188 3600 50  0001 C CNN
+F 3 "~" H 4150 3750 50  0001 C CNN
+	1    4150 3750
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4150 2650 4150 2850
+Connection ~ 4150 2650
+Wire Wire Line
+	4150 2650 4350 2650
+Wire Wire Line
+	4150 3150 4150 3300
+Wire Wire Line
+	4150 3900 4150 4200
+Connection ~ 4150 4200
+Wire Wire Line
+	4150 4200 4350 4200
+Wire Wire Line
+	3350 3300 4150 3300
+Connection ~ 4150 3300
+Wire Wire Line
+	4150 3300 4150 3600
+$Comp
+L Device:Battery_Cell BT6
+U 1 1 60E59F0C
+P 6800 2850
+F 0 "BT6" H 6918 2946 50  0000 L CNN
+F 1 "12V" H 6918 2855 50  0000 L CNN
+F 2 "PowerSupply:27ABatteryHolder" V 6800 2910 50  0001 C CNN
+F 3 "~" V 6800 2910 50  0001 C CNN
+	1    6800 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT1
+U 1 1 60E5AA84
+P 6800 3400
+F 0 "BT1" H 6682 3496 50  0000 R CNN
+F 1 "12V" H 6682 3405 50  0000 R CNN
+F 2 "PowerSupply:27ABatteryHolder" V 6800 3460 50  0001 C CNN
+F 3 "~" V 6800 3460 50  0001 C CNN
+	1    6800 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT7
+U 1 1 60E5B66A
+P 6800 3950
+F 0 "BT7" H 6682 4046 50  0000 R CNN
+F 1 "12V" H 6682 3955 50  0000 R CNN
+F 2 "PowerSupply:27ABatteryHolder" V 6800 4010 50  0001 C CNN
+F 3 "~" V 6800 4010 50  0001 C CNN
+	1    6800 3950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Jumper:Jumper_2_Open JP1
+U 1 1 60E77BBB
+P 7200 2250
+F 0 "JP1" V 7154 2348 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7245 2348 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7200 2250 50  0001 C CNN
+F 3 "~" H 7200 2250 50  0001 C CNN
+	1    7200 2250
+	0    1    1    0   
+$EndComp
+$Comp
+L Jumper:Jumper_2_Open JP2
+U 1 1 60E79259
+P 7200 2800
+F 0 "JP2" V 7154 2898 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7245 2898 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7200 2800 50  0001 C CNN
+F 3 "~" H 7200 2800 50  0001 C CNN
+	1    7200 2800
+	0    1    1    0   
+$EndComp
+$Comp
+L Jumper:Jumper_2_Open JP3
+U 1 1 60E7A521
+P 7200 3350
+F 0 "JP3" V 7154 3448 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7245 3448 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7200 3350 50  0001 C CNN
+F 3 "~" H 7200 3350 50  0001 C CNN
+	1    7200 3350
+	0    1    1    0   
+$EndComp
+$Comp
+L Jumper:Jumper_2_Open JP4
+U 1 1 60E7B3E5
+P 7200 3900
+F 0 "JP4" V 7154 3998 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7245 3998 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7200 3900 50  0001 C CNN
+F 3 "~" H 7200 3900 50  0001 C CNN
+	1    7200 3900
+	0    1    1    0   
+$EndComp
+$Comp
+L Jumper:Jumper_2_Open JP5
+U 1 1 60E7E191
+P 7200 4450
+F 0 "JP5" V 7154 4548 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7245 4548 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7200 4450 50  0001 C CNN
+F 3 "~" H 7200 4450 50  0001 C CNN
+	1    7200 4450
+	0    1    1    0   
+$EndComp
+$Comp
+L Jumper:Jumper_2_Open JP6
+U 1 1 60E7E197
+P 7200 5000
+F 0 "JP6" V 7154 5098 50  0000 L CNN
+F 1 "Jumper_2_Open" V 7245 5098 50  0000 L CNN
+F 2 "Jumper:SolderJumper-2_P1.3mm_Open_Pad1.0x1.5mm" H 7200 5000 50  0001 C CNN
+F 3 "~" H 7200 5000 50  0001 C CNN
+	1    7200 5000
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:Battery_Cell BT8
+U 1 1 60E707F2
+P 6800 4500
+F 0 "BT8" H 6682 4596 50  0000 R CNN
+F 1 "12V" H 6682 4505 50  0000 R CNN
+F 2 "PowerSupply:27ABatteryHolder" V 6800 4560 50  0001 C CNN
+F 3 "~" V 6800 4560 50  0001 C CNN
+	1    6800 4500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT9
+U 1 1 60E707F8
+P 6800 5050
+F 0 "BT9" H 6682 5146 50  0000 R CNN
+F 1 "12V" H 6682 5055 50  0000 R CNN
+F 2 "PowerSupply:27ABatteryHolder" V 6800 5110 50  0001 C CNN
+F 3 "~" V 6800 5110 50  0001 C CNN
+	1    6800 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR01
+U 1 1 60EA85C5
+P 6800 5350
+F 0 "#PWR01" H 6800 5100 50  0001 C CNN
+F 1 "GND" H 6805 5177 50  0000 C CNN
+F 2 "" H 6800 5350 50  0001 C CNN
+F 3 "" H 6800 5350 50  0001 C CNN
+	1    6800 5350
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	6800 5150 6800 5250
+Wire Wire Line
+	7200 5200 7200 5250
+Wire Wire Line
+	7200 5250 6800 5250
+Connection ~ 6800 5250
+Wire Wire Line
+	6800 5250 6800 5350
+Wire Wire Line
+	7200 4250 7200 4150
+Wire Wire Line
+	6800 4300 6800 4150
+Wire Wire Line
+	7200 3700 7200 3600
+Wire Wire Line
+	6800 3750 6800 3600
+Wire Wire Line
+	7200 3150 7200 3050
+Wire Wire Line
+	6800 3200 6800 3050
+Wire Wire Line
+	7200 2050 7200 1900
+Wire Wire Line
+	7200 1900 6800 1900
+Wire Wire Line
+	6800 1900 6800 2100
+Wire Wire Line
+	7200 2450 7200 2500
+Wire Wire Line
+	6800 2400 6800 2500
+Wire Wire Line
+	7200 2500 6800 2500
+Connection ~ 7200 2500
+Wire Wire Line
+	7200 2500 7200 2600
+Connection ~ 6800 2500
+Wire Wire Line
+	6800 2500 6800 2650
+Wire Wire Line
+	7200 3050 6800 3050
+Connection ~ 7200 3050
+Wire Wire Line
+	7200 3050 7200 3000
+Connection ~ 6800 3050
+Wire Wire Line
+	6800 3050 6800 2950
+Wire Wire Line
+	7200 3600 6800 3600
+Connection ~ 7200 3600
+Wire Wire Line
+	7200 3600 7200 3550
+Connection ~ 6800 3600
+Wire Wire Line
+	6800 3600 6800 3500
+Wire Wire Line
+	7200 4150 6800 4150
+Connection ~ 7200 4150
+Wire Wire Line
+	7200 4150 7200 4100
+Connection ~ 6800 4150
+Wire Wire Line
+	6800 4150 6800 4050
+Wire Wire Line
+	6800 4850 6800 4700
+Wire Wire Line
+	7200 4800 7200 4700
+Wire Wire Line
+	7200 4700 6800 4700
+Connection ~ 7200 4700
+Wire Wire Line
+	7200 4700 7200 4650
+Connection ~ 6800 4700
+Wire Wire Line
+	6800 4700 6800 4600
+Wire Wire Line
+	7200 4700 8100 4700
+Wire Wire Line
+	8100 4150 7200 4150
+Wire Wire Line
+	8100 3600 7200 3600
+Wire Wire Line
+	8100 3050 7200 3050
+Wire Wire Line
+	8100 2500 7200 2500
+$Comp
+L Connector:TestPoint TP4
+U 1 1 60EF82F9
+P 8100 4150
+F 0 "TP4" V 8054 4338 50  0000 L CNN
+F 1 "TestPoint" V 8145 4338 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded" H 8300 4150 50  0001 C CNN
+F 3 "~" H 8300 4150 50  0001 C CNN
+	1    8100 4150
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:TestPoint TP3
+U 1 1 60EFA153
+P 8100 3600
+F 0 "TP3" V 8054 3788 50  0000 L CNN
+F 1 "TestPoint" V 8145 3788 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded" H 8300 3600 50  0001 C CNN
+F 3 "~" H 8300 3600 50  0001 C CNN
+	1    8100 3600
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:TestPoint TP2
+U 1 1 60EFC13D
+P 8100 3050
+F 0 "TP2" V 8054 3238 50  0000 L CNN
+F 1 "TestPoint" V 8145 3238 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded" H 8300 3050 50  0001 C CNN
+F 3 "~" H 8300 3050 50  0001 C CNN
+	1    8100 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L Connector:TestPoint TP1
+U 1 1 60EFDE02
+P 8100 2500
+F 0 "TP1" V 8054 2688 50  0000 L CNN
+F 1 "TestPoint" V 8145 2688 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded" H 8300 2500 50  0001 C CNN
+F 3 "~" H 8300 2500 50  0001 C CNN
+	1    8100 2500
+	0    1    1    0   
+$EndComp
+$Comp
+L Mechanical:MountingHole_Pad H1
+U 1 1 60F12C7E
+P 3800 6050
+F 0 "H1" H 3900 6099 50  0000 L CNN
+F 1 "MountingHole_Pad" H 3900 6008 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm_Pad" H 3800 6050 50  0001 C CNN
+F 3 "~" H 3800 6050 50  0001 C CNN
+	1    3800 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR02
+U 1 1 60F141BA
+P 3800 6200
+F 0 "#PWR02" H 3800 5950 50  0001 C CNN
+F 1 "GND" H 3805 6027 50  0000 C CNN
+F 2 "" H 3800 6200 50  0001 C CNN
+F 3 "" H 3800 6200 50  0001 C CNN
+	1    3800 6200
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 6200 3800 6150
+$Comp
+L Mechanical:MountingHole_Pad H2
+U 1 1 60F188D7
+P 4750 6050
+F 0 "H2" H 4850 6099 50  0000 L CNN
+F 1 "MountingHole_Pad" H 4850 6008 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm_Pad" H 4750 6050 50  0001 C CNN
+F 3 "~" H 4750 6050 50  0001 C CNN
+	1    4750 6050
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR03
+U 1 1 60F188DD
+P 4750 6200
+F 0 "#PWR03" H 4750 5950 50  0001 C CNN
+F 1 "GND" H 4755 6027 50  0000 C CNN
+F 2 "" H 4750 6200 50  0001 C CNN
+F 3 "" H 4750 6200 50  0001 C CNN
+	1    4750 6200
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4750 6200 4750 6150
+$Comp
+L Mechanical:MountingHole_Pad H3
+U 1 1 60F1AA98
+P 3800 6600
+F 0 "H3" H 3900 6649 50  0000 L CNN
+F 1 "MountingHole_Pad" H 3900 6558 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm_Pad" H 3800 6600 50  0001 C CNN
+F 3 "~" H 3800 6600 50  0001 C CNN
+	1    3800 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR04
+U 1 1 60F1AA9E
+P 3800 6750
+F 0 "#PWR04" H 3800 6500 50  0001 C CNN
+F 1 "GND" H 3805 6577 50  0000 C CNN
+F 2 "" H 3800 6750 50  0001 C CNN
+F 3 "" H 3800 6750 50  0001 C CNN
+	1    3800 6750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3800 6750 3800 6700
+$Comp
+L Mechanical:MountingHole_Pad H4
+U 1 1 60F1CE5F
+P 4750 6600
+F 0 "H4" H 4850 6649 50  0000 L CNN
+F 1 "MountingHole_Pad" H 4850 6558 50  0000 L CNN
+F 2 "MountingHole:MountingHole_3.5mm_Pad" H 4750 6600 50  0001 C CNN
+F 3 "~" H 4750 6600 50  0001 C CNN
+	1    4750 6600
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR05
+U 1 1 60F1CE65
+P 4750 6750
+F 0 "#PWR05" H 4750 6500 50  0001 C CNN
+F 1 "GND" H 4755 6577 50  0000 C CNN
+F 2 "" H 4750 6750 50  0001 C CNN
+F 3 "" H 4750 6750 50  0001 C CNN
+	1    4750 6750
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4750 6750 4750 6700
+$EndSCHEMATC
