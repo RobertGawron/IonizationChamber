@@ -1,0 +1,704 @@
+EESchema Schematic File Version 4
+EELAYER 30 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 3 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:Opamp_Dual_Generic U?
+U 1 1 60F050C2
+P 2550 3050
+AR Path="/60F050C2" Ref="U?"  Part="1" 
+AR Path="/60EF78C6/60F050C2" Ref="U3"  Part="1" 
+F 0 "U3" H 2550 3417 50  0000 C CNN
+F 1 "LMC662" H 2550 3326 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 2550 3050 50  0001 C CNN
+F 3 "~" H 2550 3050 50  0001 C CNN
+	1    2550 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Opamp_Dual_Generic U?
+U 2 1 60F050C8
+P 3650 3050
+AR Path="/60F050C8" Ref="U?"  Part="2" 
+AR Path="/60EF78C6/60F050C8" Ref="U3"  Part="2" 
+F 0 "U3" H 3650 3417 50  0000 C CNN
+F 1 "LMC662" H 3650 3326 50  0000 C CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 3650 3050 50  0001 C CNN
+F 3 "~" H 3650 3050 50  0001 C CNN
+	2    3650 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Opamp_Dual_Generic U?
+U 3 1 60F050CE
+P 8350 3550
+AR Path="/60F050CE" Ref="U?"  Part="3" 
+AR Path="/60EF78C6/60F050CE" Ref="U3"  Part="3" 
+F 0 "U3" H 8162 3596 50  0000 R CNN
+F 1 "LMC662" H 8162 3505 50  0000 R CNN
+F 2 "Package_DIP:DIP-8_W7.62mm" H 8350 3550 50  0001 C CNN
+F 3 "~" H 8350 3550 50  0001 C CNN
+	3    8350 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 60F050D4
+P 2550 3350
+AR Path="/60F050D4" Ref="R?"  Part="1" 
+AR Path="/60EF78C6/60F050D4" Ref="R11"  Part="1" 
+F 0 "R11" V 2665 3350 50  0000 C CNN
+F 1 "2*50G" V 2756 3350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 2480 3350 50  0001 C CNN
+F 3 "~" H 2550 3350 50  0001 C CNN
+	1    2550 3350
+	0    1    1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F050DA
+P 2550 3700
+AR Path="/60F050DA" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F050DA" Ref="C10"  Part="1" 
+F 0 "C10" V 2710 3700 50  0000 C CNN
+F 1 "not mounted" V 2801 3700 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 2588 3550 50  0001 C CNN
+F 3 "~" H 2550 3700 50  0001 C CNN
+	1    2550 3700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	2250 3150 2200 3150
+Wire Wire Line
+	2900 3050 2850 3050
+$Comp
+L Device:R R?
+U 1 1 60F050E2
+P 3250 3900
+AR Path="/60F050E2" Ref="R?"  Part="1" 
+AR Path="/60EF78C6/60F050E2" Ref="R14"  Part="1" 
+F 0 "R14" H 3319 3946 50  0000 L CNN
+F 1 "10k" H 3319 3855 50  0000 L CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 3180 3900 50  0001 C CNN
+F 3 "~" H 3250 3900 50  0001 C CNN
+	1    3250 3900
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 60F050E8
+P 3650 3450
+AR Path="/60F050E8" Ref="R?"  Part="1" 
+AR Path="/60EF78C6/60F050E8" Ref="R13"  Part="1" 
+F 0 "R13" V 3857 3450 50  0000 C CNN
+F 1 "120k" V 3766 3450 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 3580 3450 50  0001 C CNN
+F 3 "~" H 3650 3450 50  0001 C CNN
+	1    3650 3450
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F050EE
+P 3250 4250
+AR Path="/60F050EE" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F050EE" Ref="C14"  Part="1" 
+F 0 "C14" H 3135 4296 50  0000 R CNN
+F 1 "0R resistor" H 3135 4205 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3288 4100 50  0001 C CNN
+F 3 "~" H 3250 4250 50  0001 C CNN
+	1    3250 4250
+	-1   0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60F050F4
+P 3250 4450
+AR Path="/60F050F4" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F050F4" Ref="#PWR028"  Part="1" 
+F 0 "#PWR028" H 3250 4200 50  0001 C CNN
+F 1 "GND" H 3255 4277 50  0000 C CNN
+F 2 "" H 3250 4450 50  0001 C CNN
+F 3 "" H 3250 4450 50  0001 C CNN
+	1    3250 4450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	3250 4450 3250 4400
+Wire Wire Line
+	3250 4100 3250 4050
+Wire Wire Line
+	3500 3450 3250 3450
+Wire Wire Line
+	3250 3450 3250 3650
+Wire Wire Line
+	3250 3450 3250 3150
+Wire Wire Line
+	3250 3150 3350 3150
+Connection ~ 3250 3450
+Wire Wire Line
+	3950 3050 4000 3050
+Wire Wire Line
+	4000 3050 4000 3450
+Wire Wire Line
+	4000 3450 3800 3450
+Wire Wire Line
+	2250 2950 2000 2950
+$Comp
+L Device:Opamp_Dual_Generic U?
+U 1 1 60F05105
+P 5200 3050
+AR Path="/60F05105" Ref="U?"  Part="1" 
+AR Path="/60EF78C6/60F05105" Ref="U4"  Part="1" 
+F 0 "U4" H 5200 3417 50  0000 C CNN
+F 1 "LM358" H 5200 3326 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 5200 3050 50  0001 C CNN
+F 3 "~" H 5200 3050 50  0001 C CNN
+	1    5200 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Opamp_Dual_Generic U?
+U 2 1 60F0510B
+P 6050 3050
+AR Path="/60F0510B" Ref="U?"  Part="2" 
+AR Path="/60EF78C6/60F0510B" Ref="U4"  Part="2" 
+F 0 "U4" H 6050 3417 50  0000 C CNN
+F 1 "LM358" H 6050 3326 50  0000 C CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 6050 3050 50  0001 C CNN
+F 3 "~" H 6050 3050 50  0001 C CNN
+	2    6050 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Opamp_Dual_Generic U?
+U 3 1 60F05111
+P 9750 3550
+AR Path="/60F05111" Ref="U?"  Part="3" 
+AR Path="/60EF78C6/60F05111" Ref="U4"  Part="3" 
+F 0 "U4" H 9562 3596 50  0000 R CNN
+F 1 "LM358" H 9562 3505 50  0000 R CNN
+F 2 "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm" H 9750 3550 50  0001 C CNN
+F 3 "~" H 9750 3550 50  0001 C CNN
+	3    9750 3550
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F05117
+P 8500 3200
+AR Path="/60F05117" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F05117" Ref="C7"  Part="1" 
+F 0 "C7" H 8385 3154 50  0000 R CNN
+F 1 "100n" H 8385 3245 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8538 3050 50  0001 C CNN
+F 3 "~" H 8500 3200 50  0001 C CNN
+	1    8500 3200
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F0511D
+P 9950 3200
+AR Path="/60F0511D" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F0511D" Ref="C8"  Part="1" 
+F 0 "C8" H 9835 3154 50  0000 R CNN
+F 1 "100n" H 9835 3245 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 9988 3050 50  0001 C CNN
+F 3 "~" H 9950 3200 50  0001 C CNN
+	1    9950 3200
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	9800 3200 9650 3200
+Wire Wire Line
+	9650 3200 9650 3250
+Wire Wire Line
+	9800 3900 9650 3900
+Wire Wire Line
+	9650 3900 9650 3850
+Wire Wire Line
+	9650 3900 9650 4000
+Connection ~ 9650 3900
+Wire Wire Line
+	9650 3200 9650 3100
+Connection ~ 9650 3200
+Wire Wire Line
+	8250 3200 8250 3250
+Wire Wire Line
+	8250 3100 8250 3200
+Connection ~ 8250 3200
+Wire Wire Line
+	8250 3900 8250 3850
+Wire Wire Line
+	8250 4000 8250 3900
+Connection ~ 8250 3900
+Wire Wire Line
+	2200 3150 2200 3350
+Wire Wire Line
+	2900 3700 2700 3700
+Wire Wire Line
+	2900 3050 2900 3350
+Wire Wire Line
+	2700 3350 2900 3350
+Connection ~ 2900 3350
+Wire Wire Line
+	2900 3350 2900 3700
+Wire Wire Line
+	2400 3350 2200 3350
+Connection ~ 2200 3350
+Wire Wire Line
+	2400 3700 2200 3700
+Wire Wire Line
+	2200 3350 2200 3700
+Wire Wire Line
+	5750 3150 5700 3150
+Wire Wire Line
+	5700 3150 5700 3350
+Wire Wire Line
+	5700 3350 6400 3350
+Wire Wire Line
+	6400 3350 6400 3050
+Wire Wire Line
+	6400 3050 6350 3050
+$Comp
+L power:GND #PWR?
+U 1 1 60F05140
+P 6650 3300
+AR Path="/60F05140" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F05140" Ref="#PWR023"  Part="1" 
+F 0 "#PWR023" H 6650 3050 50  0001 C CNN
+F 1 "GND" H 6655 3127 50  0000 C CNN
+F 2 "" H 6650 3300 50  0001 C CNN
+F 3 "" H 6650 3300 50  0001 C CNN
+	1    6650 3300
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_Coaxial J?
+U 1 1 60F05146
+P 6650 3050
+AR Path="/60F05146" Ref="J?"  Part="1" 
+AR Path="/60EF78C6/60F05146" Ref="J4"  Part="1" 
+F 0 "J4" V 6550 3200 50  0000 L CNN
+F 1 "Conn_Coaxial" V 6650 3200 50  0000 L CNN
+F 2 "Connector_Coaxial:SMA_Molex_73251-2200_Horizontal" H 6650 3050 50  0001 C CNN
+F 3 " ~" H 6650 3050 50  0001 C CNN
+	1    6650 3050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6450 3050 6400 3050
+Connection ~ 6400 3050
+Wire Wire Line
+	6650 3300 6650 3250
+$Comp
+L Device:R R?
+U 1 1 60F0514F
+P 4600 3150
+AR Path="/60F0514F" Ref="R?"  Part="1" 
+AR Path="/60EF78C6/60F0514F" Ref="R10"  Part="1" 
+F 0 "R10" V 4485 3150 50  0000 C CNN
+F 1 "10k" V 4394 3150 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 4530 3150 50  0001 C CNN
+F 3 "~" H 4600 3150 50  0001 C CNN
+	1    4600 3150
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 60F05155
+P 5200 3350
+AR Path="/60F05155" Ref="R?"  Part="1" 
+AR Path="/60EF78C6/60F05155" Ref="R12"  Part="1" 
+F 0 "R12" V 5085 3350 50  0000 C CNN
+F 1 "120k" V 4994 3350 50  0000 C CNN
+F 2 "Resistor_SMD:R_0805_2012Metric" V 5130 3350 50  0001 C CNN
+F 3 "~" H 5200 3350 50  0001 C CNN
+	1    5200 3350
+	0    1    -1   0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F0515B
+P 4250 3150
+AR Path="/60F0515B" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F0515B" Ref="C6"  Part="1" 
+F 0 "C6" H 4135 3196 50  0000 R CNN
+F 1 "0R resistor" H 4135 3105 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 4288 3000 50  0001 C CNN
+F 3 "~" H 4250 3150 50  0001 C CNN
+	1    4250 3150
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	5050 3350 4800 3350
+Wire Wire Line
+	5600 3350 5350 3350
+Wire Wire Line
+	4900 3150 4800 3150
+Wire Wire Line
+	4800 3150 4800 3350
+Wire Wire Line
+	5600 3350 5600 3050
+Wire Wire Line
+	5600 3050 5500 3050
+Wire Wire Line
+	5600 3050 5700 3050
+Wire Wire Line
+	5700 3050 5700 2950
+Wire Wire Line
+	5700 2950 5750 2950
+Connection ~ 5600 3050
+Wire Wire Line
+	2900 3050 3050 3050
+Wire Wire Line
+	3050 3050 3050 2950
+Wire Wire Line
+	3050 2950 3350 2950
+Connection ~ 2900 3050
+$Comp
+L power:GND #PWR?
+U 1 1 60F0516F
+P 2000 3250
+AR Path="/60F0516F" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F0516F" Ref="#PWR022"  Part="1" 
+F 0 "#PWR022" H 2000 3000 50  0001 C CNN
+F 1 "GND" H 2005 3077 50  0000 C CNN
+F 2 "" H 2000 3250 50  0001 C CNN
+F 3 "" H 2000 3250 50  0001 C CNN
+	1    2000 3250
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	2000 3250 2000 2950
+$Comp
+L Sensor:Nuclear-Radiation_Detector V?
+U 1 1 60F05176
+P 1850 2750
+AR Path="/60F05176" Ref="V?"  Part="1" 
+AR Path="/60EF78C6/60F05176" Ref="V1"  Part="1" 
+F 0 "V1" V 1500 2700 50  0000 R CNN
+F 1 "Nuclear-Radiation_Detector" V 1612 2705 50  0000 R CNN
+F 2 "IonizationChamber:IonizationChamberSensor" H 2050 2850 50  0001 C CNN
+F 3 "~" H 1850 2750 50  0001 C CNN
+	1    1850 2750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2200 3150 1850 3150
+Wire Wire Line
+	1850 3150 1850 2950
+Connection ~ 2200 3150
+$Comp
+L power:+BATT #PWR?
+U 1 1 60F0517F
+P 8250 3100
+AR Path="/60F0517F" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F0517F" Ref="#PWR020"  Part="1" 
+F 0 "#PWR020" H 8250 2950 50  0001 C CNN
+F 1 "+BATT" H 8265 3273 50  0000 C CNN
+F 2 "" H 8250 3100 50  0001 C CNN
+F 3 "" H 8250 3100 50  0001 C CNN
+	1    8250 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+BATT #PWR?
+U 1 1 60F05185
+P 9650 3100
+AR Path="/60F05185" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F05185" Ref="#PWR021"  Part="1" 
+F 0 "#PWR021" H 9650 2950 50  0001 C CNN
+F 1 "+BATT" H 9665 3273 50  0000 C CNN
+F 2 "" H 9650 3100 50  0001 C CNN
+F 3 "" H 9650 3100 50  0001 C CNN
+	1    9650 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:-BATT #PWR?
+U 1 1 60F0518B
+P 8250 4000
+AR Path="/60F0518B" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F0518B" Ref="#PWR026"  Part="1" 
+F 0 "#PWR026" H 8250 3850 50  0001 C CNN
+F 1 "-BATT" H 8265 4173 50  0000 C CNN
+F 2 "" H 8250 4000 50  0001 C CNN
+F 3 "" H 8250 4000 50  0001 C CNN
+	1    8250 4000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:-BATT #PWR?
+U 1 1 60F05191
+P 9650 4000
+AR Path="/60F05191" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F05191" Ref="#PWR027"  Part="1" 
+F 0 "#PWR027" H 9650 3850 50  0001 C CNN
+F 1 "-BATT" H 9665 4173 50  0000 C CNN
+F 2 "" H 9650 4000 50  0001 C CNN
+F 3 "" H 9650 4000 50  0001 C CNN
+	1    9650 4000
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+BATT #PWR?
+U 1 1 60F05197
+P 1850 1900
+AR Path="/60F05197" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F05197" Ref="#PWR018"  Part="1" 
+F 0 "#PWR018" H 1850 1750 50  0001 C CNN
+F 1 "+BATT" H 1865 2073 50  0000 C CNN
+F 2 "" H 1850 1900 50  0001 C CNN
+F 3 "" H 1850 1900 50  0001 C CNN
+	1    1850 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60F0519D
+P 4600 2850
+AR Path="/60F0519D" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F0519D" Ref="#PWR019"  Part="1" 
+F 0 "#PWR019" H 4600 2600 50  0001 C CNN
+F 1 "GND" H 4605 2677 50  0000 C CNN
+F 2 "" H 4600 2850 50  0001 C CNN
+F 3 "" H 4600 2850 50  0001 C CNN
+	1    4600 2850
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4900 2950 4800 2950
+Wire Wire Line
+	4800 2950 4800 2750
+Wire Wire Line
+	4800 2750 4600 2750
+Wire Wire Line
+	4600 2750 4600 2850
+Wire Wire Line
+	4800 3150 4750 3150
+Connection ~ 4800 3150
+Wire Wire Line
+	4450 3150 4400 3150
+Wire Wire Line
+	4100 3150 4050 3150
+Wire Wire Line
+	4050 3150 4050 3050
+Wire Wire Line
+	4050 3050 4000 3050
+Connection ~ 4000 3050
+Wire Wire Line
+	6400 3050 6400 2850
+Text GLabel 6400 2850 1    50   Input ~ 0
+analog_output
+$Comp
+L Device:C C?
+U 1 1 60F051B0
+P 8500 3900
+AR Path="/60F051B0" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F051B0" Ref="C12"  Part="1" 
+F 0 "C12" H 8385 3854 50  0000 R CNN
+F 1 "100n" H 8385 3945 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 8538 3750 50  0001 C CNN
+F 3 "~" H 8500 3900 50  0001 C CNN
+	1    8500 3900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60F051B6
+P 8850 3600
+AR Path="/60F051B6" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F051B6" Ref="#PWR025"  Part="1" 
+F 0 "#PWR025" H 8850 3350 50  0001 C CNN
+F 1 "GND" H 8855 3427 50  0000 C CNN
+F 2 "" H 8850 3600 50  0001 C CNN
+F 3 "" H 8850 3600 50  0001 C CNN
+	1    8850 3600
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	8250 3200 8350 3200
+Wire Wire Line
+	8250 3900 8350 3900
+Wire Wire Line
+	8650 3900 8750 3900
+Wire Wire Line
+	8750 3900 8750 3550
+Wire Wire Line
+	8750 3200 8650 3200
+Wire Wire Line
+	8850 3600 8850 3550
+Wire Wire Line
+	8850 3550 8750 3550
+Connection ~ 8750 3550
+Wire Wire Line
+	8750 3550 8750 3200
+$Comp
+L Device:C C?
+U 1 1 60F051C5
+P 9950 3900
+AR Path="/60F051C5" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F051C5" Ref="C13"  Part="1" 
+F 0 "C13" H 9835 3854 50  0000 R CNN
+F 1 "100n" H 9835 3945 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 9988 3750 50  0001 C CNN
+F 3 "~" H 9950 3900 50  0001 C CNN
+	1    9950 3900
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60F051CB
+P 10300 3550
+AR Path="/60F051CB" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F051CB" Ref="#PWR024"  Part="1" 
+F 0 "#PWR024" H 10300 3300 50  0001 C CNN
+F 1 "GND" H 10305 3377 50  0000 C CNN
+F 2 "" H 10300 3550 50  0001 C CNN
+F 3 "" H 10300 3550 50  0001 C CNN
+	1    10300 3550
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	10100 3900 10200 3900
+Wire Wire Line
+	10200 3900 10200 3500
+Wire Wire Line
+	10200 3200 10100 3200
+Wire Wire Line
+	10300 3550 10300 3500
+Wire Wire Line
+	10300 3500 10200 3500
+Connection ~ 10200 3500
+Wire Wire Line
+	10200 3500 10200 3200
+$Comp
+L Connector:TestPoint TP?
+U 1 1 60F051D8
+P 2150 2300
+AR Path="/60F051D8" Ref="TP?"  Part="1" 
+AR Path="/60EF78C6/60F051D8" Ref="TP6"  Part="1" 
+F 0 "TP6" H 2150 2625 50  0000 C CNN
+F 1 "TestPoint" H 2150 2534 50  0000 C CNN
+F 2 "TestPoint:TestPoint_Loop_D2.60mm_Drill0.9mm_Beaded" H 2350 2300 50  0001 C CNN
+F 3 "~" H 2350 2300 50  0001 C CNN
+	1    2150 2300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2150 2300 2150 2350
+Wire Wire Line
+	2150 2350 1850 2350
+Connection ~ 1850 2350
+Wire Wire Line
+	1850 2350 1850 2550
+$Comp
+L Device:C C?
+U 1 1 60F051E2
+P 5200 3750
+AR Path="/60F051E2" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F051E2" Ref="C11"  Part="1" 
+F 0 "C11" V 5360 3750 50  0000 C CNN
+F 1 "10n" V 5451 3750 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 5238 3600 50  0001 C CNN
+F 3 "~" H 5200 3750 50  0001 C CNN
+	1    5200 3750
+	0    -1   1    0   
+$EndComp
+$Comp
+L Device:C C?
+U 1 1 60F051E8
+P 3650 3650
+AR Path="/60F051E8" Ref="C?"  Part="1" 
+AR Path="/60EF78C6/60F051E8" Ref="C9"  Part="1" 
+F 0 "C9" V 3810 3650 50  0000 C CNN
+F 1 "10n" V 3901 3650 50  0000 C CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 3688 3500 50  0001 C CNN
+F 3 "~" H 3650 3650 50  0001 C CNN
+	1    3650 3650
+	0    -1   1    0   
+$EndComp
+Wire Wire Line
+	3800 3650 4000 3650
+Wire Wire Line
+	4000 3650 4000 3450
+Connection ~ 4000 3450
+Wire Wire Line
+	3500 3650 3250 3650
+Connection ~ 3250 3650
+Wire Wire Line
+	3250 3650 3250 3750
+Wire Wire Line
+	5050 3750 4800 3750
+Wire Wire Line
+	4800 3750 4800 3350
+Connection ~ 4800 3350
+Wire Wire Line
+	5350 3750 5600 3750
+Wire Wire Line
+	5600 3750 5600 3350
+Connection ~ 5600 3350
+Wire Wire Line
+	1850 1900 1850 2350
+$Comp
+L Device:RF_Shield_One_Piece J3
+U 1 1 60F3BFED
+P 5000 4950
+F 0 "J3" H 5630 4939 50  0000 L CNN
+F 1 "RF_Shield_One_Piece" H 5630 4848 50  0000 L CNN
+F 2 "IonizationChamber:RFShield" H 5000 4850 50  0001 C CNN
+F 3 "~" H 5000 4850 50  0001 C CNN
+	1    5000 4950
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 60F3DE7F
+P 5000 5400
+AR Path="/60F3DE7F" Ref="#PWR?"  Part="1" 
+AR Path="/60EF78C6/60F3DE7F" Ref="#PWR011"  Part="1" 
+F 0 "#PWR011" H 5000 5150 50  0001 C CNN
+F 1 "GND" H 5005 5227 50  0000 C CNN
+F 2 "" H 5000 5400 50  0001 C CNN
+F 3 "" H 5000 5400 50  0001 C CNN
+	1    5000 5400
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	5000 5400 5000 5350
+$Comp
+L Connector:Conn_01x03_Male J5
+U 1 1 60F51C72
+P 4300 1150
+F 0 "J5" H 4408 1431 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 4408 1340 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 4300 1150 50  0001 C CNN
+F 3 "~" H 4300 1150 50  0001 C CNN
+	1    4300 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x03_Male J6
+U 1 1 60F56C32
+P 4300 1800
+F 0 "J6" H 4408 2081 50  0000 C CNN
+F 1 "Conn_01x03_Male" H 4408 1990 50  0000 C CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x03_P2.54mm_Vertical" H 4300 1800 50  0001 C CNN
+F 3 "~" H 4300 1800 50  0001 C CNN
+	1    4300 1800
+	1    0    0    -1  
+$EndComp
+$EndSCHEMATC
