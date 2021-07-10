@@ -323,8 +323,6 @@ $EndComp
 Wire Wire Line
 	4700 6150 4400 6150
 Wire Wire Line
-	4400 4650 4600 4650
-Wire Wire Line
 	4600 5050 4600 5000
 Wire Wire Line
 	4600 5400 4600 5350
@@ -437,13 +435,9 @@ Wire Wire Line
 Wire Wire Line
 	5800 2950 6250 2950
 Wire Wire Line
-	5800 3050 6250 3050
+	5800 3250 5950 3250
 Wire Wire Line
-	5800 3150 6250 3150
-Wire Wire Line
-	5800 3250 6250 3250
-Wire Wire Line
-	5800 3350 6250 3350
+	5800 3350 6050 3350
 Wire Wire Line
 	5800 3450 6250 3450
 Wire Wire Line
@@ -504,6 +498,68 @@ F 3 "~" H 2900 4850 50  0001 C CNN
 	1    2900 4850
 	0    -1   -1   0   
 $EndComp
-Text Notes 4900 4250 0    157  ~ 31
-add piezo
+Text Notes 6950 4600 0    71   ~ 14
+LCD connector
+$Comp
+L Device:Buzzer BZ1
+U 1 1 60EA3267
+P 4500 3100
+F 0 "BZ1" H 4652 3129 50  0000 L CNN
+F 1 "Buzzer" H 4652 3038 50  0000 L CNN
+F 2 "IonizationChamber:LPT1440S-HS-05-4.0-12-R" V 4475 3200 50  0001 C CNN
+F 3 "~" V 4475 3200 50  0001 C CNN
+	1    4500 3100
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Conn_01x04_Female J7
+U 1 1 60EA942C
+P 7050 4800
+F 0 "J7" H 7078 4776 50  0000 L CNN
+F 1 "Conn_01x04_Female" H 7078 4685 50  0000 L CNN
+F 2 "Connector_PinSocket_2.54mm:PinSocket_1x04_P2.54mm_Vertical" H 7050 4800 50  0001 C CNN
+F 3 "~" H 7050 4800 50  0001 C CNN
+	1    7050 4800
+	1    0    0    -1  
+$EndComp
+Text GLabel 5150 4150 0    50   Input ~ 0
+CHAMBER_VOLTAGE_MEASSURE_ENA
+Text GLabel 5150 4050 0    50   Input ~ 0
+CHAMBER_VOLTAGE_MEASSURE_VALUE
+Text GLabel 5150 3850 0    50   Input ~ 0
+BATTERY_MEASSURE_ENA
+Text GLabel 5150 3950 0    50   Input ~ 0
+BATTERY_MEASSURE_VALUE
+Wire Wire Line
+	5150 3850 5850 3850
+Wire Wire Line
+	5850 3850 5850 3050
+Wire Wire Line
+	5800 3050 5850 3050
+Connection ~ 5850 3050
+Wire Wire Line
+	5850 3050 6250 3050
+Wire Wire Line
+	5150 3950 5900 3950
+Wire Wire Line
+	5900 3950 5900 3150
+Wire Wire Line
+	5800 3150 5900 3150
+Connection ~ 5900 3150
+Wire Wire Line
+	5900 3150 6250 3150
+Wire Wire Line
+	5150 4050 5950 4050
+Wire Wire Line
+	5950 4050 5950 3250
+Connection ~ 5950 3250
+Wire Wire Line
+	5950 3250 6250 3250
+Wire Wire Line
+	5150 4150 6050 4150
+Wire Wire Line
+	6050 4150 6050 3350
+Connection ~ 6050 3350
+Wire Wire Line
+	6050 3350 6250 3350
 $EndSCHEMATC
