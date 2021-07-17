@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 4
+Sheet 3 5
 Title ""
 Date ""
 Rev ""
@@ -697,8 +697,8 @@ U 1 1 60EF1E97
 P 2300 6000
 AR Path="/5CF2BB44/60EF1E97" Ref="Q?"  Part="1" 
 AR Path="/60EF78C6/60EF1E97" Ref="Q4"  Part="1" 
-F 0 "Q4" H 1850 6300 50  0000 L CNN
-F 1 "Q_NMOS_GDS" H 1850 6200 50  0000 L CNN
+F 0 "Q4" H 2000 5850 50  0000 L CNN
+F 1 "Q_NMOS_GDS" H 1800 5750 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 2500 6100 50  0001 C CNN
 F 3 "~" H 2300 6000 50  0001 C CNN
 	1    2300 6000
@@ -773,8 +773,6 @@ Wire Wire Line
 	2800 5450 2800 5500
 Wire Wire Line
 	2800 5800 2800 5900
-Wire Wire Line
-	2800 5900 3050 5900
 Connection ~ 2800 5900
 Wire Wire Line
 	2800 5900 2800 5950
@@ -782,8 +780,6 @@ Wire Wire Line
 	2800 6250 2800 6300
 Wire Wire Line
 	2400 6200 2400 6300
-Wire Wire Line
-	2100 6000 1900 6000
 Text Label 1450 800  0    50   ~ 0
 CHAMBER_VOLTAGE
 Text Label 2800 4750 0    50   ~ 0
@@ -795,8 +791,6 @@ CHAMBER_VOLTAGE_MEASSURE_ENA
 Wire Wire Line
 	2800 4850 2800 4750
 Connection ~ 2800 4850
-Text GLabel 3050 5900 2    50   Input ~ 0
-CHAMBER_VOLTAGE_MEASSURE_VALUE
 $Comp
 L Device:R R?
 U 1 1 60F70F0A
@@ -829,8 +823,8 @@ U 1 1 60F70F16
 P 6250 5900
 AR Path="/5CF2BB44/60F70F16" Ref="Q?"  Part="1" 
 AR Path="/60EF78C6/60F70F16" Ref="Q3"  Part="1" 
-F 0 "Q3" H 5800 6200 50  0000 L CNN
-F 1 "Q_NMOS_GDS" H 5800 6100 50  0000 L CNN
+F 0 "Q3" H 5950 5750 50  0000 L CNN
+F 1 "Q_NMOS_GDS" H 5750 5650 50  0000 L CNN
 F 2 "Package_TO_SOT_SMD:SOT-23" H 6450 6000 50  0001 C CNN
 F 3 "~" H 6250 5900 50  0001 C CNN
 	1    6250 5900
@@ -905,8 +899,6 @@ Wire Wire Line
 	6750 5350 6750 5400
 Wire Wire Line
 	6750 5700 6750 5800
-Wire Wire Line
-	6750 5800 7000 5800
 Connection ~ 6750 5800
 Wire Wire Line
 	6750 5800 6750 5850
@@ -915,13 +907,13 @@ Wire Wire Line
 Wire Wire Line
 	6350 6100 6350 6200
 Wire Wire Line
-	6050 5900 5850 5900
+	6050 5900 5900 5900
 Text GLabel 5850 5900 0    50   Input ~ 0
 BATTERY_MEASSURE_ENA
 Wire Wire Line
 	6750 4750 6750 4650
 Connection ~ 6750 4750
-Text GLabel 7000 5800 2    50   Input ~ 0
+Text GLabel 7100 5800 2    50   Output ~ 0
 BATTERY_MEASSURE_VALUE
 $Comp
 L power:+BATT #PWR?
@@ -1087,4 +1079,48 @@ Wire Wire Line
 Connection ~ 8350 800 
 Text Notes 4200 3750 0    118  ~ 24
 toto\nremove holes fro; sensor\nadd 10M resistor for high vooltage
+$Comp
+L Connector:TestPoint TP?
+U 1 1 613425F7
+P 5900 5750
+AR Path="/5CF2BB44/613425F7" Ref="TP?"  Part="1" 
+AR Path="/60EF78C6/613425F7" Ref="TP5"  Part="1" 
+F 0 "TP5" H 5958 5868 50  0000 L CNN
+F 1 "TestPoint" H 5958 5777 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 6100 5750 50  0001 C CNN
+F 3 "~" H 6100 5750 50  0001 C CNN
+	1    5900 5750
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5900 5750 5900 5900
+Wire Wire Line
+	2100 6000 1950 6000
+Wire Wire Line
+	1950 5850 1950 6000
+$Comp
+L Connector:TestPoint TP?
+U 1 1 61337BCD
+P 1950 5850
+AR Path="/5CF2BB44/61337BCD" Ref="TP?"  Part="1" 
+AR Path="/60EF78C6/61337BCD" Ref="TP7"  Part="1" 
+F 0 "TP7" H 2008 5968 50  0000 L CNN
+F 1 "TestPoint" H 2008 5877 50  0000 L CNN
+F 2 "TestPoint:TestPoint_Pad_D2.0mm" H 2150 5850 50  0001 C CNN
+F 3 "~" H 2150 5850 50  0001 C CNN
+	1    1950 5850
+	1    0    0    -1  
+$EndComp
+Connection ~ 1950 6000
+Wire Wire Line
+	1950 6000 1900 6000
+Connection ~ 5900 5900
+Wire Wire Line
+	5900 5900 5850 5900
+Wire Wire Line
+	6750 5800 7100 5800
+Wire Wire Line
+	2800 5900 3200 5900
+Text GLabel 3200 5900 2    50   Output ~ 0
+CHAMBER_VOLTAGE_MEASSURE_VALUE
 $EndSCHEMATC

@@ -4,4 +4,8 @@ $CMP Nucleo32
 F https://www.st.com/resource/en/user_manual/dm00231744-stm32-nucleo32-boards-mb1180-stmicroelectronics.pdf
 $ENDCMP
 #
+$CMP STM8S105K4B6
+F https://www.farnell.com/datasheets/1973125.pdf
+$ENDCMP
+#
 #End Doc Library
