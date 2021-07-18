@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 5
+Sheet 5 6
 Title ""
 Date ""
 Rev ""
@@ -13,7 +13,7 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-Text Notes 6200 1100 0    71   ~ 14
+Text Notes 6300 1100 0    71   ~ 14
 LCD
 $Comp
 L Device:Buzzer BZ?
@@ -309,22 +309,22 @@ Wire Wire Line
 $Comp
 L IonizationChamber:SSD1306 U1
 U 1 1 6138C65D
-P 6100 1300
-F 0 "U1" H 6728 1151 50  0000 L CNN
-F 1 "SSD1306" H 6728 1060 50  0000 L CNN
-F 2 "IonizationChamber:SSD1306" H 6100 1450 50  0001 C CNN
-F 3 "" H 6100 1450 50  0001 C CNN
-	1    6100 1300
+P 6200 1300
+F 0 "U1" H 6828 1151 50  0000 L CNN
+F 1 "SSD1306" H 6828 1060 50  0000 L CNN
+F 2 "IonizationChamber:SSD1306" H 6200 1450 50  0001 C CNN
+F 3 "" H 6200 1450 50  0001 C CNN
+	1    6200 1300
 	1    0    0    -1  
 $EndComp
-Text GLabel 5750 1550 0    50   Input ~ 0
+Text GLabel 5800 1550 0    50   Input ~ 0
 SCL
-Text GLabel 5750 1650 0    50   Input ~ 0
+Text GLabel 5800 1650 0    50   Input ~ 0
 SDA
 Wire Wire Line
-	6000 1550 5750 1550
+	6100 1550 5800 1550
 Wire Wire Line
-	6000 1650 5750 1650
+	6100 1650 5800 1650
 $Comp
 L power:+5V #PWR?
 U 1 1 61390DA5
@@ -443,17 +443,17 @@ $EndComp
 Wire Wire Line
 	5100 1550 5100 1600
 Wire Wire Line
-	5400 1450 5400 1850
+	5450 1450 5450 1850
 Wire Wire Line
-	5400 1850 4800 1850
+	5450 1850 4800 1850
 Wire Wire Line
 	4800 1850 4800 1350
 Wire Wire Line
 	4800 1350 4650 1350
 Wire Wire Line
-	5400 1450 6000 1450
+	5450 1450 5600 1450
 Wire Wire Line
-	5250 1350 6000 1350
+	5250 1350 6050 1350
 Text Notes 4350 2300 0    71   ~ 14
 It seems that on some variants of the display\nThe Vcc and GND pins are switched each other.\nUse jumpers to select correctly power for your siplay.
 Wire Wire Line
@@ -716,4 +716,69 @@ Text GLabel 9300 4800 2    50   Input ~ 0
 KEY_RIGHT
 Text GLabel 8350 4800 2    50   Output ~ 0
 KEY_LEFT
+$Comp
+L power:PWR_FLAG #FLG01
+U 1 1 61570571
+P 5600 1200
+F 0 "#FLG01" H 5600 1275 50  0001 C CNN
+F 1 "PWR_FLAG" H 5600 1373 50  0000 C CNN
+F 2 "" H 5600 1200 50  0001 C CNN
+F 3 "~" H 5600 1200 50  0001 C CNN
+	1    5600 1200
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG02
+U 1 1 61571089
+P 6050 1200
+F 0 "#FLG02" H 6050 1275 50  0001 C CNN
+F 1 "PWR_FLAG" H 6050 1373 50  0000 C CNN
+F 2 "" H 6050 1200 50  0001 C CNN
+F 3 "~" H 6050 1200 50  0001 C CNN
+	1    6050 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5600 1200 5600 1450
+Connection ~ 5600 1450
+Wire Wire Line
+	5600 1450 6100 1450
+Wire Wire Line
+	6050 1200 6050 1350
+Connection ~ 6050 1350
+Wire Wire Line
+	6050 1350 6100 1350
+$Comp
+L Device:C C?
+U 1 1 61A71D71
+P 1300 2350
+AR Path="/5CF2BB44/61A71D71" Ref="C?"  Part="1" 
+AR Path="/612742A4/61A71D71" Ref="C27"  Part="1" 
+F 0 "C27" H 1185 2396 50  0000 R CNN
+F 1 "100n" H 1185 2305 50  0000 R CNN
+F 2 "Capacitor_SMD:C_0805_2012Metric" H 1338 2200 50  0001 C CNN
+F 3 "~" H 1300 2350 50  0001 C CNN
+	1    1300 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 61A71D77
+P 1300 2550
+AR Path="/5CF2BB44/61A71D77" Ref="#PWR?"  Part="1" 
+AR Path="/612742A4/61A71D77" Ref="#PWR058"  Part="1" 
+F 0 "#PWR058" H 1300 2300 50  0001 C CNN
+F 1 "GND" H 1305 2377 50  0000 C CNN
+F 2 "" H 1300 2550 50  0001 C CNN
+F 3 "" H 1300 2550 50  0001 C CNN
+	1    1300 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1300 2050 1300 2200
+Wire Wire Line
+	1300 2500 1300 2550
+Wire Wire Line
+	1300 2050 1800 2050
+Connection ~ 1800 2050
 $EndSCHEMATC

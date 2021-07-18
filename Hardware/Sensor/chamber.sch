@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 1 6
 Title ""
 Date ""
 Rev ""
@@ -14,7 +14,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 2300 2000 500  150 
+S 3450 1550 500  150 
 U 5CF2BB44
 F0 "DataAcquisition" 50
 F1 "DataAcquisition.sch" 50
@@ -24,21 +24,27 @@ Wire Notes Line
 Text Notes 2300 3850 0    79   ~ 16
 Power supply:\nanalog frontend = +2*3V6, -2*3V6\ndata acquisition = 5V\npolarization of chamber = 6*12V
 $Sheet
-S 2300 1500 500  150 
+S 1350 1550 500  150 
 U 60EF78C6
 F0 "AnalogFrontend" 50
 F1 "AnalogFrontend.sch" 50
 $EndSheet
 $Sheet
-S 2300 2450 500  150 
+S 2950 2450 500  150 
 U 60F42705
 F0 "Mechanic" 50
 F1 "Mechanic.sch" 50
 $EndSheet
 $Sheet
-S 2300 2850 500  150 
+S 4700 1550 500  150 
 U 612742A4
 F0 "UserInterface" 50
 F1 "UserInterface.sch" 50
+$EndSheet
+$Sheet
+S 2500 1550 500  150 
+U 616FF04D
+F0 "ADC" 50
+F1 "ADC.sch" 50
 $EndSheet
 $EndSCHEMATC

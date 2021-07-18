@@ -3,7 +3,7 @@ EELAYER 30 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 5
+Sheet 3 6
 Title ""
 Date ""
 Rev ""
@@ -360,19 +360,6 @@ F 3 "" H 1600 2100 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	1600 2100 1600 1800
-$Comp
-L Sensor:Nuclear-Radiation_Detector V?
-U 1 1 60F05176
-P 1450 1600
-AR Path="/60F05176" Ref="V?"  Part="1" 
-AR Path="/60EF78C6/60F05176" Ref="V1"  Part="1" 
-F 0 "V1" V 1100 1550 50  0000 R CNN
-F 1 "Nuclear-Radiation_Detector" V 1212 1555 50  0000 R CNN
-F 2 "IonizationChamber:IonizationChamberSensor" H 1650 1700 50  0001 C CNN
-F 3 "~" H 1450 1600 50  0001 C CNN
-	1    1450 1600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1800 2000 1450 2000
 Wire Wire Line
@@ -985,7 +972,7 @@ F 3 "" H 8850 750 50  0001 C CNN
 	-1   0    0    -1  
 $EndComp
 Wire Wire Line
-	7900 1600 7500 1600
+	7900 1600 7650 1600
 Wire Wire Line
 	7500 1600 7500 1300
 Wire Wire Line
@@ -996,7 +983,7 @@ Wire Wire Line
 Wire Wire Line
 	7500 1100 7500 800 
 Wire Wire Line
-	7500 800  7900 800 
+	7500 800  7650 800 
 Connection ~ 7900 800 
 Wire Wire Line
 	7900 800  7900 850 
@@ -1123,4 +1110,49 @@ Wire Wire Line
 	2800 5900 3200 5900
 Text GLabel 3200 5900 2    50   Output ~ 0
 CHAMBER_VOLTAGE_MEASSURE_VALUE
+$Comp
+L power:PWR_FLAG #FLG03
+U 1 1 6157B5FB
+P 7650 700
+F 0 "#FLG03" H 7650 775 50  0001 C CNN
+F 1 "PWR_FLAG" H 7650 873 50  0000 C CNN
+F 2 "" H 7650 700 50  0001 C CNN
+F 3 "~" H 7650 700 50  0001 C CNN
+	1    7650 700 
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:PWR_FLAG #FLG04
+U 1 1 6157BD46
+P 7650 1700
+F 0 "#FLG04" H 7650 1775 50  0001 C CNN
+F 1 "PWR_FLAG" H 7650 1873 50  0000 C CNN
+F 2 "" H 7650 1700 50  0001 C CNN
+F 3 "~" H 7650 1700 50  0001 C CNN
+	1    7650 1700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	7650 700  7650 800 
+Connection ~ 7650 800 
+Wire Wire Line
+	7650 800  7900 800 
+Wire Wire Line
+	7650 1700 7650 1600
+Connection ~ 7650 1600
+Wire Wire Line
+	7650 1600 7500 1600
+$Comp
+L Sensor:Nuclear-Radiation_Detector V?
+U 1 1 60F05176
+P 1450 1600
+AR Path="/60F05176" Ref="V?"  Part="1" 
+AR Path="/60EF78C6/60F05176" Ref="V"  Part="1" 
+F 0 "V" V 1100 1550 50  0000 R CNN
+F 1 "Nuclear-Radiation_Detector" V 1212 1555 50  0000 R CNN
+F 2 "IonizationChamber:IonizationChamberSensor" H 1650 1700 50  0001 C CNN
+F 3 "~" H 1450 1600 50  0001 C CNN
+	1    1450 1600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
