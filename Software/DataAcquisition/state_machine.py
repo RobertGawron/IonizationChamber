@@ -1,11 +1,11 @@
 import datetime
-from ionization_chamber import IonizationChamber
+from application_layer import ApplicationLayer
 from measurement_storage import MeasurementStorage
 
 
 class IonizationChamberStateMachine:
-    def __init__(self, hardware):
-        self.hardware = hardware
+    def __init__(self, physicalLayer):
+        self.applicationLayer = ApplicationLayer(physicalLayer)
         self.deviceMeasurement = 0.0
         self.measurementStorage = MeasurementStorage()
 
@@ -15,8 +15,7 @@ class IonizationChamberStateMachine:
         self.nextState()
 
     def initIonizationChamber(self):
-        self.chamber = IonizationChamber(self.hardware)
-        self.chamber.connect()
+        self.applicationLayer.connect()
 
         self.nextState = self.initMeasurementStorage
 
@@ -26,7 +25,7 @@ class IonizationChamberStateMachine:
         self.nextState = self.getMeasurementFromIonizationChamber
 
     def getMeasurementFromIonizationChamber(self):
-        self.deviceMeasurement = self.chamber.getMeasurement()
+        self.deviceMeasurement = self.applicationLayer.getMeasurement()
 
         self.nextState = self.saveMeasurement
 

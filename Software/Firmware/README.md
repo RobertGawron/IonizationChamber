@@ -3,7 +3,7 @@
 1.  Install tools via apt-get:
 
 ```console
-apt-get install screen git sdcc doxygen uncrustify libusb-1.0-0-dev python3-pip texlive-latex-base texlive-latex-extra texlive-extra-utils poppler-utils cmake cppcheck r-base-core shellcheck
+apt-get install screen git sdcc doxygen uncrustify libusb-1.0-0-dev python3-pip texlive-latex-base texlive-latex-extra texlive-extra-utils poppler-utils cmake cppcheck r-base-core shellcheck pdf2svg
 ```
 Note: libusb is needed by stm8flash.
 

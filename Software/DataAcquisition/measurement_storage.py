@@ -12,4 +12,4 @@ class MeasurementStorage:
         self.CVS_Writter.writerow(self.CVS_Header)
 
     def saveMeasurement(self, date, measurement):
-         self.CVS_Writter.writerow([date, measurement])
+        self.CVS_Writter.writerow([date, measurement])
