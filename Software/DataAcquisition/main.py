@@ -1,11 +1,11 @@
 
-from hardware_connection import HardwareConnection
+from physical_layer import PhysicalLayer
 from state_machine import IonizationChamberStateMachine
 import config
 
 if __name__ == "__main__":
-    hardware = HardwareConnection(config)
-    machine = IonizationChamberStateMachine(hardware)
+    physicalLayer = PhysicalLayer(config)
+    machine = IonizationChamberStateMachine(physicalLayer)
 
     while True:
         machine.tick()

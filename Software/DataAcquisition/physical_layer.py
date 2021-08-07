@@ -1,7 +1,7 @@
 from serial import Serial
 
 
-class HardwareConnection:
+class PhysicalLayer:
     def __init__(self, config):
         self.config = config
 
@@ -14,6 +14,7 @@ class HardwareConnection:
         self.serialPort.isOpen()
         self.serialPort.flushInput()
 
-    def getMeasurement(self):
-        dataIn = self.serialPort.read(5)
+    def getData(self):
+        msgLength = 6
+        dataIn = self.serialPort.read(msgLength)
         return dataIn
