@@ -9,24 +9,34 @@ jobs:
 
     steps:
 
-    - uses: actions/checkout@v1    
+    - uses: actions/checkout@v1
     - name: install cppcheck and run tests
       run: |
-        sudo apt-get install -y cppcheck 
-        cd ./ContinuousIntegration       
+        sudo apt-get install -y cppcheck
+        cd ./ContinuousIntegration
         chmod +x ./run_c_static_code_analysis.sh
         ls run_c_static_code_analysis.sh
         ./run_c_static_code_analysis.sh
-        
-    - uses: actions/checkout@v1    
+
+    - uses: actions/checkout@v1
     - name: install flake8 and run tests
       if: always()
       run: |
-        sudo pip install flake8 flake8-html 
+        sudo pip install flake8 flake8-html
         cd ./ContinuousIntegration
         chmod +x ./run_python_static_code_analysis.sh
         ls
         ./run_python_static_code_analysis.sh
+
+    - uses: actions/checkout@v1
+    - name: install shellcheck and run tests
+      if: always()
+      run: |
+        sudo apt-get install -y shellcheck
+        cd ./ContinuousIntegration
+        chmod +x ./run_shellscripts_static_code_analysis.sh
+        ls
+        ./run_shellscripts_static_code_analysis.sh
 
     - name: Archive Python results
       uses: actions/upload-artifact@v2
@@ -40,4 +50,11 @@ jobs:
       if: always()
       with:
         name: Report for C sources
-        path: ./ContinuousIntegration/C_Lint_*.txt     
+        path: ./ContinuousIntegration/C_Lint_*.txt
+
+    - name: Archive shell scripts results
+      uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: Report for shell scripts sources
+        path: ./ContinuousIntegration/Shell_Script_Lint_Report.txt
