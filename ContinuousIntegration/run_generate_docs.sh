@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ../Documentation/Diagrams/
+cd ../Documentation/Diagrams || return $?
 
 # generate .png from all .tex in current directory
 
@@ -12,17 +12,17 @@ do
 
     filename=${filename_with_extension%.*}
 
-    # convert .tex to .png 
+    # convert .tex to .png
 
-    pdflatex $filename.tex
-    touch $filename-tmp.pdf
-    pdfcrop $filename.pdf $filename-tmp.pdf
-    pdftoppm -png -r 800 $filename-tmp.pdf $filename
+    pdflatex "$filename.tex"
+    touch "$filename-tmp.pdf"
+    pdfcrop "$filename.pdf" "$filename-tmp.pdf"
+    pdftoppm -png -r 800 "$filename-tmp.pdf" "$filename"
 
 
-    # convert .tex to .png 
+    # convert .tex to .png
 
-    pdf2svg $filename-tmp.pdf $filename.svg all
+    pdf2svg "$filename-tmp.pdf" "$filename.svg" all
 done
 
-rm *.aux *.log *.pdf
+rm ./*.aux ./*.log ./*.pdf

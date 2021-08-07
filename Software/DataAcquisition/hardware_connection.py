@@ -1,8 +1,7 @@
 from serial import Serial
-import mcp3425
 
 
-class IonizationChamber:
+class HardwareConnection:
     def __init__(self, config):
         self.config = config
 
@@ -17,8 +16,4 @@ class IonizationChamber:
 
     def getMeasurement(self):
         dataIn = self.serialPort.read(5)
-        (msb, lsb) = (dataIn[2], dataIn[3])
-        deviceMeasurement = mcp3425.convert(
-            msb, lsb, mcp3425.MCP3425_RESOLUTION.R14)
-
-        return deviceMeasurement
+        return dataIn
