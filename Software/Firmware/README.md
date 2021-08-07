@@ -53,7 +53,7 @@ make
 
 Binary will be stored directory where makefile is.
 
-## Flashing
+# Hardware flashing
 
 ```
 stm8flash -c stlink -p stm8s003f3  -w IonizationChamber.ihx
