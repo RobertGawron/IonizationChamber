@@ -1,6 +1,5 @@
 ## Setting up development environment on Linux
 
-
 1.  Install tools via apt-get:
 
 ```console
@@ -39,7 +38,7 @@ install.packages('Hmisc')
 
 ## Collecting measurements
 
-1. **Edit config.py** to select the correct COM port of Ionization Chamber. Note that **useDMM flag should be set to False**, is experimental and was supposed to be used to check the correlation of Ionization Chamber with other factors (measured by DMM with SCPI support), such factors could be e.g. temperature.
+1. **Edit config.py** to select the correct COM port of Ionization Chamber.
 
 2. **Run data acquisition script**, it will log Ionization Chamber output on the screen and also it will save it to data.csv for further processing.
 
