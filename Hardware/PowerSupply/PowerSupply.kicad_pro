@@ -33,9 +33,9 @@
         "other_text_thickness": 0.15,
         "other_text_upright": false,
         "pads": {
-          "drill": 1.0,
-          "height": 1.7,
-          "width": 1.7
+          "drill": 1.5,
+          "height": 2.5,
+          "width": 2.5
         },
         "silk_line_width": 0.15,
         "silk_text_italic": false,
@@ -114,8 +114,8 @@
       "track_widths": [
         0.0,
         0.254,
-        0.4064,
-        0.508
+        1.0,
+        2.0
       ],
       "via_dimensions": [
         {
@@ -346,7 +346,7 @@
     "pinned_symbol_libs": []
   },
   "meta": {
-    "filename": "chamber.kicad_pro",
+    "filename": "PowerSupply.kicad_pro",
     "version": 1
   },
   "net_settings": {
@@ -445,28 +445,8 @@
   },
   "sheets": [
     [
-      "439bd53b-3ca6-40a8-96c2-7cc19a6de553",
+      "51b38b64-0629-4b79-94d6-5ec3d95b2708",
       ""
-    ],
-    [
-      "00000000-0000-0000-0000-0000616ff04d",
-      "ADC"
-    ],
-    [
-      "00000000-0000-0000-0000-000060ef78c6",
-      "AnalogFrontend"
-    ],
-    [
-      "00000000-0000-0000-0000-00005cf2bb44",
-      "DataAcquisition"
-    ],
-    [
-      "00000000-0000-0000-0000-000060f42705",
-      "Mechanic"
-    ],
-    [
-      "00000000-0000-0000-0000-0000612742a4",
-      "UserInterface"
     ]
   ],
   "text_variables": {}
