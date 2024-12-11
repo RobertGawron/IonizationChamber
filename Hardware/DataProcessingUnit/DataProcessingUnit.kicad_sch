@@ -1,0 +1,127 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "74097769-b453-45b0-9f39-c5d1e6245455")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 69.215 82.55)
+		(size 12.7 3.81)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0d7da293-ec18-42f8-b186-30677f871a26")
+		(property "Sheetname" "PowerSupply"
+			(at 69.215 81.8384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "PowerSupply.kicad_sch"
+			(at 69.215 86.9446 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "DataProcessingUnit"
+				(path "/74097769-b453-45b0-9f39-c5d1e6245455"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 69.215 57.15)
+		(size 12.7 3.81)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "5fce9b31-73fa-4dfe-a905-e6d632706b8d")
+		(property "Sheetname" "Mechanic"
+			(at 69.215 56.4384 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Mechanic.kicad_sch"
+			(at 69.215 61.5446 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "DataProcessingUnit"
+				(path "/74097769-b453-45b0-9f39-c5d1e6245455"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 69.215 70.485)
+		(size 12.7 3.81)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "82f65716-a8ea-44d7-98b3-c02f50e9f3d4")
+		(property "Sheetname" "SignalProcessor"
+			(at 69.215 69.7734 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "SignalProcessor.kicad_sch"
+			(at 69.215 74.8796 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(instances
+			(project "DataProcessingUnit"
+				(path "/74097769-b453-45b0-9f39-c5d1e6245455"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

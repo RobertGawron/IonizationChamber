@@ -1,12 +1,24 @@
-# Ionization Chamber (a device to measure radioactivity level)
+# Ionization Chamber (a device for measuring radioactivity levels)
 
-[![Build Firmware](https://github.com/RobertGawron/IonizationChamber/workflows/Build%20Firmware/badge.svg)](https://github.com/RobertGawron/IonizationChamber/actions?query=workflow%3A%22Build+Firmware%22) [![Static Code Analysis](https://github.com/RobertGawron/IonizationChamber/workflows/Static%20Code%20Analysis/badge.svg)](https://github.com/RobertGawron/IonizationChamber/actions?query=workflow%3A%22Static+Code+Analysis%22)
+[![CI Pipeline](https://github.com/RobertGawron/IonizationChamber/actions/workflows/ci.yml/badge.svg)](https://github.com/RobertGawron/IonizationChamber/actions/workflows/ci.yml)
+
+## Objective
+
+There are many ionization chamber projects online, but most (though not all) produce false positive results. It's cool when a radioactive sample is placed near the detector and the detector shows an increased radiation value, but then, if you place your hand or any non-radioactive object nearby, the readings are high too. This is because, due to high amplification, these devices pick up a lot of noise, making the measurements unreliable.
+
+This project aims to address and eliminate this issue.
 
 ## Principle of operation
 
-When air's atoms are hit by radioactive particles, an ion-pair is produced. Ions has electric charge, if they are in electric field create by positive and negative electrodes, negative ions will move to positive electrode and positive will move to negative electrode.
+An ionization chamber is a type of radiation detector that measures ionizing radiation by detecting the charged particles (ions) produced when radiation interacts with the gas inside the chamber. The basic working principle relies on the ionization process. 
 
-They will try to "meet each other" (I don't know how to explain it) thus creating a current. This current can be measured. The current is proportional to amount of ion-pairs. Amount of ion-pairs is proportional to radioactivity level.
+* **Radiation Interaction:** When ionizing radiation (such as alpha, beta, or gamma radiation) enters the chamber, it interacts with the gas inside, typically air. This interaction causes the gas molecules to become ionized, producing free electrons and positive ions. 
+* **Electric Field:** The chamber contains two electrodes: a central anode and a surrounding cathode. A high voltage is applied between these electrodes, creating an electric field inside the chamber. 
+* **Ion Collection:** The free electrons, which are negatively charged, are attracted to the positive anode, while the positively charged ions are attracted to the cathode. As these ions move toward the electrodes, they create an electrical current. 
+* **Current Measurement:** The generated current is directly proportional to the number of ions produced, which in turn is related to the amount of radiation that has passed through the chamber. This current is then measured and used to calculate the intensity of the radiation.
+
+Below is an image of the device that was assembled and tested (hardware revision 4.0). Since then, a new version has been developed but has not yet been tested. This repository, in its current state, represents the latest version. For details on the tested version, [refer to 4.0 tag](https://github.com/RobertGawron/IonizationChamber/releases/tag/4.0).  
+
 
 ![picture of device](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Pictures/pcb_01_09_2019.jpg)
 
@@ -18,26 +30,38 @@ It is designed in a way that the device can work remotely, e.g. no connection vi
 <img src="./Documentation/Diagrams/ArchitectureOverview.svg"  width="100%">
 
 Remarks:
-* Amplifier has three stages (first stage is transimpedance amplifier, not FET like most projects use). 
-* Amplifier has a separate symmetric power supply from 2x2V6 lithium batteries
-
+* The amplifier has three stages (the first stage is a transimpedance amplifier, not a FET transistor like most projects use).
+* The ionization chamber is polarized with three 12V batteries connected in series.
 
 ## Hardware
 
 PCB was done in KiCAD.
 
+### Hazards
+
+* **The battery container electrodes for chamber polarization are very close to the metal casing; the soldered electrodes should be filed down and secured with insulating tape to prevent short circuits.**
+* **The device uses relatively high voltage (32V) to polarize the ionization chamber.** The electrodes of the ionization chamber should not be touched.
 
 ## Software
-* ["Data processing and firmware flashing" node architecture
-](https://github.com/RobertGawron/IonizationChamber/wiki/%22Data-processing-and-firmware-flashing%22-node-architecture
-)
-* [Setting up development environment on Linux
-](https://github.com/RobertGawron/IonizationChamber/wiki/Setting-up-development-environment-on-Linux) 
-* [Firmware compilation and hardware flashing
-](https://github.com/RobertGawron/IonizationChamber/wiki/Firmware-compilation-and-hardware-flashing) 
 
+Measurements are collected from the COM port (tunneled over USB) by a Python script and stored in a .csv file. This file can later be parsed using R scripts to generate various diagrams, such as radioactivity changes over time, radioactivity histograms, and box plots for different samples.
 
-## Hazards
+![measurement data flow diagram](./Documentation/Diagrams/MeasurementDataFlowDiagram.svg)
 
-* **The device exposes high voltage to user, although maximum current is very limited, it still poses health risk if the sensor external electrode would be touch.**
-* **Pins of switch to turn on/off amplifier power supply are very close to metal chassis. It’s possible that pins will be shorted-out by chassis, shorting-out lithium batteries resulting in fire.** I flied off this part of chassis and used insulation tape to avoid it.
+* [Details about the firmware are available here.](./Software/Firmware/README.md)
+* [Details about the acquisition software are available here.](./Software/MeasurementAcquisition/README.md)
+* [Details about the measurement processing software are available here.](./Software/MeasurementAnalysis/README.md)
+
+In the future, data from the device will be gathered and processed using the [HardwareDataLogger project](https://github.com/RobertGawron/HardwareDataLogger), which is currently in development.
+
+## Simulation
+
+A simple mockup was created to generate dummy test data without the need for the real device. This allows testing of the acquisition software (mainly the scripts that generate output diagrams) without requiring hardware.
+
+[More details.](Simulation/README.md)
+
+## DevOps
+
+All software is developed inside a Docker container.
+
+[More information about setting up the environment.](./DevOps/Docker/README.md)
