@@ -58,7 +58,7 @@ To flash the firmware to the board, use the following command:
 
 stm8flash -c stlink -p stm8s003f3 -w IonizationChamber.ihx
 
-## Running MeasurementAcquisition scripts
+# Running MeasurementAcquisition scripts
 
 Log into the Docker container (Building, running, and stopping a Docker image" section).
 
@@ -68,7 +68,7 @@ Run the data acquisition script. It will log the Ionization Chamber's output to 
 
 python main.py
 
-## Running Simulation
+# Running Simulation
 
 Log into the Docker container and navigate to the simulation directory:
 
