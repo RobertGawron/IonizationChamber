@@ -44,6 +44,10 @@ PCB was done in KiCAD.
 
 ## Software
 
+Measurements are collected from the COM port (tunneled over USB) by a Python script and stored in a .csv file. This file can later be parsed using R scripts to generate various diagrams, such as radioactivity changes over time, radioactivity histograms, and box plots for different samples.
+
+![measurement data flow diagram](./Documentation/Diagrams/MeasurementDataFlowDiagram.svg)
+
 * [Details about the firmware are available here.](./Software/Firmware/README.md)
 * [Details about the acquisition software are available here.](./Software/MeasurementAcquisition/README.md)
 * [Details about the measurement processing software are available here.](./Software/MeasurementAnalysis/README.md)

@@ -1,8 +1,8 @@
 # Architecture
 
-Measurements are collected from the COM port (tunneled over USB) by a Python script and stored in a .csv file. This file can later be parsed using R scripts to generate various diagrams, such as radioactivity changes over time, radioactivity histograms, and box plots for different samples.
+Below is the sequence diagram for the firmware.
 
-<img src="../Documentation/Diagrams/HostArchitecture.svg" width="100%">
+![firmware sequence diagram](../../Documentation/Diagrams/FirmwareSequenceDiagram.svg)
 
 # Building Firmware
 
