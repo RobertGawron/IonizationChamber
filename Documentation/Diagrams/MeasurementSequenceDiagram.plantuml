@@ -1,0 +1,31 @@
+@startuml
+box "Layers"
+    participant "State Machine"
+    participant "Application Layer" 
+    participant "Transport Layer"
+    participant "Physical Layer"
+    participant "Measurement Storage"
+end box
+
+"State Machine" -> "Application Layer" : connect()
+"Application Layer" -> "Transport Layer" : connect()
+"Transport Layer" -> "Physical Layer" : connect()
+"Physical Layer" -> "Device" : Establish connection
+
+loop Repeat for each measurement
+
+"State Machine" -> "Application Layer" : getMeasurement()
+"Application Layer" -> "Transport Layer" : getFrame()
+"Transport Layer" -> "Physical Layer" : getData()
+"Device" -> "Physical Layer" : data
+"Physical Layer" -> "Transport Layer" : data
+
+"Transport Layer" -> "Application Layer" : frame
+"Application Layer" -> "State Machine" : measurement
+
+"State Machine" -> "Measurement Storage" : saveMeasurement()
+"Measurement Storage" -> File : Write data to CSV
+
+"State Machine" -> Console : Display measurement
+end
+@enduml

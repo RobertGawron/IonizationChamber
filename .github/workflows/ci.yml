@@ -1,0 +1,156 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  run-c-static-analysis:
+    name: Run C Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
+      - name: Run C Static Analysis
+        run: |
+          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
+
+      - name: Copy C Analysis Reports to Host
+        run: |
+          docker cp app:/workspace/build/C_Lint_ReportApplicationOnly.txt .
+          docker cp app:/workspace/build/C_Lint_ReportFull.txt .
+
+      - name: Archive C Analysis Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: c-lint-reports
+          path: |
+            C_Lint_ReportApplicationOnly.txt
+            C_Lint_ReportFull.txt
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  run-python-static-analysis:
+    name: Run Python Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
+      - name: Run Python Static Analysis
+        run: |
+          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
+
+      - name: Copy Python Analysis Reports to Host
+        run: |
+          docker cp app:/workspace/build/python_lint_report ./python_lint_report
+
+      - name: Archive Python Analysis Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: python-lint-reports
+          path: python_lint_report
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  run-shell-static-analysis:
+    name: Run Shell Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
+      - name: Run Shell Static Analysis
+        run: |
+          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_shellscripts_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_shellscripts_static_code_analysis.sh"
+
+      - name: Copy Shell Analysis Report to Host
+        run: |
+          docker cp app:/workspace/build/Shell_Script_Lint_Report.txt Shell_Script_Lint_Report.txt
+
+      - name: Archive Shell Analysis Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: shell-lint-report
+          path: Shell_Script_Lint_Report.txt
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  build-firmware:
+    name: Build Firmware
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
+      - name: Build Firmware
+        run: |
+          docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
+
+      - name: Copy Firmware Files to Host
+        run: |
+          docker cp app:/workspace/build/IonizationChamber.cdb .
+          docker cp app:/workspace/build/IonizationChamber.lk .
+          docker cp app:/workspace/build/IonizationChamber.ihx .
+          docker cp app:/workspace/build/IonizationChamber.map .
+
+      - name: Archive Firmware Build Artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: firmware-build-artifacts
+          path: |
+            IonizationChamber.cdb
+            IonizationChamber.lk
+            IonizationChamber.ihx
+            IonizationChamber.map
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down

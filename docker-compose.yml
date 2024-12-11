@@ -1,0 +1,13 @@
+services:
+  app:
+    container_name: app
+    build:
+      context: ./DevOps/Docker
+    image: chamber:latest
+    working_dir: /workspace/build
+    stdin_open: true  # Keep stdin open for interaction
+    tty: true         # Allocate a TTY for interactive Bash    
+    volumes:
+      - ./Simulation:/workspace/Simulation
+      - ./Software:/workspace/Software
+      - ./DevOps/ContinuousIntegration:/workspace/ContinuousIntegration

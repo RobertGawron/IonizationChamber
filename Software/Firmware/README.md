@@ -1,60 +1,42 @@
-# Setting up development environment on Linux
+# Architecture
 
-1.  Install tools via apt-get:
+Measurements are collected from the COM port (tunneled over USB) by a Python script and stored in a .csv file. This file can later be parsed using R scripts to generate various diagrams, such as radioactivity changes over time, radioactivity histograms, and box plots for different samples.
 
-```console
-apt-get install screen git sdcc doxygen uncrustify libusb-1.0-0-dev python3-pip texlive-latex-base texlive-latex-extra texlive-extra-utils poppler-utils cmake cppcheck r-base-core shellcheck pdf2svg
-```
-Note: libusb is needed by stm8flash.
+<img src="../Documentation/Diagrams/HostArchitecture.svg" width="100%">
 
-2. Clone, build and install stm8flash:
+# Building Firmware
 
-```console
-git clone https://github.com/vdudouyt/stm8flash.git
-cd stm8flash/
-make
-make install
-```
+Docker is used to create an isolated and reproducible work environment.
 
-3. Stm8flash enumerates as USB device, add access to this device for non-root users (so that its possible to flash the chip without being root):
+[Detailed information about setting up the environment.](../../DevOps/Docker/README.md)
 
-```console
-chmod o+w /dev/bus/usb/001/004
-```
+# Protocol for sending measurements via UART
 
-In above example, _/dev/bus/usb/001/004_ is where the stm8flash enumerates, you will get id of your stm8flash from error message when trying to flash the board.
+## Purpose
 
-# Firmware compilation and hardware flashing
+To ensure data integrity when sending information from the ionization chamber device to the computer, a simple protocol was added to encapsulate each data or command transmission.
 
-## Initial configuration
+## Protocol details
 
-Configure project using cmake, this step is needed only once.
+### Definition of the message
 
-In Software directory create build directory and go into it:
+<img src="../Documentation/Diagrams/UARTFrameFormat.svg" width="100%">
 
-```
-mkdir build
-cd build
-```
+The field “msg length” describes the number of bytes in the “data” section.
 
-Run cmake:
+The content of the data section in the above message is an example and may vary depending on the message ID. Currently, only one message is supported, as shown above.
 
-```
-cmake -DCMAKE_SYSTEM_NAME=Generic -DCMAKE_C_COMPILER=sdcc ../
-```
+### Defined message ids and message content
 
-## Compilation
+Currently, only one message type is defined (with ID = 1).
 
-Compilation is done using make in the directory where cmake files were generated (Software/Build)
+* Msg ID: 1 - Data from the last analog measurement of the actual value.
+Msg Data Section:
+    * ADC configuration
+    * MSB (most significant byte) from ADC
+    * LSB (least significant byte) from ADC
 
-```
-make
-```
+### CRC
 
-Binary will be stored directory where makefile is.
+The CRC is calculated by XOR-ing all bytes in the "preamble" and "data" sections.
 
-# Hardware flashing
-
-```
-stm8flash -c stlink -p stm8s003f3  -w IonizationChamber.ihx
-```
