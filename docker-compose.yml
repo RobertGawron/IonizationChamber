@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: ./DevOps/Docker
+    image: chamber:latest
+    container_name: chamber-container
+    working_dir: /workspace/build
+    volumes:
+      - ./Simulation:/workspace/Simulation
+      - ./Software:/workspace/Software
+      - ./DevOps/ContinuousIntegration:/workspace/ContinuousIntegration
+    tty: true

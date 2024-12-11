@@ -1,0 +1,49 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    name: Build and Start Docker Compose
+    runs-on: ubuntu-latest
+    outputs:
+      services_started: ${{ steps.compose.outputs.services_started }}
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Start Docker Compose
+        id: compose
+        run: |
+          docker-compose up -d --build
+
+  run-c-static-analysis:
+    name: Run C Static Analysis
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run C Static Analysis
+        run: |
+          docker-compose exec app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
+
+
+  run-python-static-analysis:
+    name: Run Python Static Analysis
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run Python Static Analysis
+        run: |
+          docker-compose exec app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
