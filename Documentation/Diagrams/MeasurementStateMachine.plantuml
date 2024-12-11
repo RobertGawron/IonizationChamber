@@ -1,0 +1,31 @@
+@startuml
+state "Ionization Chamber State Machine" as SM {
+    [*] --> InitIonizationChamber : Start
+
+    state "Init Ionization Chamber" as InitIonizationChamber {
+    }
+    InitIonizationChamber --> InitMeasurementStorage : Connected
+
+    state "Init Measurement Storage" as InitMeasurementStorage {
+    }
+    InitMeasurementStorage --> GetMeasurementFromIonizationChamber : Storage Ready
+
+    state "Get Measurement From Ionization Chamber" as GetMeasurementFromIonizationChamber {
+    }
+    GetMeasurementFromIonizationChamber --> SaveMeasurement : Measurement Acquired
+
+    state "Save Measurement" as SaveMeasurement {
+    }
+    SaveMeasurement --> ShowMeasurementToUser : Saved
+
+    state "Show Measurement To User" as ShowMeasurementToUser {
+    }
+    ShowMeasurementToUser --> GetMeasurementFromIonizationChamber : Continue Measurement
+
+    InitIonizationChamber --> [*] : Failure
+    InitMeasurementStorage --> [*] : Failure
+    GetMeasurementFromIonizationChamber --> [*] : Failure
+    SaveMeasurement --> [*] : Failure
+    ShowMeasurementToUser --> [*] : Failure
+}
+@enduml

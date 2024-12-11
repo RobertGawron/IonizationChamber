@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../Software/DataAcquisition')
+sys.path.append('../Software/MeasurementAcquisition')
 
 from physical_layer import PhysicalLayer  # noqa: E402
 from state_machine import IonizationChamberStateMachine  # noqa: E402
