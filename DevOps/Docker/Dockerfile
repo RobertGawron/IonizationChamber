@@ -65,5 +65,18 @@ RUN R -e "install.packages('Hmisc', repos='http://cran.rstudio.com/')"
 RUN mkdir -p /workspace/build
 WORKDIR /workspace/build
 
+
+RUN apt-get update && apt-get install -y \
+    libcunit1-dev \
+    libcmocka-dev \
+    tree \
+    vim \
+    lcov \
+    gcovr
+
+# Clone FFF for Unit Test
+RUN git clone https://github.com/meekrosoft/fff.git /workspace/fff
+
+
 # Command to run the container
 CMD ["bash"]

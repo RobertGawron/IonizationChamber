@@ -44,7 +44,30 @@ make -j$(nproc)
 
 The produced binary is IonizationChamber.ihx.
 
+# Build Tests
+
+cmake -DCMAKE_BUILD_TYPE=Debug ../Software/Firmware/UnitTest/
+make -j$(nproc)
+ctest --output-on-failure
+
+
+
+
 # Hardware flashing
+
+Hardware connection
+Section: "Using the ST-LINK on other STM8S applications"
+https://www.st.com/resource/en/user_manual/um1482-stm8svldiscovery-stm8s-value-line-discovery-stmicroelectronics.pdf
+
+stm8flash -c stlinkv2 -p stm8s003f3 -u
+Determine OPT area
+STLink: v2, JTAG: v45, SWIM: v7, VID: 8304, PID: 4837
+Due to its file extension (or lack thereof), "Workaround" is considered as RAW BINARY format!
+Unlocked device. Option bytes reset to default state.
+Bytes written: 11
+
+
+
 
 Log into the Docker container (Building, running, and stopping a Docker image" section).
 

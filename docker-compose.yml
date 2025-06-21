@@ -1,13 +1,29 @@
 services:
   app:
     container_name: app
+    ulimits:
+      core: -1    # unlimited core dump size
     build:
       context: ./DevOps/Docker
     image: chamber:latest
+    security_opt:
+     - seccomp:unconfined
+    privileged: true # required for USB access
     working_dir: /workspace/build
-    stdin_open: true  # Keep stdin open for interaction
-    tty: true         # Allocate a TTY for interactive Bash    
+    stdin_open: true
+    tty: true
     volumes:
       - ./Simulation:/workspace/Simulation
       - ./Software:/workspace/Software
       - ./DevOps/ContinuousIntegration:/workspace/ContinuousIntegration
+      # Add USB device access
+      - /dev/bus/usb:/dev/bus/usb  # Mount entire USB bus
+    environment:
+      # Set ST-LINK specific environment variables
+      - STLINK_DEVICE=0483:3748
+    # Add healthcheck to verify USB connection
+    healthcheck:
+      test: lsusb | grep 0483:3748
+      interval: 5s
+      timeout: 3s
+      retries: 3
