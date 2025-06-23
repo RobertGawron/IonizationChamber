@@ -2,20 +2,22 @@ name: CI Pipeline
 
 on:
   push:
-    branches:
-      - '*'
+    branches: ['*']
   pull_request:
-    branches:
-      - '*'
+    branches: ['*']
 
 jobs:
-  run-c-static-analysis:
-    name: Run C Static Analysis
+  combined-job:
+    name: Combined Analysis and Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        type: [c-static, python-static, firmware]
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Docker Compose installed ONCE per job (not per type)
       - name: Install Docker Compose
         run: |
           sudo apt-get update
@@ -25,99 +27,39 @@ jobs:
         run: |
           docker-compose up -d --build
 
-      - name: Run C Static Analysis
+      # Conditional execution based on matrix type
+      - name: Run Analysis or Build
         run: |
-          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
+          case "${{ matrix.type }}" in
+            c-static)
+              docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
+              docker cp app:/workspace/build/C_Lint_ReportApplicationOnly.txt .
+              docker cp app:/workspace/build/C_Lint_ReportFull.txt .
+              ;;
+            python-static)
+              docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
+              docker cp app:/workspace/build/python_lint_report .
+              ;;
+            firmware)
+              docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
+              docker cp app:/workspace/build/IonizationChamber.cdb .
+              docker cp app:/workspace/build/IonizationChamber.lk .
+              docker cp app:/workspace/build/IonizationChamber.ihx .
+              docker cp app:/workspace/build/IonizationChamber.map .
+              ;;
+          esac
 
-      - name: Copy C Analysis Reports to Host
-        run: |
-          docker cp app:/workspace/build/C_Lint_ReportApplicationOnly.txt .
-          docker cp app:/workspace/build/C_Lint_ReportFull.txt .
-
-      - name: Archive C Analysis Reports
+      # Unified artifact uploading
+      - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: c-lint-reports
+          name: ${{ matrix.type }}-artifacts
           path: |
-            C_Lint_ReportApplicationOnly.txt
-            C_Lint_ReportFull.txt
+            ${{ contains(matrix.type, 'static') && '*.txt' || '' }}
+            ${{ matrix.type == 'python-static' && 'python_lint_report' || '' }}
+            ${{ matrix.type == 'firmware' && 'IonizationChamber.*' || '' }}
 
       - name: Clean Up Containers
-        run: |
-          docker-compose down
-
-  run-python-static-analysis:
-    name: Run Python Static Analysis
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      - name: Build and Start Docker Compose
-        run: |
-          docker-compose up -d --build
-
-      - name: Run Python Static Analysis
-        run: |
-          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
-
-      - name: Copy Python Analysis Reports to Host
-        run: |
-          docker cp app:/workspace/build/python_lint_report ./python_lint_report
-
-      - name: Archive Python Analysis Reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: python-lint-reports
-          path: python_lint_report
-
-      - name: Clean Up Containers
-        run: |
-          docker-compose down
-
- 
-  build-firmware:
-    name: Build Firmware
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      - name: Build and Start Docker Compose
-        run: |
-          docker-compose up -d --build
-
-      - name: Build Firmware
-        run: |
-          docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
-
-      - name: Copy Firmware Files to Host
-        run: |
-          docker cp app:/workspace/build/IonizationChamber.cdb .
-          docker cp app:/workspace/build/IonizationChamber.lk .
-          docker cp app:/workspace/build/IonizationChamber.ihx .
-          docker cp app:/workspace/build/IonizationChamber.map .
-
-      - name: Archive Firmware Build Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: firmware-build-artifacts
-          path: |
-            IonizationChamber.cdb
-            IonizationChamber.lk
-            IonizationChamber.ihx
-            IonizationChamber.map
-
-      - name: Clean Up Containers
+        if: always()
         run: |
           docker-compose down
