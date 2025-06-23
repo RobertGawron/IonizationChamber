@@ -54,7 +54,10 @@ function(create_test_exec TARGET_NAME)
     
     # Include directories
     target_include_directories(${TARGET_NAME} PRIVATE
-        ${CMAKE_SOURCE_DIR}/../Inc
+        ${CMAKE_SOURCE_DIR}/../Application
+        ${CMAKE_SOURCE_DIR}/../Device
+        ${CMAKE_SOURCE_DIR}/../Driver
+                
         ${CMAKE_SOURCE_DIR}/../STM8S_StdPeriph_Lib/inc/
         ${CMAKE_SOURCE_DIR}/Mock
         ${CMAKE_SOURCE_DIR}/..
@@ -82,59 +85,61 @@ endfunction()
 # Initialize test targets list
 set(TEST_TARGETS "")
 
-set(USER_INTERFACE_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/UserInterface.c
-    ${CMAKE_SOURCE_DIR}/UserInterface_Test.c
-)
-
-set(VOLTAGE_SENSOR_ACTUAL_VALUE_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/VoltageSensorActualValue.c
-    ${CMAKE_SOURCE_DIR}/VoltageSensorActualValue_Test.c
-)
-
-set(TIMER_CONFIGURATOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/TimerConfigurator.c
-    ${CMAKE_SOURCE_DIR}/TimerConfigurator_Test.c
+### Application tests
+set(APPLICATION_BUILDER_TEST_SRC
+    ${CMAKE_SOURCE_DIR}/../Application/application_builder.c
+    ${CMAKE_SOURCE_DIR}/test_application_builder.c
 )
 
 set(MEASUREMENT_FRAME_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/MeasurementFrame.c
-    ${CMAKE_SOURCE_DIR}/MeasurementFrame_Test.c
-)
-
-set(MEASUREMENT_FRAME_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/MeasurementFrame.c
-    ${CMAKE_SOURCE_DIR}/MeasurementFrame_Test.c
+    ${CMAKE_SOURCE_DIR}/../Application/measurement_frame.c
+    ${CMAKE_SOURCE_DIR}/test_measurement_frame.c
 )
 
 set(MEASUREMENT_COLLECTOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/MeasurementCollector.c
-    ${CMAKE_SOURCE_DIR}/MeasurementCollector_Test.c
+    ${CMAKE_SOURCE_DIR}/../Application/measurement_collector.c
+    ${CMAKE_SOURCE_DIR}/test_measurement_collector.c
+)
+
+## Driver tests
+set(USER_INTERFACE_TEST_SRC
+    ${CMAKE_SOURCE_DIR}/../Driver/user_interface.c
+    ${CMAKE_SOURCE_DIR}/test_user_interface.c
+)
+
+set(MCP3425_TEST_SRC
+    ${CMAKE_SOURCE_DIR}/../Driver/mcp3425.c
+    ${CMAKE_SOURCE_DIR}/test_mcp3425.c
+)
+
+set(TIMER_CONFIGURATOR_TEST_SRC
+    ${CMAKE_SOURCE_DIR}/../Driver/timer_configurator.c
+    ${CMAKE_SOURCE_DIR}/test_timer_configurator.c
 )
 
 set(LOGGER_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/Logger.c
-    ${CMAKE_SOURCE_DIR}/Logger_Test.c
+    ${CMAKE_SOURCE_DIR}/../Driver/logger.c
+    ${CMAKE_SOURCE_DIR}/test_logger.c
 )
 
 set(CLOCK_CONFIGURATOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/ClockConfigurator.c
-    ${CMAKE_SOURCE_DIR}/ClockConfigurator_Test.c
+    ${CMAKE_SOURCE_DIR}/../Driver/clock_configurator.c
+    ${CMAKE_SOURCE_DIR}/test_clock_configurator.c
 )
 
-set(APPLICATION_BUILDER_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Src/ApplicationBuilder.c
-    ${CMAKE_SOURCE_DIR}/ApplicationBuilder_Test.c
+set(INTERRUPT_CONFIGURATOR_TEST_SRC
+    ${CMAKE_SOURCE_DIR}/test_interrupt_configurator.c
 )
  
-create_test_exec(UserInterface_Test "${USER_INTERFACE_TEST_SRC}")
-create_test_exec(VoltageSensorActualValue_Test "${VOLTAGE_SENSOR_ACTUAL_VALUE_TEST_SRC}")
-create_test_exec(TimerConfigurator_Test "${TIMER_CONFIGURATOR_TEST_SRC}")
-create_test_exec(MeasurementFrame_Test "${MEASUREMENT_FRAME_TEST_SRC}")
-create_test_exec(MeasurementCollector_Test "${MEASUREMENT_COLLECTOR_TEST_SRC}")
-create_test_exec(Logger_Test "${LOGGER_TEST_SRC}")
-create_test_exec(ClockConfigurator_Test "${CLOCK_CONFIGURATOR_TEST_SRC}")
-create_test_exec(ApplicationBuilder_Test "${APPLICATION_BUILDER_TEST_SRC}")
+create_test_exec(test_user_interface "${USER_INTERFACE_TEST_SRC}")
+create_test_exec(test_mcp3425 "${MCP3425_TEST_SRC}")
+create_test_exec(test_timer_configurator "${TIMER_CONFIGURATOR_TEST_SRC}")
+create_test_exec(test_measurement_frame "${MEASUREMENT_FRAME_TEST_SRC}")
+create_test_exec(test_measurement_collector "${MEASUREMENT_COLLECTOR_TEST_SRC}")
+create_test_exec(test_logger "${LOGGER_TEST_SRC}")
+create_test_exec(test_clock_configurator "${CLOCK_CONFIGURATOR_TEST_SRC}")
+create_test_exec(test_application_builder "${APPLICATION_BUILDER_TEST_SRC}")
+create_test_exec(test_interrupt_configurator "${INTERRUPT_CONFIGURATOR_TEST_SRC}")
 
 # Custom target to run all tests
 add_custom_target(run_all_tests
@@ -142,6 +147,22 @@ add_custom_target(run_all_tests
     DEPENDS ${TEST_TARGETS}
     COMMENT "Running all unit tests..."
 )
+
+# =============================================================================
+# STATIC ANALYSIS WITH CODECHECKER
+# =============================================================================
+find_program(CODECHECKER_PATH CodeChecker)
+if(CODECHECKER_PATH)
+    add_custom_target(static
+        COMMAND ${CODECHECKER_PATH} analyze ${CMAKE_BINARY_DIR}/compile_commands.json --enable-all --output ${CMAKE_BINARY_DIR}/codechecker_reports
+        COMMAND ${CODECHECKER_PATH} parse ${CMAKE_BINARY_DIR}/codechecker_reports --export html --output ${CMAKE_BINARY_DIR}/codechecker_html
+        COMMENT "Running CodeChecker static analysis and exporting HTML report..."
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+        DEPENDS run_all_tests
+    )
+else()
+    message(WARNING "CodeChecker not found! Install with 'pip install --user CodeChecker'")
+endif()
 
 # =============================================================================
 # CODE COVERAGE CONFIGURATION

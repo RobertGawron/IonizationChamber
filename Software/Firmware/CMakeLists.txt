@@ -48,22 +48,27 @@ target_compile_definitions(STM8StdPeriph PRIVATE
 
 # Set include directories for the library
 target_include_directories(STM8StdPeriph PUBLIC
-    ${CMAKE_SOURCE_DIR}/Inc
+${CMAKE_SOURCE_DIR}
+       ${CMAKE_SOURCE_DIR}/Application
+        ${CMAKE_SOURCE_DIR}/Device
+        ${CMAKE_SOURCE_DIR}/Driver
     ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
 )
 
 # Executable target (only application sources)
 add_executable(IonizationChamber
-    Src/main.c
-    Src/ApplicationBuilder.c
-    Src/ClockConfigurator.c
-    Src/MeasurementFrame.c
-    Src/UserInterface.c
-    Src/stm8s_it.c
-    Src/Logger.c
-    Src/MeasurementCollector.c
-    Src/TimerConfigurator.c
-    Src/VoltageSensorActualValue.c
+    main.c
+
+    Application/application_builder.c
+    Application/measurement_frame.c
+    Application/measurement_collector.c
+
+    Driver/timer_configurator.c
+    Driver/clock_configurator.c
+    Driver/user_interface.c
+    Driver/interrupt_handler.c
+    Driver/logger.c
+    Driver/mcp3425.c
 )
 
 # Set compiler options and definitions for the executable

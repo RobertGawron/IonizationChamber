@@ -54,7 +54,7 @@ COPY --from=build /stm8flash/stm8flash /usr/bin/
 # Install flake8 in a Python virtual environment
 RUN python3 -m venv /workspace/venv && \
     /workspace/venv/bin/pip install --upgrade pip && \
-    /workspace/venv/bin/pip install flake8 flake8-html pyserial
+    /workspace/venv/bin/pip install flake8 flake8-html pyserial CodeChecker
 
 # Install R libraries
 RUN R -e "install.packages('latticeExtra', repos='http://cran.rstudio.com/')"
@@ -72,7 +72,8 @@ RUN apt-get update && apt-get install -y \
     tree \
     vim \
     lcov \
-    gcovr
+    gcovr \
+    clang
 
 # Clone FFF for Unit Test
 RUN git clone https://github.com/meekrosoft/fff.git /workspace/fff
