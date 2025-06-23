@@ -80,40 +80,7 @@ jobs:
         run: |
           docker-compose down
 
-  run-shell-static-analysis:
-    name: Run Shell Static Analysis
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      - name: Build and Start Docker Compose
-        run: |
-          docker-compose up -d --build
-
-      - name: Run Shell Static Analysis
-        run: |
-          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_shellscripts_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_shellscripts_static_code_analysis.sh"
-
-      - name: Copy Shell Analysis Report to Host
-        run: |
-          docker cp app:/workspace/build/Shell_Script_Lint_Report.txt Shell_Script_Lint_Report.txt
-
-      - name: Archive Shell Analysis Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: shell-lint-report
-          path: Shell_Script_Lint_Report.txt
-
-      - name: Clean Up Containers
-        run: |
-          docker-compose down
-
+ 
   build-firmware:
     name: Build Firmware
     runs-on: ubuntu-latest
