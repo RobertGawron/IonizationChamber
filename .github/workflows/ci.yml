@@ -35,7 +35,7 @@ jobs:
           docker cp app:/workspace/build/C_Lint_ReportFull.txt .
 
       - name: Archive C Analysis Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: c-lint-reports
           path: |
@@ -71,7 +71,7 @@ jobs:
           docker cp app:/workspace/build/python_lint_report ./python_lint_report
 
       - name: Archive Python Analysis Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: python-lint-reports
           path: python_lint_report
@@ -105,7 +105,7 @@ jobs:
           docker cp app:/workspace/build/Shell_Script_Lint_Report.txt Shell_Script_Lint_Report.txt
 
       - name: Archive Shell Analysis Report
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: shell-lint-report
           path: Shell_Script_Lint_Report.txt
@@ -142,7 +142,7 @@ jobs:
           docker cp app:/workspace/build/IonizationChamber.map .
 
       - name: Archive Firmware Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-build-artifacts
           path: |
