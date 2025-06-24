@@ -49,9 +49,9 @@ target_compile_definitions(STM8StdPeriph PRIVATE
 # Set include directories for the library
 target_include_directories(STM8StdPeriph PUBLIC
 ${CMAKE_SOURCE_DIR}
-       ${CMAKE_SOURCE_DIR}/Application
-        ${CMAKE_SOURCE_DIR}/Device
-        ${CMAKE_SOURCE_DIR}/Driver
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Device
+    ${CMAKE_SOURCE_DIR}/Driver
     ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
 )
 
@@ -108,7 +108,7 @@ find_package(Python3 COMPONENTS Interpreter REQUIRED)
 # Add post-build memory check
 add_custom_command(TARGET IonizationChamber POST_BUILD
     COMMAND ${Python3_EXECUTABLE} 
-        /workspace/ContinuousIntegration/check_memory.py
+        "${CMAKE_SOURCE_DIR}/../../DevOps/Scripts/CheckFirmwareRomRamUsage.py"
         ${MAX_ROM_SIZE}
         ${MAX_RAM_SIZE}
         $<TARGET_FILE_DIR:IonizationChamber>/$<TARGET_FILE_BASE_NAME:IonizationChamber>.map
