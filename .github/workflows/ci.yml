@@ -27,11 +27,11 @@ jobs:
 
       - name: Run C Static Analysis
         run: |
-          docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
+          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
 
       - name: Copy C Analysis Reports to Host
         run: |
-          docker cp app:/workspace/DevOps/BuildArtifacts/CStaticAnalysis .
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/CStaticAnalysis .
 
       - name: Archive C Analysis Reports
         uses: actions/upload-artifact@v4
@@ -61,11 +61,11 @@ jobs:
 
       - name: Run Python Static Analysis
         run: |
-          docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic"
+          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic"
 
       - name: Copy Python Analysis Reports to Host
         run: |
-          docker cp app:/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis .
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis .
 
       - name: Archive Python Analysis Reports
         uses: actions/upload-artifact@v4
@@ -95,14 +95,14 @@ jobs:
 
       - name: Build Firmware
         run: |
-          docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
+          docker-compose exec -T ionizationchamber bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
 
       - name: Copy Firmware Files to Host
         run: |
-          docker cp app:/workspace/build/IonizationChamber.cdb .
-          docker cp app:/workspace/build/IonizationChamber.lk .
-          docker cp app:/workspace/build/IonizationChamber.ihx .
-          docker cp app:/workspace/build/IonizationChamber.map .
+          docker cp ionizationchamber:/workspace/build/IonizationChamber.cdb .
+          docker cp ionizationchamber:/workspace/build/IonizationChamber.lk .
+          docker cp ionizationchamber:/workspace/build/IonizationChamber.ihx .
+          docker cp ionizationchamber:/workspace/build/IonizationChamber.map .
 
       - name: Archive Firmware Build Artifacts
         uses: actions/upload-artifact@v4
@@ -136,11 +136,11 @@ jobs:
 
       - name: Generate Documentation
         run: |
-          docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
+          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
 
       - name: Copy Documentation Coverage Report
         run: |
-          docker cp app:/workspace/DevOps/BuildArtifacts/DocsCoverage .
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/DocsCoverage .
 
       - name: Archive Documentation Coverage
         uses: actions/upload-artifact@v4
