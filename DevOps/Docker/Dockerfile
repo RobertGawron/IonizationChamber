@@ -75,9 +75,11 @@ RUN apt-get update && apt-get install -y \
     gcovr \
     clang
 
-# Clone FFF for Unit Test
-RUN git clone https://github.com/meekrosoft/fff.git /workspace/fff
 
+RUN /workspace/venv/bin/pip install --upgrade pip && \
+    /workspace/venv/bin/pip install \
+    prospector \
+    vjunit
 
 # Command to run the container
 CMD ["bash"]

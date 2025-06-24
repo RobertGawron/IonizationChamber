@@ -55,6 +55,11 @@ ctest --output-on-failure
 
 clear && rm -rf /workspace/build/* ; cmake .. && make docs
 
+
+# Python static analyse
+
+clear && rm -rf /workspace/build/* ; cmake .. && make pystatic
+
 # Hardware flashing
 
 Hardware connection
