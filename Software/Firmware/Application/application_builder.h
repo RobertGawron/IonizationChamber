@@ -14,7 +14,7 @@
  *
  * Sets up peripherals, drivers, and modules required for the application.
  */
-void application_builder_init();
+void application_builder_init(void);
 
 /**
  * @brief Main application loop body.
