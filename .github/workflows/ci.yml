@@ -53,7 +53,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        type: [c-static, python-static, firmware]
+        type: [docs-coverage, c-static, python-static, firmware]
       fail-fast: false
     steps:
       - name: Checkout Code
@@ -92,14 +92,18 @@ jobs:
       - name: Run Analysis or Build
         run: |
           case "${{ matrix.type }}" in
+            docs-coverage)
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make docs"
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/DocsCoverage .
+              ;;
             c-static)
               docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
               docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/C_Lint_ReportApplicationOnly.txt .
               docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/C_Lint_ReportFull.txt .
               ;;
             python-static)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/python_lint_report .
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make pystatic"
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis .
               ;;
             firmware)
               docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
@@ -115,8 +119,9 @@ jobs:
         with:
           name: ${{ matrix.type }}-artifacts
           path: |
+            ${{ matrix.type == 'docs-coverage' && 'DocsCoverage' || '' }}
             ${{ matrix.type == 'c-static' && 'C_Lint_Report*.txt' || '' }}
-            ${{ matrix.type == 'python-static' && 'python_lint_report' || '' }}
+            ${{ matrix.type == 'python-static' && 'PythonStaticAnalysis' || '' }}
             ${{ matrix.type == 'firmware' && 'IonizationChamber.*' || '' }}
 
       - name: Clean Up Containers

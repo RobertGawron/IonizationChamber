@@ -60,6 +60,11 @@ clear && rm -rf /workspace/build/* ; cmake .. && make docs
 
 clear && rm -rf /workspace/build/* ; cmake .. && make pystatic
 
+# code formatter
+
+cmake .. && make style
+
+
 # Hardware flashing
 
 Hardware connection

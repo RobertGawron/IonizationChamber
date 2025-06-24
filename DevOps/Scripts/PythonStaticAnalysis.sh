@@ -6,8 +6,8 @@ OUTPUT_DIR="/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis"
 mkdir -p "$OUTPUT_DIR"
 
 # Define input and output file paths
-MEASUREMENT_ACQUISITION_JSON="$OUTPUT_DIR/SystemTests.json"
-MEASUREMENT_ACQUISITION_HTML="$OUTPUT_DIR/SystemTests.html"
+MEASUREMENT_ACQUISITION_JSON="$OUTPUT_DIR/MeasurementAcquisition.json"
+MEASUREMENT_ACQUISITION_HTML="$OUTPUT_DIR/MeasurementAcquisition.html"
 
 # Initialize exit code tracker
 EXIT_CODE=0
