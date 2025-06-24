@@ -22,13 +22,13 @@ void application_builder_init();
  * This function waits for the next interrupt from a timer
  * and does not perform any active work itself.
  */
-void application_builder_run();
+void application_builder_run(void);
 
 /**
  * @brief Periodic tick handler.
  *
  * Called from a timer.
  */
-void application_builder_tick();
+void application_builder_tick(void);
 
 #endif

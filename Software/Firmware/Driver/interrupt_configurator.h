@@ -33,17 +33,15 @@ static inline void interrupt_configurator_enable()
     enableInterrupts();
 }
 
-
 /**
  * @brief Enter low-power wait-for-interrupt mode.
  *
  * Provides a high-level interface to enter low-power mode until an interrupt occurs,
  * hiding direct usage of STM8 intrinsic functions.
  */
-static inline void interrupt_configurator_wait()
+static inline void interrupt_configurator_wait(void)
 {
     wfi();
 }
-
 
 #endif
