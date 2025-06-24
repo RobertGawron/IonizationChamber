@@ -2,130 +2,123 @@ name: CI Pipeline
 
 on:
   push:
-    branches: ['*']
+    branches:
+      - '*'
   pull_request:
-    branches: ['*']
+    branches:
+      - '*'
+
+# Define common steps as YAML anchor
+x-docker-setup: &docker-setup
+  steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+
+    - name: Build and Start Docker Compose
+      run: |
+        docker-compose up -d --build
 
 jobs:
-  build-docker-image:
-    name: Build Docker Image
+  run-c-static-analysis:
+    name: Run C Static Analysis
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - *docker-setup
+      - name: Run C Static Analysis
+        run: |
+          docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+      - name: Copy C Analysis Reports to Host
+        run: |
+          docker cp app:/workspace/DevOps/BuildArtifacts/CStaticAnalysis .
 
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        id: docker-cache
-        with:
-          path: /tmp/.buildx-cache
-          key: docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}-${{ github.run_id }}
-          restore-keys: |
-            docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}
-            docker-
-
-      - name: Build Docker Image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          file: DevOps/Docker/Dockerfile
-          tags: chamber:ci-image
-          load: true
-          cache-from: type=local,src=/tmp/.buildx-cache
-          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
-
-      - name: Save Docker Image
-        run: docker save -o image.tar chamber:ci-image
-
-      - name: Upload Docker Image
+      - name: Archive C Analysis Reports
         uses: actions/upload-artifact@v4
         with:
-          name: docker-image
-          path: image.tar
-          retention-days: 1
-
-  parallel-tasks:
-    name: Parallel Tasks
-    needs: build-docker-image
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        type: [docs-coverage, c-static, python-static, firmware]
-      fail-fast: false
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
-
-      - name: Download Docker Image
-        uses: actions/download-artifact@v4
-        with:
-          name: docker-image
-          path: .
-
-      - name: Load Docker Image
-        run: docker load -i image.tar
-
-      - name: Prepare for Docker Compose
-        run: |
-          # Tag the image to match what docker-compose expects
-          docker tag chamber:ci-image chamber:latest
-          
-          # Create docker-compose override to use our image
-          echo "services:" > docker-compose.ci.yml
-          echo "  app:" >> docker-compose.ci.yml
-          echo "    image: chamber:latest" >> docker-compose.ci.yml
-          echo "    build: ~"  # Proper null value to disable building
-
-      - name: Start Docker Compose
-        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d --no-build
-      - name: Start Docker Compose
-        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d --no-build
-
-      - name: Run Analysis or Build
-        run: |
-          set -eEo pipefail
-          exit_status=0
-          case "${{ matrix.type }}" in
-            docs-coverage)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make docs" || exit_status=$?
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/DocsCoverage . || true
-              ;;
-            c-static)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic" || exit_status=$?
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/CStaticAnalysis . || true
-              ;;
-            python-static)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic" || exit_status=$?
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis . || true
-              ;;
-            firmware)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)" || exit_status=$?
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.cdb . || true
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.lk . || true
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.ihx . || true
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.map . || true
-              ;;
-          esac
-          exit $exit_status
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ matrix.type }}-artifacts
-          path: |
-            ${{ matrix.type == 'docs-coverage' && 'DocsCoverage' || '' }}
-            ${{ matrix.type == 'c-static' && 'CStaticAnalysis' || '' }}
-            ${{ matrix.type == 'python-static' && 'PythonStaticAnalysis' || '' }}
-            ${{ matrix.type == 'firmware' && 'IonizationChamber.*' || '' }}
+          name: c-lint-reports
+          path: CStaticAnalysis
 
       - name: Clean Up Containers
-        if: always()
-        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml down
+        run: |
+          docker-compose down
+
+  run-python-static-analysis:
+    name: Run Python Static Analysis
+    runs-on: ubuntu-latest
+    steps:
+      - *docker-setup
+      - name: Run Python Static Analysis
+        run: |
+          docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic"
+
+      - name: Copy Python Analysis Reports to Host
+        run: |
+          docker cp app:/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis .
+
+      - name: Archive Python Analysis Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-lint-reports
+          path: PythonStaticAnalysis
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  build-firmware:
+    name: Build Firmware
+    runs-on: ubuntu-latest
+    steps:
+      - *docker-setup
+      - name: Build Firmware
+        run: |
+          docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
+
+      - name: Copy Firmware Files to Host
+        run: |
+          docker cp app:/workspace/build/IonizationChamber.cdb .
+          docker cp app:/workspace/build/IonizationChamber.lk .
+          docker cp app:/workspace/build/IonizationChamber.ihx .
+          docker cp app:/workspace/build/IonizationChamber.map .
+
+      - name: Archive Firmware Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware-build-artifacts
+          path: |
+            IonizationChamber.cdb
+            IonizationChamber.lk
+            IonizationChamber.ihx
+            IonizationChamber.map
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  docs-coverage:
+    name: Documentation Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - *docker-setup
+      - name: Generate Documentation
+        run: |
+          docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
+
+      - name: Copy Documentation Coverage Report
+        run: |
+          docker cp app:/workspace/DevOps/BuildArtifacts/DocsCoverage .
+
+      - name: Archive Documentation Coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-coverage-report
+          path: DocsCoverage
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
