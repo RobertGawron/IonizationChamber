@@ -91,27 +91,30 @@ jobs:
 
       - name: Run Analysis or Build
         run: |
+          set -eEo pipefail
+          exit_status=0
           case "${{ matrix.type }}" in
             docs-coverage)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make docs"
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/DocsCoverage .
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make docs" || exit_status=$?
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/DocsCoverage . || true
               ;;
             c-static)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/CStaticAnalysis .
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic" || exit_status=$?
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/CStaticAnalysis . || true
               ;;
             python-static)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make pystatic"
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis .
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic" || exit_status=$?
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/PythonStaticAnalysis . || true
               ;;
             firmware)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.cdb .
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.lk .
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.ihx .
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.map .
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)" || exit_status=$?
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.cdb . || true
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.lk . || true
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.ihx . || true
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/IonizationChamber.map . || true
               ;;
           esac
+          exit $exit_status
 
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
