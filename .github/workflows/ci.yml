@@ -24,7 +24,7 @@ jobs:
         id: cache-docker
         with:
           path: /tmp/.buildx-cache
-          key: docker-${{ hashFiles('**/Dockerfile', 'docker-compose.yml', '**/requirements.txt') }}
+          key: docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}
           restore-keys: |
             docker-
 
