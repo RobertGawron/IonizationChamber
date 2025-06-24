@@ -1,6 +1,6 @@
 # Doxygen configuration file template (Doxyfile.in)
-INPUT = "/workspace/Software/STM32F103RBTx/Application/"
-OUTPUT_DIRECTORY = "/workspace/build/BuildArtifacts/DocsCoverage"
+INPUT = "/workspace/Software/Firmware/Application/"
+OUTPUT_DIRECTORY = "/workspace/build/DevOps/BuildArtifacts/DocsCoverage/"
 
 FILE_PATTERNS = "*.hpp"
 
@@ -10,7 +10,7 @@ RECURSIVE = YES
 # Warn if undocumented elements are found
 WARN_IF_UNDOCUMENTED = YES
 WARN_NO_PARAMDOC = YES
-WARN_LOGFILE = "/workspace/build/BuildArtifacts/DocsCoverage/doxygen_warnings.log"
+WARN_LOGFILE = "/workspace/build/DevOps/BuildArtifacts/DocsCoverage//doxygen_warnings.log"
 
 # Other Doxygen settings (optional)
 GENERATE_HTML = NO

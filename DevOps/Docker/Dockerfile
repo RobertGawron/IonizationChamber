@@ -54,7 +54,7 @@ COPY --from=build /stm8flash/stm8flash /usr/bin/
 # Install flake8 in a Python virtual environment
 RUN python3 -m venv /workspace/venv && \
     /workspace/venv/bin/pip install --upgrade pip && \
-    /workspace/venv/bin/pip install flake8 flake8-html pyserial CodeChecker
+    /workspace/venv/bin/pip install flake8 flake8-html pyserial CodeChecker coverxygen
 
 # Install R libraries
 RUN R -e "install.packages('latticeExtra', repos='http://cran.rstudio.com/')"
