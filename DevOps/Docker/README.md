@@ -51,7 +51,9 @@ make -j$(nproc)
 ctest --output-on-failure
 
 
+# Docs coverage
 
+clear && rm -rf /workspace/build/* ; cmake .. && make docs
 
 # Hardware flashing
 

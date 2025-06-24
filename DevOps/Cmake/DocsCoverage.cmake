@@ -7,9 +7,16 @@ set(PYTHON_EXECUTABLE "/workspace/venv/bin/python3")
 find_program(GENHTML_EXECUTABLE genhtml)
 
 if(DOXYGEN_EXECUTABLE)
-    # Set the source directory and output directory for the Doxygen analysis
-    set(DOXYGEN_INPUT_DIR "${CMAKE_SOURCE_DIR}/Software/Firmware/Application/")
-    set(DOXYGEN_OUTPUT_DIR "${CMAKE_BINARY_DIR}/DevOps/BuildArtifacts/DocsCoverage/")
+    set(DOXYGEN_DIRS
+        "${CMAKE_SOURCE_DIR}/Software/Firmware/Application/"
+        "${CMAKE_SOURCE_DIR}/Software/Firmware/Device/"
+        "${CMAKE_SOURCE_DIR}/Software/Firmware/Driver/"
+        "${CMAKE_SOURCE_DIR}/Software/Firmware/UnitTest/"
+    )
+    string(REPLACE ";" " " DOXYGEN_DIRS_STR "${DOXYGEN_DIRS}")  
+    set(DOXYGEN_INPUT_DIR ${DOXYGEN_DIRS_STR})
+
+    set(DOXYGEN_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/DevOps/BuildArtifacts/DocsCoverage/")
 
     # Ensure the output directory exists
     file(MAKE_DIRECTORY "${DOXYGEN_OUTPUT_DIR}")
@@ -38,7 +45,7 @@ if(DOXYGEN_EXECUTABLE)
                 --xml-dir "${DOXYGEN_OUTPUT_DIR}/xml" 
                 --src-dir "${DOXYGEN_INPUT_DIR}" 
                 --output "${DOXYGEN_OUTPUT_DIR}/doc-coverage.info"
-             COMMAND ${GENHTML_EXECUTABLE} --no-function-coverage 
+            COMMAND ${GENHTML_EXECUTABLE} --no-function-coverage 
                 --no-branch-coverage "${DOXYGEN_OUTPUT_DIR}/doc-coverage.info" 
                 -o "${DOXYGEN_OUTPUT_DIR}"
             WORKING_DIRECTORY "${CMAKE_BINARY_DIR}"
