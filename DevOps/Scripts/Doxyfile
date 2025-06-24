@@ -2,7 +2,7 @@
 INPUT = "/workspace/Software/Firmware/Application/"
 OUTPUT_DIRECTORY = "/workspace/build/DevOps/BuildArtifacts/DocsCoverage/"
 
-FILE_PATTERNS = "*.hpp"
+FILE_PATTERNS = "*.h"
 
 # Search subdirectories recursively
 RECURSIVE = YES
