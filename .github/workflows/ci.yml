@@ -15,10 +15,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      
-      - name: Setup Docker Environment
-        uses: ./.github/actions/docker-setup
-      
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
       - name: Run C Static Analysis
         run: |
           docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
@@ -43,10 +49,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      
-      - name: Setup Docker Environment
-        uses: ./.github/actions/docker-setup
-      
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
       - name: Run Python Static Analysis
         run: |
           docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic"
@@ -71,10 +83,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      
-      - name: Setup Docker Environment
-        uses: ./.github/actions/docker-setup
-      
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
       - name: Build Firmware
         run: |
           docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
@@ -106,10 +124,16 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      
-      - name: Setup Docker Environment
-        uses: ./.github/actions/docker-setup
-      
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d --build
+
       - name: Generate Documentation
         run: |
           docker-compose exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
