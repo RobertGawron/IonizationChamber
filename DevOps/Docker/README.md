@@ -91,21 +91,7 @@ Run the data acquisition script. It will log the Ionization Chamber's output to 
 
 python main.py
 
-# Running Simulation
 
-Log into the Docker container and navigate to the simulation directory:
-
-cd /workspace/Simulation/
-
-Run the following command:
-
-python3 main.py
-
-Press Ctrl+C after a few seconds.
-
-The generated .csv file will be located at:
-
-/workspace/Simulation/data.csv
 
 # Credits:
 * [stm8flash in Docker](https://github.com/ivankomolin/docker-stm8/blob/master/Dockerfile)

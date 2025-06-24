@@ -54,13 +54,13 @@ function(create_test_exec TARGET_NAME)
     
     # Include directories
     target_include_directories(${TARGET_NAME} PRIVATE
-        ${CMAKE_SOURCE_DIR}/../Application
-        ${CMAKE_SOURCE_DIR}/../Device
-        ${CMAKE_SOURCE_DIR}/../Driver
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Application
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Device
+        ${CMAKE_CURRENT_SOURCE_DIR}/../Driver
                 
-        ${CMAKE_SOURCE_DIR}/../STM8S_StdPeriph_Lib/inc/
-        ${CMAKE_SOURCE_DIR}/Mock
-        ${CMAKE_SOURCE_DIR}/..
+        ${CMAKE_CURRENT_SOURCE_DIR}/../STM8S_StdPeriph_Lib/inc/
+        ${CMAKE_CURRENT_SOURCE_DIR}/Mock
+        ${CMAKE_CURRENT_SOURCE_DIR}/..
     )
 
     apply_coverage_flags(${TARGET_NAME})
@@ -87,48 +87,48 @@ set(TEST_TARGETS "")
 
 ### Application tests
 set(APPLICATION_BUILDER_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Application/application_builder.c
-    ${CMAKE_SOURCE_DIR}/test_application_builder.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Application/application_builder.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_application_builder.c
 )
 
 set(MEASUREMENT_FRAME_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Application/measurement_frame.c
-    ${CMAKE_SOURCE_DIR}/test_measurement_frame.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Application/measurement_frame.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_measurement_frame.c
 )
 
 set(MEASUREMENT_COLLECTOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Application/measurement_collector.c
-    ${CMAKE_SOURCE_DIR}/test_measurement_collector.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Application/measurement_collector.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_measurement_collector.c
 )
 
 ## Driver tests
 set(USER_INTERFACE_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Driver/user_interface.c
-    ${CMAKE_SOURCE_DIR}/test_user_interface.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Driver/user_interface.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_user_interface.c
 )
 
 set(MCP3425_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Driver/mcp3425.c
-    ${CMAKE_SOURCE_DIR}/test_mcp3425.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Driver/mcp3425.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_mcp3425.c
 )
 
 set(TIMER_CONFIGURATOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Driver/timer_configurator.c
-    ${CMAKE_SOURCE_DIR}/test_timer_configurator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Driver/timer_configurator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_timer_configurator.c
 )
 
 set(LOGGER_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Driver/logger.c
-    ${CMAKE_SOURCE_DIR}/test_logger.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Driver/logger.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_logger.c
 )
 
 set(CLOCK_CONFIGURATOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/../Driver/clock_configurator.c
-    ${CMAKE_SOURCE_DIR}/test_clock_configurator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/../Driver/clock_configurator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_clock_configurator.c
 )
 
 set(INTERRUPT_CONFIGURATOR_TEST_SRC
-    ${CMAKE_SOURCE_DIR}/test_interrupt_configurator.c
+    ${CMAKE_CURRENT_SOURCE_DIR}/test_interrupt_configurator.c
 )
  
 create_test_exec(test_user_interface "${USER_INTERFACE_TEST_SRC}")

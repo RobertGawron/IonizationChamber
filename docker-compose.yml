@@ -15,7 +15,10 @@ services:
     volumes:
       - ./Simulation:/workspace/Simulation
       - ./Software:/workspace/Software
-      - ./DevOps/ContinuousIntegration:/workspace/ContinuousIntegration
+      - ./CMakeLists.txt:/workspace/CMakeLists.txt
+      - ./DevOps/BuildArtifacts/:/workspace/DevOps/BuildArtifacts
+      - ./DevOps/Cmake/:/workspace/DevOps/Cmake/
+      - ./DevOps/Scripts/:/workspace/DevOps/Scripts/
       # Add USB device access
       - /dev/bus/usb:/dev/bus/usb  # Mount entire USB bus
     environment:
