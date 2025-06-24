@@ -14,23 +14,29 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # Setup Docker Buildx with proper cache support
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
       - name: Cache Docker layers
         uses: actions/cache@v3
         id: docker-cache
         with:
-          path: /tmp/.docker-cache
-          key: docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}
+          path: /tmp/.buildx-cache
+          key: docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}-${{ github.run_id }}
           restore-keys: |
+            docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}
             docker-
 
       - name: Build Docker Image
-        run: |
-          mkdir -p /tmp/.docker-cache
-          docker build \
-            --cache-from type=local,src=/tmp/.docker-cache \
-            --cache-to type=local,dest=/tmp/.docker-cache,mode=max \
-            -f DevOps/Docker/Dockerfile \
-            -t ci-image:latest .
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          file: DevOps/Docker/Dockerfile
+          tags: ci-image:latest
+          load: true
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Save Docker Image
         run: docker save -o image.tar ci-image:latest
