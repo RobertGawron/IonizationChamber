@@ -14,7 +14,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      # Setup Docker Buildx with proper cache support
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
 
@@ -28,18 +27,25 @@ jobs:
             docker-${{ hashFiles('DevOps/Docker/Dockerfile', 'docker-compose.yml') }}
             docker-
 
+      - name: Get Project Name
+        id: project-name
+        run: |
+          # Extract the project name from docker-compose.yml
+          PROJECT_NAME=$(basename $(pwd) | tr '[:upper:]' '[:lower:]')
+          echo "project-name=${PROJECT_NAME}" >> $GITHUB_OUTPUT
+
       - name: Build Docker Image
         uses: docker/build-push-action@v3
         with:
           context: .
           file: DevOps/Docker/Dockerfile
-          tags: ci-image:latest
+          tags: ${{ steps.project-name.outputs.project-name }}_app:ci-image
           load: true
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Save Docker Image
-        run: docker save -o image.tar ci-image:latest
+        run: docker save -o image.tar ${{ steps.project-name.outputs.project-name }}_app:ci-image
 
       - name: Upload Docker Image
         uses: actions/upload-artifact@v4
@@ -74,27 +80,36 @@ jobs:
       - name: Load Docker Image
         run: docker load -i image.tar
 
+      - name: Get Project Name
+        id: project-name
+        run: |
+          PROJECT_NAME=$(basename $(pwd) | tr '[:upper:]' '[:lower:]')
+          echo "project-name=${PROJECT_NAME}" >> $GITHUB_OUTPUT
+
       - name: Start Docker Compose
-        run: docker-compose up -d --no-build
+        run: |
+          # Tag the image to match what docker-compose expects
+          docker tag ${{ steps.project-name.outputs.project-name }}_app:ci-image ${{ steps.project-name.outputs.project-name }}_app
+          docker-compose up -d --no-build
 
       - name: Run Analysis or Build
         run: |
           case "${{ matrix.type }}" in
             c-static)
               docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
-              docker cp app:/workspace/build/C_Lint_ReportApplicationOnly.txt .
-              docker cp app:/workspace/build/C_Lint_ReportFull.txt .
+              docker cp $(docker-compose ps -q app):/workspace/build/C_Lint_ReportApplicationOnly.txt .
+              docker cp $(docker-compose ps -q app):/workspace/build/C_Lint_ReportFull.txt .
               ;;
             python-static)
               docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
-              docker cp app:/workspace/build/python_lint_report .
+              docker cp $(docker-compose ps -q app):/workspace/build/python_lint_report .
               ;;
             firmware)
               docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
-              docker cp app:/workspace/build/IonizationChamber.cdb .
-              docker cp app:/workspace/build/IonizationChamber.lk .
-              docker cp app:/workspace/build/IonizationChamber.ihx .
-              docker cp app:/workspace/build/IonizationChamber.map .
+              docker cp $(docker-compose ps -q app):/workspace/build/IonizationChamber.cdb .
+              docker cp $(docker-compose ps -q app):/workspace/build/IonizationChamber.lk .
+              docker cp $(docker-compose ps -q app):/workspace/build/IonizationChamber.ihx .
+              docker cp $(docker-compose ps -q app):/workspace/build/IonizationChamber.map .
               ;;
           esac
 
