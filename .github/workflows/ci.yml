@@ -82,8 +82,10 @@ jobs:
           echo "services:" > docker-compose.ci.yml
           echo "  app:" >> docker-compose.ci.yml
           echo "    image: chamber:latest" >> docker-compose.ci.yml
-          echo "    build: null" >> docker-compose.ci.yml
+          echo "    build: ~"  # Proper null value to disable building
 
+      - name: Start Docker Compose
+        run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d --no-build
       - name: Start Docker Compose
         run: docker-compose -f docker-compose.yml -f docker-compose.ci.yml up -d --no-build
 

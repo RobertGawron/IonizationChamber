@@ -81,5 +81,9 @@ RUN /workspace/venv/bin/pip install --upgrade pip && \
     prospector \
     vjunit
 
+RUN apt-get update && apt-get install -y \
+    uncrustify
+    
+
 # Command to run the container
 CMD ["bash"]
