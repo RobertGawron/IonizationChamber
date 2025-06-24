@@ -1,5 +1,5 @@
 services:
-  app:
+  ionizationchamber:
     container_name: ionizationchamber
     ulimits:
       core: -1    # unlimited core dump size
