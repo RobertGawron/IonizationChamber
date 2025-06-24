@@ -55,6 +55,9 @@ ctest --output-on-failure
 
 clear && rm -rf /workspace/build/* ; cmake .. && make docs
 
+# C static analyse
+
+source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic
 
 # Python static analyse
 

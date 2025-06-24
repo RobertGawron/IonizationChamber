@@ -83,7 +83,11 @@ RUN /workspace/venv/bin/pip install --upgrade pip && \
 
 RUN apt-get update && apt-get install -y \
     uncrustify
+
     
+RUN apt-get update && apt-get install -y \
+    clang-tidy
+
 
 # Command to run the container
 CMD ["bash"]

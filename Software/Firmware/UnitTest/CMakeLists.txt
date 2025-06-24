@@ -149,22 +149,6 @@ add_custom_target(run_all_tests
 )
 
 # =============================================================================
-# STATIC ANALYSIS WITH CODECHECKER
-# =============================================================================
-find_program(CODECHECKER_PATH CodeChecker)
-if(CODECHECKER_PATH)
-    add_custom_target(static
-        COMMAND ${CODECHECKER_PATH} analyze ${CMAKE_BINARY_DIR}/compile_commands.json --enable-all --output ${CMAKE_BINARY_DIR}/codechecker_reports
-        COMMAND ${CODECHECKER_PATH} parse ${CMAKE_BINARY_DIR}/codechecker_reports --export html --output ${CMAKE_BINARY_DIR}/codechecker_html
-        COMMENT "Running CodeChecker static analysis and exporting HTML report..."
-        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-        DEPENDS run_all_tests
-    )
-else()
-    message(WARNING "CodeChecker not found! Install with 'pip install --user CodeChecker'")
-endif()
-
-# =============================================================================
 # CODE COVERAGE CONFIGURATION
 # =============================================================================
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")

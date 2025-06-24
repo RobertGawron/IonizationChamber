@@ -97,9 +97,8 @@ jobs:
               docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/DocsCoverage .
               ;;
             c-static)
-              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/C_Lint_ReportApplicationOnly.txt .
-              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/build/C_Lint_ReportFull.txt .
+              docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
+              docker cp $(docker-compose -f docker-compose.yml -f docker-compose.ci.yml ps -q app):/workspace/DevOps/BuildArtifacts/CStaticAnalysis .
               ;;
             python-static)
               docker-compose -f docker-compose.yml -f docker-compose.ci.yml exec -T app bash -c "cd /workspace/build/ && cmake .. && make pystatic"
@@ -120,7 +119,7 @@ jobs:
           name: ${{ matrix.type }}-artifacts
           path: |
             ${{ matrix.type == 'docs-coverage' && 'DocsCoverage' || '' }}
-            ${{ matrix.type == 'c-static' && 'C_Lint_Report*.txt' || '' }}
+            ${{ matrix.type == 'c-static' && 'CStaticAnalysis' || '' }}
             ${{ matrix.type == 'python-static' && 'PythonStaticAnalysis' || '' }}
             ${{ matrix.type == 'firmware' && 'IonizationChamber.*' || '' }}
 
