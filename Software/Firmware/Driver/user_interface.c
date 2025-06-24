@@ -11,37 +11,41 @@ void user_interface_init()
     GPIO_WriteLow(PORT_GPIO_LED, GPIO_LED_PINS);
 }
 
-void user_interface_update_message(const UserInterface_Message_t message, const UserInterface_MessageAction_t state)
+
+void user_interface_update_message(
+    const UserInterface_Message_t       message,
+    const UserInterface_MessageAction_t state)
 {
     GPIO_Pin_TypeDef pin = 0;
     bool status = TRUE;
 
-    switch (message)
+    switch(message)
     {
-    case USER_INTERFACE_STATE_OK_MSG:
-        pin = PIN_GPIO_LED_GREEN;
-        break;
+        case USER_INTERFACE_STATE_OK_MSG:
+            pin = PIN_GPIO_LED_GREEN;
+            break;
 
-    case USER_INTERFACE_COLLECTING_DATA_MSG:
-        pin = PIN_GPIO_LED_RED;
-        break;
+        case USER_INTERFACE_COLLECTING_DATA_MSG:
+            pin = PIN_GPIO_LED_RED;
+            break;
 
-    default:
-        status = FALSE;
-        break;
+        default:
+            status = FALSE;
+            break;
     }
 
-    if (status)
+    if(status)
     {
-        switch (state)
+        switch(state)
         {
-        case USER_INTERFACE_ENABLE:
-            GPIO_WriteHigh(PORT_GPIO_LED, pin);
-            break;
+            case USER_INTERFACE_ENABLE:
+                GPIO_WriteHigh(PORT_GPIO_LED, pin);
+                break;
 
-        case USER_INTERFACE_DISABLE:
-            GPIO_WriteLow(PORT_GPIO_LED, pin);
-            break;
+            case USER_INTERFACE_DISABLE:
+                GPIO_WriteLow(PORT_GPIO_LED, pin);
+                break;
         }
     }
 }
+

@@ -15,42 +15,72 @@
  *
  * Tracks calls to clock initialization function.
  */
-void clock_configurator_init(void) { function_called(); }
+void clock_configurator_init(
+    void)
+{
+    function_called();
+}
+
 
 /**
  * @brief Mock implementation of timer_configurator_init
  *
  * Tracks calls to timer initialization function.
  */
-void timer_configurator_init(void) { function_called(); }
+void timer_configurator_init(
+    void)
+{
+    function_called();
+}
+
 
 /**
  * @brief Mock implementation of logger_init
  *
  * Tracks calls to logger initialization function.
  */
-void logger_init(void) { function_called(); }
+void logger_init(
+    void)
+{
+    function_called();
+}
+
 
 /**
  * @brief Mock implementation of user_interface_init
  *
  * Tracks calls to user interface initialization function.
  */
-void user_interface_init(void) { function_called(); }
+void user_interface_init(
+    void)
+{
+    function_called();
+}
+
 
 /**
  * @brief Mock implementation of mcp3425_init
  *
  * Tracks calls to MCP3425 ADC initialization function.
  */
-void mcp3425_init(void) { function_called(); }
+void mcp3425_init(
+    void)
+{
+    function_called();
+}
+
 
 /**
  * @brief Mock implementation of measurement_collector_tick
  *
  * Tracks calls to measurement collector periodic task.
  */
-void measurement_collector_tick(void) { function_called(); }
+void measurement_collector_tick(
+    void)
+{
+    function_called();
+}
+
 
 /**
  * @brief Mock implementation of wfi()
@@ -63,6 +93,7 @@ void wfi()
     function_called();
 }
 
+
 /**
  * @brief Mock implementation of user_interface_update_message
  *
@@ -72,12 +103,13 @@ void wfi()
  * @param state Enable/disable state for the message
  */
 void user_interface_update_message(
-    const UserInterface_Message_t message,
+    const UserInterface_Message_t       message,
     const UserInterface_MessageAction_t state)
 {
     check_expected(message);
     check_expected(state);
 }
+
 
 // =============================================================================
 // TEST CASES
@@ -103,7 +135,8 @@ void user_interface_update_message(
  *
  * @param state CMocka state object (unused)
  */
-static void test_ApplicationBuilder_Init_Sequence(void **state)
+static void test_ApplicationBuilder_Init_Sequence(
+    void **state)
 {
     (void)state;
 
@@ -122,6 +155,7 @@ static void test_ApplicationBuilder_Init_Sequence(void **state)
     application_builder_init();
 }
 
+
 /**
  * @test
  * @brief Tests application tick functionality
@@ -136,7 +170,8 @@ static void test_ApplicationBuilder_Init_Sequence(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_ApplicationBuilder_Tick(void **state)
+static void test_ApplicationBuilder_Tick(
+    void **state)
 {
     (void)state;
     // 1. Expect measurement collector tick
@@ -145,6 +180,7 @@ static void test_ApplicationBuilder_Tick(void **state)
     // 2. Execute function under test
     application_builder_tick();
 }
+
 
 /**
  * @test
@@ -160,7 +196,8 @@ static void test_ApplicationBuilder_Tick(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_ApplicationBuilder_Run_CallsWait(void **state)
+static void test_ApplicationBuilder_Run_CallsWait(
+    void **state)
 {
     (void)state;
     // 1. Expect wfi call
@@ -169,6 +206,7 @@ static void test_ApplicationBuilder_Run_CallsWait(void **state)
     // 2. Execute function under test
     application_builder_run();
 }
+
 
 // =============================================================================
 // TEST RUNNER
@@ -183,7 +221,8 @@ static void test_ApplicationBuilder_Run_CallsWait(void **state)
  *
  * @return int Number of failed tests (0 if all pass)
  */
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_ApplicationBuilder_Init_Sequence),

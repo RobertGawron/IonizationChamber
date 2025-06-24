@@ -14,12 +14,13 @@ enum FrameOffsets
     FRAME_CRC = 4
 };
 
-void measurement_frame_create(uint8_t *output,
-                              const uint8_t maxLength,
-                              const uint8_t configuration,
-                              const uint16_t measurement)
+void measurement_frame_create(
+    uint8_t *      output,
+    const uint8_t  maxLength,
+    const uint8_t  configuration,
+    const uint16_t measurement)
 {
-    if ((output != 0) && (maxLength >= MAX_FRAME_LENGTH))
+    if((output != 0) && (maxLength >= MAX_FRAME_LENGTH))
     {
         output[FRAME_PREAMBLE] = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
         output[FRAME_CONFIGURATION] = configuration;
@@ -28,3 +29,4 @@ void measurement_frame_create(uint8_t *output,
         output[FRAME_CRC] = GET_CRC(configuration, measurement); // todo calculate crc from whole buffe
     }
 }
+

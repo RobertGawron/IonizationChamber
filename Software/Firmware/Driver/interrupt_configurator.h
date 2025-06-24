@@ -33,6 +33,7 @@ static inline void interrupt_configurator_enable()
     enableInterrupts();
 }
 
+
 /**
  * @brief Enter low-power wait-for-interrupt mode.
  *
@@ -43,5 +44,6 @@ static inline void interrupt_configurator_wait()
 {
     wfi();
 }
+
 
 #endif

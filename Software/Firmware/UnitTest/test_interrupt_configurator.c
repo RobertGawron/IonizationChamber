@@ -15,6 +15,7 @@ void wfi()
 {
 }
 
+
 // =============================================================================
 // TEST CASES
 // =============================================================================
@@ -26,7 +27,8 @@ void wfi()
  * Ensures that interrupt_configurator_enable() correctly maps to enableInterrupts macro.
  * Since the macro is empty in test mode, we just verify the function exists and is callable.
  */
-static void test_interrupt_configurator_enable(void **state)
+static void test_interrupt_configurator_enable(
+    void **state)
 {
     (void)state;
 
@@ -37,6 +39,7 @@ static void test_interrupt_configurator_enable(void **state)
     assert_true(1);
 }
 
+
 /**
  * @test
  * @brief Verify wfi mapping
@@ -44,7 +47,8 @@ static void test_interrupt_configurator_enable(void **state)
  * Ensures that interrupt_configurator_wait() correctly maps to wfi macro.
  * Since the macro is empty in test mode, we just verify the function exists and is callable.
  */
-static void test_interrupt_configurator_wait(void **state)
+static void test_interrupt_configurator_wait(
+    void **state)
 {
     (void)state;
 
@@ -55,11 +59,13 @@ static void test_interrupt_configurator_wait(void **state)
     assert_true(1);
 }
 
+
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
 
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_interrupt_configurator_enable),

@@ -20,10 +20,12 @@
  *
  * @return uint8_t Mocked configuration value
  */
-uint8_t mcp3425_get_conf(void)
+uint8_t mcp3425_get_conf(
+    void)
 {
     return mock_type(uint8_t);
 }
+
 
 /**
  * @brief Mock implementation of mcp3425_get_value
@@ -33,17 +35,19 @@ uint8_t mcp3425_get_conf(void)
  * @param sample Pointer to store the measurement value
  * @return bool True if read was successful, false otherwise
  */
-bool mcp3425_get_value(RadioactivityMeasurer_MeasurementData_t *sample)
+bool mcp3425_get_value(
+    RadioactivityMeasurer_MeasurementData_t *sample)
 {
     check_expected_ptr(sample);
 
-    if (sample != NULL)
+    if(sample != NULL)
     {
         *sample = mock_type(RadioactivityMeasurer_MeasurementData_t);
     }
 
     return mock_type(bool);
 }
+
 
 /**
  * @brief Mock implementation of measurement_frame_create
@@ -55,16 +59,18 @@ bool mcp3425_get_value(RadioactivityMeasurer_MeasurementData_t *sample)
  * @param configuration Measurement configuration
  * @param measurement Measurement value
  */
-void measurement_frame_create(uint8_t *output,
-                              const uint8_t maxLength,
-                              const uint8_t configuration,
-                              const uint16_t measurement)
+void measurement_frame_create(
+    uint8_t *      output,
+    const uint8_t  maxLength,
+    const uint8_t  configuration,
+    const uint16_t measurement)
 {
     // Only check parameters we care about
     check_expected(maxLength);
     check_expected(configuration);
     check_expected(measurement);
 }
+
 
 /**
  * @brief Mock implementation of logger_print
@@ -74,10 +80,13 @@ void measurement_frame_create(uint8_t *output,
  * @param output Data buffer to log
  * @param length Number of bytes to log
  */
-void logger_print(const uint8_t *output, const uint8_t length)
+void logger_print(
+    const uint8_t *output,
+    const uint8_t  length)
 {
     check_expected(length); // Only check length since pointer value is unpredictable
 }
+
 
 // =============================================================================
 // TEST CASES
@@ -101,7 +110,8 @@ void logger_print(const uint8_t *output, const uint8_t length)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Tick_CallsAllDependencies(void **state)
+static void test_Tick_CallsAllDependencies(
+    void **state)
 {
     (void)state;
 
@@ -130,6 +140,7 @@ static void test_Tick_CallsAllDependencies(void **state)
     measurement_collector_tick();
 }
 
+
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -142,10 +153,12 @@ static void test_Tick_CallsAllDependencies(void **state)
  *
  * @return int Number of failed tests (0 if all pass)
  */
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
-        cmocka_unit_test(test_Tick_CallsAllDependencies)};
+        cmocka_unit_test(test_Tick_CallsAllDependencies)
+    };
 
     return cmocka_run_group_tests(tests, NULL, NULL);
 }

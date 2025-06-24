@@ -7,4 +7,3 @@ void timer_configurator_init()
     TIM1_Cmd(ENABLE);
     TIM1_ITConfig(TIM1_IT_UPDATE, ENABLE);
 }
-

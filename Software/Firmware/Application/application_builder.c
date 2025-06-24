@@ -26,13 +26,16 @@ void application_builder_init()
         USER_INTERFACE_ENABLE);
 }
 
+
 void application_builder_run()
 {
     /* Wait in idle state. Business logic is triggered via interrupt. */
     interrupt_configurator_wait();
 }
 
+
 void application_builder_tick()
 {
     measurement_collector_tick();
 }
+

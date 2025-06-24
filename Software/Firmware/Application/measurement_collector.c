@@ -15,3 +15,4 @@ void measurement_collector_tick()
     measurement_frame_create(buffer, MAX_FRAME_LENGTH, configuration, sample);
     logger_print(buffer, MAX_FRAME_LENGTH);
 }
+

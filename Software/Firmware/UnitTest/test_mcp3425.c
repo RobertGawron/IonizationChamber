@@ -77,25 +77,31 @@ static uint8_t i2c_event_status = 0;
  * @param GPIO_Pin Pin selection
  * @param GPIO_Mode Pin mode configuration
  */
-void GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef GPIO_Mode)
+void GPIO_Init(
+    GPIO_TypeDef *    GPIOx,
+    GPIO_Pin_TypeDef  GPIO_Pin,
+    GPIO_Mode_TypeDef GPIO_Mode)
 {
     (void)GPIOx;
     (void)GPIO_Pin;
     (void)GPIO_Mode;
 }
 
+
 /**
  * @brief Mock implementation of I2C_DeInit
  *
  * Resets all I2C mock state variables to default values.
  */
-void I2C_DeInit(void)
+void I2C_DeInit(
+    void)
 {
     i2c_bus_busy = FALSE;
     i2c_last_sent_data = 0;
     i2c_receive_index = 0;
     i2c_event_status = 0;
 }
+
 
 /**
  * @brief Mock implementation of I2C_Init
@@ -109,9 +115,13 @@ void I2C_DeInit(void)
  * @param AddMode Addressing mode
  * @param InputClockFrequencyMHz Input clock frequency in MHz
  */
-void I2C_Init(uint32_t OutputClockFrequencyHz, uint16_t OwnAddress,
-              I2C_DutyCycle_TypeDef I2C_DutyCycle, I2C_Ack_TypeDef Ack,
-              I2C_AddMode_TypeDef AddMode, uint8_t InputClockFrequencyMHz)
+void I2C_Init(
+    uint32_t              OutputClockFrequencyHz,
+    uint16_t              OwnAddress,
+    I2C_DutyCycle_TypeDef I2C_DutyCycle,
+    I2C_Ack_TypeDef       Ack,
+    I2C_AddMode_TypeDef   AddMode,
+    uint8_t               InputClockFrequencyMHz)
 {
     check_expected(OutputClockFrequencyHz);
     check_expected(OwnAddress);
@@ -121,6 +131,7 @@ void I2C_Init(uint32_t OutputClockFrequencyHz, uint16_t OwnAddress,
     check_expected(InputClockFrequencyMHz);
 }
 
+
 /**
  * @brief Mock implementation of I2C_Cmd
  *
@@ -128,10 +139,12 @@ void I2C_Init(uint32_t OutputClockFrequencyHz, uint16_t OwnAddress,
  *
  * @param NewState ENABLE or DISABLE command
  */
-void I2C_Cmd(FunctionalState NewState)
+void I2C_Cmd(
+    FunctionalState NewState)
 {
     check_expected(NewState);
 }
+
 
 /**
  * @brief Mock implementation of I2C_GenerateSTART
@@ -140,14 +153,16 @@ void I2C_Cmd(FunctionalState NewState)
  *
  * @param NewState ENABLE to generate START condition
  */
-void I2C_GenerateSTART(FunctionalState NewState)
+void I2C_GenerateSTART(
+    FunctionalState NewState)
 {
-    if (NewState == ENABLE)
+    if(NewState == ENABLE)
     {
         i2c_event_status |= I2C_EVENT_MASTER_MODE_SELECT;
         i2c_bus_busy = TRUE;
     }
 }
+
 
 /**
  * @brief Mock implementation of I2C_CheckEvent
@@ -157,10 +172,12 @@ void I2C_GenerateSTART(FunctionalState NewState)
  * @param I2C_Event Event to check
  * @return ErrorStatus SUCCESS if event occurred, ERROR otherwise
  */
-ErrorStatus I2C_CheckEvent(I2C_Event_TypeDef I2C_Event)
+ErrorStatus I2C_CheckEvent(
+    I2C_Event_TypeDef I2C_Event)
 {
     return (i2c_event_status & I2C_Event) ? SUCCESS : ERROR;
 }
+
 
 /**
  * @brief Mock implementation of I2C_Send7bitAddress
@@ -170,12 +187,14 @@ ErrorStatus I2C_CheckEvent(I2C_Event_TypeDef I2C_Event)
  * @param Address Slave address to send
  * @param Direction Transmission direction (TX/RX)
  */
-void I2C_Send7bitAddress(uint8_t Address, I2C_Direction_TypeDef Direction)
+void I2C_Send7bitAddress(
+    uint8_t               Address,
+    I2C_Direction_TypeDef Direction)
 {
     check_expected(Address);
     check_expected(Direction);
 
-    if (Direction == I2C_DIRECTION_TX)
+    if(Direction == I2C_DIRECTION_TX)
     {
         i2c_event_status |= I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED;
     }
@@ -185,6 +204,7 @@ void I2C_Send7bitAddress(uint8_t Address, I2C_Direction_TypeDef Direction)
     }
 }
 
+
 /**
  * @brief Mock implementation of I2C_SendData
  *
@@ -192,12 +212,14 @@ void I2C_Send7bitAddress(uint8_t Address, I2C_Direction_TypeDef Direction)
  *
  * @param Data Byte to send
  */
-void I2C_SendData(uint8_t Data)
+void I2C_SendData(
+    uint8_t Data)
 {
     i2c_last_sent_data = Data;
     i2c_event_status |= I2C_EVENT_MASTER_BYTE_TRANSMITTED;
     check_expected(Data);
 }
+
 
 /**
  * @brief Mock implementation of I2C_GenerateSTOP
@@ -206,14 +228,16 @@ void I2C_SendData(uint8_t Data)
  *
  * @param NewState ENABLE to generate STOP condition
  */
-void I2C_GenerateSTOP(FunctionalState NewState)
+void I2C_GenerateSTOP(
+    FunctionalState NewState)
 {
-    if (NewState == ENABLE)
+    if(NewState == ENABLE)
     {
         i2c_bus_busy = FALSE;
         i2c_event_status = 0;
     }
 }
+
 
 /**
  * @brief Mock implementation of I2C_GetFlagStatus
@@ -223,14 +247,16 @@ void I2C_GenerateSTOP(FunctionalState NewState)
  * @param I2C_Flag Flag to check
  * @return FlagStatus SET if flag is set, RESET otherwise
  */
-FlagStatus I2C_GetFlagStatus(I2C_Flag_TypeDef I2C_Flag)
+FlagStatus I2C_GetFlagStatus(
+    I2C_Flag_TypeDef I2C_Flag)
 {
-    if (I2C_Flag == I2C_FLAG_BUSBUSY)
+    if(I2C_Flag == I2C_FLAG_BUSBUSY)
     {
         return i2c_bus_busy ? SET : RESET;
     }
     return RESET;
 }
+
 
 /**
  * @brief Mock implementation of I2C_ReceiveData
@@ -239,14 +265,16 @@ FlagStatus I2C_GetFlagStatus(I2C_Flag_TypeDef I2C_Flag)
  *
  * @return uint8_t Received data byte
  */
-uint8_t I2C_ReceiveData(void)
+uint8_t I2C_ReceiveData(
+    void)
 {
-    if (i2c_receive_index < sizeof(i2c_receive_data))
+    if(i2c_receive_index < sizeof(i2c_receive_data))
     {
         return i2c_receive_data[i2c_receive_index++];
     }
     return 0;
 }
+
 
 /**
  * @brief Mock implementation of I2C_AcknowledgeConfig
@@ -255,10 +283,12 @@ uint8_t I2C_ReceiveData(void)
  *
  * @param Ack ACK configuration
  */
-void I2C_AcknowledgeConfig(I2C_Ack_TypeDef Ack)
+void I2C_AcknowledgeConfig(
+    I2C_Ack_TypeDef Ack)
 {
     (void)Ack;
 }
+
 
 /**
  * @brief Mock implementation of CLK_GetClockFreq
@@ -267,10 +297,12 @@ void I2C_AcknowledgeConfig(I2C_Ack_TypeDef Ack)
  *
  * @return uint32_t Current clock frequency
  */
-uint32_t CLK_GetClockFreq(void)
+uint32_t CLK_GetClockFreq(
+    void)
 {
     return (uint32_t)mock(); // Use mock() to return expected value
 }
+
 
 // =============================================================================
 // TEST CASES
@@ -290,7 +322,8 @@ uint32_t CLK_GetClockFreq(void)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Init_ConfiguresGPIOAndI2C(void **state)
+static void test_Init_ConfiguresGPIOAndI2C(
+    void **state)
 {
     (void)state;
 
@@ -312,6 +345,7 @@ static void test_Init_ConfiguresGPIOAndI2C(void **state)
     mcp3425_init();
 }
 
+
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -324,10 +358,12 @@ static void test_Init_ConfiguresGPIOAndI2C(void **state)
  *
  * @return int Number of failed tests (0 if all pass)
  */
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
-        cmocka_unit_test(test_Init_ConfiguresGPIOAndI2C)};
+        cmocka_unit_test(test_Init_ConfiguresGPIOAndI2C)
+    };
 
     return cmocka_run_group_tests(tests, NULL, NULL);
 }

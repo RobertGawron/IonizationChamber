@@ -21,12 +21,16 @@
  * @param GPIO_Pin Pin selection
  * @param GPIO_Mode Pin mode configuration
  */
-void GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef GPIO_Mode)
+void GPIO_Init(
+    GPIO_TypeDef *    GPIOx,
+    GPIO_Pin_TypeDef  GPIO_Pin,
+    GPIO_Mode_TypeDef GPIO_Mode)
 {
     check_expected_ptr(GPIOx);
     check_expected(GPIO_Pin);
     check_expected(GPIO_Mode);
 }
+
 
 /**
  * @brief Mock implementation of GPIO_WriteLow
@@ -36,11 +40,14 @@ void GPIO_Init(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef
  * @param GPIOx GPIO port pointer
  * @param PortPins Pins to set low
  */
-void GPIO_WriteLow(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef PortPins)
+void GPIO_WriteLow(
+    GPIO_TypeDef *   GPIOx,
+    GPIO_Pin_TypeDef PortPins)
 {
     check_expected_ptr(GPIOx);
     check_expected(PortPins);
 }
+
 
 /**
  * @brief Mock implementation of GPIO_WriteHigh
@@ -50,11 +57,14 @@ void GPIO_WriteLow(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef PortPins)
  * @param GPIOx GPIO port pointer
  * @param PortPins Pins to set high
  */
-void GPIO_WriteHigh(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef PortPins)
+void GPIO_WriteHigh(
+    GPIO_TypeDef *   GPIOx,
+    GPIO_Pin_TypeDef PortPins)
 {
     check_expected_ptr(GPIOx);
     check_expected(PortPins);
 }
+
 
 // =============================================================================
 // TEST CASES
@@ -69,7 +79,8 @@ void GPIO_WriteHigh(GPIO_TypeDef *GPIOx, GPIO_Pin_TypeDef PortPins)
  *
  * @param state CMocka state object (unused)
  */
-static void test_init_configures_leds_correctly(void **state)
+static void test_init_configures_leds_correctly(
+    void **state)
 {
     (void)state;
 
@@ -85,6 +96,7 @@ static void test_init_configures_leds_correctly(void **state)
     user_interface_init();
 }
 
+
 /**
  * @test
  * @brief Tests enabling the collecting data message
@@ -95,7 +107,8 @@ static void test_init_configures_leds_correctly(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_enable_collecting_data_message_turns_on_red_led(void **state)
+static void test_enable_collecting_data_message_turns_on_red_led(
+    void **state)
 {
     (void)state;
 
@@ -107,6 +120,7 @@ static void test_enable_collecting_data_message_turns_on_red_led(void **state)
         USER_INTERFACE_ENABLE);
 }
 
+
 /**
  * @test
  * @brief Tests disabling the collecting data message
@@ -117,7 +131,8 @@ static void test_enable_collecting_data_message_turns_on_red_led(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_disable_collecting_data_message_turns_off_red_led(void **state)
+static void test_disable_collecting_data_message_turns_off_red_led(
+    void **state)
 {
     (void)state;
 
@@ -129,6 +144,7 @@ static void test_disable_collecting_data_message_turns_off_red_led(void **state)
         USER_INTERFACE_DISABLE);
 }
 
+
 /**
  * @test
  * @brief Tests enabling the state OK message
@@ -139,7 +155,8 @@ static void test_disable_collecting_data_message_turns_off_red_led(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_enable_state_ok_message_turns_on_green_led(void **state)
+static void test_enable_state_ok_message_turns_on_green_led(
+    void **state)
 {
     (void)state;
 
@@ -151,6 +168,7 @@ static void test_enable_state_ok_message_turns_on_green_led(void **state)
         USER_INTERFACE_ENABLE);
 }
 
+
 /**
  * @test
  * @brief Tests disabling the state OK message
@@ -161,7 +179,8 @@ static void test_enable_state_ok_message_turns_on_green_led(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_disable_state_ok_message_turns_off_green_led(void **state)
+static void test_disable_state_ok_message_turns_off_green_led(
+    void **state)
 {
     (void)state;
 
@@ -173,6 +192,7 @@ static void test_disable_state_ok_message_turns_off_green_led(void **state)
         USER_INTERFACE_DISABLE);
 }
 
+
 /**
  * @test
  * @brief Tests handling of unknown message types
@@ -183,7 +203,8 @@ static void test_disable_state_ok_message_turns_off_green_led(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_unknown_message_type(void **state)
+static void test_unknown_message_type(
+    void **state)
 {
     (void)state;
 
@@ -195,6 +216,7 @@ static void test_unknown_message_type(void **state)
         USER_INTERFACE_ENABLE);
 }
 
+
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -205,7 +227,8 @@ static void test_unknown_message_type(void **state)
  *
  * @return int Number of failed tests
  */
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_init_configures_leds_correctly),

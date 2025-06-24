@@ -15,10 +15,12 @@
  * @param byte The 16-bit value to extract the MSB from.
  * @return The most significant 8 bits of the input value.
  */
-static inline uint8_t byte_utils_get_msb(const uint16_t byte)
+static inline uint8_t byte_utils_get_msb(
+    const uint16_t byte)
 {
     return (byte >> 8);
 }
+
 
 /**
  * @brief Extract the least significant byte (LSB) from a 16-bit value.
@@ -26,9 +28,11 @@ static inline uint8_t byte_utils_get_msb(const uint16_t byte)
  * @param byte The 16-bit value to extract the LSB from.
  * @return The least significant 8 bits of the input value.
  */
-static inline uint8_t byte_utils_get_lsb(const uint16_t byte)
+static inline uint8_t byte_utils_get_lsb(
+    const uint16_t byte)
 {
     return (byte & 0xff);
 }
+
 
 #endif

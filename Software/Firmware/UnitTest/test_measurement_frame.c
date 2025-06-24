@@ -51,11 +51,12 @@
  * @param expected_data Expected 16-bit data value
  * @param expected_crc Expected CRC value
  */
-static void assert_frame_content(uint8_t *buffer,
-                                 uint8_t expected_preamble,
-                                 uint8_t expected_config,
-                                 uint16_t expected_data,
-                                 uint8_t expected_crc)
+static void assert_frame_content(
+    uint8_t *buffer,
+    uint8_t  expected_preamble,
+    uint8_t  expected_config,
+    uint16_t expected_data,
+    uint8_t  expected_crc)
 {
     // Verify preamble
     assert_int_equal(buffer[0], expected_preamble);
@@ -71,6 +72,7 @@ static void assert_frame_content(uint8_t *buffer,
     assert_int_equal(buffer[4], expected_crc);
 }
 
+
 // =============================================================================
 // TEST CASES
 // =============================================================================
@@ -85,7 +87,8 @@ static void assert_frame_content(uint8_t *buffer,
  *
  * @param state CMocka state object (unused)
  */
-static void test_Create_ValidFrame(void **state)
+static void test_Create_ValidFrame(
+    void **state)
 {
     (void)state;
 
@@ -99,6 +102,7 @@ static void test_Create_ValidFrame(void **state)
     assert_frame_content(buffer, expected_preamble, config, data, expected_crc);
 }
 
+
 /**
  * @test
  * @brief Tests frame creation with zero values
@@ -110,7 +114,8 @@ static void test_Create_ValidFrame(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Create_ZeroValues(void **state)
+static void test_Create_ZeroValues(
+    void **state)
 {
     (void)state;
 
@@ -124,6 +129,7 @@ static void test_Create_ZeroValues(void **state)
     assert_frame_content(buffer, expected_preamble, config, data, expected_crc);
 }
 
+
 /**
  * @test
  * @brief Tests frame creation with maximum values
@@ -135,7 +141,8 @@ static void test_Create_ZeroValues(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Create_MaxValues(void **state)
+static void test_Create_MaxValues(
+    void **state)
 {
     (void)state;
 
@@ -149,6 +156,7 @@ static void test_Create_MaxValues(void **state)
     assert_frame_content(buffer, expected_preamble, config, data, expected_crc);
 }
 
+
 /**
  * @test
  * @brief Tests buffer size protection
@@ -160,7 +168,8 @@ static void test_Create_MaxValues(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Create_BufferTooSmall(void **state)
+static void test_Create_BufferTooSmall(
+    void **state)
 {
     (void)state;
 
@@ -171,7 +180,7 @@ static void test_Create_BufferTooSmall(void **state)
     // Initialize buffer with known pattern
     // memset creates lint warning and we dont have memset_s
     // memset(buffer, 0x55, MAX_FRAME_LENGTH);
-    for (size_t i = 0; i < MAX_FRAME_LENGTH; i++)
+    for(size_t i = 0; i < MAX_FRAME_LENGTH; i++)
     {
         buffer[i] = 0x55;
     }
@@ -180,11 +189,12 @@ static void test_Create_BufferTooSmall(void **state)
     measurement_frame_create(buffer, MAX_FRAME_LENGTH - 1, config, data);
 
     // Verify buffer was not modified
-    for (int i = 0; i < MAX_FRAME_LENGTH; i++)
+    for(int i = 0; i < MAX_FRAME_LENGTH; i++)
     {
         assert_int_equal(buffer[i], 0x55);
     }
 }
+
 
 /**
  * @test
@@ -197,7 +207,8 @@ static void test_Create_BufferTooSmall(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Create_NullBuffer(void **state)
+static void test_Create_NullBuffer(
+    void **state)
 {
     (void)state;
 
@@ -207,6 +218,7 @@ static void test_Create_NullBuffer(void **state)
     // Should not crash when passed null buffer
     measurement_frame_create(NULL, MAX_FRAME_LENGTH, config, data);
 }
+
 
 /**
  * @test
@@ -220,7 +232,8 @@ static void test_Create_NullBuffer(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_CrcCalculation_VariousValues(void **state)
+static void test_CrcCalculation_VariousValues(
+    void **state)
 {
     (void)state;
 
@@ -251,6 +264,7 @@ static void test_CrcCalculation_VariousValues(void **state)
     assert_int_equal(expected_crc, GET_CRC(config, data));
 }
 
+
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -267,7 +281,8 @@ static void test_CrcCalculation_VariousValues(void **state)
  *
  * @return int Number of failed tests (0 if all pass)
  */
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_Create_ValidFrame),

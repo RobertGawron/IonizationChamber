@@ -24,16 +24,18 @@
  * @param TIM1_Period Timer period value
  * @param TIM1_RepetitionCounter Repetition counter value
  */
-void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
-                       TIM1_CounterMode_TypeDef TIM1_CounterMode,
-                       uint16_t TIM1_Period,
-                       uint8_t TIM1_RepetitionCounter)
+void TIM1_TimeBaseInit(
+    uint16_t                 TIM1_Prescaler,
+    TIM1_CounterMode_TypeDef TIM1_CounterMode,
+    uint16_t                 TIM1_Period,
+    uint8_t                  TIM1_RepetitionCounter)
 {
     check_expected(TIM1_Prescaler);
     check_expected(TIM1_CounterMode);
     check_expected(TIM1_Period);
     check_expected(TIM1_RepetitionCounter);
 }
+
 
 /**
  * @brief Mock implementation of TIM1_Cmd
@@ -42,10 +44,12 @@ void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
  *
  * @param NewState ENABLE or DISABLE command
  */
-void TIM1_Cmd(FunctionalState NewState)
+void TIM1_Cmd(
+    FunctionalState NewState)
 {
     check_expected(NewState);
 }
+
 
 /**
  * @brief Mock implementation of TIM1_ITConfig
@@ -55,11 +59,14 @@ void TIM1_Cmd(FunctionalState NewState)
  * @param TIM1_IT Interrupt type to configure
  * @param NewState ENABLE or DISABLE command for the interrupt
  */
-void TIM1_ITConfig(TIM1_IT_TypeDef TIM1_IT, FunctionalState NewState)
+void TIM1_ITConfig(
+    TIM1_IT_TypeDef TIM1_IT,
+    FunctionalState NewState)
 {
     check_expected(TIM1_IT);
     check_expected(NewState);
 }
+
 
 // =============================================================================
 // TEST CASES
@@ -78,7 +85,8 @@ void TIM1_ITConfig(TIM1_IT_TypeDef TIM1_IT, FunctionalState NewState)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Init_ConfiguresTimerCorrectly(void **state)
+static void test_Init_ConfiguresTimerCorrectly(
+    void **state)
 {
     (void)state;
 
@@ -99,6 +107,7 @@ static void test_Init_ConfiguresTimerCorrectly(void **state)
     timer_configurator_init();
 }
 
+
 /**
  * @test
  * @brief Tests interrupt configuration exclusivity
@@ -109,7 +118,8 @@ static void test_Init_ConfiguresTimerCorrectly(void **state)
  *
  * @param state CMocka state object (unused)
  */
-static void test_Init_OnlyEnablesUpdateInterrupt(void **state)
+static void test_Init_OnlyEnablesUpdateInterrupt(
+    void **state)
 {
     (void)state;
 
@@ -130,6 +140,7 @@ static void test_Init_OnlyEnablesUpdateInterrupt(void **state)
     timer_configurator_init();
 }
 
+
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -142,7 +153,8 @@ static void test_Init_OnlyEnablesUpdateInterrupt(void **state)
  *
  * @return int Number of failed tests (0 if all pass)
  */
-int main(void)
+int main(
+    void)
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_Init_ConfiguresTimerCorrectly),

@@ -12,17 +12,22 @@
 // Just to silence cppcheck, we need forever loop here
 #define FOREVER_LOOP_CONDITION TRUE
 
-static void GPIO_setup(void);
-static void UART1_setup(void);
+static void GPIO_setup(
+    void);
+static void UART1_setup(
+    void);
 
 #if defined USE_PRINTF
-int putchar(int c)
+int putchar(
+    int c)
 #else
-void putchar(char c)
+void putchar(
+    char c)
 #endif
 {
     logger_print(&c, 1);
 }
+
 
 void logger_init()
 {
@@ -30,23 +35,28 @@ void logger_init()
     UART1_setup();
 }
 
-void logger_print(const uint8_t *output,
-                  const uint8_t length)
+
+void logger_print(
+    const uint8_t *output,
+    const uint8_t  length)
 {
-    for (uint8_t i = 0; i < length; i++)
+    for(uint8_t i = 0; i < length; i++)
     {
         /* Write a character to the UART1 */
         UART1_SendData8(output[i]);
 
         /* Loop until the end of transmission */
-        while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET)
+        while(UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET)
             ;
     }
 }
 
+
 #ifdef USE_FULL_ASSERT
 // cppcheck-suppress unusedFunction
-void assert_failed(uint8_t *file, uint32_t line)
+void assert_failed(
+    uint8_t *file,
+    uint32_t line)
 {
     (void)file;
     (void)line;
@@ -55,12 +65,15 @@ void assert_failed(uint8_t *file, uint32_t line)
     printf("[error] asset failed %s %u\r\n", file, line);
 #endif
 
-    while (FOREVER_LOOP_CONDITION)
+    while(FOREVER_LOOP_CONDITION)
         ;
 }
+
+
 #endif
 
-void GPIO_setup(void)
+void GPIO_setup(
+    void)
 {
     GPIO_DeInit(PORT_UART);
 
@@ -68,7 +81,9 @@ void GPIO_setup(void)
     GPIO_Init(PORT_UART, PIN_RX, GPIO_MODE_IN_PU_NO_IT);
 }
 
-void UART1_setup(void)
+
+void UART1_setup(
+    void)
 {
     UART1_DeInit();
 
@@ -81,3 +96,4 @@ void UART1_setup(void)
 
     UART1_Cmd(ENABLE);
 }
+

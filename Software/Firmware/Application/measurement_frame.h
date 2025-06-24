@@ -7,9 +7,10 @@
 
 #define MAX_FRAME_LENGTH 5
 
-void measurement_frame_create(uint8_t *output,
-                              const uint8_t maxLength,
-                              const uint8_t configuration,
-                              const uint16_t measurement);
+void measurement_frame_create(
+    uint8_t *      output,
+    const uint8_t  maxLength,
+    const uint8_t  configuration,
+    const uint16_t measurement);
 
 #endif

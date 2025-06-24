@@ -5,7 +5,8 @@
 
 void logger_init();
 
-void logger_print(const uint8_t *output,
-                  const uint8_t length);
+void logger_print(
+    const uint8_t *output,
+    const uint8_t  length);
 
 #endif

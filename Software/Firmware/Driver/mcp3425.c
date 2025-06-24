@@ -19,10 +19,14 @@
 #define MCP3425_CONFIGURATION (MCP3425_REG_BIT_READY | MCP3425_REG_BIT_SAMPLE_RATE_UPPER)
 #define MCP3425_READ_MEASSUREMENT 0x10
 
-static void GPIO_setup(void);
-static void I2C_setup(void);
-static void write(uint8_t registerId);
-static uint16_t read(uint8_t registerId);
+static void GPIO_setup(
+    void);
+static void I2C_setup(
+    void);
+static void write(
+    uint8_t registerId);
+static uint16_t read(
+    uint8_t registerId);
 
 void mcp3425_init()
 {
@@ -30,7 +34,9 @@ void mcp3425_init()
     I2C_setup();
 }
 
-bool mcp3425_get_value(RadioactivityMeasurer_MeasurementData_t *measurementData)
+
+bool mcp3425_get_value(
+    RadioactivityMeasurer_MeasurementData_t *measurementData)
 {
     // select adc configuration and start measurement
     write(MCP3425_CONFIGURATION);
@@ -41,18 +47,23 @@ bool mcp3425_get_value(RadioactivityMeasurer_MeasurementData_t *measurementData)
     return TRUE;
 }
 
+
 uint8_t mcp3425_get_conf()
 {
     return MCP3425_CONFIGURATION;
 }
 
-void GPIO_setup(void)
+
+void GPIO_setup(
+    void)
 {
     GPIO_Init(PORT_I2C, PIN_I2C_SCL, GPIO_MODE_OUT_OD_HIZ_FAST);
     GPIO_Init(PORT_I2C, PIN_I2C_SDA, GPIO_MODE_OUT_OD_HIZ_FAST);
 }
 
-void I2C_setup(void)
+
+void I2C_setup(
+    void)
 {
     // TODO magic numbers
     I2C_DeInit();
@@ -65,63 +76,67 @@ void I2C_setup(void)
     I2C_Cmd(ENABLE);
 }
 
-static void write(uint8_t registerId)
+
+static void write(
+    uint8_t registerId)
 {
     I2C_GenerateSTART(ENABLE);
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
         ;
 
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_TX);
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED))
         ;
 
     I2C_SendData(registerId);
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED))
         ;
 
     I2C_GenerateSTOP(ENABLE);
-    while (I2C_GetFlagStatus(I2C_FLAG_BUSBUSY))
+    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY))
         ;
 }
 
-static uint16_t read(uint8_t registerId)
+
+static uint16_t read(
+    uint8_t registerId)
 {
     uint16_t registerMSB = 0;
     uint16_t registerLSB = 0;
     uint16_t registerValue = 0;
 
     I2C_GenerateSTART(ENABLE);
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
         ;
 
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED))
         ;
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     registerMSB = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     registerLSB = I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     I2C_ReceiveData();
-    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
         ;
 
     I2C_AcknowledgeConfig(DISABLE);
@@ -133,3 +148,4 @@ static uint16_t read(uint8_t registerId)
 
     return registerValue;
 }
+
