@@ -13,10 +13,10 @@ typedef enum UserInterface_MessageState
     USER_INTERFACE_DISABLE
 } UserInterface_MessageAction_t;
 
-void user_interface_init();
+void user_interface_init(void);
 
 void user_interface_update_message(
-    const UserInterface_Message_t       message,
+    const UserInterface_Message_t message,
     const UserInterface_MessageAction_t state);
 
 #endif
