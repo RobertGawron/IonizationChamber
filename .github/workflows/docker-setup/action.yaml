@@ -1,0 +1,15 @@
+name: 'Docker Setup'
+description: 'Setup Docker environment for CI'
+runs:
+  using: 'composite'
+  steps:
+    - name: Install Docker Compose
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+        
+    - name: Build and Start Docker Compose
+      shell: bash
+      run: |
+        docker-compose up -d --build
