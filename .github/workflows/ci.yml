@@ -27,7 +27,7 @@ jobs:
 
       - name: Run C Static Analysis
         run: |
-          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
+          docker-compose exec -T ionizationchamber bash -c "python3 -m venv /workspace/venv && source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
 
       - name: Copy C Analysis Reports to Host
         run: |
@@ -61,7 +61,7 @@ jobs:
 
       - name: Run Python Static Analysis
         run: |
-          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic"
+          docker-compose exec -T ionizationchamber bash -c "python3 -m venv /workspace/venv && source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make pystatic"
 
       - name: Copy Python Analysis Reports to Host
         run: |
@@ -136,7 +136,7 @@ jobs:
 
       - name: Generate Documentation
         run: |
-          docker-compose exec -T ionizationchamber bash -c "python -m venv /workspace/venv && source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
+          docker-compose exec -T ionizationchamber bash -c "python3 -m venv /workspace/venv && source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
 
       - name: Copy Documentation Coverage Report
         run: |
