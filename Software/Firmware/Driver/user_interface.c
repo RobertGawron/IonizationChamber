@@ -11,10 +11,10 @@ void user_interface_init()
     GPIO_WriteLow(PORT_GPIO_LED, GPIO_LED_PINS);
 }
 
-
 void user_interface_update_message(
     const UserInterface_Message_t       message,
-    const UserInterface_MessageAction_t state)
+    const UserInterface_MessageAction_t state
+    )
 {
     GPIO_Pin_TypeDef pin = 0;
     bool status = TRUE;
@@ -48,4 +48,3 @@ void user_interface_update_message(
         }
     }
 }
-

@@ -17,15 +17,14 @@ void application_builder_init()
     user_interface_init();
     radioactivity_measurer_init();
 
-    // Initialization is over, we can enable interrupts
+    /* Initialization is over, we can enable interrupts */
     interrupt_configurator_enable();
 
-    // Show message that the initialization is OK
+    /* Show message that the initialization is OK */
     user_interface_update_message(
         USER_INTERFACE_STATE_OK_MSG,
         USER_INTERFACE_ENABLE);
 }
-
 
 void application_builder_run()
 {
@@ -33,9 +32,7 @@ void application_builder_run()
     interrupt_configurator_wait();
 }
 
-
 void application_builder_tick()
 {
     measurement_collector_tick();
 }
-

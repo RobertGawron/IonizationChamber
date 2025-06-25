@@ -26,7 +26,6 @@ uint8_t mcp3425_get_conf(
     return mock_type(uint8_t);
 }
 
-
 /**
  * @brief Mock implementation of mcp3425_get_value
  *
@@ -40,14 +39,13 @@ bool mcp3425_get_value(
 {
     check_expected_ptr(sample);
 
-    if(sample != NULL)
+    if (sample != NULL)
     {
         *sample = mock_type(RadioactivityMeasurer_MeasurementData_t);
     }
 
     return mock_type(bool);
 }
-
 
 /**
  * @brief Mock implementation of measurement_frame_create
@@ -60,9 +58,9 @@ bool mcp3425_get_value(
  * @param measurement Measurement value
  */
 void measurement_frame_create(
-    uint8_t *      output,
-    const uint8_t  maxLength,
-    const uint8_t  configuration,
+    uint8_t *output,
+    const uint8_t maxLength,
+    const uint8_t configuration,
     const uint16_t measurement)
 {
     // Only check parameters we care about
@@ -70,7 +68,6 @@ void measurement_frame_create(
     check_expected(configuration);
     check_expected(measurement);
 }
-
 
 /**
  * @brief Mock implementation of logger_print
@@ -82,17 +79,16 @@ void measurement_frame_create(
  */
 void logger_print(
     const uint8_t *output,
-    const uint8_t  length)
+    const uint8_t length)
 {
-    check_expected(length); // Only check length since pointer value is unpredictable
+    check_expected(length); // Only check length since pointer value is
+                            // unpredictable
 }
-
 
 // =============================================================================
 // TEST CASES
 // =============================================================================
 /**
- * @test
  * @brief Tests measurement collection workflow
  *
  * Verifies that the measurement collector tick function:
@@ -116,8 +112,8 @@ static void test_Tick_CallsAllDependencies(
     (void)state;
 
     // Set up test values
-    uint8_t expected_config = 0x55;
-    uint16_t expected_sample = 0x1234;
+    const uint8_t expected_config = 0x55;
+    const uint16_t expected_sample = 0x1234;
 
     // Set expectations
     // 1. Expect configuration read
@@ -140,7 +136,6 @@ static void test_Tick_CallsAllDependencies(
     measurement_collector_tick();
 }
 
-
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -157,8 +152,7 @@ int main(
     void)
 {
     const struct CMUnitTest tests[] = {
-        cmocka_unit_test(test_Tick_CallsAllDependencies)
-    };
+        cmocka_unit_test(test_Tick_CallsAllDependencies)};
 
     return cmocka_run_group_tests(tests, NULL, NULL);
 }

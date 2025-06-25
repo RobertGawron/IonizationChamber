@@ -24,7 +24,7 @@ docker-compose up -d
 
 Log into the Docker Image:
 
-docker-compose exec app bash
+docker-compose exec ionizationchamber  bash
 
 End of Work
 
@@ -48,7 +48,7 @@ The produced binary is IonizationChamber.ihx.
 
 cmake -DCMAKE_BUILD_TYPE=Debug ../Software/Firmware/UnitTest/
 make -j$(nproc)
-ctest --output-on-failure
+make run_all_tests
 
 
 # Docs coverage

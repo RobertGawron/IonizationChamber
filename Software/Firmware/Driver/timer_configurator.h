@@ -16,6 +16,7 @@
  * Configures the timer to generate periodic update interrupts and enables
  * the timer and its interrupt.
  */
-void timer_configurator_init(void);
+void timer_configurator_init(
+    void);
 
 #endif

@@ -10,18 +10,16 @@ static inline void radioactivity_measurer_init()
     mcp3425_init();
 }
 
-
 static inline bool radioactivity_measurer_get_sample(
-    RadioactivityMeasurer_MeasurementData_t *measurementData)
+    RadioactivityMeasurer_MeasurementData_t *measurementData
+    )
 {
     return mcp3425_get_value(measurementData);
 }
-
 
 static inline uint8_t radioactivity_measurer_get_conf()
 {
     return mcp3425_get_conf();
 }
-
 
 #endif

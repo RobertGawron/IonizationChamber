@@ -28,14 +28,14 @@ void TIM1_TimeBaseInit(
     uint16_t                 TIM1_Prescaler,
     TIM1_CounterMode_TypeDef TIM1_CounterMode,
     uint16_t                 TIM1_Period,
-    uint8_t                  TIM1_RepetitionCounter)
+    uint8_t                  TIM1_RepetitionCounter
+    )
 {
     check_expected(TIM1_Prescaler);
     check_expected(TIM1_CounterMode);
     check_expected(TIM1_Period);
     check_expected(TIM1_RepetitionCounter);
 }
-
 
 /**
  * @brief Mock implementation of TIM1_Cmd
@@ -45,11 +45,11 @@ void TIM1_TimeBaseInit(
  * @param NewState ENABLE or DISABLE command
  */
 void TIM1_Cmd(
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of TIM1_ITConfig
@@ -61,18 +61,17 @@ void TIM1_Cmd(
  */
 void TIM1_ITConfig(
     TIM1_IT_TypeDef TIM1_IT,
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(TIM1_IT);
     check_expected(NewState);
 }
 
-
 // =============================================================================
 // TEST CASES
 // =============================================================================
 /**
- * @test
  * @brief Tests timer initialization parameters
  *
  * Verifies that the timer is configured with the correct parameters:
@@ -86,7 +85,8 @@ void TIM1_ITConfig(
  * @param state CMocka state object (unused)
  */
 static void test_Init_ConfiguresTimerCorrectly(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -107,9 +107,7 @@ static void test_Init_ConfiguresTimerCorrectly(
     timer_configurator_init();
 }
 
-
 /**
- * @test
  * @brief Tests interrupt configuration exclusivity
  *
  * Verifies that only the update interrupt is enabled:
@@ -119,7 +117,8 @@ static void test_Init_ConfiguresTimerCorrectly(
  * @param state CMocka state object (unused)
  */
 static void test_Init_OnlyEnablesUpdateInterrupt(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -140,7 +139,6 @@ static void test_Init_OnlyEnablesUpdateInterrupt(
     timer_configurator_init();
 }
 
-
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -154,7 +152,8 @@ static void test_Init_OnlyEnablesUpdateInterrupt(
  * @return int Number of failed tests (0 if all pass)
  */
 int main(
-    void)
+    void
+    )
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_Init_ConfiguresTimerCorrectly),

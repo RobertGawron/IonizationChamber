@@ -15,6 +15,7 @@
  * Configures the STM8 clock sources, prescalers, and enables
  * clocks for specific peripherals such as I2C, UART, and timers.
  */
-void clock_configurator_init(void);
+void clock_configurator_init(
+    void);
 
 #endif

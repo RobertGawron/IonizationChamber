@@ -17,11 +17,11 @@
  * Tracks that this function was called during initialization.
  */
 void CLK_DeInit(
-    void)
+    void
+    )
 {
     function_called();
 }
-
 
 /**
  * @brief Mock implementation of CLK_HSECmd
@@ -30,11 +30,11 @@ void CLK_DeInit(
  * Verifies the HSE enable/disable command parameter.
  */
 void CLK_HSECmd(
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of CLK_HSICmd
@@ -43,11 +43,11 @@ void CLK_HSECmd(
  * Verifies the HSI enable command parameter.
  */
 void CLK_HSICmd(
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of CLK_LSICmd
@@ -56,11 +56,11 @@ void CLK_HSICmd(
  * Verifies the LSI disable command parameter.
  */
 void CLK_LSICmd(
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of CLK_ClockSwitchCmd
@@ -69,11 +69,11 @@ void CLK_LSICmd(
  * Verifies the clock switch enable command parameter.
  */
 void CLK_ClockSwitchCmd(
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of CLK_HSIPrescalerConfig
@@ -82,11 +82,11 @@ void CLK_ClockSwitchCmd(
  * Verifies the HSI prescaler configuration parameter.
  */
 void CLK_HSIPrescalerConfig(
-    CLK_Prescaler_TypeDef HSIPrescaler)
+    CLK_Prescaler_TypeDef HSIPrescaler
+    )
 {
     check_expected(HSIPrescaler);
 }
-
 
 /**
  * @brief Mock implementation of CLK_ClockSwitchConfig
@@ -102,7 +102,8 @@ ErrorStatus CLK_ClockSwitchConfig(
     CLK_SwitchMode_TypeDef        CLK_SwitchMode,
     CLK_Source_TypeDef            CLK_NewClock,
     FunctionalState               ITState,
-    CLK_CurrentClockState_TypeDef CLK_CurrentClockState)
+    CLK_CurrentClockState_TypeDef CLK_CurrentClockState
+    )
 {
     check_expected(CLK_SwitchMode);
     check_expected(CLK_NewClock);
@@ -110,7 +111,6 @@ ErrorStatus CLK_ClockSwitchConfig(
     check_expected(CLK_CurrentClockState);
     return SUCCESS;
 }
-
 
 /**
  * @brief Mock implementation of CLK_PeripheralClockConfig
@@ -121,12 +121,12 @@ ErrorStatus CLK_ClockSwitchConfig(
  */
 void CLK_PeripheralClockConfig(
     CLK_Peripheral_TypeDef CLK_Peripheral,
-    FunctionalState        NewState)
+    FunctionalState        NewState
+    )
 {
     check_expected(CLK_Peripheral);
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of CLK_GetFlagStatus
@@ -136,22 +136,22 @@ void CLK_PeripheralClockConfig(
  * Simulates HSI readiness status and verifies the flag parameter.
  */
 FlagStatus CLK_GetFlagStatus(
-    CLK_Flag_TypeDef CLK_FLAG)
+    CLK_Flag_TypeDef CLK_FLAG
+    )
 {
     check_expected(CLK_FLAG);
     return mock_type(FlagStatus);
 }
-
 
 // =============================================================================
 // TEST CASES
 // =============================================================================
 
 /**
- * @test
  * @brief Tests correct clock configuration sequence
  *
- * Verifies that clock_configurator_init performs all required initialization steps
+ * Verifies that clock_configurator_init performs all required initialization
+ *steps
  * in the correct order with the correct parameters:
  *
  * Test Steps:
@@ -166,7 +166,8 @@ FlagStatus CLK_GetFlagStatus(
  * @param state CMocka state object (unused)
  */
 static void test_ClockConfigurator_Init_ConfiguresClockCorrectly(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -208,9 +209,7 @@ static void test_ClockConfigurator_Init_ConfiguresClockCorrectly(
     clock_configurator_init();
 }
 
-
 /**
- * @test
  * @brief Tests HSI readiness polling behavior
  *
  * Verifies that clock_configurator_init properly waits for HSI to become ready
@@ -229,7 +228,8 @@ static void test_ClockConfigurator_Init_ConfiguresClockCorrectly(
  * @param state CMocka state object (unused)
  */
 static void test_ClockConfigurator_Init_WaitsForHSIReady(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -245,11 +245,11 @@ static void test_ClockConfigurator_Init_WaitsForHSIReady(
 
     // Step 4: Simulate delayed HSI readiness
     expect_value(CLK_GetFlagStatus, CLK_FLAG, CLK_FLAG_HSIRDY);
-    will_return(CLK_GetFlagStatus, FALSE); // First check: not ready
+    will_return(CLK_GetFlagStatus, FALSE);     // First check: not ready
     expect_value(CLK_GetFlagStatus, CLK_FLAG, CLK_FLAG_HSIRDY);
-    will_return(CLK_GetFlagStatus, FALSE); // Second check: still not ready
+    will_return(CLK_GetFlagStatus, FALSE);     // Second check: still not ready
     expect_value(CLK_GetFlagStatus, CLK_FLAG, CLK_FLAG_HSIRDY);
-    will_return(CLK_GetFlagStatus, TRUE); // Third check: ready
+    will_return(CLK_GetFlagStatus, TRUE);     // Third check: ready
 
     // Step 6: Verify prescaler configurations
     expect_value(CLK_HSIPrescalerConfig, HSIPrescaler, CLK_PRESCALER_HSIDIV8);
@@ -275,7 +275,6 @@ static void test_ClockConfigurator_Init_WaitsForHSIReady(
     clock_configurator_init();
 }
 
-
 // =============================================================================
 // TEST RUNNER
 // =============================================================================
@@ -288,7 +287,8 @@ static void test_ClockConfigurator_Init_WaitsForHSIReady(
  * @return int Number of failed tests
  */
 int main(
-    void)
+    void
+    )
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_ClockConfigurator_Init_ConfiguresClockCorrectly),

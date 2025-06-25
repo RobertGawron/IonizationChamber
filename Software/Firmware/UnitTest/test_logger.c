@@ -15,11 +15,13 @@
 // =============================================================================
 // TEST UTILITIES
 // =============================================================================
+
+#define UART_OUTPUT_SIZE 32
 /**
  * @var uart_output
  * @brief Buffer to capture UART output during tests
  */
-static uint8_t uart_output[32];
+static uint8_t uart_output[UART_OUTPUT_SIZE];
 
 /**
  * @var uart_output_index
@@ -34,7 +36,8 @@ static size_t uart_output_index = 0;
  * Should be called before each print test to ensure clean state.
  */
 static void reset_uart_capture(
-    void)
+    void
+    )
 {
     uart_output_index = 0;
 
@@ -44,7 +47,6 @@ static void reset_uart_capture(
         uart_output[i] = 0x00;
     }
 }
-
 
 // =============================================================================
 // MOCK FUNCTION IMPLEMENTATIONS
@@ -57,11 +59,11 @@ static void reset_uart_capture(
  * @param GPIOx GPIO port pointer
  */
 void GPIO_DeInit(
-    GPIO_TypeDef *GPIOx)
+    GPIO_TypeDef *GPIOx
+    )
 {
     check_expected_ptr(GPIOx);
 }
-
 
 /**
  * @brief Mock implementation of GPIO_Init
@@ -75,13 +77,13 @@ void GPIO_DeInit(
 void GPIO_Init(
     GPIO_TypeDef *    GPIOx,
     GPIO_Pin_TypeDef  GPIO_Pin,
-    GPIO_Mode_TypeDef GPIO_Mode)
+    GPIO_Mode_TypeDef GPIO_Mode
+    )
 {
     check_expected_ptr(GPIOx);
     check_expected(GPIO_Pin);
     check_expected(GPIO_Mode);
 }
-
 
 /**
  * @brief Mock implementation of UART1_DeInit
@@ -89,11 +91,11 @@ void GPIO_Init(
  * Tracks UART deinitialization calls.
  */
 void UART1_DeInit(
-    void)
+    void
+    )
 {
     function_called();
 }
-
 
 /**
  * @brief Mock implementation of UART1_Init
@@ -113,7 +115,8 @@ void UART1_Init(
     UART1_StopBits_TypeDef   StopBits,
     UART1_Parity_TypeDef     Parity,
     UART1_SyncMode_TypeDef   SyncMode,
-    UART1_Mode_TypeDef       Mode)
+    UART1_Mode_TypeDef       Mode
+    )
 {
     check_expected(BaudRate);
     check_expected(WordLength);
@@ -123,7 +126,6 @@ void UART1_Init(
     check_expected(Mode);
 }
 
-
 /**
  * @brief Mock implementation of UART1_Cmd
  *
@@ -132,11 +134,11 @@ void UART1_Init(
  * @param NewState ENABLE or DISABLE command
  */
 void UART1_Cmd(
-    FunctionalState NewState)
+    FunctionalState NewState
+    )
 {
     check_expected(NewState);
 }
-
 
 /**
  * @brief Mock implementation of UART1_SendData8
@@ -146,14 +148,14 @@ void UART1_Cmd(
  * @param Data Byte to send
  */
 void UART1_SendData8(
-    uint8_t Data)
+    uint8_t Data
+    )
 {
     if(uart_output_index < sizeof(uart_output))
     {
         uart_output[uart_output_index++] = Data;
     }
 }
-
 
 /**
  * @brief Mock implementation of UART1_GetFlagStatus
@@ -164,18 +166,17 @@ void UART1_SendData8(
  * @return FlagStatus Always returns SET
  */
 FlagStatus UART1_GetFlagStatus(
-    UART1_Flag_TypeDef Flag)
+    UART1_Flag_TypeDef Flag
+    )
 {
     (void)Flag;
     return SET;
 }
 
-
 // =============================================================================
 // TEST CASES
 // =============================================================================
 /**
- * @test
  * @brief Tests logger hardware initialization
  *
  * Verifies that logger_init() correctly configures:
@@ -196,7 +197,8 @@ FlagStatus UART1_GetFlagStatus(
  * @param state CMocka state object (unused)
  */
 static void test_Logger_Init_ConfiguresHardware(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -231,9 +233,7 @@ static void test_Logger_Init_ConfiguresHardware(
     logger_init();
 }
 
-
 /**
- * @test
  * @brief Tests single byte logging
  *
  * Verifies that logger_print():
@@ -249,14 +249,15 @@ static void test_Logger_Init_ConfiguresHardware(
  * @param state CMocka state object (unused)
  */
 static void test_Logger_Print_SendsSingleByte(
-    void **state)
+    void **state
+    )
 {
     (void)state;
-    reset_uart_capture(); // 1. Reset capture buffer
+    reset_uart_capture();     // 1. Reset capture buffer
 
     // 2. Create and send test data
-    uint8_t test_data = 0x55;
-    uint8_t expected[] = {test_data};
+    const uint8_t test_data = 0x55;
+    const uint8_t expected[] = {test_data};
     logger_print(&test_data, sizeof(test_data));
 
     // 3-4. Verify output
@@ -264,9 +265,7 @@ static void test_Logger_Print_SendsSingleByte(
     assert_memory_equal(uart_output, expected, sizeof(expected));
 }
 
-
 /**
- * @test
  * @brief Tests multi-byte logging
  *
  * Verifies that logger_print():
@@ -283,13 +282,14 @@ static void test_Logger_Print_SendsSingleByte(
  * @param state CMocka state object (unused)
  */
 static void test_Logger_Print_SendsMultipleBytes(
-    void **state)
+    void **state
+    )
 {
     (void)state;
-    reset_uart_capture(); // 1. Reset capture buffer
+    reset_uart_capture();     // 1. Reset capture buffer
 
     // 2. Create test data
-    uint8_t test_data[] = {0x01, 0xAA, 0xFF, 0x00};
+    const uint8_t test_data[] = {0x01, 0xAA, 0xFF, 0x00};
 
     // 3. Send data
     logger_print(test_data, sizeof(test_data));
@@ -299,9 +299,7 @@ static void test_Logger_Print_SendsMultipleBytes(
     assert_memory_equal(uart_output, test_data, sizeof(test_data));
 }
 
-
 /**
- * @test
  * @brief Tests full byte range logging
  *
  * Verifies that logger_print() handles:
@@ -319,16 +317,17 @@ static void test_Logger_Print_SendsMultipleBytes(
  * @param state CMocka state object (unused)
  */
 static void test_Logger_Print_HandlesFullRange(
-    void **state)
+    void **state
+    )
 {
     (void)state;
-    reset_uart_capture(); // 1. Reset capture buffer
+    reset_uart_capture();     // 1. Reset capture buffer
 
     // 2. Create test data
-    uint8_t min_val = 0x00;
-    uint8_t mid_val = 0x7F;
-    uint8_t max_val = 0xFF;
-    uint8_t test_data[] = {min_val, mid_val, max_val};
+    const uint8_t min_val = 0x00;
+    const uint8_t mid_val = 0x7F;
+    const uint8_t max_val = 0xFF;
+    const uint8_t test_data[] = {min_val, mid_val, max_val};
 
     // 3. Send data
     logger_print(test_data, sizeof(test_data));
@@ -338,9 +337,7 @@ static void test_Logger_Print_HandlesFullRange(
     assert_memory_equal(uart_output, test_data, sizeof(test_data));
 }
 
-
 /**
- * @test
  * @brief Tests empty buffer handling
  *
  * Verifies that logger_print():
@@ -356,13 +353,14 @@ static void test_Logger_Print_HandlesFullRange(
  * @param state CMocka state object (unused)
  */
 static void test_Logger_Print_EmptyBuffer(
-    void **state)
+    void **state
+    )
 {
     (void)state;
-    reset_uart_capture(); // 1. Reset capture buffer
+    reset_uart_capture();     // 1. Reset capture buffer
 
     // 2. Create dummy data
-    uint8_t test_data[] = {0xAA};
+    const uint8_t test_data[] = {0xAA};
 
     // 3. Send with zero length
     logger_print(test_data, 0);
@@ -370,7 +368,6 @@ static void test_Logger_Print_EmptyBuffer(
     // 4. Verify nothing was sent
     assert_int_equal(uart_output_index, 0);
 }
-
 
 // =============================================================================
 // TEST RUNNER
@@ -388,7 +385,8 @@ static void test_Logger_Print_EmptyBuffer(
  * @return int Number of failed tests (0 if all pass)
  */
 int main(
-    void)
+    void
+    )
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_Logger_Init_ConfiguresHardware),

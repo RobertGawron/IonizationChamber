@@ -8,11 +8,14 @@ void clock_configurator_init()
     CLK_HSECmd(DISABLE);
     CLK_LSICmd(DISABLE);
     CLK_HSICmd(ENABLE);
-    while(CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE);
+    while (CLK_GetFlagStatus(CLK_FLAG_HSIRDY) == FALSE)
+    {
+        /* Busy-wait until the function returns a status that signifies it's done */
+    }
 
     CLK_ClockSwitchCmd(ENABLE);
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV8);
-    //CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
+    // CLK_SYSCLKConfig(CLK_PRESCALER_CPUDIV1);
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);
 
     CLK_ClockSwitchConfig(CLK_SWITCHMODE_AUTO,
@@ -25,4 +28,3 @@ void clock_configurator_init()
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_UART1, ENABLE);
     CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
 }
-

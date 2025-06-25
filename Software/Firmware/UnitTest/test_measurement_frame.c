@@ -31,7 +31,7 @@
  * @param data Measurement data
  * @return Calculated CRC value
  */
-#define GET_CRC(configuration, data) (configuration ^ byte_utils_get_msb(data) ^ byte_utils_get_lsb(data))
+#define GET_CRC(configuration, data) ((configuration) ^ byte_utils_get_msb((data)) ^ byte_utils_get_lsb((data)))
 
 // =============================================================================
 // TEST UTILITIES
@@ -56,7 +56,8 @@ static void assert_frame_content(
     uint8_t  expected_preamble,
     uint8_t  expected_config,
     uint16_t expected_data,
-    uint8_t  expected_crc)
+    uint8_t  expected_crc
+    )
 {
     // Verify preamble
     assert_int_equal(buffer[0], expected_preamble);
@@ -72,12 +73,10 @@ static void assert_frame_content(
     assert_int_equal(buffer[4], expected_crc);
 }
 
-
 // =============================================================================
 // TEST CASES
 // =============================================================================
 /**
- * @test
  * @brief Tests valid frame creation with typical values
  *
  * Verifies that:
@@ -88,23 +87,22 @@ static void assert_frame_content(
  * @param state CMocka state object (unused)
  */
 static void test_Create_ValidFrame(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
     uint8_t buffer[MAX_FRAME_LENGTH];
-    uint8_t config = 0xAA;
-    uint16_t data = 0x55AA;
-    uint8_t expected_crc = GET_CRC(config, data);
-    uint8_t expected_preamble = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
+    const uint8_t config = 0xAA;
+    const uint16_t data = 0x55AA;
+    const uint8_t expected_crc = GET_CRC(config, data);
+    const uint8_t expected_preamble = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
 
     measurement_frame_create(buffer, MAX_FRAME_LENGTH, config, data);
     assert_frame_content(buffer, expected_preamble, config, data, expected_crc);
 }
 
-
 /**
- * @test
  * @brief Tests frame creation with zero values
  *
  * Verifies that:
@@ -115,23 +113,22 @@ static void test_Create_ValidFrame(
  * @param state CMocka state object (unused)
  */
 static void test_Create_ZeroValues(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
     uint8_t buffer[MAX_FRAME_LENGTH];
-    uint8_t config = 0x00;
-    uint16_t data = 0x0000;
-    uint8_t expected_crc = 0x00;
-    uint8_t expected_preamble = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
+    const uint8_t config = 0x00;
+    const uint16_t data = 0x0000;
+    const uint8_t expected_crc = 0x00;
+    const uint8_t expected_preamble = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
 
     measurement_frame_create(buffer, MAX_FRAME_LENGTH, config, data);
     assert_frame_content(buffer, expected_preamble, config, data, expected_crc);
 }
 
-
 /**
- * @test
  * @brief Tests frame creation with maximum values
  *
  * Verifies that:
@@ -142,23 +139,22 @@ static void test_Create_ZeroValues(
  * @param state CMocka state object (unused)
  */
 static void test_Create_MaxValues(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
     uint8_t buffer[MAX_FRAME_LENGTH];
-    uint8_t config = 0xFF;
-    uint16_t data = 0xFFFF;
-    uint8_t expected_crc = GET_CRC(config, data);
-    uint8_t expected_preamble = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
+    const uint8_t config = 0xFF;
+    const uint16_t data = 0xFFFF;
+    const uint8_t expected_crc = GET_CRC(config, data);
+    const uint8_t expected_preamble = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
 
     measurement_frame_create(buffer, MAX_FRAME_LENGTH, config, data);
     assert_frame_content(buffer, expected_preamble, config, data, expected_crc);
 }
 
-
 /**
- * @test
  * @brief Tests buffer size protection
  *
  * Verifies that:
@@ -169,20 +165,22 @@ static void test_Create_MaxValues(
  * @param state CMocka state object (unused)
  */
 static void test_Create_BufferTooSmall(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
     uint8_t buffer[MAX_FRAME_LENGTH];
-    uint8_t config = 0xAA;
-    uint16_t data = 0x55AA;
+    const uint8_t config = 0xAA;
+    const uint16_t data = 0x55AA;
+    const uint8_t pattern = 0x55;
 
     // Initialize buffer with known pattern
     // memset creates lint warning and we dont have memset_s
     // memset(buffer, 0x55, MAX_FRAME_LENGTH);
     for(size_t i = 0; i < MAX_FRAME_LENGTH; i++)
     {
-        buffer[i] = 0x55;
+        buffer[i] = pattern;
     }
 
     // Call with insufficient buffer size
@@ -191,13 +189,11 @@ static void test_Create_BufferTooSmall(
     // Verify buffer was not modified
     for(int i = 0; i < MAX_FRAME_LENGTH; i++)
     {
-        assert_int_equal(buffer[i], 0x55);
+        assert_int_equal(buffer[i], pattern);
     }
 }
 
-
 /**
- * @test
  * @brief Tests null buffer handling
  *
  * Verifies that:
@@ -208,62 +204,65 @@ static void test_Create_BufferTooSmall(
  * @param state CMocka state object (unused)
  */
 static void test_Create_NullBuffer(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
-    uint8_t config = 0xAA;
-    uint16_t data = 0x55AA;
+    const uint8_t config = 0xAA;
+    const uint16_t data = 0x55AA;
 
     // Should not crash when passed null buffer
     measurement_frame_create(NULL, MAX_FRAME_LENGTH, config, data);
 }
 
-
 /**
- * @test
- * @brief Tests CRC calculation algorithm
- *
- * Verifies CRC calculation with various inputs:
- * 1. Basic mixed values
- * 2. All zeros
- * 3. All ones
- * 4. Mixed bit patterns
+ * @brief Tests CRC calculation with basic mixed values
  *
  * @param state CMocka state object (unused)
  */
-static void test_CrcCalculation_VariousValues(
-    void **state)
+static void test_CrcCalculation_Basic(
+    void **state
+    )
 {
     (void)state;
-
-    // Test 1: Basic calculation
-    uint8_t config = 0b10101010;
-    uint16_t data = 0b1100110011001100;
-    uint8_t expected_crc = config ^ byte_utils_get_msb(data) ^ byte_utils_get_lsb(data);
-    assert_int_equal(expected_crc, GET_CRC(config, data));
-
-    // Test 2: All zeros
-    config = 0x00;
-    data = 0x0000;
-    expected_crc = 0x00;
-    assert_int_equal(expected_crc, GET_CRC(config, data));
-
-    // Test 3: All ones
-    config = 0xFF;
-    data = 0xFFFF;
-
-    expected_crc = 0xFF; // 0xFF ^ 0xFF ^ 0xFF = 0xFF, but writing it directly create cppcheck warning
-    assert_int_equal(expected_crc, GET_CRC(config, data));
-
-    // Test 4: Mixed values
-    config = 0b11001100;
-    data = 0b1010101010101010;
-    // config ^ 0b10101010 ^ 0b10101010 = config, but writing it directly create cppcheck warning
-    expected_crc = config; // 0xCC ^ 0xAA ^ 0xAA = 0xCC
+    const uint8_t config = 0xAA;
+    const uint16_t data = 0x5552;
+    const uint8_t expected_crc = config ^ byte_utils_get_msb(data) ^ byte_utils_get_lsb(data);
     assert_int_equal(expected_crc, GET_CRC(config, data));
 }
 
+/**
+ * @brief Tests CRC calculation with all zeros
+ *
+ * @param state CMocka state object (unused)
+ */
+static void test_CrcCalculation_AllZeros(
+    void **state
+    )
+{
+    (void)state;
+    const uint8_t config = 0x00;
+    const uint16_t data = 0x0000;
+    const uint8_t expected_crc = 0x00;
+    assert_int_equal(expected_crc, GET_CRC(config, data));
+}
+
+/**
+ * @brief Tests CRC calculation with all ones
+ *
+ * @param state CMocka state object (unused)
+ */
+static void test_CrcCalculation_AllOnes(
+    void **state
+    )
+{
+    (void)state;
+    const uint8_t config = 0xFF;
+    const uint16_t data = 0xFFFF;
+    const uint8_t expected_crc = 0xFF;
+    assert_int_equal(expected_crc, GET_CRC(config, data));
+}
 
 // =============================================================================
 // TEST RUNNER
@@ -282,7 +281,8 @@ static void test_CrcCalculation_VariousValues(
  * @return int Number of failed tests (0 if all pass)
  */
 int main(
-    void)
+    void
+    )
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_Create_ValidFrame),
@@ -290,7 +290,10 @@ int main(
         cmocka_unit_test(test_Create_MaxValues),
         cmocka_unit_test(test_Create_BufferTooSmall),
         cmocka_unit_test(test_Create_NullBuffer),
-        cmocka_unit_test(test_CrcCalculation_VariousValues),
+
+        cmocka_unit_test(test_CrcCalculation_Basic),
+        cmocka_unit_test(test_CrcCalculation_AllZeros),
+        cmocka_unit_test(test_CrcCalculation_AllOnes),
     };
 
     return cmocka_run_group_tests(tests, NULL, NULL);

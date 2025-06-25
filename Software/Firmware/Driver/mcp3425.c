@@ -34,25 +34,23 @@ void mcp3425_init()
     I2C_setup();
 }
 
-
 bool mcp3425_get_value(
-    RadioactivityMeasurer_MeasurementData_t *measurementData)
+    RadioactivityMeasurer_MeasurementData_t *measurement_value)
 {
     // select adc configuration and start measurement
     write(MCP3425_CONFIGURATION);
 
-    *measurementData = read(0);
+    *measurement_value = read(0);
 
-    // getRegisterValue should return false on timeout and this should be later propagated to GUI component
+    // getRegisterValue should return false on timeout and this should be later
+    // propagated to GUI component
     return TRUE;
 }
-
 
 uint8_t mcp3425_get_conf()
 {
     return MCP3425_CONFIGURATION;
 }
-
 
 void GPIO_setup(
     void)
@@ -60,7 +58,6 @@ void GPIO_setup(
     GPIO_Init(PORT_I2C, PIN_I2C_SCL, GPIO_MODE_OUT_OD_HIZ_FAST);
     GPIO_Init(PORT_I2C, PIN_I2C_SDA, GPIO_MODE_OUT_OD_HIZ_FAST);
 }
-
 
 void I2C_setup(
     void)
@@ -76,27 +73,33 @@ void I2C_setup(
     I2C_Cmd(ENABLE);
 }
 
-
 static void write(
     uint8_t registerId)
 {
     I2C_GenerateSTART(ENABLE);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_TX);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_SendData(registerId);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_GenerateSTOP(ENABLE);
-    while(I2C_GetFlagStatus(I2C_FLAG_BUSBUSY))
-        ;
+    while (I2C_GetFlagStatus(I2C_FLAG_BUSBUSY))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 }
-
 
 static uint16_t read(
     uint8_t registerId)
@@ -106,38 +109,55 @@ static uint16_t read(
     uint16_t registerValue = 0;
 
     I2C_GenerateSTART(ENABLE);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_Send7bitAddress(I2C_SLAVE_ADDRESS, I2C_DIRECTION_RX);
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED))
-        ;
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_RECEIVER_MODE_SELECTED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     registerMSB = I2C_ReceiveData();
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     registerLSB = I2C_ReceiveData();
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
+    I2C_ReceiveData();
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_ReceiveData();
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_ReceiveData();
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_ReceiveData();
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
-
-    I2C_ReceiveData();
-    while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
-        ;
+    while (!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_RECEIVED))
+    {
+        // Busy-wait until the function returns a status that signifies it's done
+    }
 
     I2C_AcknowledgeConfig(DISABLE);
     I2C_GenerateSTOP(ENABLE);
@@ -148,4 +168,3 @@ static uint16_t read(
 
     return registerValue;
 }
-

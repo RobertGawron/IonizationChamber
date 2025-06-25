@@ -3,10 +3,11 @@
 
 #include <stdint.h>
 
-void logger_init(void);
+void logger_init(
+    void);
 
 void logger_print(
     const uint8_t *output,
-    const uint8_t length);
+    uint8_t        length);
 
 #endif

@@ -24,13 +24,13 @@
 void GPIO_Init(
     GPIO_TypeDef *    GPIOx,
     GPIO_Pin_TypeDef  GPIO_Pin,
-    GPIO_Mode_TypeDef GPIO_Mode)
+    GPIO_Mode_TypeDef GPIO_Mode
+    )
 {
     check_expected_ptr(GPIOx);
     check_expected(GPIO_Pin);
     check_expected(GPIO_Mode);
 }
-
 
 /**
  * @brief Mock implementation of GPIO_WriteLow
@@ -42,12 +42,12 @@ void GPIO_Init(
  */
 void GPIO_WriteLow(
     GPIO_TypeDef *   GPIOx,
-    GPIO_Pin_TypeDef PortPins)
+    GPIO_Pin_TypeDef PortPins
+    )
 {
     check_expected_ptr(GPIOx);
     check_expected(PortPins);
 }
-
 
 /**
  * @brief Mock implementation of GPIO_WriteHigh
@@ -59,28 +59,29 @@ void GPIO_WriteLow(
  */
 void GPIO_WriteHigh(
     GPIO_TypeDef *   GPIOx,
-    GPIO_Pin_TypeDef PortPins)
+    GPIO_Pin_TypeDef PortPins
+    )
 {
     check_expected_ptr(GPIOx);
     check_expected(PortPins);
 }
 
-
 // =============================================================================
 // TEST CASES
 // =============================================================================
 /**
- * @test
  * @brief Tests user interface initialization
  *
- * Verifies that the user interface initialization correctly configures the LEDs:
+ * Verifies that the user interface initialization correctly configures the
+ *LEDs:
  * 1. GPIO initialization for both LEDs is called with correct parameters
  * 2. Both LEDs are turned off after initialization
  *
  * @param state CMocka state object (unused)
  */
 static void test_init_configures_leds_correctly(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -96,9 +97,7 @@ static void test_init_configures_leds_correctly(
     user_interface_init();
 }
 
-
 /**
- * @test
  * @brief Tests enabling the collecting data message
  *
  * Verifies that enabling the collecting data message:
@@ -108,7 +107,8 @@ static void test_init_configures_leds_correctly(
  * @param state CMocka state object (unused)
  */
 static void test_enable_collecting_data_message_turns_on_red_led(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -120,9 +120,7 @@ static void test_enable_collecting_data_message_turns_on_red_led(
         USER_INTERFACE_ENABLE);
 }
 
-
 /**
- * @test
  * @brief Tests disabling the collecting data message
  *
  * Verifies that disabling the collecting data message:
@@ -132,7 +130,8 @@ static void test_enable_collecting_data_message_turns_on_red_led(
  * @param state CMocka state object (unused)
  */
 static void test_disable_collecting_data_message_turns_off_red_led(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -144,9 +143,7 @@ static void test_disable_collecting_data_message_turns_off_red_led(
         USER_INTERFACE_DISABLE);
 }
 
-
 /**
- * @test
  * @brief Tests enabling the state OK message
  *
  * Verifies that enabling the state OK message:
@@ -156,7 +153,8 @@ static void test_disable_collecting_data_message_turns_off_red_led(
  * @param state CMocka state object (unused)
  */
 static void test_enable_state_ok_message_turns_on_green_led(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -168,9 +166,7 @@ static void test_enable_state_ok_message_turns_on_green_led(
         USER_INTERFACE_ENABLE);
 }
 
-
 /**
- * @test
  * @brief Tests disabling the state OK message
  *
  * Verifies that disabling the state OK message:
@@ -180,7 +176,8 @@ static void test_enable_state_ok_message_turns_on_green_led(
  * @param state CMocka state object (unused)
  */
 static void test_disable_state_ok_message_turns_off_green_led(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
@@ -192,9 +189,7 @@ static void test_disable_state_ok_message_turns_off_green_led(
         USER_INTERFACE_DISABLE);
 }
 
-
 /**
- * @test
  * @brief Tests handling of unknown message types
  *
  * Verifies that passing an unknown message type:
@@ -204,18 +199,19 @@ static void test_disable_state_ok_message_turns_off_green_led(
  * @param state CMocka state object (unused)
  */
 static void test_unknown_message_type(
-    void **state)
+    void **state
+    )
 {
     (void)state;
 
     // Unknown message shouldn't touch physical pins
     // No expectations set - test will fail if any GPIO operations occur
 
+    const uint8_t incorrect_msg_id = 0xff;
     user_interface_update_message(
-        (UserInterface_Message_t)99, // Invalid message
+        (UserInterface_Message_t)incorrect_msg_id,
         USER_INTERFACE_ENABLE);
 }
-
 
 // =============================================================================
 // TEST RUNNER
@@ -228,7 +224,8 @@ static void test_unknown_message_type(
  * @return int Number of failed tests
  */
 int main(
-    void)
+    void
+    )
 {
     const struct CMUnitTest tests[] = {
         cmocka_unit_test(test_init_configures_leds_correctly),

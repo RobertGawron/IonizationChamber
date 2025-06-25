@@ -6,6 +6,7 @@
 // Include production header
 #include "application_builder.h"
 #include "user_interface.h"
+#include "mcp3425.h"
 
 // =============================================================================
 // MOCK IMPLEMENTATIONS
@@ -21,7 +22,6 @@ void clock_configurator_init(
     function_called();
 }
 
-
 /**
  * @brief Mock implementation of timer_configurator_init
  *
@@ -32,7 +32,6 @@ void timer_configurator_init(
 {
     function_called();
 }
-
 
 /**
  * @brief Mock implementation of logger_init
@@ -45,7 +44,6 @@ void logger_init(
     function_called();
 }
 
-
 /**
  * @brief Mock implementation of user_interface_init
  *
@@ -56,7 +54,6 @@ void user_interface_init(
 {
     function_called();
 }
-
 
 /**
  * @brief Mock implementation of mcp3425_init
@@ -69,7 +66,6 @@ void mcp3425_init(
     function_called();
 }
 
-
 /**
  * @brief Mock implementation of measurement_collector_tick
  *
@@ -80,7 +76,6 @@ void measurement_collector_tick(
 {
     function_called();
 }
-
 
 /**
  * @brief Mock implementation of wfi()
@@ -93,7 +88,6 @@ void wfi()
     function_called();
 }
 
-
 /**
  * @brief Mock implementation of user_interface_update_message
  *
@@ -103,19 +97,17 @@ void wfi()
  * @param state Enable/disable state for the message
  */
 void user_interface_update_message(
-    const UserInterface_Message_t       message,
+    const UserInterface_Message_t message,
     const UserInterface_MessageAction_t state)
 {
     check_expected(message);
     check_expected(state);
 }
 
-
 // =============================================================================
 // TEST CASES
 // =============================================================================
 /**
- * @test
  * @brief Tests application initialization sequence
  *
  * Verifies that application_builder_init():
@@ -155,9 +147,7 @@ static void test_ApplicationBuilder_Init_Sequence(
     application_builder_init();
 }
 
-
 /**
- * @test
  * @brief Tests application tick functionality
  *
  * Verifies that application_builder_tick():
@@ -181,9 +171,7 @@ static void test_ApplicationBuilder_Tick(
     application_builder_tick();
 }
 
-
 /**
- * @test
  * @brief Tests application run functionality
  *
  * Verifies that application_builder_run():
@@ -206,7 +194,6 @@ static void test_ApplicationBuilder_Run_CallsWait(
     // 2. Execute function under test
     application_builder_run();
 }
-
 
 // =============================================================================
 // TEST RUNNER

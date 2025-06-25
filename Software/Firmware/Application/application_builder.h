@@ -14,7 +14,8 @@
  *
  * Sets up peripherals, drivers, and modules required for the application.
  */
-void application_builder_init(void);
+void application_builder_init(
+    void);
 
 /**
  * @brief Main application loop body.
@@ -22,13 +23,15 @@ void application_builder_init(void);
  * This function waits for the next interrupt from a timer
  * and does not perform any active work itself.
  */
-void application_builder_run(void);
+void application_builder_run(
+    void);
 
 /**
  * @brief Periodic tick handler.
  *
  * Called from a timer.
  */
-void application_builder_tick(void);
+void application_builder_tick(
+    void);
 
 #endif
