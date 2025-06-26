@@ -9,8 +9,7 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
-	.globl _timer_isr
-	.globl _user_interface_update_message
+	.globl _tim1_isr
 	.globl _app_builder_run
 	.globl _app_builder_init
 	.globl _TIM1_ClearITPendingBit
@@ -23,8 +22,6 @@
 ; ram data
 ;--------------------------------------------------------
 	.area INITIALIZED
-_i:
-	.ds 2
 ;--------------------------------------------------------
 ; Stack segment in internal ram
 ;--------------------------------------------------------
@@ -63,7 +60,7 @@ __interrupt_vect:
 	int 0x000000 ; int8
 	int 0x000000 ; int9
 	int 0x000000 ; int10
-	int _timer_isr ; int11
+	int _tim1_isr ; int11
 ;--------------------------------------------------------
 ; global & static initialisations
 ;--------------------------------------------------------
@@ -125,54 +122,41 @@ _interrupt_control_wait:
 	wfi
 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 36: }
 	ret
-;	/workspace/Software/Firmware/new_begining/main.c: 12: void timer_isr(void) __interrupt(11)
+;	/workspace/Software/Firmware/new_begining/main.c: 11: void tim1_isr(void) __interrupt(11)
 ;	-----------------------------------------
-;	 function timer_isr
+;	 function tim1_isr
 ;	-----------------------------------------
-_timer_isr:
+_tim1_isr:
 	clr	a
 	div	x, a
-;	/workspace/Software/Firmware/new_begining/main.c: 14: TIM1->SR1 = 0;
-	mov	0x5255+0, #0x00
-;	/workspace/Software/Firmware/new_begining/main.c: 15: GPIOD->ODR ^= GPIO_PIN_4;
-	bcpl	0x500f, #4
-;	/workspace/Software/Firmware/new_begining/main.c: 16: i = ~i;
-	ldw	x, _i+0
-	cplw	x
-;	/workspace/Software/Firmware/new_begining/main.c: 18: user_interface_update_message(USER_INTERFACE_STATE_OK_MSG, (i == 0) ? USER_INTERFACE_DISABLE : USER_INTERFACE_ENABLE);
-	ldw	_i+0, x
-	subw	x, #0x0001
-	clr	a
-	rlc	a
-	push	a
-	ld	a, #0x01
-	call	_user_interface_update_message
-;	/workspace/Software/Firmware/new_begining/main.c: 20: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
+;	/workspace/Software/Firmware/new_begining/main.c: 13: app_tick_flag = 1;
+	clrw	x
+	incw	x
+	ldw	_app_tick_flag+0, x
+;	/workspace/Software/Firmware/new_begining/main.c: 15: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
 	clrw	x
 	incw	x
 	call	_TIM1_ClearFlag
-;	/workspace/Software/Firmware/new_begining/main.c: 21: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
+;	/workspace/Software/Firmware/new_begining/main.c: 16: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 	ld	a, #0x01
 	call	_TIM1_ClearITPendingBit
-;	/workspace/Software/Firmware/new_begining/main.c: 22: }
+;	/workspace/Software/Firmware/new_begining/main.c: 17: }
 	iret
-;	/workspace/Software/Firmware/new_begining/main.c: 24: int main()
+;	/workspace/Software/Firmware/new_begining/main.c: 19: int main()
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	/workspace/Software/Firmware/new_begining/main.c: 27: app_builder_init();
+;	/workspace/Software/Firmware/new_begining/main.c: 21: app_builder_init();
 	call	_app_builder_init
 00102$:
-;	/workspace/Software/Firmware/new_begining/main.c: 55: app_builder_run();
+;	/workspace/Software/Firmware/new_begining/main.c: 25: app_builder_run();
 	call	_app_builder_run
 	jra	00102$
-;	/workspace/Software/Firmware/new_begining/main.c: 58: return 0;
-;	/workspace/Software/Firmware/new_begining/main.c: 66: }
+;	/workspace/Software/Firmware/new_begining/main.c: 28: return 0;
+;	/workspace/Software/Firmware/new_begining/main.c: 29: }
 	ret
 	.area CODE
 	.area CONST
 	.area INITIALIZER
-__xinit__i:
-	.dw #0x0000
 	.area CABS (ABS)

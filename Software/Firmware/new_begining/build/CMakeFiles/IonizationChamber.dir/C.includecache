@@ -235,10 +235,6 @@ interrupt_control.h
 /workspace/Software/Firmware/new_begining/interrupt_control.h
 user_interface.h
 /workspace/Software/Firmware/new_begining/user_interface.h
-app_builder.h
-/workspace/Software/Firmware/new_begining/app_builder.h
-stm8s.h
-/workspace/Software/Firmware/new_begining/stm8s.h
 
 /workspace/Software/Firmware/new_begining/stm8s_conf.h
 stm8s.h

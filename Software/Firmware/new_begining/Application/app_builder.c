@@ -33,35 +33,18 @@ void app_builder_init(void)
 void app_builder_run(void)
 {
     interrupt_control_wait();
-#if 0
-    // user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
-    /*
-    user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
 
-    delay_ms(500); // 1 second delay
-    user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_DISABLE);
-    delay_ms(500); // 1 second delay
-    */
-    // interrupt_control_wait();
-    /* wfi();
-     if (app_tick_flag == 1)
-     {
-         app_builder_tick();
-     }*/
-    wfi();
     if (app_tick_flag)
     {
-        // app_builder_tick();
-        app_tick_flag = 0; // Reset flag
+        app_builder_tick();
+        app_tick_flag = 0;
     }
-#endif
 }
 
 void app_builder_tick(void)
 {
-    user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
-
-    delay_ms(500); // 1 second delay
-    user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_DISABLE);
-    delay_ms(500); // 1 second delay
+    static int i = 0;
+    i = ~i;
+    user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, (i == 0) ? USER_INTERFACE_ENABLE : USER_INTERFACE_DISABLE);
+    user_interface_update_message(USER_INTERFACE_STATE_OK_MSG, (i == 0) ? USER_INTERFACE_DISABLE : USER_INTERFACE_ENABLE);
 }
