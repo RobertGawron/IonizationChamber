@@ -70,6 +70,15 @@ cmake .. && make style
 
 # Hardware flashing
 
+
+apt install sdcc-ucsim
+
+
+ stm8flash -c stlinkv2 -p stm8s003f3 -w IonizationChamber.ihx
+
+ stm8flash -c stlink -p stm8s003f3 -w IonizationChamber.ihx
+
+
 Hardware connection
 Section: "Using the ST-LINK on other STM8S applications"
 https://www.st.com/resource/en/user_manual/um1482-stm8svldiscovery-stm8s-value-line-discovery-stmicroelectronics.pdf
@@ -110,3 +119,160 @@ python main.py
 
 # Credits:
 * [stm8flash in Docker](https://github.com/ivankomolin/docker-stm8/blob/master/Dockerfile)
+
+
+dont install via apt
+
+openocd -f /usr/share/openocd/scripts/interface/stlink-v2.cfg -f ../Software/stm8s003.cfg
+
+sudo apt-get install   build-essential git autoconf automake libtool pkg-config texinfo   libusb-1.0-0-dev libftdi-dev libhidapi-dev libjaylink-dev 
+
+apt-get install libjim-dev
+
+ add-apt-repository universe
+apt update
+ apt install libjaylink-dev=0.2.0-1 libjaylink0=0.2.0-1
+
+ apt install libjaylink-dev=0.2.0-1 libjaylink0=0.2.0-1
+
+
+./bootstrap
+
+
+
+./configure \
+  --enable-stlink \
+  --enable-ftdi \
+  --enable-cmsis-dap \
+  --enable-debug-gui \
+  --disable-werror
+
+
+make -j$(nproc)
+make install
+
+=====
+root@faedc67c011c:/workspace/build_firmware/openocd# /usr/local/bin/openocd--version
+
+make a link?
+====
+
+works after bash
+
+
+===
+
+
+how it install:
+
+make  install-recursive
+make[1]: Entering directory '/workspace/build_firmware/openocd'
+Making install in testing
+make[2]: Entering directory '/workspace/build_firmware/openocd/testing'
+Making install in tcl_commands
+make[3]: Entering directory '/workspace/build_firmware/openocd/testing/tcl_commands'
+make[4]: Entering directory '/workspace/build_firmware/openocd/testing/tcl_commands'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/workspace/build_firmware/openocd/testing/tcl_commands'
+make[3]: Leaving directory '/workspace/build_firmware/openocd/testing/tcl_commands'
+make[3]: Entering directory '/workspace/build_firmware/openocd/testing'
+make[4]: Entering directory '/workspace/build_firmware/openocd/testing'
+make[4]: Nothing to be done for 'install-exec-am'.
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/workspace/build_firmware/openocd/testing'
+make[3]: Leaving directory '/workspace/build_firmware/openocd/testing'
+make[2]: Leaving directory '/workspace/build_firmware/openocd/testing'
+make[2]: Entering directory '/workspace/build_firmware/openocd'
+make[3]: Entering directory '/workspace/build_firmware/openocd'
+ /usr/bin/mkdir -p '/usr/local/bin'
+  /bin/bash ./libtool   --mode=install /usr/bin/install -c src/openocd '/usr/local/bin'
+libtool: install: /usr/bin/install -c src/openocd /usr/local/bin/openocd
+ /usr/bin/mkdir -p '/usr/local/share/openocd/angie'
+ /usr/bin/install -c -m 644 src/jtag/drivers/angie/angie_firmware.bin src/jtag/drivers/angie/angie_bitstream.bit '/usr/local/share/openocd/angie'
+ /usr/bin/mkdir -p '/usr/local/share/openocd/OpenULINK'
+ /usr/bin/install -c -m 644 src/jtag/drivers/OpenULINK/ulink_firmware.hex '/usr/local/share/openocd/OpenULINK'
+ /usr/bin/mkdir -p '/usr/local/share/info'
+ /usr/bin/install -c -m 644 ./doc/openocd.info ./doc/openocd.info-1 ./doc/openocd.info-2 '/usr/local/share/info'
+ /usr/bin/mkdir -p '/usr/local/share/man/man1'
+ /usr/bin/install -c -m 644 doc/openocd.1 '/usr/local/share/man/man1'
+ /usr/bin/mkdir -p '/usr/local/share/openocd'
+ /usr/bin/mkdir -p '/usr/local/share/openocd/contrib'
+ /usr/bin/install -c -m 644  contrib/60-openocd.rules '/usr/local/share/openocd/contrib'
+ /usr/bin/mkdir -p '/usr/local/share/openocd/contrib/libdcc'
+ /usr/bin/install -c -m 644  contrib/libdcc/dcc_stdio.c contrib/libdcc/dcc_stdio.h contrib/libdcc/example.c contrib/libdcc/README '/usr/local/share/openocd/contrib/libdcc'
+make  install-data-hook
+make[4]: Entering directory '/workspace/build_firmware/openocd'
+for i in $(find ./tcl -name '*.cfg' -o -name '*.tcl' -o -name '*.txt' | sed -e 's,^./tcl,,'); do \
+        j="/usr/local/share/openocd/scripts/$i" && \
+        mkdir -p "$(dirname $j)" && \
+        /usr/bin/install -c -m 644 ./tcl/$i $j; \
+
+        ===
+
+
+openocd -f /usr/local/share/openocd/scripts/interface/stlink.cfg -f /workspace/Software/stm8s003.cfg
+
+
+
+===
+
+but abandon scripts and use directly:
+
+openocd   -f interface/stlink.cfg   -f target/stm8s.cfg   -c "in
+it"   -c "reset halt"
+
+
+elff format is OK
+
+
+apt install gdb -- dont
+
+
+
+THIS IS FOR GDB FOR STM8
+
+--- https://github.com/hbend1li/stm8_started
+
+
+ wget https://sourceforge.net/projects/stm8-binutils-gdb/files/stm8-binutils-gdb-sources-2020-03-22.tar.gz/download -O stm8-binutils-gdb-sources-2018-03-04.tar.gz
+
+ tar -xf stm8-binutils-gdb-sources-2018-03-04.tar.gz
+
+ cd stm8-binutils-gdb-sources
+
+ ./patch_binutils.sh
+
+
+
+configure binutils
+ --with-python=no
+
+
+ stm8-gdb /workspace/firmwarev3/IonizationChamber.elf 
+
+
+stm8-gdb \
+  -ex "target extended-remote :3333" \
+  -ex "set architecture stm8" \
+  -ex "file /workspace/build_firmware/IonizationChamber.elf"
+
+
+ gdb) target remote :3333
+(gdb) load
+(gdb) display /i $pc   # Show next instruction
+(gdb) stepi            # Single assembly step
+(gdb) info registers   # Inspect registers
+(gdb) x/10i 0x8000     # Disassemble 10 instructions
+
+
+
+stm8flash -c stlinkv2 -p stm8s003f3 -w /workspace/firmwarev3/IonizationChamber.elf
+
+
+
+------------
+
+
+openocd -f interface/stlink.cfg -f target/stm8s.cfg -c "program /workspace/firmwarev3/IonizationChamber.elf verify reset exit"
+

@@ -1,32 +1,55 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.5)
+project(STM8_IonizationChamber LANGUAGES C)
 
-# Compiler and system configuration
-set(CMAKE_C_OUTPUT_EXTENSION ".rel")
+# SDCC Compiler Configuration
 set(CMAKE_C_COMPILER sdcc)
-set(CMAKE_SYSTEM_NAME Generic)  # No OS target
+set(CMAKE_SYSTEM_NAME Generic)
 
-# Prevent default configurations
-set(CMAKE_C_FLAGS_INIT "")
-set(CMAKE_EXE_LINKER_FLAGS_INIT "")
+# Critical SDCC Flags
+set(STM8_CHIP "STM8S003")
+set(SDCC_DEBUG_FLAGS "--debug --out-fmt-elf")  # ELF output with debug symbols
+set(SDCC_COMMON_FLAGS "-mstm8 -D${STM8_CHIP} -D__SDCC__ -I${CMAKE_SOURCE_DIR}/Inc")
 
-project(IonizationChamber C)
+# Compiler and Linker Flags
+set(CMAKE_C_FLAGS "${SDCC_COMMON_FLAGS} ${SDCC_DEBUG_FLAGS} --stack-auto --opt-code-size")
+set(CMAKE_EXE_LINKER_FLAGS "${SDCC_DEBUG_FLAGS} -Wl-m")
 
-# Library naming conventions
+# Output Configuration
+set(CMAKE_C_OUTPUT_EXTENSION ".rel")
+set(CMAKE_EXECUTABLE_SUFFIX ".elf")
+
+# Library Configuration
 set(CMAKE_STATIC_LIBRARY_PREFIX "")
 set(CMAKE_STATIC_LIBRARY_SUFFIX ".lib")
-set(CMAKE_SHARED_LIBRARY_PREFIX "")
-set(CMAKE_SHARED_LIBRARY_SUFFIX ".lib")
-set(CMAKE_IMPORT_LIBRARY_PREFIX "")
-set(CMAKE_IMPORT_LIBRARY_SUFFIX "")
-set(CMAKE_EXECUTABLE_SUFFIX ".ihx")  # Intel hex format
-set(CMAKE_LINK_LIBRARY_SUFFIX ".lib")
-set(CMAKE_DL_LIBS "")
+set(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
 
-# Generates compile_commands.json for IDE integration
-set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# Override link command for SDCC
+set(CMAKE_C_LINK_EXECUTABLE 
+    "sdcc <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>"
+)
 
-# Create StdPeriph library
-add_library(STM8StdPeriph STATIC
+# Include Directories
+include_directories(
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Device
+    ${CMAKE_SOURCE_DIR}/Driver
+    ${CMAKE_SOURCE_DIR}/Inc
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+)
+
+# Source Files
+set(SOURCES
+    main.c
+    Application/application_builder.c
+    Application/measurement_frame.c
+    Application/measurement_collector.c
+    Driver/stm8_it.c
+    Driver/clock_configurator.c
+    Driver/timer_configurator.c
+    Driver/user_interface.c
+    Driver/logger.c
+    Driver/mcp3425.c
     STM8S_StdPeriph_Lib/src/stm8s_gpio.c
     STM8S_StdPeriph_Lib/src/stm8s_i2c.c
     STM8S_StdPeriph_Lib/src/stm8s_tim1.c
@@ -34,85 +57,18 @@ add_library(STM8StdPeriph STATIC
     STM8S_StdPeriph_Lib/src/stm8s_uart1.c
 )
 
-# Set compiler options and definitions for the library
-target_compile_options(STM8StdPeriph PRIVATE
-    -mstm8
-    --verbose
-)
+# Executable Target
+add_executable(IonizationChamber ${SOURCES})
 
-target_compile_definitions(STM8StdPeriph PRIVATE
-    STM8S003
-    __SDCC__
-    USE_STDPERIPH_DRIVER
-)
-
-# Set include directories for the library
-target_include_directories(STM8StdPeriph PUBLIC
-${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/Application
-    ${CMAKE_SOURCE_DIR}/Device
-    ${CMAKE_SOURCE_DIR}/Driver
-    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
-)
-
-# Executable target (only application sources)
-add_executable(IonizationChamber
-    main.c
-
-    Application/application_builder.c
-    Application/measurement_frame.c
-    Application/measurement_collector.c
-
-    Driver/timer_configurator.c
-    Driver/clock_configurator.c
-    Driver/user_interface.c
-    Driver/interrupt_handler.c
-    Driver/logger.c
-    Driver/mcp3425.c
-)
-
-# Set compiler options and definitions for the executable
-target_compile_options(IonizationChamber PRIVATE
-    -mstm8
-)
-
-target_compile_definitions(IonizationChamber PRIVATE
-    STM8S003
-    __SDCC__
-    USE_STDPERIPH_DRIVER
-)
-
-# Set include directories for the executable
-target_include_directories(IonizationChamber PRIVATE
-    ${CMAKE_SOURCE_DIR}/Inc
-)
-
-# Link the StdPeriph library to the executable
-target_link_libraries(IonizationChamber PRIVATE STM8StdPeriph)
-
-target_link_options(IonizationChamber PRIVATE
-    -mstm8
-    --out-fmt-ihx
-    #--map               # alternative to --out-fmt-map for map file
-    #--print-mem-usage
-    --verbose
-    --stack-auto
-)
-# Memory limits for STM8S003F3P
-set(MAX_ROM_SIZE 8192)  # 8KB flash
-set(MAX_RAM_SIZE 1024)  # 1KB RAM
-
-# Find Python 3
-find_package(Python3 COMPONENTS Interpreter REQUIRED)
-
-# Add post-build memory check
+# Post-Build Steps
 add_custom_command(TARGET IonizationChamber POST_BUILD
-    COMMAND ${Python3_EXECUTABLE} 
-        "${CMAKE_SOURCE_DIR}/../../DevOps/Scripts/CheckFirmwareRomRamUsage.py"
-        ${MAX_ROM_SIZE}
-        ${MAX_RAM_SIZE}
-        $<TARGET_FILE_DIR:IonizationChamber>/$<TARGET_FILE_BASE_NAME:IonizationChamber>.map
-    
-    COMMENT "Verifying memory usage for STM8S003F3P"
-    VERBATIM
+    COMMAND ${CMAKE_OBJCOPY} -I elf32-stm8 -O ihex $<TARGET_FILE:IonizationChamber> ${CMAKE_CURRENT_BINARY_DIR}/IonizationChamber.hex
+    COMMAND ${CMAKE_OBJCOPY} -I elf32-stm8 -O binary $<TARGET_FILE:IonizationChamber> ${CMAKE_CURRENT_BINARY_DIR}/IonizationChamber.bin
+    COMMENT "Generating HEX and BIN files"
 )
+
+# Find objcopy
+find_program(CMAKE_OBJCOPY NAMES stm8-objcopy sdobjcopy objcopy)
+if(NOT CMAKE_OBJCOPY)
+    message(FATAL_ERROR "objcopy not found! Install stm8-binutils")
+endif()

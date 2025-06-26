@@ -88,6 +88,7 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y \
     clang-tidy
 
-
+RUN apt-get update && apt-get install -y \
+    openocd
 # Command to run the container
 CMD ["bash"]

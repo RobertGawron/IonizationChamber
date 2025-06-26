@@ -6,11 +6,15 @@
 void measurement_collector_tick()
 {
     uint8_t buffer[MAX_FRAME_LENGTH];
+    /*
+        const uint8_t configuration = radioactivity_measurer_get_conf();
 
-    const uint8_t configuration = radioactivity_measurer_get_conf();
+        RadioactivityMeasurer_MeasurementData_t sample;
+        radioactivity_measurer_get_sample(&sample);
+    */
+    const uint8_t configuration = 0x22;
 
-    RadioactivityMeasurer_MeasurementData_t sample;
-    radioactivity_measurer_get_sample(&sample);
+    RadioactivityMeasurer_MeasurementData_t sample = 0xab;
 
     measurement_frame_create(buffer, MAX_FRAME_LENGTH, configuration, sample);
     logger_print(buffer, MAX_FRAME_LENGTH);

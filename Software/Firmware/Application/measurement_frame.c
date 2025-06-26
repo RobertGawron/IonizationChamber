@@ -24,8 +24,8 @@ void measurement_frame_create(
     {
         output[FRAME_PREAMBLE] = (FRAME_SEND_MEASSUREMENT_ID << 4) | MAX_FRAME_LENGTH;
         output[FRAME_CONFIGURATION] = configuration;
-        output[FRAME_DATA_MSB] = byte_utils_get_msb(measurement);
-        output[FRAME_DATA_LSB] = byte_utils_get_lsb(measurement);
+        output[FRAME_DATA_MSB] = 1; // byte_utils_get_msb(measurement);
+        output[FRAME_DATA_LSB] = 2; // byte_utils_get_lsb(measurement);
 
         /* todo calculate crc from whole buffer */
         output[FRAME_CRC] = GET_CRC(configuration, measurement);

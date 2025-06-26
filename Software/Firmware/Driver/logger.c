@@ -1,7 +1,7 @@
 #include "logger.h"
 #include "stm8s_uart1.h"
 #include "pinout_configuration.h"
-
+#include "user_interface.h"
 // #define USE_PRINTF
 #if defined USE_PRINTF
 #include <stdio.h>
@@ -41,7 +41,8 @@ void logger_print(
     for (uint8_t i = 0; i < length; i++)
     {
         /* Write a character to the UART1 */
-        UART1_SendData8(output[i]);
+        // UART1_SendData8(output[i]);
+        UART1_SendData8(55);
 
         /* Loop until the end of transmission */
         while (UART1_GetFlagStatus(UART1_FLAG_TXE) == RESET)
@@ -59,10 +60,38 @@ void assert_failed(
 {
     (void)file;
     (void)line;
+    // putchar('x');
+    //  printf("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 
 #if defined USE_PRINTF
-    printf("[error] asset failed %s %u\r\n", file, line);
+    // printf("[error] asset failed %s %u\r\n", file, line);
 #endif
+
+    /*    int len = 0;
+        int i = 0;
+
+        for (int len = 0;; len++)
+        {
+            if (file[len] == '\0')
+            {
+                break;
+            }
+            else
+            {
+                logger_print('x', 1);
+            }
+            //        break;
+        }
+        //  logger_print(file, len);
+    */
+    /* user_interface_update_message(
+         USER_INTERFACE_COLLECTING_DATA_MSG,
+         USER_INTERFACE_DISABLE);
+    */
+
+    user_interface_update_message(
+        USER_INTERFACE_COLLECTING_DATA_MSG,
+        USER_INTERFACE_ENABLE);
 
     while (FOREVER_LOOP_CONDITION)
     {

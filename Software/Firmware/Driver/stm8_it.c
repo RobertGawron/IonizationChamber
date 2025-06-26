@@ -28,12 +28,16 @@
  */
 
 /* Includes ------------------------------------------------------------------*/
-#include "interrupt_handler.h"
+#include "stm8_it.h"
 #include "application_builder.h"
-
+#include "user_interface.h"
 /** @addtogroup Template_Project
  * @{
  */
+
+#include "application_builder.h" // Include the flag declaration
+
+extern unsigned char timer_flag;
 
 /* Private typedef -----------------------------------------------------------*/
 /* Private define ------------------------------------------------------------*/
@@ -230,8 +234,20 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
   /* In order to detect unexpected events during development,
      it is recommended to set a breakpoint on the following instruction.
    */
+  //  TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
+  //  application_builder_tick();
+
+  /*  user_interface_update_message(
+        USER_INTERFACE_COLLECTING_DATA_MSG,
+        USER_INTERFACE_DISABLE);
+  */
+
+  user_interface_update_message(
+      USER_INTERFACE_COLLECTING_DATA_MSG,
+      USER_INTERFACE_ENABLE);
+
+  app_tick_flag = 1;
   TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
-  application_builder_tick();
 }
 
 /**

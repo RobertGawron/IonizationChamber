@@ -1,0 +1,1 @@
+clear && rm -rf /workspace/build/* ; cmake -DCMAKE_BUILD_TYPE=Debug .. &&make coverage -j24 && make static
