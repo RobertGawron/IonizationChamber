@@ -27,9 +27,6 @@ CMAKE_BUILD_TYPE:STRING=
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
 
-//SDCC C Compiler
-CMAKE_C_COMPILER:FILEPATH=/usr/bin/sdcc
-
 //Flags used by the C compiler during all build types.
 CMAKE_C_FLAGS:STRING=
 
@@ -192,9 +189,6 @@ IonizationChamber_SOURCE_DIR:STATIC=/workspace/Software/Firmware/new_begining
 
 //Path to a program.
 SDCCAR_EXECUTABLE:FILEPATH=/usr/bin/sdar
-
-//Path to a program.
-SDCC_PATH:FILEPATH=/usr/bin/sdcc
 
 
 ########################

@@ -73,3 +73,22 @@ target_link_options(IonizationChamber PRIVATE
     ${SDCC_FLAGS}  # List-based propagation
     --out-fmt-ihx
 )
+
+# Memory limits for STM8S003F3P
+set(MAX_ROM_SIZE 8192)  # 8KB flash
+set(MAX_RAM_SIZE 1024)  # 1KB RAM
+
+# Find Python 3
+#find_package(Python3 COMPONENTS Interpreter REQUIRED)
+
+# Add post-build memory check
+#add_custom_command(TARGET IonizationChamber POST_BUILD
+#    COMMAND ${Python3_EXECUTABLE} 
+#        "${CMAKE_SOURCE_DIR}/../../DevOps/Scripts/CheckFirmwareRomRamUsage.py"
+#        ${MAX_ROM_SIZE}
+#        ${MAX_RAM_SIZE}
+#        $<TARGET_FILE_DIR:IonizationChamber>/$<TARGET_FILE_BASE_NAME:IonizationChamber>.map
+#    
+#    COMMENT "Verifying memory usage for STM8S003F3P"
+#    VERBATIM
+#)

@@ -17,6 +17,9 @@ void data_acquisition_tick()
 
     RadioactivityMeasurer_MeasurementData_t sample = 0xab;
 
+    //  RadioactivityMeasurer_MeasurementData_t sample;
+    // radioactivity_measurer_get_sample(&sample);
+
     // measurement_frame_create(buffer, MAX_FRAME_LENGTH, conf, sample);
     // logger_print(buffer, MAX_FRAME_LENGTH);
 }
