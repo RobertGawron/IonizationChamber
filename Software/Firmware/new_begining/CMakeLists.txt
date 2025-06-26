@@ -11,16 +11,18 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "")
 
 project(IonizationChamber C)
 
-# Global compiler flags
-set(CMAKE_C_FLAGS "-mstm8 --std-sdcc11 --std-c99 -DSTM8S003 -D__SDCC__ -DUSE_STDPERIPH_DRIVER")
+# Improved flag handling: Separate flags and definitions
+set(SDCC_FLAGS
+    -mstm8
+    --std-sdcc11
+    --opt-code-size
+    --stack-auto
+)
 
-# Include directories
-include_directories(
-    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
-    ${CMAKE_SOURCE_DIR}/Application
-    ${CMAKE_SOURCE_DIR}/Device
-    ${CMAKE_SOURCE_DIR}/Driver
-    ${CMAKE_SOURCE_DIR}
+set(SDCC_DEFINITIONS
+    STM8S003
+    __SDCC__
+    USE_STDPERIPH_DRIVER
 )
 
 # Create STM8 Standard Peripheral Library
@@ -32,10 +34,14 @@ add_library(STM8StdPeriph STATIC
     STM8S_StdPeriph_Lib/src/stm8s_uart1.c
 )
 
-# Set library-specific properties
-set_target_properties(STM8StdPeriph PROPERTIES
-    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
-    OUTPUT_NAME "stm8s"
+# Apply flags and definitions to library
+target_compile_options(STM8StdPeriph PRIVATE ${SDCC_FLAGS})
+target_compile_definitions(STM8StdPeriph PRIVATE ${SDCC_DEFINITIONS})
+
+# Library-specific includes
+target_include_directories(STM8StdPeriph PRIVATE
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+    ${CMAKE_SOURCE_DIR}
 )
 
 # Main executable
@@ -49,6 +55,22 @@ add_executable(IonizationChamber
     Driver/timer_conf.c
 )
 
-# Link library to executable
-target_link_libraries(IonizationChamber PRIVATE STM8StdPeriph)
+# Apply flags and definitions to executable
+target_compile_options(IonizationChamber PRIVATE ${SDCC_FLAGS})
+target_compile_definitions(IonizationChamber PRIVATE ${SDCC_DEFINITIONS})
 
+# Executable-specific includes
+target_include_directories(IonizationChamber PRIVATE
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Device
+    ${CMAKE_SOURCE_DIR}/Driver
+    ${CMAKE_SOURCE_DIR}
+)
+
+# Link library to executable with proper linker flags
+target_link_libraries(IonizationChamber PRIVATE STM8StdPeriph)
+target_link_options(IonizationChamber PRIVATE
+    ${SDCC_FLAGS}  # Reuse the same flags for linking
+    --out-fmt-ihx  # Ensure IHX output format
+)

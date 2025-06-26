@@ -127,7 +127,6 @@ _interrupt_control_wait:
 ;	 function tim1_isr
 ;	-----------------------------------------
 _tim1_isr:
-	clr	a
 	div	x, a
 ;	/workspace/Software/Firmware/new_begining/main.c: 13: app_tick_flag = 1;
 	clrw	x

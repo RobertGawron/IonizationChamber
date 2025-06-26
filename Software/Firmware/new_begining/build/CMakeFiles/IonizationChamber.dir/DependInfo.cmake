@@ -18,6 +18,13 @@ set(CMAKE_DEPENDS_CHECK_C
   )
 set(CMAKE_C_COMPILER_ID "SDCC")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_C
+  "STM8S003"
+  "USE_STDPERIPH_DRIVER"
+  "__SDCC__"
+  )
+
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc"

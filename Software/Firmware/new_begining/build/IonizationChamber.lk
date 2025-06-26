@@ -4,7 +4,7 @@
 -b DATA = 0x0001
 -k /usr/bin/../share/sdcc/lib/stm8
 -k /usr/share/sdcc/lib/stm8
--l lib/stm8s.lib
+-l STM8StdPeriph.lib
 -l stm8
 CMakeFiles/IonizationChamber.dir/main.c.rel
 CMakeFiles/IonizationChamber.dir/assert_impl.c.rel

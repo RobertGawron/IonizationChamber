@@ -98,7 +98,7 @@
                                      98 	.area HOME
                                      99 	.area HOME
       000038                        100 __sdcc_program_startup:
-      000038 CCr00r16         [ 2]  101 	jp	_main
+      000038 CCr00r15         [ 2]  101 	jp	_main
                                     102 ;	return from main will return to caller
                                     103 ;--------------------------------------------------------
                                     104 ; code
@@ -127,36 +127,35 @@
                                     127 ;	 function tim1_isr
                                     128 ;	-----------------------------------------
       000004                        129 _tim1_isr:
-      000004 4F               [ 1]  130 	clr	a
-      000005 62               [ 2]  131 	div	x, a
-                                    132 ;	/workspace/Software/Firmware/new_begining/main.c: 13: app_tick_flag = 1;
-      000006 5F               [ 1]  133 	clrw	x
-      000007 5C               [ 1]  134 	incw	x
-      000008 CFu00u00         [ 2]  135 	ldw	_app_tick_flag+0, x
-                                    136 ;	/workspace/Software/Firmware/new_begining/main.c: 15: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
-      00000B 5F               [ 1]  137 	clrw	x
-      00000C 5C               [ 1]  138 	incw	x
-      00000D CDr00r00         [ 4]  139 	call	_TIM1_ClearFlag
-                                    140 ;	/workspace/Software/Firmware/new_begining/main.c: 16: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
-      000010 A6 01            [ 1]  141 	ld	a, #0x01
-      000012 CDr00r00         [ 4]  142 	call	_TIM1_ClearITPendingBit
-                                    143 ;	/workspace/Software/Firmware/new_begining/main.c: 17: }
-      000015 80               [11]  144 	iret
-                                    145 ;	/workspace/Software/Firmware/new_begining/main.c: 19: int main()
-                                    146 ;	-----------------------------------------
-                                    147 ;	 function main
-                                    148 ;	-----------------------------------------
-      000016                        149 _main:
-                                    150 ;	/workspace/Software/Firmware/new_begining/main.c: 21: app_builder_init();
-      000016 CDr00r00         [ 4]  151 	call	_app_builder_init
-      000019                        152 00102$:
-                                    153 ;	/workspace/Software/Firmware/new_begining/main.c: 25: app_builder_run();
-      000019 CDr00r00         [ 4]  154 	call	_app_builder_run
-      00001C 20 FB            [ 2]  155 	jra	00102$
-                                    156 ;	/workspace/Software/Firmware/new_begining/main.c: 28: return 0;
-                                    157 ;	/workspace/Software/Firmware/new_begining/main.c: 29: }
-      00001E 81               [ 4]  158 	ret
-                                    159 	.area CODE
-                                    160 	.area CONST
-                                    161 	.area INITIALIZER
-                                    162 	.area CABS (ABS)
+      000004 62               [ 2]  130 	div	x, a
+                                    131 ;	/workspace/Software/Firmware/new_begining/main.c: 13: app_tick_flag = 1;
+      000005 5F               [ 1]  132 	clrw	x
+      000006 5C               [ 1]  133 	incw	x
+      000007 CFu00u00         [ 2]  134 	ldw	_app_tick_flag+0, x
+                                    135 ;	/workspace/Software/Firmware/new_begining/main.c: 15: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
+      00000A 5F               [ 1]  136 	clrw	x
+      00000B 5C               [ 1]  137 	incw	x
+      00000C CDr00r00         [ 4]  138 	call	_TIM1_ClearFlag
+                                    139 ;	/workspace/Software/Firmware/new_begining/main.c: 16: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
+      00000F A6 01            [ 1]  140 	ld	a, #0x01
+      000011 CDr00r00         [ 4]  141 	call	_TIM1_ClearITPendingBit
+                                    142 ;	/workspace/Software/Firmware/new_begining/main.c: 17: }
+      000014 80               [11]  143 	iret
+                                    144 ;	/workspace/Software/Firmware/new_begining/main.c: 19: int main()
+                                    145 ;	-----------------------------------------
+                                    146 ;	 function main
+                                    147 ;	-----------------------------------------
+      000015                        148 _main:
+                                    149 ;	/workspace/Software/Firmware/new_begining/main.c: 21: app_builder_init();
+      000015 CDr00r00         [ 4]  150 	call	_app_builder_init
+      000018                        151 00102$:
+                                    152 ;	/workspace/Software/Firmware/new_begining/main.c: 25: app_builder_run();
+      000018 CDr00r00         [ 4]  153 	call	_app_builder_run
+      00001B 20 FB            [ 2]  154 	jra	00102$
+                                    155 ;	/workspace/Software/Firmware/new_begining/main.c: 28: return 0;
+                                    156 ;	/workspace/Software/Firmware/new_begining/main.c: 29: }
+      00001D 81               [ 4]  157 	ret
+                                    158 	.area CODE
+                                    159 	.area CONST
+                                    160 	.area INITIALIZER
+                                    161 	.area CABS (ABS)

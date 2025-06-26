@@ -19,7 +19,7 @@ Symbol Table
     _app_tick_flag                                                 ****** GX
   A _interrupt_control_enable                                      000000 R
   A _interrupt_control_wait                                        000002 R
-  A _main                                                          000016 GR
+  A _main                                                          000015 GR
   A _tim1_isr                                                      000004 GR
     l_DATA                                                         ****** GX
     l_INITIALIZER                                                  ****** GX
@@ -43,6 +43,6 @@ Area Table
    7 GSFINAL                                    size      3   flags    0
    8 CONST                                      size      0   flags    0
    9 INITIALIZER                                size      0   flags    0
-   A CODE                                       size     1F   flags    0
+   A CODE                                       size     1E   flags    0
    B CABS                                       size      0   flags    8
 

@@ -184,7 +184,7 @@ IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/build.make
-IonizationChamber.ihx: lib/stm8s.lib
+IonizationChamber.ihx: STM8StdPeriph.lib
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable IonizationChamber.ihx"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IonizationChamber.dir/link.txt --verbose=$(VERBOSE)

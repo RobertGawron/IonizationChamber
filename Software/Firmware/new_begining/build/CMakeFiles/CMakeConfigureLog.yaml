@@ -56,8 +56,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-GNrtIE"
-      binary: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-GNrtIE"
+      source: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-fHbEr4"
+      binary: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-fHbEr4"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: ""
@@ -66,17 +66,17 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-GNrtIE'
+        Change Dir: '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-fHbEr4'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_f0822/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_f0822.dir/build.make CMakeFiles/cmTC_f0822.dir/build
-        gmake[1]: Entering directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-GNrtIE'
-        Building C object CMakeFiles/cmTC_f0822.dir/CMakeCCompilerABI.c.rel
-        /usr/bin/sdcc    -o CMakeFiles/cmTC_f0822.dir/CMakeCCompilerABI.c.rel -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
-        Linking C executable cmTC_f0822.ihx
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_f0822.dir/link.txt --verbose=1
-        /usr/bin/sdcc CMakeFiles/cmTC_f0822.dir/CMakeCCompilerABI.c.rel -o cmTC_f0822.ihx
-        gmake[1]: Leaving directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-GNrtIE'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_fa1d6/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_fa1d6.dir/build.make CMakeFiles/cmTC_fa1d6.dir/build
+        gmake[1]: Entering directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-fHbEr4'
+        Building C object CMakeFiles/cmTC_fa1d6.dir/CMakeCCompilerABI.c.rel
+        /usr/bin/sdcc    -o CMakeFiles/cmTC_fa1d6.dir/CMakeCCompilerABI.c.rel -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
+        Linking C executable cmTC_fa1d6.ihx
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_fa1d6.dir/link.txt --verbose=1
+        /usr/bin/sdcc CMakeFiles/cmTC_fa1d6.dir/CMakeCCompilerABI.c.rel -o cmTC_fa1d6.ihx
+        gmake[1]: Leaving directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-fHbEr4'
         
       exitCode: 0
   -
