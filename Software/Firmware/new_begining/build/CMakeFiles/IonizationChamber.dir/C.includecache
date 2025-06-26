@@ -17,6 +17,8 @@ clk_conf.h
 /workspace/Software/Firmware/new_begining/Application/clk_conf.h
 timer_conf.h
 /workspace/Software/Firmware/new_begining/Application/timer_conf.h
+interrupt_control.h
+/workspace/Software/Firmware/new_begining/Application/interrupt_control.h
 user_interface.h
 /workspace/Software/Firmware/new_begining/Application/user_interface.h
 
@@ -30,15 +32,39 @@ stm8s_clk.h
 
 /workspace/Software/Firmware/new_begining/Driver/clk_conf.h
 
+/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h
+stm8s_conf_wrapper.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
+
 /workspace/Software/Firmware/new_begining/Driver/pinout_conf.h
+
+/workspace/Software/Firmware/new_begining/Driver/stm8_it.c
+stm8_it.h
+/workspace/Software/Firmware/new_begining/Driver/stm8_it.h
+user_interface.h
+/workspace/Software/Firmware/new_begining/Driver/user_interface.h
+app_builder.h
+/workspace/Software/Firmware/new_begining/Driver/app_builder.h
+
+/workspace/Software/Firmware/new_begining/Driver/stm8_it.h
+stm8s.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s.h
+
+/workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
+stm8s.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s.h
 
 /workspace/Software/Firmware/new_begining/Driver/timer_conf.c
 timer_conf.h
 /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
 stm8s_tim1.h
 /workspace/Software/Firmware/new_begining/Driver/stm8s_tim1.h
+user_interface.h
+/workspace/Software/Firmware/new_begining/Driver/user_interface.h
 stm8s_clk.h
 /workspace/Software/Firmware/new_begining/Driver/stm8s_clk.h
+stm8s_itc.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s_itc.h
 
 /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
 
@@ -172,6 +198,10 @@ stm8s_i2c.h
 stdio.h
 -
 
+/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_itc.c
+stm8s_itc.h
+/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_itc.h
+
 /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c
 stm8s_tim1.h
 /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.h
@@ -189,8 +219,26 @@ stm8s.h
 /workspace/Software/Firmware/new_begining/stm8s.h
 
 /workspace/Software/Firmware/new_begining/main.c
+stm8s.h
+/workspace/Software/Firmware/new_begining/stm8s.h
 app_builder.h
 /workspace/Software/Firmware/new_begining/app_builder.h
+stdint.h
+-
+assert_impl.h
+/workspace/Software/Firmware/new_begining/assert_impl.h
+clk_conf.h
+/workspace/Software/Firmware/new_begining/clk_conf.h
+timer_conf.h
+/workspace/Software/Firmware/new_begining/timer_conf.h
+interrupt_control.h
+/workspace/Software/Firmware/new_begining/interrupt_control.h
+user_interface.h
+/workspace/Software/Firmware/new_begining/user_interface.h
+app_builder.h
+/workspace/Software/Firmware/new_begining/app_builder.h
+stm8s.h
+/workspace/Software/Firmware/new_begining/stm8s.h
 
 /workspace/Software/Firmware/new_begining/stm8s_conf.h
 stm8s.h

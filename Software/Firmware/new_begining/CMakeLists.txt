@@ -25,7 +25,7 @@ add_executable(IonizationChamber
         Driver/user_interface.c
         Driver/clk_conf.c
         Driver/timer_conf.c
-        
+        Driver/stm8_it.c
         #Src/ApplicationBuilder.c
         #Src/ClockConfigurator.c
         #Src/MeasurementFrame
@@ -39,6 +39,7 @@ add_executable(IonizationChamber
         STM8S_StdPeriph_Lib/src/stm8s_gpio.c
         STM8S_StdPeriph_Lib/src/stm8s_i2c.c
         STM8S_StdPeriph_Lib/src/stm8s_tim1.c
+        STM8S_StdPeriph_Lib/src/stm8s_itc.c
         STM8S_StdPeriph_Lib/src/stm8s_clk.c
         STM8S_StdPeriph_Lib/src/stm8s_uart1.c)
 

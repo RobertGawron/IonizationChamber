@@ -17,7 +17,7 @@
  * Provides a high-level interface to enable global interrupts
  * without exposing low-level STM8 functions directly.
  */
-static inline void interrupt_control_enable()
+static inline void interrupt_control_enable(void)
 {
     enableInterrupts();
 }

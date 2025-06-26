@@ -5,6 +5,8 @@ CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel
  /workspace/Software/Firmware/new_begining/Application/app_builder.c
  /workspace/Software/Firmware/new_begining/Application/app_builder.h
  /workspace/Software/Firmware/new_begining/Driver/clk_conf.h
+ /workspace/Software/Firmware/new_begining/Driver/interrupt_control.h
+ /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
  /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
  /workspace/Software/Firmware/new_begining/Driver/user_interface.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h
@@ -63,9 +65,41 @@ CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart3.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h
  /workspace/Software/Firmware/new_begining/stm8s_conf.h
+CMakeFiles/IonizationChamber.dir/Driver/stm8_it.c.rel
+ /workspace/Software/Firmware/new_begining/Application/app_builder.h
+ /workspace/Software/Firmware/new_begining/Driver/stm8_it.c
+ /workspace/Software/Firmware/new_begining/Driver/stm8_it.h
+ /workspace/Software/Firmware/new_begining/Driver/user_interface.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_awu.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_beep.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_can.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_clk.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_exti.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_flash.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_gpio.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_i2c.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_itc.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_iwdg.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_rst.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_spi.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim3.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim4.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim5.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim6.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart3.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h
+ /workspace/Software/Firmware/new_begining/stm8s_conf.h
 CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.rel
  /workspace/Software/Firmware/new_begining/Driver/timer_conf.c
  /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
+ /workspace/Software/Firmware/new_begining/Driver/user_interface.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc1.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc2.h
@@ -206,6 +240,34 @@ CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_i2c.c
  /workspace/Software/Firmware/new_begining/stm8s_conf.h
+CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_itc.c.rel
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_awu.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_beep.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_can.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_clk.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_exti.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_flash.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_gpio.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_i2c.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_itc.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_iwdg.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_rst.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_spi.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim3.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim4.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim5.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim6.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart3.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_itc.c
+ /workspace/Software/Firmware/new_begining/stm8s_conf.h
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc1.h
@@ -293,4 +355,36 @@ CMakeFiles/IonizationChamber.dir/assert_impl.c.rel
  /workspace/Software/Firmware/new_begining/stm8s_conf.h
 CMakeFiles/IonizationChamber.dir/main.c.rel
  /workspace/Software/Firmware/new_begining/Application/app_builder.h
+ /workspace/Software/Firmware/new_begining/Driver/clk_conf.h
+ /workspace/Software/Firmware/new_begining/Driver/interrupt_control.h
+ /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
+ /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
+ /workspace/Software/Firmware/new_begining/Driver/user_interface.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_awu.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_beep.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_can.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_clk.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_exti.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_flash.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_gpio.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_i2c.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_itc.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_iwdg.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_rst.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_spi.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim3.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim4.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim5.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim6.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart1.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart2.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart3.h
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h
+ /workspace/Software/Firmware/new_begining/assert_impl.h
  /workspace/Software/Firmware/new_begining/main.c
+ /workspace/Software/Firmware/new_begining/stm8s_conf.h

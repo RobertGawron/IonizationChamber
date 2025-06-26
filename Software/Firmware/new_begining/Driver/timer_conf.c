@@ -1,23 +1,29 @@
 #include "timer_conf.h"
 #include "stm8s_tim1.h"
+#include "user_interface.h"
 #include "stm8s_clk.h"
-
+#include "stm8s_itc.h"
 void timer_conf_init()
 {
-    CLK_PeripheralClockConfig(CLK_PERIPHERAL_TIMER1, ENABLE);
 
-    // Prescaler = 125 (actual divisor = 125 + 1 = 126)
-    // Period = 63492 (auto-reload value)
-    //  TIM1_TimeBaseInit(125, TIM1_COUNTERMODE_UP, 63492, 0);
-    //  TIM1_TimeBaseInit(326, TIM1_COUNTERMODE_UP, 6349, 0);
+    // 1. Disable timer first
+    TIM1_Cmd(DISABLE);
 
-    TIM1_TimeBaseInit(125, TIM1_COUNTERMODE_UP, 1000, 0);
+    // 2. Full deinit
+    TIM1_DeInit();
 
-    //  ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF, ITC_PRIORITYLEVEL_1); // Medium priority
-    // TIM1_TimeBaseInit(125, TIM1_COUNTERMODE_UP, 1000, 0);
+    // 4. Clear any pending flags
+    TIM1_ClearFlag(TIM1_FLAG_UPDATE);
+    TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 
-    // TIM1_TimeBaseInit(0, TIM1_COUNTERMODE_UP, 1000, 0); // 16e6 / 1 / 1001 = about 16 kHz interrupt rate.
-
-    TIM1_Cmd(ENABLE);
+    // 5. Enable with minimal configuration
+    TIM1_ARRPreloadConfig(ENABLE);
     TIM1_ITConfig(TIM1_IT_UPDATE, ENABLE);
+
+    // 6. Set priority AFTER configuration
+    ITC_SetSoftwarePriority(ITC_IRQ_TIM1_OVF, ITC_PRIORITYLEVEL_3);
+
+    // 7. Enable timer last
+    TIM1_Cmd(ENABLE);
+    //  user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
 }

@@ -31,6 +31,6 @@ void app_builder_run(void);
  */
 void app_builder_tick(void);
 
-extern volatile unsigned char app_tick_flag;
+extern volatile int app_tick_flag;
 
 #endif

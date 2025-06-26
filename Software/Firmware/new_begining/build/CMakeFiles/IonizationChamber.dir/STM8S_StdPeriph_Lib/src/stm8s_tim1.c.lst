@@ -14,196 +14,196 @@
                                      14 	.globl _TIM1_ICInit
                                      15 	.globl _TIM1_Cmd
                                      16 	.globl _TIM1_ITConfig
-                                     17 	.globl _TIM1_SetIC1Prescaler
-                                     18 	.globl _TIM1_SetIC2Prescaler
-                                     19 	.globl _TIM1_SetIC3Prescaler
-                                     20 	.globl _TIM1_SetIC4Prescaler
-                                     21 	.globl _TIM1_GetCapture1
-                                     22 	.globl _TIM1_ClearFlag
-                                     23 	.globl _TIM1_ClearITPendingBit
-                                     24 ;--------------------------------------------------------
-                                     25 ; ram data
-                                     26 ;--------------------------------------------------------
-                                     27 	.area DATA
-                                     28 ;--------------------------------------------------------
-                                     29 ; ram data
-                                     30 ;--------------------------------------------------------
-                                     31 	.area INITIALIZED
-                                     32 ;--------------------------------------------------------
-                                     33 ; absolute external ram data
-                                     34 ;--------------------------------------------------------
-                                     35 	.area DABS (ABS)
-                                     36 
-                                     37 ; default segment ordering for linker
-                                     38 	.area HOME
-                                     39 	.area GSINIT
-                                     40 	.area GSFINAL
-                                     41 	.area CONST
-                                     42 	.area INITIALIZER
-                                     43 	.area CODE
-                                     44 
-                                     45 ;--------------------------------------------------------
-                                     46 ; global & static initialisations
-                                     47 ;--------------------------------------------------------
-                                     48 	.area HOME
-                                     49 	.area GSINIT
-                                     50 	.area GSFINAL
-                                     51 	.area GSINIT
-                                     52 ;--------------------------------------------------------
-                                     53 ; Home
-                                     54 ;--------------------------------------------------------
-                                     55 	.area HOME
+                                     17 	.globl _TIM1_ARRPreloadConfig
+                                     18 	.globl _TIM1_SetIC1Prescaler
+                                     19 	.globl _TIM1_SetIC2Prescaler
+                                     20 	.globl _TIM1_SetIC3Prescaler
+                                     21 	.globl _TIM1_SetIC4Prescaler
+                                     22 	.globl _TIM1_GetCapture1
+                                     23 	.globl _TIM1_ClearFlag
+                                     24 	.globl _TIM1_ClearITPendingBit
+                                     25 ;--------------------------------------------------------
+                                     26 ; ram data
+                                     27 ;--------------------------------------------------------
+                                     28 	.area DATA
+                                     29 ;--------------------------------------------------------
+                                     30 ; ram data
+                                     31 ;--------------------------------------------------------
+                                     32 	.area INITIALIZED
+                                     33 ;--------------------------------------------------------
+                                     34 ; absolute external ram data
+                                     35 ;--------------------------------------------------------
+                                     36 	.area DABS (ABS)
+                                     37 
+                                     38 ; default segment ordering for linker
+                                     39 	.area HOME
+                                     40 	.area GSINIT
+                                     41 	.area GSFINAL
+                                     42 	.area CONST
+                                     43 	.area INITIALIZER
+                                     44 	.area CODE
+                                     45 
+                                     46 ;--------------------------------------------------------
+                                     47 ; global & static initialisations
+                                     48 ;--------------------------------------------------------
+                                     49 	.area HOME
+                                     50 	.area GSINIT
+                                     51 	.area GSFINAL
+                                     52 	.area GSINIT
+                                     53 ;--------------------------------------------------------
+                                     54 ; Home
+                                     55 ;--------------------------------------------------------
                                      56 	.area HOME
-                                     57 ;--------------------------------------------------------
-                                     58 ; code
-                                     59 ;--------------------------------------------------------
-                                     60 	.area CODE
-                                     61 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 59: void TIM1_DeInit(void)
-                                     62 ;	-----------------------------------------
-                                     63 ;	 function TIM1_DeInit
-                                     64 ;	-----------------------------------------
-      000000                         65 _TIM1_DeInit:
-                                     66 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 61: TIM1->CR1  = TIM1_CR1_RESET_VALUE;
-      000000 35 00 52 50      [ 1]   67 	mov	0x5250+0, #0x00
-                                     68 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 62: TIM1->CR2  = TIM1_CR2_RESET_VALUE;
-      000004 35 00 52 51      [ 1]   69 	mov	0x5251+0, #0x00
-                                     70 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 63: TIM1->SMCR = TIM1_SMCR_RESET_VALUE;
-      000008 35 00 52 52      [ 1]   71 	mov	0x5252+0, #0x00
-                                     72 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 64: TIM1->ETR  = TIM1_ETR_RESET_VALUE;
-      00000C 35 00 52 53      [ 1]   73 	mov	0x5253+0, #0x00
-                                     74 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 65: TIM1->IER  = TIM1_IER_RESET_VALUE;
-      000010 35 00 52 54      [ 1]   75 	mov	0x5254+0, #0x00
-                                     76 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 66: TIM1->SR2  = TIM1_SR2_RESET_VALUE;
-      000014 35 00 52 56      [ 1]   77 	mov	0x5256+0, #0x00
-                                     78 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 68: TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
-      000018 35 00 52 5C      [ 1]   79 	mov	0x525c+0, #0x00
-                                     80 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 69: TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
-      00001C 35 00 52 5D      [ 1]   81 	mov	0x525d+0, #0x00
-                                     82 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 71: TIM1->CCMR1 = 0x01;
-      000020 35 01 52 58      [ 1]   83 	mov	0x5258+0, #0x01
-                                     84 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 72: TIM1->CCMR2 = 0x01;
-      000024 35 01 52 59      [ 1]   85 	mov	0x5259+0, #0x01
-                                     86 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 73: TIM1->CCMR3 = 0x01;
-      000028 35 01 52 5A      [ 1]   87 	mov	0x525a+0, #0x01
-                                     88 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 74: TIM1->CCMR4 = 0x01;
-      00002C 35 01 52 5B      [ 1]   89 	mov	0x525b+0, #0x01
-                                     90 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 76: TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
-      000030 35 00 52 5C      [ 1]   91 	mov	0x525c+0, #0x00
-                                     92 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 77: TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
-      000034 35 00 52 5D      [ 1]   93 	mov	0x525d+0, #0x00
-                                     94 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 78: TIM1->CCMR1 = TIM1_CCMR1_RESET_VALUE;
-      000038 35 00 52 58      [ 1]   95 	mov	0x5258+0, #0x00
-                                     96 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 79: TIM1->CCMR2 = TIM1_CCMR2_RESET_VALUE;
-      00003C 35 00 52 59      [ 1]   97 	mov	0x5259+0, #0x00
-                                     98 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 80: TIM1->CCMR3 = TIM1_CCMR3_RESET_VALUE;
-      000040 35 00 52 5A      [ 1]   99 	mov	0x525a+0, #0x00
-                                    100 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 81: TIM1->CCMR4 = TIM1_CCMR4_RESET_VALUE;
-      000044 35 00 52 5B      [ 1]  101 	mov	0x525b+0, #0x00
-                                    102 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 82: TIM1->CNTRH = TIM1_CNTRH_RESET_VALUE;
-      000048 35 00 52 5E      [ 1]  103 	mov	0x525e+0, #0x00
-                                    104 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 83: TIM1->CNTRL = TIM1_CNTRL_RESET_VALUE;
-      00004C 35 00 52 5F      [ 1]  105 	mov	0x525f+0, #0x00
-                                    106 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 84: TIM1->PSCRH = TIM1_PSCRH_RESET_VALUE;
-      000050 35 00 52 60      [ 1]  107 	mov	0x5260+0, #0x00
-                                    108 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 85: TIM1->PSCRL = TIM1_PSCRL_RESET_VALUE;
-      000054 35 00 52 61      [ 1]  109 	mov	0x5261+0, #0x00
-                                    110 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 86: TIM1->ARRH  = TIM1_ARRH_RESET_VALUE;
-      000058 35 FF 52 62      [ 1]  111 	mov	0x5262+0, #0xff
-                                    112 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 87: TIM1->ARRL  = TIM1_ARRL_RESET_VALUE;
-      00005C 35 FF 52 63      [ 1]  113 	mov	0x5263+0, #0xff
-                                    114 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 88: TIM1->CCR1H = TIM1_CCR1H_RESET_VALUE;
-      000060 35 00 52 65      [ 1]  115 	mov	0x5265+0, #0x00
-                                    116 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 89: TIM1->CCR1L = TIM1_CCR1L_RESET_VALUE;
-      000064 35 00 52 66      [ 1]  117 	mov	0x5266+0, #0x00
-                                    118 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 90: TIM1->CCR2H = TIM1_CCR2H_RESET_VALUE;
-      000068 35 00 52 67      [ 1]  119 	mov	0x5267+0, #0x00
-                                    120 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 91: TIM1->CCR2L = TIM1_CCR2L_RESET_VALUE;
-      00006C 35 00 52 68      [ 1]  121 	mov	0x5268+0, #0x00
-                                    122 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 92: TIM1->CCR3H = TIM1_CCR3H_RESET_VALUE;
-      000070 35 00 52 69      [ 1]  123 	mov	0x5269+0, #0x00
-                                    124 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 93: TIM1->CCR3L = TIM1_CCR3L_RESET_VALUE;
-      000074 35 00 52 6A      [ 1]  125 	mov	0x526a+0, #0x00
-                                    126 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 94: TIM1->CCR4H = TIM1_CCR4H_RESET_VALUE;
-      000078 35 00 52 6B      [ 1]  127 	mov	0x526b+0, #0x00
-                                    128 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 95: TIM1->CCR4L = TIM1_CCR4L_RESET_VALUE;
-      00007C 35 00 52 6C      [ 1]  129 	mov	0x526c+0, #0x00
-                                    130 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 96: TIM1->OISR  = TIM1_OISR_RESET_VALUE;
-      000080 35 00 52 6F      [ 1]  131 	mov	0x526f+0, #0x00
-                                    132 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 97: TIM1->EGR   = 0x01; /* TIM1_EGR_UG */
-      000084 35 01 52 57      [ 1]  133 	mov	0x5257+0, #0x01
-                                    134 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 98: TIM1->DTR   = TIM1_DTR_RESET_VALUE;
-      000088 35 00 52 6E      [ 1]  135 	mov	0x526e+0, #0x00
-                                    136 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 99: TIM1->BKR   = TIM1_BKR_RESET_VALUE;
-      00008C 35 00 52 6D      [ 1]  137 	mov	0x526d+0, #0x00
-                                    138 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 100: TIM1->RCR   = TIM1_RCR_RESET_VALUE;
-      000090 35 00 52 64      [ 1]  139 	mov	0x5264+0, #0x00
-                                    140 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 101: TIM1->SR1   = TIM1_SR1_RESET_VALUE;
-      000094 35 00 52 55      [ 1]  141 	mov	0x5255+0, #0x00
-                                    142 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 102: }
-      000098 81               [ 4]  143 	ret
-                                    144 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 114: void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
-                                    145 ;	-----------------------------------------
-                                    146 ;	 function TIM1_TimeBaseInit
-                                    147 ;	-----------------------------------------
-      000099                        148 _TIM1_TimeBaseInit:
-      000099 88               [ 1]  149 	push	a
-                                    150 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 120: assert_param(IS_TIM1_COUNTER_MODE_OK(TIM1_CounterMode));
-      00009A 6B 01            [ 1]  151 	ld	(0x01, sp), a
-      00009C 27 28            [ 1]  152 	jreq	00104$
-      00009E 7B 01            [ 1]  153 	ld	a, (0x01, sp)
-      0000A0 A1 10            [ 1]  154 	cp	a, #0x10
-      0000A2 27 22            [ 1]  155 	jreq	00104$
-      0000A4 7B 01            [ 1]  156 	ld	a, (0x01, sp)
-      0000A6 A1 20            [ 1]  157 	cp	a, #0x20
-      0000A8 27 1C            [ 1]  158 	jreq	00104$
-      0000AA 7B 01            [ 1]  159 	ld	a, (0x01, sp)
-      0000AC A1 40            [ 1]  160 	cp	a, #0x40
-      0000AE 27 16            [ 1]  161 	jreq	00104$
-      0000B0 7B 01            [ 1]  162 	ld	a, (0x01, sp)
-      0000B2 A1 60            [ 1]  163 	cp	a, #0x60
-      0000B4 27 10            [ 1]  164 	jreq	00104$
-      0000B6 89               [ 2]  165 	pushw	x
-      0000B7 4B 78            [ 1]  166 	push	#0x78
-      0000B9 4B 00            [ 1]  167 	push	#0x00
-      0000BB 4B 00            [ 1]  168 	push	#0x00
-      0000BD 4B 00            [ 1]  169 	push	#0x00
-      0000BF AEr00r00         [ 2]  170 	ldw	x, #(___str_0+0)
-      0000C2 CDr00r00         [ 4]  171 	call	_assert_failed
-      0000C5 85               [ 2]  172 	popw	x
-      0000C6                        173 00104$:
-                                    174 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 123: TIM1->ARRH = (uint8_t)(TIM1_Period >> 8);
-      0000C6 7B 04            [ 1]  175 	ld	a, (0x04, sp)
-      0000C8 C7 52 62         [ 1]  176 	ld	0x5262, a
-                                    177 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 124: TIM1->ARRL = (uint8_t)(TIM1_Period);
-      0000CB 7B 05            [ 1]  178 	ld	a, (0x05, sp)
-      0000CD C7 52 63         [ 1]  179 	ld	0x5263, a
-                                    180 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 127: TIM1->PSCRH = (uint8_t)(TIM1_Prescaler >> 8);
-      0000D0 9E               [ 1]  181 	ld	a, xh
-      0000D1 C7 52 60         [ 1]  182 	ld	0x5260, a
-                                    183 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 128: TIM1->PSCRL = (uint8_t)(TIM1_Prescaler);
-      0000D4 9F               [ 1]  184 	ld	a, xl
-      0000D5 C7 52 61         [ 1]  185 	ld	0x5261, a
-                                    186 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 131: TIM1->CR1 = (uint8_t)((uint8_t)(TIM1->CR1 & (uint8_t)(~(TIM1_CR1_CMS | TIM1_CR1_DIR)))
-      0000D8 C6 52 50         [ 1]  187 	ld	a, 0x5250
-      0000DB A4 8F            [ 1]  188 	and	a, #0x8f
-                                    189 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 132: | (uint8_t)(TIM1_CounterMode));
+                                     57 	.area HOME
+                                     58 ;--------------------------------------------------------
+                                     59 ; code
+                                     60 ;--------------------------------------------------------
+                                     61 	.area CODE
+                                     62 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 59: void TIM1_DeInit(void)
+                                     63 ;	-----------------------------------------
+                                     64 ;	 function TIM1_DeInit
+                                     65 ;	-----------------------------------------
+      000000                         66 _TIM1_DeInit:
+                                     67 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 61: TIM1->CR1 = TIM1_CR1_RESET_VALUE;
+      000000 35 00 52 50      [ 1]   68 	mov	0x5250+0, #0x00
+                                     69 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 62: TIM1->CR2 = TIM1_CR2_RESET_VALUE;
+      000004 35 00 52 51      [ 1]   70 	mov	0x5251+0, #0x00
+                                     71 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 63: TIM1->SMCR = TIM1_SMCR_RESET_VALUE;
+      000008 35 00 52 52      [ 1]   72 	mov	0x5252+0, #0x00
+                                     73 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 64: TIM1->ETR = TIM1_ETR_RESET_VALUE;
+      00000C 35 00 52 53      [ 1]   74 	mov	0x5253+0, #0x00
+                                     75 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 65: TIM1->IER = TIM1_IER_RESET_VALUE;
+      000010 35 00 52 54      [ 1]   76 	mov	0x5254+0, #0x00
+                                     77 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 66: TIM1->SR2 = TIM1_SR2_RESET_VALUE;
+      000014 35 00 52 56      [ 1]   78 	mov	0x5256+0, #0x00
+                                     79 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 68: TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
+      000018 35 00 52 5C      [ 1]   80 	mov	0x525c+0, #0x00
+                                     81 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 69: TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
+      00001C 35 00 52 5D      [ 1]   82 	mov	0x525d+0, #0x00
+                                     83 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 71: TIM1->CCMR1 = 0x01;
+      000020 35 01 52 58      [ 1]   84 	mov	0x5258+0, #0x01
+                                     85 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 72: TIM1->CCMR2 = 0x01;
+      000024 35 01 52 59      [ 1]   86 	mov	0x5259+0, #0x01
+                                     87 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 73: TIM1->CCMR3 = 0x01;
+      000028 35 01 52 5A      [ 1]   88 	mov	0x525a+0, #0x01
+                                     89 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 74: TIM1->CCMR4 = 0x01;
+      00002C 35 01 52 5B      [ 1]   90 	mov	0x525b+0, #0x01
+                                     91 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 76: TIM1->CCER1 = TIM1_CCER1_RESET_VALUE;
+      000030 35 00 52 5C      [ 1]   92 	mov	0x525c+0, #0x00
+                                     93 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 77: TIM1->CCER2 = TIM1_CCER2_RESET_VALUE;
+      000034 35 00 52 5D      [ 1]   94 	mov	0x525d+0, #0x00
+                                     95 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 78: TIM1->CCMR1 = TIM1_CCMR1_RESET_VALUE;
+      000038 35 00 52 58      [ 1]   96 	mov	0x5258+0, #0x00
+                                     97 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 79: TIM1->CCMR2 = TIM1_CCMR2_RESET_VALUE;
+      00003C 35 00 52 59      [ 1]   98 	mov	0x5259+0, #0x00
+                                     99 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 80: TIM1->CCMR3 = TIM1_CCMR3_RESET_VALUE;
+      000040 35 00 52 5A      [ 1]  100 	mov	0x525a+0, #0x00
+                                    101 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 81: TIM1->CCMR4 = TIM1_CCMR4_RESET_VALUE;
+      000044 35 00 52 5B      [ 1]  102 	mov	0x525b+0, #0x00
+                                    103 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 82: TIM1->CNTRH = TIM1_CNTRH_RESET_VALUE;
+      000048 35 00 52 5E      [ 1]  104 	mov	0x525e+0, #0x00
+                                    105 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 83: TIM1->CNTRL = TIM1_CNTRL_RESET_VALUE;
+      00004C 35 00 52 5F      [ 1]  106 	mov	0x525f+0, #0x00
+                                    107 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 84: TIM1->PSCRH = TIM1_PSCRH_RESET_VALUE;
+      000050 35 00 52 60      [ 1]  108 	mov	0x5260+0, #0x00
+                                    109 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 85: TIM1->PSCRL = TIM1_PSCRL_RESET_VALUE;
+      000054 35 00 52 61      [ 1]  110 	mov	0x5261+0, #0x00
+                                    111 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 86: TIM1->ARRH = TIM1_ARRH_RESET_VALUE;
+      000058 35 FF 52 62      [ 1]  112 	mov	0x5262+0, #0xff
+                                    113 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 87: TIM1->ARRL = TIM1_ARRL_RESET_VALUE;
+      00005C 35 FF 52 63      [ 1]  114 	mov	0x5263+0, #0xff
+                                    115 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 88: TIM1->CCR1H = TIM1_CCR1H_RESET_VALUE;
+      000060 35 00 52 65      [ 1]  116 	mov	0x5265+0, #0x00
+                                    117 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 89: TIM1->CCR1L = TIM1_CCR1L_RESET_VALUE;
+      000064 35 00 52 66      [ 1]  118 	mov	0x5266+0, #0x00
+                                    119 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 90: TIM1->CCR2H = TIM1_CCR2H_RESET_VALUE;
+      000068 35 00 52 67      [ 1]  120 	mov	0x5267+0, #0x00
+                                    121 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 91: TIM1->CCR2L = TIM1_CCR2L_RESET_VALUE;
+      00006C 35 00 52 68      [ 1]  122 	mov	0x5268+0, #0x00
+                                    123 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 92: TIM1->CCR3H = TIM1_CCR3H_RESET_VALUE;
+      000070 35 00 52 69      [ 1]  124 	mov	0x5269+0, #0x00
+                                    125 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 93: TIM1->CCR3L = TIM1_CCR3L_RESET_VALUE;
+      000074 35 00 52 6A      [ 1]  126 	mov	0x526a+0, #0x00
+                                    127 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 94: TIM1->CCR4H = TIM1_CCR4H_RESET_VALUE;
+      000078 35 00 52 6B      [ 1]  128 	mov	0x526b+0, #0x00
+                                    129 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 95: TIM1->CCR4L = TIM1_CCR4L_RESET_VALUE;
+      00007C 35 00 52 6C      [ 1]  130 	mov	0x526c+0, #0x00
+                                    131 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 96: TIM1->OISR = TIM1_OISR_RESET_VALUE;
+      000080 35 00 52 6F      [ 1]  132 	mov	0x526f+0, #0x00
+                                    133 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 97: TIM1->EGR = 0x01; /* TIM1_EGR_UG */
+      000084 35 01 52 57      [ 1]  134 	mov	0x5257+0, #0x01
+                                    135 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 98: TIM1->DTR = TIM1_DTR_RESET_VALUE;
+      000088 35 00 52 6E      [ 1]  136 	mov	0x526e+0, #0x00
+                                    137 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 99: TIM1->BKR = TIM1_BKR_RESET_VALUE;
+      00008C 35 00 52 6D      [ 1]  138 	mov	0x526d+0, #0x00
+                                    139 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 100: TIM1->RCR = TIM1_RCR_RESET_VALUE;
+      000090 35 00 52 64      [ 1]  140 	mov	0x5264+0, #0x00
+                                    141 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 101: TIM1->SR1 = TIM1_SR1_RESET_VALUE;
+      000094 35 00 52 55      [ 1]  142 	mov	0x5255+0, #0x00
+                                    143 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 102: }
+      000098 81               [ 4]  144 	ret
+                                    145 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 114: void TIM1_TimeBaseInit(uint16_t TIM1_Prescaler,
+                                    146 ;	-----------------------------------------
+                                    147 ;	 function TIM1_TimeBaseInit
+                                    148 ;	-----------------------------------------
+      000099                        149 _TIM1_TimeBaseInit:
+      000099 88               [ 1]  150 	push	a
+                                    151 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 120: assert_param(IS_TIM1_COUNTER_MODE_OK(TIM1_CounterMode));
+      00009A 6B 01            [ 1]  152 	ld	(0x01, sp), a
+      00009C 27 28            [ 1]  153 	jreq	00104$
+      00009E 7B 01            [ 1]  154 	ld	a, (0x01, sp)
+      0000A0 A1 10            [ 1]  155 	cp	a, #0x10
+      0000A2 27 22            [ 1]  156 	jreq	00104$
+      0000A4 7B 01            [ 1]  157 	ld	a, (0x01, sp)
+      0000A6 A1 20            [ 1]  158 	cp	a, #0x20
+      0000A8 27 1C            [ 1]  159 	jreq	00104$
+      0000AA 7B 01            [ 1]  160 	ld	a, (0x01, sp)
+      0000AC A1 40            [ 1]  161 	cp	a, #0x40
+      0000AE 27 16            [ 1]  162 	jreq	00104$
+      0000B0 7B 01            [ 1]  163 	ld	a, (0x01, sp)
+      0000B2 A1 60            [ 1]  164 	cp	a, #0x60
+      0000B4 27 10            [ 1]  165 	jreq	00104$
+      0000B6 89               [ 2]  166 	pushw	x
+      0000B7 4B 78            [ 1]  167 	push	#0x78
+      0000B9 4B 00            [ 1]  168 	push	#0x00
+      0000BB 4B 00            [ 1]  169 	push	#0x00
+      0000BD 4B 00            [ 1]  170 	push	#0x00
+      0000BF AEr00r00         [ 2]  171 	ldw	x, #(___str_0+0)
+      0000C2 CDr00r00         [ 4]  172 	call	_assert_failed
+      0000C5 85               [ 2]  173 	popw	x
+      0000C6                        174 00104$:
+                                    175 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 123: TIM1->ARRH = (uint8_t)(TIM1_Period >> 8);
+      0000C6 7B 04            [ 1]  176 	ld	a, (0x04, sp)
+      0000C8 C7 52 62         [ 1]  177 	ld	0x5262, a
+                                    178 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 124: TIM1->ARRL = (uint8_t)(TIM1_Period);
+      0000CB 7B 05            [ 1]  179 	ld	a, (0x05, sp)
+      0000CD C7 52 63         [ 1]  180 	ld	0x5263, a
+                                    181 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 127: TIM1->PSCRH = (uint8_t)(TIM1_Prescaler >> 8);
+      0000D0 9E               [ 1]  182 	ld	a, xh
+      0000D1 C7 52 60         [ 1]  183 	ld	0x5260, a
+                                    184 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 128: TIM1->PSCRL = (uint8_t)(TIM1_Prescaler);
+      0000D4 9F               [ 1]  185 	ld	a, xl
+      0000D5 C7 52 61         [ 1]  186 	ld	0x5261, a
+                                    187 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 131: TIM1->CR1 = (uint8_t)((uint8_t)(TIM1->CR1 & (uint8_t)(~(TIM1_CR1_CMS | TIM1_CR1_DIR))) | (uint8_t)(TIM1_CounterMode));
+      0000D8 C6 52 50         [ 1]  188 	ld	a, 0x5250
+      0000DB A4 8F            [ 1]  189 	and	a, #0x8f
       0000DD 1A 01            [ 1]  190 	or	a, (0x01, sp)
       0000DF C7 52 50         [ 1]  191 	ld	0x5250, a
-                                    192 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 135: TIM1->RCR = TIM1_RepetitionCounter;
+                                    192 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 134: TIM1->RCR = TIM1_RepetitionCounter;
       0000E2 AE 52 64         [ 2]  193 	ldw	x, #0x5264
       0000E5 7B 06            [ 1]  194 	ld	a, (0x06, sp)
       0000E7 F7               [ 1]  195 	ld	(x), a
-                                    196 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 136: }
+                                    196 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 135: }
       0000E8 1E 02            [ 2]  197 	ldw	x, (2, sp)
       0000EA 5B 06            [ 2]  198 	addw	sp, #6
       0000EC FC               [ 2]  199 	jp	(x)
-                                    200 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 438: void TIM1_ICInit(TIM1_Channel_TypeDef TIM1_Channel,
+                                    200 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 437: void TIM1_ICInit(TIM1_Channel_TypeDef TIM1_Channel,
                                     201 ;	-----------------------------------------
                                     202 ;	 function TIM1_ICInit
                                     203 ;	-----------------------------------------
       0000ED                        204 _TIM1_ICInit:
       0000ED 52 03            [ 2]  205 	sub	sp, #3
-                                    206 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 445: assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
+                                    206 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 444: assert_param(IS_TIM1_CHANNEL_OK(TIM1_Channel));
       0000EF 6B 03            [ 1]  207 	ld	(0x03, sp), a
       0000F1 4A               [ 1]  208 	dec	a
       0000F2 26 05            [ 1]  209 	jrne	00269$
@@ -231,26 +231,26 @@
       000113 7B 03            [ 1]  231 	ld	a, (0x03, sp)
       000115 A1 03            [ 1]  232 	cp	a, #0x03
       000117 27 0C            [ 1]  233 	jreq	00113$
-      000119 4B BD            [ 1]  234 	push	#0xbd
+      000119 4B BC            [ 1]  234 	push	#0xbc
       00011B 4B 01            [ 1]  235 	push	#0x01
       00011D 5F               [ 1]  236 	clrw	x
       00011E 89               [ 2]  237 	pushw	x
       00011F AEr00r00         [ 2]  238 	ldw	x, #(___str_0+0)
       000122 CDr00r00         [ 4]  239 	call	_assert_failed
       000125                        240 00113$:
-                                    241 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 446: assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
+                                    241 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 445: assert_param(IS_TIM1_IC_POLARITY_OK(TIM1_ICPolarity));
       000125 0D 06            [ 1]  242 	tnz	(0x06, sp)
       000127 27 10            [ 1]  243 	jreq	00124$
       000129 0D 06            [ 1]  244 	tnz	(0x06, sp)
       00012B 26 0C            [ 1]  245 	jrne	00124$
-      00012D 4B BE            [ 1]  246 	push	#0xbe
+      00012D 4B BD            [ 1]  246 	push	#0xbd
       00012F 4B 01            [ 1]  247 	push	#0x01
       000131 5F               [ 1]  248 	clrw	x
       000132 89               [ 2]  249 	pushw	x
       000133 AEr00r00         [ 2]  250 	ldw	x, #(___str_0+0)
       000136 CDr00r00         [ 4]  251 	call	_assert_failed
       000139                        252 00124$:
-                                    253 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 447: assert_param(IS_TIM1_IC_SELECTION_OK(TIM1_ICSelection));
+                                    253 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 446: assert_param(IS_TIM1_IC_SELECTION_OK(TIM1_ICSelection));
       000139 7B 07            [ 1]  254 	ld	a, (0x07, sp)
       00013B 4A               [ 1]  255 	dec	a
       00013C 27 18            [ 1]  256 	jreq	00129$
@@ -260,14 +260,14 @@
       000144 7B 07            [ 1]  260 	ld	a, (0x07, sp)
       000146 A1 03            [ 1]  261 	cp	a, #0x03
       000148 27 0C            [ 1]  262 	jreq	00129$
-      00014A 4B BF            [ 1]  263 	push	#0xbf
+      00014A 4B BE            [ 1]  263 	push	#0xbe
       00014C 4B 01            [ 1]  264 	push	#0x01
       00014E 5F               [ 1]  265 	clrw	x
       00014F 89               [ 2]  266 	pushw	x
       000150 AEr00r00         [ 2]  267 	ldw	x, #(___str_0+0)
       000153 CDr00r00         [ 4]  268 	call	_assert_failed
       000156                        269 00129$:
-                                    270 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 448: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_ICPrescaler));
+                                    270 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 447: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_ICPrescaler));
       000156 0D 08            [ 1]  271 	tnz	(0x08, sp)
       000158 27 1E            [ 1]  272 	jreq	00137$
       00015A 7B 08            [ 1]  273 	ld	a, (0x08, sp)
@@ -279,166 +279,166 @@
       000166 7B 08            [ 1]  279 	ld	a, (0x08, sp)
       000168 A1 0C            [ 1]  280 	cp	a, #0x0c
       00016A 27 0C            [ 1]  281 	jreq	00137$
-      00016C 4B C0            [ 1]  282 	push	#0xc0
+      00016C 4B BF            [ 1]  282 	push	#0xbf
       00016E 4B 01            [ 1]  283 	push	#0x01
       000170 5F               [ 1]  284 	clrw	x
       000171 89               [ 2]  285 	pushw	x
       000172 AEr00r00         [ 2]  286 	ldw	x, #(___str_0+0)
       000175 CDr00r00         [ 4]  287 	call	_assert_failed
       000178                        288 00137$:
-                                    289 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 449: assert_param(IS_TIM1_IC_FILTER_OK(TIM1_ICFilter));
+                                    289 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 448: assert_param(IS_TIM1_IC_FILTER_OK(TIM1_ICFilter));
       000178 7B 09            [ 1]  290 	ld	a, (0x09, sp)
       00017A A1 0F            [ 1]  291 	cp	a, #0x0f
       00017C 23 0C            [ 2]  292 	jrule	00148$
-      00017E 4B C1            [ 1]  293 	push	#0xc1
+      00017E 4B C0            [ 1]  293 	push	#0xc0
       000180 4B 01            [ 1]  294 	push	#0x01
       000182 5F               [ 1]  295 	clrw	x
       000183 89               [ 2]  296 	pushw	x
       000184 AEr00r00         [ 2]  297 	ldw	x, #(___str_0+0)
       000187 CDr00r00         [ 4]  298 	call	_assert_failed
       00018A                        299 00148$:
-                                    300 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 454: TI1_Config((uint8_t)TIM1_ICPolarity,
+                                    300 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 453: TI1_Config((uint8_t)TIM1_ICPolarity,
       00018A 7B 06            [ 1]  301 	ld	a, (0x06, sp)
       00018C 97               [ 1]  302 	ld	xl, a
-                                    303 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 451: if (TIM1_Channel == TIM1_CHANNEL_1)
+                                    303 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 450: if (TIM1_Channel == TIM1_CHANNEL_1)
       00018D 0D 03            [ 1]  304 	tnz	(0x03, sp)
       00018F 26 15            [ 1]  305 	jrne	00108$
-                                    306 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 454: TI1_Config((uint8_t)TIM1_ICPolarity,
+                                    306 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 453: TI1_Config((uint8_t)TIM1_ICPolarity,
       000191 7B 09            [ 1]  307 	ld	a, (0x09, sp)
       000193 88               [ 1]  308 	push	a
       000194 7B 08            [ 1]  309 	ld	a, (0x08, sp)
       000196 88               [ 1]  310 	push	a
       000197 9F               [ 1]  311 	ld	a, xl
-      000198 CDr03r6A         [ 4]  312 	call	_TI1_Config
-                                    313 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 458: TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
+      000198 CDr03r94         [ 4]  312 	call	_TI1_Config
+                                    313 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 457: TIM1_SetIC1Prescaler(TIM1_ICPrescaler);
       00019B 7B 08            [ 1]  314 	ld	a, (0x08, sp)
       00019D 1E 04            [ 2]  315 	ldw	x, (4, sp)
       00019F 1F 08            [ 2]  316 	ldw	(8, sp), x
       0001A1 5B 07            [ 2]  317 	addw	sp, #7
-      0001A3 CCr02r5C         [ 2]  318 	jp	_TIM1_SetIC1Prescaler
+      0001A3 CCr02r86         [ 2]  318 	jp	_TIM1_SetIC1Prescaler
       0001A6                        319 00108$:
-                                    320 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 460: else if (TIM1_Channel == TIM1_CHANNEL_2)
+                                    320 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 459: else if (TIM1_Channel == TIM1_CHANNEL_2)
       0001A6 7B 01            [ 1]  321 	ld	a, (0x01, sp)
       0001A8 27 15            [ 1]  322 	jreq	00105$
-                                    323 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 463: TI2_Config((uint8_t)TIM1_ICPolarity,
+                                    323 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 462: TI2_Config((uint8_t)TIM1_ICPolarity,
       0001AA 7B 09            [ 1]  324 	ld	a, (0x09, sp)
       0001AC 88               [ 1]  325 	push	a
       0001AD 7B 08            [ 1]  326 	ld	a, (0x08, sp)
       0001AF 88               [ 1]  327 	push	a
       0001B0 9F               [ 1]  328 	ld	a, xl
-      0001B1 CDr03rA5         [ 4]  329 	call	_TI2_Config
-                                    330 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 467: TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
+      0001B1 CDr03rCF         [ 4]  329 	call	_TI2_Config
+                                    330 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 466: TIM1_SetIC2Prescaler(TIM1_ICPrescaler);
       0001B4 7B 08            [ 1]  331 	ld	a, (0x08, sp)
       0001B6 1E 04            [ 2]  332 	ldw	x, (4, sp)
       0001B8 1F 08            [ 2]  333 	ldw	(8, sp), x
       0001BA 5B 07            [ 2]  334 	addw	sp, #7
-      0001BC CCr02r8B         [ 2]  335 	jp	_TIM1_SetIC2Prescaler
+      0001BC CCr02rB5         [ 2]  335 	jp	_TIM1_SetIC2Prescaler
       0001BF                        336 00105$:
-                                    337 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 469: else if (TIM1_Channel == TIM1_CHANNEL_3)
+                                    337 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 468: else if (TIM1_Channel == TIM1_CHANNEL_3)
       0001BF 7B 02            [ 1]  338 	ld	a, (0x02, sp)
       0001C1 27 15            [ 1]  339 	jreq	00102$
-                                    340 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 472: TI3_Config((uint8_t)TIM1_ICPolarity,
+                                    340 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 471: TI3_Config((uint8_t)TIM1_ICPolarity,
       0001C3 7B 09            [ 1]  341 	ld	a, (0x09, sp)
       0001C5 88               [ 1]  342 	push	a
       0001C6 7B 08            [ 1]  343 	ld	a, (0x08, sp)
       0001C8 88               [ 1]  344 	push	a
       0001C9 9F               [ 1]  345 	ld	a, xl
-      0001CA CDr03rE0         [ 4]  346 	call	_TI3_Config
-                                    347 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 476: TIM1_SetIC3Prescaler(TIM1_ICPrescaler);
+      0001CA CDr04r0A         [ 4]  346 	call	_TI3_Config
+                                    347 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 475: TIM1_SetIC3Prescaler(TIM1_ICPrescaler);
       0001CD 7B 08            [ 1]  348 	ld	a, (0x08, sp)
       0001CF 1E 04            [ 2]  349 	ldw	x, (4, sp)
       0001D1 1F 08            [ 2]  350 	ldw	(8, sp), x
       0001D3 5B 07            [ 2]  351 	addw	sp, #7
-      0001D5 CCr02rBA         [ 2]  352 	jp	_TIM1_SetIC3Prescaler
+      0001D5 CCr02rE4         [ 2]  352 	jp	_TIM1_SetIC3Prescaler
       0001D8                        353 00102$:
-                                    354 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 481: TI4_Config((uint8_t)TIM1_ICPolarity,
+                                    354 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 480: TI4_Config((uint8_t)TIM1_ICPolarity,
       0001D8 7B 09            [ 1]  355 	ld	a, (0x09, sp)
       0001DA 88               [ 1]  356 	push	a
       0001DB 7B 08            [ 1]  357 	ld	a, (0x08, sp)
       0001DD 88               [ 1]  358 	push	a
       0001DE 9F               [ 1]  359 	ld	a, xl
-      0001DF CDr04r1F         [ 4]  360 	call	_TI4_Config
-                                    361 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 485: TIM1_SetIC4Prescaler(TIM1_ICPrescaler);
+      0001DF CDr04r49         [ 4]  360 	call	_TI4_Config
+                                    361 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 484: TIM1_SetIC4Prescaler(TIM1_ICPrescaler);
       0001E2 7B 08            [ 1]  362 	ld	a, (0x08, sp)
       0001E4 1E 04            [ 2]  363 	ldw	x, (4, sp)
       0001E6 1F 08            [ 2]  364 	ldw	(8, sp), x
       0001E8 5B 07            [ 2]  365 	addw	sp, #7
-                                    366 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 487: }
-      0001EA CCr02rE9         [ 2]  367 	jp	_TIM1_SetIC4Prescaler
-                                    368 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 580: void TIM1_Cmd(FunctionalState NewState)
+                                    366 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 486: }
+      0001EA CCr03r13         [ 2]  367 	jp	_TIM1_SetIC4Prescaler
+                                    368 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 579: void TIM1_Cmd(FunctionalState NewState)
                                     369 ;	-----------------------------------------
                                     370 ;	 function TIM1_Cmd
                                     371 ;	-----------------------------------------
       0001ED                        372 _TIM1_Cmd:
       0001ED 88               [ 1]  373 	push	a
-                                    374 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 583: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+                                    374 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 582: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
       0001EE 6B 01            [ 1]  375 	ld	(0x01, sp), a
       0001F0 27 10            [ 1]  376 	jreq	00107$
       0001F2 0D 01            [ 1]  377 	tnz	(0x01, sp)
       0001F4 26 0C            [ 1]  378 	jrne	00107$
-      0001F6 4B 47            [ 1]  379 	push	#0x47
+      0001F6 4B 46            [ 1]  379 	push	#0x46
       0001F8 4B 02            [ 1]  380 	push	#0x02
       0001FA 5F               [ 1]  381 	clrw	x
       0001FB 89               [ 2]  382 	pushw	x
       0001FC AEr00r00         [ 2]  383 	ldw	x, #(___str_0+0)
       0001FF CDr00r00         [ 4]  384 	call	_assert_failed
       000202                        385 00107$:
-                                    386 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 588: TIM1->CR1 |= TIM1_CR1_CEN;
+                                    386 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 587: TIM1->CR1 |= TIM1_CR1_CEN;
       000202 C6 52 50         [ 1]  387 	ld	a, 0x5250
-                                    388 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 586: if (NewState != DISABLE)
+                                    388 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 585: if (NewState != DISABLE)
       000205 0D 01            [ 1]  389 	tnz	(0x01, sp)
       000207 27 07            [ 1]  390 	jreq	00102$
-                                    391 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 588: TIM1->CR1 |= TIM1_CR1_CEN;
+                                    391 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 587: TIM1->CR1 |= TIM1_CR1_CEN;
       000209 AA 01            [ 1]  392 	or	a, #0x01
       00020B C7 52 50         [ 1]  393 	ld	0x5250, a
       00020E 20 05            [ 2]  394 	jra	00104$
       000210                        395 00102$:
-                                    396 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 592: TIM1->CR1 &= (uint8_t)(~TIM1_CR1_CEN);
+                                    396 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 591: TIM1->CR1 &= (uint8_t)(~TIM1_CR1_CEN);
       000210 A4 FE            [ 1]  397 	and	a, #0xfe
       000212 C7 52 50         [ 1]  398 	ld	0x5250, a
       000215                        399 00104$:
-                                    400 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 594: }
+                                    400 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 593: }
       000215 84               [ 1]  401 	pop	a
       000216 81               [ 4]  402 	ret
-                                    403 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 640: void TIM1_ITConfig(TIM1_IT_TypeDef  TIM1_IT, FunctionalState NewState)
+                                    403 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 639: void TIM1_ITConfig(TIM1_IT_TypeDef TIM1_IT, FunctionalState NewState)
                                     404 ;	-----------------------------------------
                                     405 ;	 function TIM1_ITConfig
                                     406 ;	-----------------------------------------
       000217                        407 _TIM1_ITConfig:
       000217 52 02            [ 2]  408 	sub	sp, #2
-                                    409 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 643: assert_param(IS_TIM1_IT_OK(TIM1_IT));
+                                    409 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 642: assert_param(IS_TIM1_IT_OK(TIM1_IT));
       000219 6B 02            [ 1]  410 	ld	(0x02, sp), a
       00021B 26 0C            [ 1]  411 	jrne	00107$
-      00021D 4B 83            [ 1]  412 	push	#0x83
+      00021D 4B 82            [ 1]  412 	push	#0x82
       00021F 4B 02            [ 1]  413 	push	#0x02
       000221 5F               [ 1]  414 	clrw	x
       000222 89               [ 2]  415 	pushw	x
       000223 AEr00r00         [ 2]  416 	ldw	x, #(___str_0+0)
       000226 CDr00r00         [ 4]  417 	call	_assert_failed
       000229                        418 00107$:
-                                    419 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 644: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
+                                    419 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 643: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
       000229 0D 05            [ 1]  420 	tnz	(0x05, sp)
       00022B 27 10            [ 1]  421 	jreq	00109$
       00022D 0D 05            [ 1]  422 	tnz	(0x05, sp)
       00022F 26 0C            [ 1]  423 	jrne	00109$
-      000231 4B 84            [ 1]  424 	push	#0x84
+      000231 4B 83            [ 1]  424 	push	#0x83
       000233 4B 02            [ 1]  425 	push	#0x02
       000235 5F               [ 1]  426 	clrw	x
       000236 89               [ 2]  427 	pushw	x
       000237 AEr00r00         [ 2]  428 	ldw	x, #(___str_0+0)
       00023A CDr00r00         [ 4]  429 	call	_assert_failed
       00023D                        430 00109$:
-                                    431 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 649: TIM1->IER |= (uint8_t)TIM1_IT;
+                                    431 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 648: TIM1->IER |= (uint8_t)TIM1_IT;
       00023D C6 52 54         [ 1]  432 	ld	a, 0x5254
-                                    433 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 646: if (NewState != DISABLE)
+                                    433 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 645: if (NewState != DISABLE)
       000240 0D 05            [ 1]  434 	tnz	(0x05, sp)
       000242 27 07            [ 1]  435 	jreq	00102$
-                                    436 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 649: TIM1->IER |= (uint8_t)TIM1_IT;
+                                    436 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 648: TIM1->IER |= (uint8_t)TIM1_IT;
       000244 1A 02            [ 1]  437 	or	a, (0x02, sp)
       000246 C7 52 54         [ 1]  438 	ld	0x5254, a
       000249 20 0C            [ 2]  439 	jra	00104$
       00024B                        440 00102$:
-                                    441 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 654: TIM1->IER &= (uint8_t)(~(uint8_t)TIM1_IT);
+                                    441 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 653: TIM1->IER &= (uint8_t)(~(uint8_t)TIM1_IT);
       00024B 88               [ 1]  442 	push	a
       00024C 7B 03            [ 1]  443 	ld	a, (0x03, sp)
       00024E 43               [ 1]  444 	cpl	a
@@ -447,398 +447,428 @@
       000252 14 01            [ 1]  447 	and	a, (0x01, sp)
       000254 C7 52 54         [ 1]  448 	ld	0x5254, a
       000257                        449 00104$:
-                                    450 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 656: }
+                                    450 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 655: }
       000257 5B 02            [ 2]  451 	addw	sp, #2
       000259 85               [ 2]  452 	popw	x
       00025A 84               [ 1]  453 	pop	a
       00025B FC               [ 2]  454 	jp	(x)
-                                    455 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1965: void TIM1_SetIC1Prescaler(TIM1_ICPSC_TypeDef TIM1_IC1Prescaler)
+                                    455 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1202: void TIM1_ARRPreloadConfig(FunctionalState NewState)
                                     456 ;	-----------------------------------------
-                                    457 ;	 function TIM1_SetIC1Prescaler
+                                    457 ;	 function TIM1_ARRPreloadConfig
                                     458 ;	-----------------------------------------
-      00025C                        459 _TIM1_SetIC1Prescaler:
+      00025C                        459 _TIM1_ARRPreloadConfig:
       00025C 88               [ 1]  460 	push	a
-                                    461 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1968: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC1Prescaler));
+                                    461 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1205: assert_param(IS_FUNCTIONALSTATE_OK(NewState));
       00025D 6B 01            [ 1]  462 	ld	(0x01, sp), a
-      00025F 27 1E            [ 1]  463 	jreq	00104$
-      000261 7B 01            [ 1]  464 	ld	a, (0x01, sp)
-      000263 A1 04            [ 1]  465 	cp	a, #0x04
-      000265 27 18            [ 1]  466 	jreq	00104$
-      000267 7B 01            [ 1]  467 	ld	a, (0x01, sp)
-      000269 A1 08            [ 1]  468 	cp	a, #0x08
-      00026B 27 12            [ 1]  469 	jreq	00104$
-      00026D 7B 01            [ 1]  470 	ld	a, (0x01, sp)
-      00026F A1 0C            [ 1]  471 	cp	a, #0x0c
-      000271 27 0C            [ 1]  472 	jreq	00104$
-      000273 4B B0            [ 1]  473 	push	#0xb0
-      000275 4B 07            [ 1]  474 	push	#0x07
-      000277 5F               [ 1]  475 	clrw	x
-      000278 89               [ 2]  476 	pushw	x
-      000279 AEr00r00         [ 2]  477 	ldw	x, #(___str_0+0)
-      00027C CDr00r00         [ 4]  478 	call	_assert_failed
-      00027F                        479 00104$:
-                                    480 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1971: TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_ICxPSC)) 
-      00027F C6 52 58         [ 1]  481 	ld	a, 0x5258
-      000282 A4 F3            [ 1]  482 	and	a, #0xf3
-                                    483 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1972: | (uint8_t)TIM1_IC1Prescaler);
-      000284 1A 01            [ 1]  484 	or	a, (0x01, sp)
-      000286 C7 52 58         [ 1]  485 	ld	0x5258, a
-                                    486 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1973: }
-      000289 84               [ 1]  487 	pop	a
-      00028A 81               [ 4]  488 	ret
-                                    489 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1987: void TIM1_SetIC2Prescaler(TIM1_ICPSC_TypeDef TIM1_IC2Prescaler)
-                                    490 ;	-----------------------------------------
-                                    491 ;	 function TIM1_SetIC2Prescaler
-                                    492 ;	-----------------------------------------
-      00028B                        493 _TIM1_SetIC2Prescaler:
-      00028B 88               [ 1]  494 	push	a
-                                    495 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1991: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC2Prescaler));
-      00028C 6B 01            [ 1]  496 	ld	(0x01, sp), a
-      00028E 27 1E            [ 1]  497 	jreq	00104$
-      000290 7B 01            [ 1]  498 	ld	a, (0x01, sp)
-      000292 A1 04            [ 1]  499 	cp	a, #0x04
-      000294 27 18            [ 1]  500 	jreq	00104$
-      000296 7B 01            [ 1]  501 	ld	a, (0x01, sp)
-      000298 A1 08            [ 1]  502 	cp	a, #0x08
-      00029A 27 12            [ 1]  503 	jreq	00104$
-      00029C 7B 01            [ 1]  504 	ld	a, (0x01, sp)
-      00029E A1 0C            [ 1]  505 	cp	a, #0x0c
-      0002A0 27 0C            [ 1]  506 	jreq	00104$
-      0002A2 4B C7            [ 1]  507 	push	#0xc7
-      0002A4 4B 07            [ 1]  508 	push	#0x07
-      0002A6 5F               [ 1]  509 	clrw	x
-      0002A7 89               [ 2]  510 	pushw	x
-      0002A8 AEr00r00         [ 2]  511 	ldw	x, #(___str_0+0)
-      0002AB CDr00r00         [ 4]  512 	call	_assert_failed
-      0002AE                        513 00104$:
-                                    514 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1994: TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_ICxPSC))
-      0002AE C6 52 59         [ 1]  515 	ld	a, 0x5259
-      0002B1 A4 F3            [ 1]  516 	and	a, #0xf3
-                                    517 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1995: | (uint8_t)TIM1_IC2Prescaler);
-      0002B3 1A 01            [ 1]  518 	or	a, (0x01, sp)
-      0002B5 C7 52 59         [ 1]  519 	ld	0x5259, a
-                                    520 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1996: }
-      0002B8 84               [ 1]  521 	pop	a
-      0002B9 81               [ 4]  522 	ret
-                                    523 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2010: void TIM1_SetIC3Prescaler(TIM1_ICPSC_TypeDef TIM1_IC3Prescaler)
+      00025F 27 10            [ 1]  463 	jreq	00107$
+      000261 0D 01            [ 1]  464 	tnz	(0x01, sp)
+      000263 26 0C            [ 1]  465 	jrne	00107$
+      000265 4B B5            [ 1]  466 	push	#0xb5
+      000267 4B 04            [ 1]  467 	push	#0x04
+      000269 5F               [ 1]  468 	clrw	x
+      00026A 89               [ 2]  469 	pushw	x
+      00026B AEr00r00         [ 2]  470 	ldw	x, #(___str_0+0)
+      00026E CDr00r00         [ 4]  471 	call	_assert_failed
+      000271                        472 00107$:
+                                    473 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1210: TIM1->CR1 |= TIM1_CR1_ARPE;
+      000271 C6 52 50         [ 1]  474 	ld	a, 0x5250
+                                    475 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1208: if (NewState != DISABLE)
+      000274 0D 01            [ 1]  476 	tnz	(0x01, sp)
+      000276 27 07            [ 1]  477 	jreq	00102$
+                                    478 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1210: TIM1->CR1 |= TIM1_CR1_ARPE;
+      000278 AA 80            [ 1]  479 	or	a, #0x80
+      00027A C7 52 50         [ 1]  480 	ld	0x5250, a
+      00027D 20 05            [ 2]  481 	jra	00104$
+      00027F                        482 00102$:
+                                    483 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1214: TIM1->CR1 &= (uint8_t)(~TIM1_CR1_ARPE);
+      00027F A4 7F            [ 1]  484 	and	a, #0x7f
+      000281 C7 52 50         [ 1]  485 	ld	0x5250, a
+      000284                        486 00104$:
+                                    487 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1216: }
+      000284 84               [ 1]  488 	pop	a
+      000285 81               [ 4]  489 	ret
+                                    490 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1963: void TIM1_SetIC1Prescaler(TIM1_ICPSC_TypeDef TIM1_IC1Prescaler)
+                                    491 ;	-----------------------------------------
+                                    492 ;	 function TIM1_SetIC1Prescaler
+                                    493 ;	-----------------------------------------
+      000286                        494 _TIM1_SetIC1Prescaler:
+      000286 88               [ 1]  495 	push	a
+                                    496 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1966: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC1Prescaler));
+      000287 6B 01            [ 1]  497 	ld	(0x01, sp), a
+      000289 27 1E            [ 1]  498 	jreq	00104$
+      00028B 7B 01            [ 1]  499 	ld	a, (0x01, sp)
+      00028D A1 04            [ 1]  500 	cp	a, #0x04
+      00028F 27 18            [ 1]  501 	jreq	00104$
+      000291 7B 01            [ 1]  502 	ld	a, (0x01, sp)
+      000293 A1 08            [ 1]  503 	cp	a, #0x08
+      000295 27 12            [ 1]  504 	jreq	00104$
+      000297 7B 01            [ 1]  505 	ld	a, (0x01, sp)
+      000299 A1 0C            [ 1]  506 	cp	a, #0x0c
+      00029B 27 0C            [ 1]  507 	jreq	00104$
+      00029D 4B AE            [ 1]  508 	push	#0xae
+      00029F 4B 07            [ 1]  509 	push	#0x07
+      0002A1 5F               [ 1]  510 	clrw	x
+      0002A2 89               [ 2]  511 	pushw	x
+      0002A3 AEr00r00         [ 2]  512 	ldw	x, #(___str_0+0)
+      0002A6 CDr00r00         [ 4]  513 	call	_assert_failed
+      0002A9                        514 00104$:
+                                    515 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1969: TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~TIM1_CCMR_ICxPSC)) | (uint8_t)TIM1_IC1Prescaler);
+      0002A9 C6 52 58         [ 1]  516 	ld	a, 0x5258
+      0002AC A4 F3            [ 1]  517 	and	a, #0xf3
+      0002AE 1A 01            [ 1]  518 	or	a, (0x01, sp)
+      0002B0 C7 52 58         [ 1]  519 	ld	0x5258, a
+                                    520 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1970: }
+      0002B3 84               [ 1]  521 	pop	a
+      0002B4 81               [ 4]  522 	ret
+                                    523 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1984: void TIM1_SetIC2Prescaler(TIM1_ICPSC_TypeDef TIM1_IC2Prescaler)
                                     524 ;	-----------------------------------------
-                                    525 ;	 function TIM1_SetIC3Prescaler
+                                    525 ;	 function TIM1_SetIC2Prescaler
                                     526 ;	-----------------------------------------
-      0002BA                        527 _TIM1_SetIC3Prescaler:
-      0002BA 88               [ 1]  528 	push	a
-                                    529 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2014: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC3Prescaler));
-      0002BB 6B 01            [ 1]  530 	ld	(0x01, sp), a
-      0002BD 27 1E            [ 1]  531 	jreq	00104$
-      0002BF 7B 01            [ 1]  532 	ld	a, (0x01, sp)
-      0002C1 A1 04            [ 1]  533 	cp	a, #0x04
-      0002C3 27 18            [ 1]  534 	jreq	00104$
-      0002C5 7B 01            [ 1]  535 	ld	a, (0x01, sp)
-      0002C7 A1 08            [ 1]  536 	cp	a, #0x08
-      0002C9 27 12            [ 1]  537 	jreq	00104$
-      0002CB 7B 01            [ 1]  538 	ld	a, (0x01, sp)
-      0002CD A1 0C            [ 1]  539 	cp	a, #0x0c
-      0002CF 27 0C            [ 1]  540 	jreq	00104$
-      0002D1 4B DE            [ 1]  541 	push	#0xde
-      0002D3 4B 07            [ 1]  542 	push	#0x07
-      0002D5 5F               [ 1]  543 	clrw	x
-      0002D6 89               [ 2]  544 	pushw	x
-      0002D7 AEr00r00         [ 2]  545 	ldw	x, #(___str_0+0)
-      0002DA CDr00r00         [ 4]  546 	call	_assert_failed
-      0002DD                        547 00104$:
-                                    548 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2017: TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_ICxPSC)) | 
-      0002DD C6 52 5A         [ 1]  549 	ld	a, 0x525a
-      0002E0 A4 F3            [ 1]  550 	and	a, #0xf3
-                                    551 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2018: (uint8_t)TIM1_IC3Prescaler);
-      0002E2 1A 01            [ 1]  552 	or	a, (0x01, sp)
-      0002E4 C7 52 5A         [ 1]  553 	ld	0x525a, a
-                                    554 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2019: }
-      0002E7 84               [ 1]  555 	pop	a
-      0002E8 81               [ 4]  556 	ret
-                                    557 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2033: void TIM1_SetIC4Prescaler(TIM1_ICPSC_TypeDef TIM1_IC4Prescaler)
-                                    558 ;	-----------------------------------------
-                                    559 ;	 function TIM1_SetIC4Prescaler
-                                    560 ;	-----------------------------------------
-      0002E9                        561 _TIM1_SetIC4Prescaler:
-      0002E9 88               [ 1]  562 	push	a
-                                    563 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2037: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC4Prescaler));
-      0002EA 6B 01            [ 1]  564 	ld	(0x01, sp), a
-      0002EC 27 1E            [ 1]  565 	jreq	00104$
-      0002EE 7B 01            [ 1]  566 	ld	a, (0x01, sp)
-      0002F0 A1 04            [ 1]  567 	cp	a, #0x04
-      0002F2 27 18            [ 1]  568 	jreq	00104$
-      0002F4 7B 01            [ 1]  569 	ld	a, (0x01, sp)
-      0002F6 A1 08            [ 1]  570 	cp	a, #0x08
-      0002F8 27 12            [ 1]  571 	jreq	00104$
-      0002FA 7B 01            [ 1]  572 	ld	a, (0x01, sp)
-      0002FC A1 0C            [ 1]  573 	cp	a, #0x0c
-      0002FE 27 0C            [ 1]  574 	jreq	00104$
-      000300 4B F5            [ 1]  575 	push	#0xf5
-      000302 4B 07            [ 1]  576 	push	#0x07
-      000304 5F               [ 1]  577 	clrw	x
-      000305 89               [ 2]  578 	pushw	x
-      000306 AEr00r00         [ 2]  579 	ldw	x, #(___str_0+0)
-      000309 CDr00r00         [ 4]  580 	call	_assert_failed
-      00030C                        581 00104$:
-                                    582 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2040: TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_ICxPSC)) |
-      00030C C6 52 5B         [ 1]  583 	ld	a, 0x525b
-      00030F A4 F3            [ 1]  584 	and	a, #0xf3
-                                    585 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2041: (uint8_t)TIM1_IC4Prescaler);
-      000311 1A 01            [ 1]  586 	or	a, (0x01, sp)
-      000313 C7 52 5B         [ 1]  587 	ld	0x525b, a
-                                    588 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2042: }
-      000316 84               [ 1]  589 	pop	a
-      000317 81               [ 4]  590 	ret
-                                    591 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2051: uint16_t TIM1_GetCapture1(void)
-                                    592 ;	-----------------------------------------
-                                    593 ;	 function TIM1_GetCapture1
-                                    594 ;	-----------------------------------------
-      000318                        595 _TIM1_GetCapture1:
-      000318 52 02            [ 2]  596 	sub	sp, #2
-                                    597 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2058: tmpccr1h = TIM1->CCR1H;
-      00031A C6 52 65         [ 1]  598 	ld	a, 0x5265
-      00031D 95               [ 1]  599 	ld	xh, a
-                                    600 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2059: tmpccr1l = TIM1->CCR1L;
-      00031E C6 52 66         [ 1]  601 	ld	a, 0x5266
-                                    602 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2061: tmpccr1 = (uint16_t)(tmpccr1l);
-      000321 97               [ 1]  603 	ld	xl, a
-                                    604 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2062: tmpccr1 |= (uint16_t)((uint16_t)tmpccr1h << 8);
-      000322 0F 02            [ 1]  605 	clr	(0x02, sp)
-                                    606 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2064: return (uint16_t)tmpccr1;
-                                    607 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2065: }
-      000324 5B 02            [ 2]  608 	addw	sp, #2
-      000326 81               [ 4]  609 	ret
-                                    610 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2230: void TIM1_ClearFlag(TIM1_FLAG_TypeDef TIM1_FLAG)
-                                    611 ;	-----------------------------------------
-                                    612 ;	 function TIM1_ClearFlag
-                                    613 ;	-----------------------------------------
-      000327                        614 _TIM1_ClearFlag:
-      000327 52 02            [ 2]  615 	sub	sp, #2
-                                    616 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2233: assert_param(IS_TIM1_CLEAR_FLAG_OK(TIM1_FLAG));
-      000329 1F 01            [ 2]  617 	ldw	(0x01, sp), x
-      00032B 7B 01            [ 1]  618 	ld	a, (0x01, sp)
-      00032D A5 E1            [ 1]  619 	bcp	a, #0xe1
-      00032F 26 03            [ 1]  620 	jrne	00103$
-      000331 5D               [ 2]  621 	tnzw	x
-      000332 26 10            [ 1]  622 	jrne	00104$
-      000334                        623 00103$:
-      000334 89               [ 2]  624 	pushw	x
-      000335 4B B9            [ 1]  625 	push	#0xb9
-      000337 4B 08            [ 1]  626 	push	#0x08
-      000339 4B 00            [ 1]  627 	push	#0x00
-      00033B 4B 00            [ 1]  628 	push	#0x00
-      00033D AEr00r00         [ 2]  629 	ldw	x, #(___str_0+0)
-      000340 CDr00r00         [ 4]  630 	call	_assert_failed
-      000343 85               [ 2]  631 	popw	x
-      000344                        632 00104$:
-                                    633 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2236: TIM1->SR1 = (uint8_t)(~(uint8_t)(TIM1_FLAG));
-      000344 9F               [ 1]  634 	ld	a, xl
-      000345 43               [ 1]  635 	cpl	a
-      000346 C7 52 55         [ 1]  636 	ld	0x5255, a
-                                    637 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2237: TIM1->SR2 = (uint8_t)((uint8_t)(~((uint8_t)((uint16_t)TIM1_FLAG >> 8))) & 
-      000349 7B 01            [ 1]  638 	ld	a, (0x01, sp)
-      00034B 43               [ 1]  639 	cpl	a
-      00034C A4 1E            [ 1]  640 	and	a, #0x1e
-      00034E C7 52 56         [ 1]  641 	ld	0x5256, a
-                                    642 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2239: }
-      000351 5B 02            [ 2]  643 	addw	sp, #2
-      000353 81               [ 4]  644 	ret
-                                    645 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2296: void TIM1_ClearITPendingBit(TIM1_IT_TypeDef TIM1_IT)
+      0002B5                        527 _TIM1_SetIC2Prescaler:
+      0002B5 88               [ 1]  528 	push	a
+                                    529 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1988: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC2Prescaler));
+      0002B6 6B 01            [ 1]  530 	ld	(0x01, sp), a
+      0002B8 27 1E            [ 1]  531 	jreq	00104$
+      0002BA 7B 01            [ 1]  532 	ld	a, (0x01, sp)
+      0002BC A1 04            [ 1]  533 	cp	a, #0x04
+      0002BE 27 18            [ 1]  534 	jreq	00104$
+      0002C0 7B 01            [ 1]  535 	ld	a, (0x01, sp)
+      0002C2 A1 08            [ 1]  536 	cp	a, #0x08
+      0002C4 27 12            [ 1]  537 	jreq	00104$
+      0002C6 7B 01            [ 1]  538 	ld	a, (0x01, sp)
+      0002C8 A1 0C            [ 1]  539 	cp	a, #0x0c
+      0002CA 27 0C            [ 1]  540 	jreq	00104$
+      0002CC 4B C4            [ 1]  541 	push	#0xc4
+      0002CE 4B 07            [ 1]  542 	push	#0x07
+      0002D0 5F               [ 1]  543 	clrw	x
+      0002D1 89               [ 2]  544 	pushw	x
+      0002D2 AEr00r00         [ 2]  545 	ldw	x, #(___str_0+0)
+      0002D5 CDr00r00         [ 4]  546 	call	_assert_failed
+      0002D8                        547 00104$:
+                                    548 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1991: TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~TIM1_CCMR_ICxPSC)) | (uint8_t)TIM1_IC2Prescaler);
+      0002D8 C6 52 59         [ 1]  549 	ld	a, 0x5259
+      0002DB A4 F3            [ 1]  550 	and	a, #0xf3
+      0002DD 1A 01            [ 1]  551 	or	a, (0x01, sp)
+      0002DF C7 52 59         [ 1]  552 	ld	0x5259, a
+                                    553 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 1992: }
+      0002E2 84               [ 1]  554 	pop	a
+      0002E3 81               [ 4]  555 	ret
+                                    556 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2006: void TIM1_SetIC3Prescaler(TIM1_ICPSC_TypeDef TIM1_IC3Prescaler)
+                                    557 ;	-----------------------------------------
+                                    558 ;	 function TIM1_SetIC3Prescaler
+                                    559 ;	-----------------------------------------
+      0002E4                        560 _TIM1_SetIC3Prescaler:
+      0002E4 88               [ 1]  561 	push	a
+                                    562 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2010: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC3Prescaler));
+      0002E5 6B 01            [ 1]  563 	ld	(0x01, sp), a
+      0002E7 27 1E            [ 1]  564 	jreq	00104$
+      0002E9 7B 01            [ 1]  565 	ld	a, (0x01, sp)
+      0002EB A1 04            [ 1]  566 	cp	a, #0x04
+      0002ED 27 18            [ 1]  567 	jreq	00104$
+      0002EF 7B 01            [ 1]  568 	ld	a, (0x01, sp)
+      0002F1 A1 08            [ 1]  569 	cp	a, #0x08
+      0002F3 27 12            [ 1]  570 	jreq	00104$
+      0002F5 7B 01            [ 1]  571 	ld	a, (0x01, sp)
+      0002F7 A1 0C            [ 1]  572 	cp	a, #0x0c
+      0002F9 27 0C            [ 1]  573 	jreq	00104$
+      0002FB 4B DA            [ 1]  574 	push	#0xda
+      0002FD 4B 07            [ 1]  575 	push	#0x07
+      0002FF 5F               [ 1]  576 	clrw	x
+      000300 89               [ 2]  577 	pushw	x
+      000301 AEr00r00         [ 2]  578 	ldw	x, #(___str_0+0)
+      000304 CDr00r00         [ 4]  579 	call	_assert_failed
+      000307                        580 00104$:
+                                    581 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2013: TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~TIM1_CCMR_ICxPSC)) |
+      000307 C6 52 5A         [ 1]  582 	ld	a, 0x525a
+      00030A A4 F3            [ 1]  583 	and	a, #0xf3
+                                    584 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2014: (uint8_t)TIM1_IC3Prescaler);
+      00030C 1A 01            [ 1]  585 	or	a, (0x01, sp)
+      00030E C7 52 5A         [ 1]  586 	ld	0x525a, a
+                                    587 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2015: }
+      000311 84               [ 1]  588 	pop	a
+      000312 81               [ 4]  589 	ret
+                                    590 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2029: void TIM1_SetIC4Prescaler(TIM1_ICPSC_TypeDef TIM1_IC4Prescaler)
+                                    591 ;	-----------------------------------------
+                                    592 ;	 function TIM1_SetIC4Prescaler
+                                    593 ;	-----------------------------------------
+      000313                        594 _TIM1_SetIC4Prescaler:
+      000313 88               [ 1]  595 	push	a
+                                    596 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2033: assert_param(IS_TIM1_IC_PRESCALER_OK(TIM1_IC4Prescaler));
+      000314 6B 01            [ 1]  597 	ld	(0x01, sp), a
+      000316 27 1E            [ 1]  598 	jreq	00104$
+      000318 7B 01            [ 1]  599 	ld	a, (0x01, sp)
+      00031A A1 04            [ 1]  600 	cp	a, #0x04
+      00031C 27 18            [ 1]  601 	jreq	00104$
+      00031E 7B 01            [ 1]  602 	ld	a, (0x01, sp)
+      000320 A1 08            [ 1]  603 	cp	a, #0x08
+      000322 27 12            [ 1]  604 	jreq	00104$
+      000324 7B 01            [ 1]  605 	ld	a, (0x01, sp)
+      000326 A1 0C            [ 1]  606 	cp	a, #0x0c
+      000328 27 0C            [ 1]  607 	jreq	00104$
+      00032A 4B F1            [ 1]  608 	push	#0xf1
+      00032C 4B 07            [ 1]  609 	push	#0x07
+      00032E 5F               [ 1]  610 	clrw	x
+      00032F 89               [ 2]  611 	pushw	x
+      000330 AEr00r00         [ 2]  612 	ldw	x, #(___str_0+0)
+      000333 CDr00r00         [ 4]  613 	call	_assert_failed
+      000336                        614 00104$:
+                                    615 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2036: TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~TIM1_CCMR_ICxPSC)) |
+      000336 C6 52 5B         [ 1]  616 	ld	a, 0x525b
+      000339 A4 F3            [ 1]  617 	and	a, #0xf3
+                                    618 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2037: (uint8_t)TIM1_IC4Prescaler);
+      00033B 1A 01            [ 1]  619 	or	a, (0x01, sp)
+      00033D C7 52 5B         [ 1]  620 	ld	0x525b, a
+                                    621 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2038: }
+      000340 84               [ 1]  622 	pop	a
+      000341 81               [ 4]  623 	ret
+                                    624 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2047: uint16_t TIM1_GetCapture1(void)
+                                    625 ;	-----------------------------------------
+                                    626 ;	 function TIM1_GetCapture1
+                                    627 ;	-----------------------------------------
+      000342                        628 _TIM1_GetCapture1:
+      000342 52 02            [ 2]  629 	sub	sp, #2
+                                    630 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2054: tmpccr1h = TIM1->CCR1H;
+      000344 C6 52 65         [ 1]  631 	ld	a, 0x5265
+      000347 95               [ 1]  632 	ld	xh, a
+                                    633 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2055: tmpccr1l = TIM1->CCR1L;
+      000348 C6 52 66         [ 1]  634 	ld	a, 0x5266
+                                    635 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2057: tmpccr1 = (uint16_t)(tmpccr1l);
+      00034B 97               [ 1]  636 	ld	xl, a
+                                    637 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2058: tmpccr1 |= (uint16_t)((uint16_t)tmpccr1h << 8);
+      00034C 0F 02            [ 1]  638 	clr	(0x02, sp)
+                                    639 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2060: return (uint16_t)tmpccr1;
+                                    640 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2061: }
+      00034E 5B 02            [ 2]  641 	addw	sp, #2
+      000350 81               [ 4]  642 	ret
+                                    643 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2226: void TIM1_ClearFlag(TIM1_FLAG_TypeDef TIM1_FLAG)
+                                    644 ;	-----------------------------------------
+                                    645 ;	 function TIM1_ClearFlag
                                     646 ;	-----------------------------------------
-                                    647 ;	 function TIM1_ClearITPendingBit
-                                    648 ;	-----------------------------------------
-      000354                        649 _TIM1_ClearITPendingBit:
-                                    650 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2299: assert_param(IS_TIM1_IT_OK(TIM1_IT));
-      000354 4D               [ 1]  651 	tnz	a
-      000355 26 0E            [ 1]  652 	jrne	00104$
-      000357 88               [ 1]  653 	push	a
-      000358 4B FB            [ 1]  654 	push	#0xfb
-      00035A 4B 08            [ 1]  655 	push	#0x08
-      00035C 5F               [ 1]  656 	clrw	x
-      00035D 89               [ 2]  657 	pushw	x
-      00035E AEr00r00         [ 2]  658 	ldw	x, #(___str_0+0)
-      000361 CDr00r00         [ 4]  659 	call	_assert_failed
-      000364 84               [ 1]  660 	pop	a
-      000365                        661 00104$:
-                                    662 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2302: TIM1->SR1 = (uint8_t)(~(uint8_t)TIM1_IT);
-      000365 43               [ 1]  663 	cpl	a
-      000366 C7 52 55         [ 1]  664 	ld	0x5255, a
-                                    665 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2303: }
-      000369 81               [ 4]  666 	ret
-                                    667 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2323: static void TI1_Config(uint8_t TIM1_ICPolarity,
-                                    668 ;	-----------------------------------------
-                                    669 ;	 function TI1_Config
-                                    670 ;	-----------------------------------------
-      00036A                        671 _TI1_Config:
-      00036A 52 02            [ 2]  672 	sub	sp, #2
-      00036C 6B 02            [ 1]  673 	ld	(0x02, sp), a
-                                    674 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2328: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
-      00036E 72 11 52 5C      [ 1]  675 	bres	0x525c, #0
-                                    676 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2331: TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF ))) | 
-      000372 C6 52 58         [ 1]  677 	ld	a, 0x5258
-      000375 A4 0C            [ 1]  678 	and	a, #0x0c
-      000377 6B 01            [ 1]  679 	ld	(0x01, sp), a
-                                    680 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2332: (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-      000379 7B 06            [ 1]  681 	ld	a, (0x06, sp)
-      00037B 4E               [ 1]  682 	swap	a
-      00037C A4 F0            [ 1]  683 	and	a, #0xf0
-      00037E 1A 05            [ 1]  684 	or	a, (0x05, sp)
-      000380 1A 01            [ 1]  685 	or	a, (0x01, sp)
-      000382 C7 52 58         [ 1]  686 	ld	0x5258, a
-                                    687 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2328: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
-      000385 C6 52 5C         [ 1]  688 	ld	a, 0x525c
-                                    689 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2335: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-      000388 0D 02            [ 1]  690 	tnz	(0x02, sp)
-      00038A 27 07            [ 1]  691 	jreq	00102$
-                                    692 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2337: TIM1->CCER1 |= TIM1_CCER1_CC1P;
-      00038C AA 02            [ 1]  693 	or	a, #0x02
-      00038E C7 52 5C         [ 1]  694 	ld	0x525c, a
-      000391 20 05            [ 2]  695 	jra	00103$
-      000393                        696 00102$:
-                                    697 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2341: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
-      000393 A4 FD            [ 1]  698 	and	a, #0xfd
-      000395 C7 52 5C         [ 1]  699 	ld	0x525c, a
-      000398                        700 00103$:
-                                    701 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2345: TIM1->CCER1 |=  TIM1_CCER1_CC1E;
-      000398 C6 52 5C         [ 1]  702 	ld	a, 0x525c
-      00039B AA 01            [ 1]  703 	or	a, #0x01
-      00039D C7 52 5C         [ 1]  704 	ld	0x525c, a
-                                    705 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2346: }
-      0003A0 1E 03            [ 2]  706 	ldw	x, (3, sp)
-      0003A2 5B 06            [ 2]  707 	addw	sp, #6
-      0003A4 FC               [ 2]  708 	jp	(x)
-                                    709 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2366: static void TI2_Config(uint8_t TIM1_ICPolarity,
-                                    710 ;	-----------------------------------------
-                                    711 ;	 function TI2_Config
-                                    712 ;	-----------------------------------------
-      0003A5                        713 _TI2_Config:
-      0003A5 52 02            [ 2]  714 	sub	sp, #2
-      0003A7 6B 02            [ 1]  715 	ld	(0x02, sp), a
-                                    716 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2371: TIM1->CCER1 &=  (uint8_t)(~TIM1_CCER1_CC2E);
-      0003A9 72 19 52 5C      [ 1]  717 	bres	0x525c, #4
-                                    718 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2374: TIM1->CCMR2  = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF ))) 
-      0003AD C6 52 59         [ 1]  719 	ld	a, 0x5259
-      0003B0 A4 0C            [ 1]  720 	and	a, #0x0c
-      0003B2 6B 01            [ 1]  721 	ld	(0x01, sp), a
-                                    722 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2375: | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-      0003B4 7B 06            [ 1]  723 	ld	a, (0x06, sp)
-      0003B6 4E               [ 1]  724 	swap	a
-      0003B7 A4 F0            [ 1]  725 	and	a, #0xf0
-      0003B9 1A 05            [ 1]  726 	or	a, (0x05, sp)
-      0003BB 1A 01            [ 1]  727 	or	a, (0x01, sp)
-      0003BD C7 52 59         [ 1]  728 	ld	0x5259, a
-                                    729 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2371: TIM1->CCER1 &=  (uint8_t)(~TIM1_CCER1_CC2E);
-      0003C0 C6 52 5C         [ 1]  730 	ld	a, 0x525c
-                                    731 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2377: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-      0003C3 0D 02            [ 1]  732 	tnz	(0x02, sp)
-      0003C5 27 07            [ 1]  733 	jreq	00102$
-                                    734 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2379: TIM1->CCER1 |= TIM1_CCER1_CC2P;
-      0003C7 AA 20            [ 1]  735 	or	a, #0x20
-      0003C9 C7 52 5C         [ 1]  736 	ld	0x525c, a
-      0003CC 20 05            [ 2]  737 	jra	00103$
-      0003CE                        738 00102$:
-                                    739 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2383: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
-      0003CE A4 DF            [ 1]  740 	and	a, #0xdf
-      0003D0 C7 52 5C         [ 1]  741 	ld	0x525c, a
-      0003D3                        742 00103$:
-                                    743 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2386: TIM1->CCER1 |=  TIM1_CCER1_CC2E;
-      0003D3 C6 52 5C         [ 1]  744 	ld	a, 0x525c
-      0003D6 AA 10            [ 1]  745 	or	a, #0x10
-      0003D8 C7 52 5C         [ 1]  746 	ld	0x525c, a
-                                    747 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2387: }
-      0003DB 1E 03            [ 2]  748 	ldw	x, (3, sp)
-      0003DD 5B 06            [ 2]  749 	addw	sp, #6
-      0003DF FC               [ 2]  750 	jp	(x)
-                                    751 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2407: static void TI3_Config(uint8_t TIM1_ICPolarity,
-                                    752 ;	-----------------------------------------
-                                    753 ;	 function TI3_Config
-                                    754 ;	-----------------------------------------
-      0003E0                        755 _TI3_Config:
-      0003E0 52 02            [ 2]  756 	sub	sp, #2
-      0003E2 6B 02            [ 1]  757 	ld	(0x02, sp), a
-                                    758 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2412: TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC3E);
-      0003E4 C6 52 5D         [ 1]  759 	ld	a, 0x525d
-      0003E7 A4 FE            [ 1]  760 	and	a, #0xfe
-      0003E9 C7 52 5D         [ 1]  761 	ld	0x525d, a
-                                    762 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2415: TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) 
-      0003EC C6 52 5A         [ 1]  763 	ld	a, 0x525a
-      0003EF A4 0C            [ 1]  764 	and	a, #0x0c
-      0003F1 6B 01            [ 1]  765 	ld	(0x01, sp), a
-                                    766 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2416: | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-      0003F3 7B 06            [ 1]  767 	ld	a, (0x06, sp)
-      0003F5 4E               [ 1]  768 	swap	a
-      0003F6 A4 F0            [ 1]  769 	and	a, #0xf0
-      0003F8 1A 05            [ 1]  770 	or	a, (0x05, sp)
-      0003FA 1A 01            [ 1]  771 	or	a, (0x01, sp)
-      0003FC C7 52 5A         [ 1]  772 	ld	0x525a, a
-                                    773 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2412: TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC3E);
-      0003FF C6 52 5D         [ 1]  774 	ld	a, 0x525d
-                                    775 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2419: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-      000402 0D 02            [ 1]  776 	tnz	(0x02, sp)
-      000404 27 07            [ 1]  777 	jreq	00102$
-                                    778 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2421: TIM1->CCER2 |= TIM1_CCER2_CC3P;
-      000406 AA 02            [ 1]  779 	or	a, #0x02
-      000408 C7 52 5D         [ 1]  780 	ld	0x525d, a
-      00040B 20 05            [ 2]  781 	jra	00103$
-      00040D                        782 00102$:
-                                    783 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2425: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3P);
-      00040D A4 FD            [ 1]  784 	and	a, #0xfd
-      00040F C7 52 5D         [ 1]  785 	ld	0x525d, a
-      000412                        786 00103$:
-                                    787 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2428: TIM1->CCER2 |=  TIM1_CCER2_CC3E;
-      000412 C6 52 5D         [ 1]  788 	ld	a, 0x525d
-      000415 AA 01            [ 1]  789 	or	a, #0x01
-      000417 C7 52 5D         [ 1]  790 	ld	0x525d, a
-                                    791 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2429: }
-      00041A 1E 03            [ 2]  792 	ldw	x, (3, sp)
-      00041C 5B 06            [ 2]  793 	addw	sp, #6
-      00041E FC               [ 2]  794 	jp	(x)
-                                    795 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2449: static void TI4_Config(uint8_t TIM1_ICPolarity,
-                                    796 ;	-----------------------------------------
-                                    797 ;	 function TI4_Config
-                                    798 ;	-----------------------------------------
-      00041F                        799 _TI4_Config:
-      00041F 52 02            [ 2]  800 	sub	sp, #2
-      000421 6B 02            [ 1]  801 	ld	(0x02, sp), a
-                                    802 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2454: TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC4E);
-      000423 72 19 52 5D      [ 1]  803 	bres	0x525d, #4
-                                    804 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2457: TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~(uint8_t)( TIM1_CCMR_CCxS | TIM1_CCMR_ICxF )))
-      000427 C6 52 5B         [ 1]  805 	ld	a, 0x525b
-      00042A A4 0C            [ 1]  806 	and	a, #0x0c
-      00042C 6B 01            [ 1]  807 	ld	(0x01, sp), a
-                                    808 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2458: | (uint8_t)(( (TIM1_ICSelection)) | ((uint8_t)( TIM1_ICFilter << 4))));
-      00042E 7B 06            [ 1]  809 	ld	a, (0x06, sp)
-      000430 4E               [ 1]  810 	swap	a
-      000431 A4 F0            [ 1]  811 	and	a, #0xf0
-      000433 1A 05            [ 1]  812 	or	a, (0x05, sp)
-      000435 1A 01            [ 1]  813 	or	a, (0x01, sp)
-      000437 C7 52 5B         [ 1]  814 	ld	0x525b, a
-                                    815 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2454: TIM1->CCER2 &=  (uint8_t)(~TIM1_CCER2_CC4E);
-      00043A C6 52 5D         [ 1]  816 	ld	a, 0x525d
-                                    817 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2461: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
-      00043D 0D 02            [ 1]  818 	tnz	(0x02, sp)
-      00043F 27 07            [ 1]  819 	jreq	00102$
-                                    820 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2463: TIM1->CCER2 |= TIM1_CCER2_CC4P;
-      000441 AA 20            [ 1]  821 	or	a, #0x20
-      000443 C7 52 5D         [ 1]  822 	ld	0x525d, a
-      000446 20 05            [ 2]  823 	jra	00103$
-      000448                        824 00102$:
-                                    825 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2467: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4P);
-      000448 A4 DF            [ 1]  826 	and	a, #0xdf
-      00044A C7 52 5D         [ 1]  827 	ld	0x525d, a
-      00044D                        828 00103$:
-                                    829 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2471: TIM1->CCER2 |=  TIM1_CCER2_CC4E;
-      00044D C6 52 5D         [ 1]  830 	ld	a, 0x525d
-      000450 AA 10            [ 1]  831 	or	a, #0x10
-      000452 C7 52 5D         [ 1]  832 	ld	0x525d, a
-                                    833 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2472: }
-      000455 1E 03            [ 2]  834 	ldw	x, (3, sp)
-      000457 5B 06            [ 2]  835 	addw	sp, #6
-      000459 FC               [ 2]  836 	jp	(x)
-                                    837 	.area CODE
-                                    838 	.area CONST
-                                    839 	.area CONST
-      000000                        840 ___str_0:
-      000000 2F 77 6F 72 6B 73 70   841 	.ascii "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Li"
+      000351                        647 _TIM1_ClearFlag:
+      000351 52 02            [ 2]  648 	sub	sp, #2
+                                    649 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2229: assert_param(IS_TIM1_CLEAR_FLAG_OK(TIM1_FLAG));
+      000353 1F 01            [ 2]  650 	ldw	(0x01, sp), x
+      000355 7B 01            [ 1]  651 	ld	a, (0x01, sp)
+      000357 A5 E1            [ 1]  652 	bcp	a, #0xe1
+      000359 26 03            [ 1]  653 	jrne	00103$
+      00035B 5D               [ 2]  654 	tnzw	x
+      00035C 26 10            [ 1]  655 	jrne	00104$
+      00035E                        656 00103$:
+      00035E 89               [ 2]  657 	pushw	x
+      00035F 4B B5            [ 1]  658 	push	#0xb5
+      000361 4B 08            [ 1]  659 	push	#0x08
+      000363 4B 00            [ 1]  660 	push	#0x00
+      000365 4B 00            [ 1]  661 	push	#0x00
+      000367 AEr00r00         [ 2]  662 	ldw	x, #(___str_0+0)
+      00036A CDr00r00         [ 4]  663 	call	_assert_failed
+      00036D 85               [ 2]  664 	popw	x
+      00036E                        665 00104$:
+                                    666 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2232: TIM1->SR1 = (uint8_t)(~(uint8_t)(TIM1_FLAG));
+      00036E 9F               [ 1]  667 	ld	a, xl
+      00036F 43               [ 1]  668 	cpl	a
+      000370 C7 52 55         [ 1]  669 	ld	0x5255, a
+                                    670 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2233: TIM1->SR2 = (uint8_t)((uint8_t)(~((uint8_t)((uint16_t)TIM1_FLAG >> 8))) &
+      000373 7B 01            [ 1]  671 	ld	a, (0x01, sp)
+      000375 43               [ 1]  672 	cpl	a
+      000376 A4 1E            [ 1]  673 	and	a, #0x1e
+      000378 C7 52 56         [ 1]  674 	ld	0x5256, a
+                                    675 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2235: }
+      00037B 5B 02            [ 2]  676 	addw	sp, #2
+      00037D 81               [ 4]  677 	ret
+                                    678 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2292: void TIM1_ClearITPendingBit(TIM1_IT_TypeDef TIM1_IT)
+                                    679 ;	-----------------------------------------
+                                    680 ;	 function TIM1_ClearITPendingBit
+                                    681 ;	-----------------------------------------
+      00037E                        682 _TIM1_ClearITPendingBit:
+                                    683 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2295: assert_param(IS_TIM1_IT_OK(TIM1_IT));
+      00037E 4D               [ 1]  684 	tnz	a
+      00037F 26 0E            [ 1]  685 	jrne	00104$
+      000381 88               [ 1]  686 	push	a
+      000382 4B F7            [ 1]  687 	push	#0xf7
+      000384 4B 08            [ 1]  688 	push	#0x08
+      000386 5F               [ 1]  689 	clrw	x
+      000387 89               [ 2]  690 	pushw	x
+      000388 AEr00r00         [ 2]  691 	ldw	x, #(___str_0+0)
+      00038B CDr00r00         [ 4]  692 	call	_assert_failed
+      00038E 84               [ 1]  693 	pop	a
+      00038F                        694 00104$:
+                                    695 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2298: TIM1->SR1 = (uint8_t)(~(uint8_t)TIM1_IT);
+      00038F 43               [ 1]  696 	cpl	a
+      000390 C7 52 55         [ 1]  697 	ld	0x5255, a
+                                    698 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2299: }
+      000393 81               [ 4]  699 	ret
+                                    700 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2319: static void TI1_Config(uint8_t TIM1_ICPolarity,
+                                    701 ;	-----------------------------------------
+                                    702 ;	 function TI1_Config
+                                    703 ;	-----------------------------------------
+      000394                        704 _TI1_Config:
+      000394 52 02            [ 2]  705 	sub	sp, #2
+      000396 6B 02            [ 1]  706 	ld	(0x02, sp), a
+                                    707 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2324: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
+      000398 72 11 52 5C      [ 1]  708 	bres	0x525c, #0
+                                    709 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2327: TIM1->CCMR1 = (uint8_t)((uint8_t)(TIM1->CCMR1 & (uint8_t)(~(uint8_t)(TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) |
+      00039C C6 52 58         [ 1]  710 	ld	a, 0x5258
+      00039F A4 0C            [ 1]  711 	and	a, #0x0c
+      0003A1 6B 01            [ 1]  712 	ld	(0x01, sp), a
+                                    713 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2328: (uint8_t)(((TIM1_ICSelection)) | ((uint8_t)(TIM1_ICFilter << 4))));
+      0003A3 7B 06            [ 1]  714 	ld	a, (0x06, sp)
+      0003A5 4E               [ 1]  715 	swap	a
+      0003A6 A4 F0            [ 1]  716 	and	a, #0xf0
+      0003A8 1A 05            [ 1]  717 	or	a, (0x05, sp)
+      0003AA 1A 01            [ 1]  718 	or	a, (0x01, sp)
+      0003AC C7 52 58         [ 1]  719 	ld	0x5258, a
+                                    720 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2324: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1E);
+      0003AF C6 52 5C         [ 1]  721 	ld	a, 0x525c
+                                    722 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2331: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+      0003B2 0D 02            [ 1]  723 	tnz	(0x02, sp)
+      0003B4 27 07            [ 1]  724 	jreq	00102$
+                                    725 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2333: TIM1->CCER1 |= TIM1_CCER1_CC1P;
+      0003B6 AA 02            [ 1]  726 	or	a, #0x02
+      0003B8 C7 52 5C         [ 1]  727 	ld	0x525c, a
+      0003BB 20 05            [ 2]  728 	jra	00103$
+      0003BD                        729 00102$:
+                                    730 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2337: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC1P);
+      0003BD A4 FD            [ 1]  731 	and	a, #0xfd
+      0003BF C7 52 5C         [ 1]  732 	ld	0x525c, a
+      0003C2                        733 00103$:
+                                    734 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2341: TIM1->CCER1 |= TIM1_CCER1_CC1E;
+      0003C2 C6 52 5C         [ 1]  735 	ld	a, 0x525c
+      0003C5 AA 01            [ 1]  736 	or	a, #0x01
+      0003C7 C7 52 5C         [ 1]  737 	ld	0x525c, a
+                                    738 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2342: }
+      0003CA 1E 03            [ 2]  739 	ldw	x, (3, sp)
+      0003CC 5B 06            [ 2]  740 	addw	sp, #6
+      0003CE FC               [ 2]  741 	jp	(x)
+                                    742 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2362: static void TI2_Config(uint8_t TIM1_ICPolarity,
+                                    743 ;	-----------------------------------------
+                                    744 ;	 function TI2_Config
+                                    745 ;	-----------------------------------------
+      0003CF                        746 _TI2_Config:
+      0003CF 52 02            [ 2]  747 	sub	sp, #2
+      0003D1 6B 02            [ 1]  748 	ld	(0x02, sp), a
+                                    749 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2367: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2E);
+      0003D3 72 19 52 5C      [ 1]  750 	bres	0x525c, #4
+                                    751 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2370: TIM1->CCMR2 = (uint8_t)((uint8_t)(TIM1->CCMR2 & (uint8_t)(~(uint8_t)(TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) | (uint8_t)(((TIM1_ICSelection)) | ((uint8_t)(TIM1_ICFilter << 4))));
+      0003D7 C6 52 59         [ 1]  752 	ld	a, 0x5259
+      0003DA A4 0C            [ 1]  753 	and	a, #0x0c
+      0003DC 6B 01            [ 1]  754 	ld	(0x01, sp), a
+      0003DE 7B 06            [ 1]  755 	ld	a, (0x06, sp)
+      0003E0 4E               [ 1]  756 	swap	a
+      0003E1 A4 F0            [ 1]  757 	and	a, #0xf0
+      0003E3 1A 05            [ 1]  758 	or	a, (0x05, sp)
+      0003E5 1A 01            [ 1]  759 	or	a, (0x01, sp)
+      0003E7 C7 52 59         [ 1]  760 	ld	0x5259, a
+                                    761 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2367: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2E);
+      0003EA C6 52 5C         [ 1]  762 	ld	a, 0x525c
+                                    763 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2372: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+      0003ED 0D 02            [ 1]  764 	tnz	(0x02, sp)
+      0003EF 27 07            [ 1]  765 	jreq	00102$
+                                    766 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2374: TIM1->CCER1 |= TIM1_CCER1_CC2P;
+      0003F1 AA 20            [ 1]  767 	or	a, #0x20
+      0003F3 C7 52 5C         [ 1]  768 	ld	0x525c, a
+      0003F6 20 05            [ 2]  769 	jra	00103$
+      0003F8                        770 00102$:
+                                    771 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2378: TIM1->CCER1 &= (uint8_t)(~TIM1_CCER1_CC2P);
+      0003F8 A4 DF            [ 1]  772 	and	a, #0xdf
+      0003FA C7 52 5C         [ 1]  773 	ld	0x525c, a
+      0003FD                        774 00103$:
+                                    775 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2381: TIM1->CCER1 |= TIM1_CCER1_CC2E;
+      0003FD C6 52 5C         [ 1]  776 	ld	a, 0x525c
+      000400 AA 10            [ 1]  777 	or	a, #0x10
+      000402 C7 52 5C         [ 1]  778 	ld	0x525c, a
+                                    779 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2382: }
+      000405 1E 03            [ 2]  780 	ldw	x, (3, sp)
+      000407 5B 06            [ 2]  781 	addw	sp, #6
+      000409 FC               [ 2]  782 	jp	(x)
+                                    783 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2402: static void TI3_Config(uint8_t TIM1_ICPolarity,
+                                    784 ;	-----------------------------------------
+                                    785 ;	 function TI3_Config
+                                    786 ;	-----------------------------------------
+      00040A                        787 _TI3_Config:
+      00040A 52 02            [ 2]  788 	sub	sp, #2
+      00040C 6B 02            [ 1]  789 	ld	(0x02, sp), a
+                                    790 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2407: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3E);
+      00040E C6 52 5D         [ 1]  791 	ld	a, 0x525d
+      000411 A4 FE            [ 1]  792 	and	a, #0xfe
+      000413 C7 52 5D         [ 1]  793 	ld	0x525d, a
+                                    794 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2410: TIM1->CCMR3 = (uint8_t)((uint8_t)(TIM1->CCMR3 & (uint8_t)(~(uint8_t)(TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) | (uint8_t)(((TIM1_ICSelection)) | ((uint8_t)(TIM1_ICFilter << 4))));
+      000416 C6 52 5A         [ 1]  795 	ld	a, 0x525a
+      000419 A4 0C            [ 1]  796 	and	a, #0x0c
+      00041B 6B 01            [ 1]  797 	ld	(0x01, sp), a
+      00041D 7B 06            [ 1]  798 	ld	a, (0x06, sp)
+      00041F 4E               [ 1]  799 	swap	a
+      000420 A4 F0            [ 1]  800 	and	a, #0xf0
+      000422 1A 05            [ 1]  801 	or	a, (0x05, sp)
+      000424 1A 01            [ 1]  802 	or	a, (0x01, sp)
+      000426 C7 52 5A         [ 1]  803 	ld	0x525a, a
+                                    804 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2407: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3E);
+      000429 C6 52 5D         [ 1]  805 	ld	a, 0x525d
+                                    806 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2413: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+      00042C 0D 02            [ 1]  807 	tnz	(0x02, sp)
+      00042E 27 07            [ 1]  808 	jreq	00102$
+                                    809 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2415: TIM1->CCER2 |= TIM1_CCER2_CC3P;
+      000430 AA 02            [ 1]  810 	or	a, #0x02
+      000432 C7 52 5D         [ 1]  811 	ld	0x525d, a
+      000435 20 05            [ 2]  812 	jra	00103$
+      000437                        813 00102$:
+                                    814 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2419: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC3P);
+      000437 A4 FD            [ 1]  815 	and	a, #0xfd
+      000439 C7 52 5D         [ 1]  816 	ld	0x525d, a
+      00043C                        817 00103$:
+                                    818 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2422: TIM1->CCER2 |= TIM1_CCER2_CC3E;
+      00043C C6 52 5D         [ 1]  819 	ld	a, 0x525d
+      00043F AA 01            [ 1]  820 	or	a, #0x01
+      000441 C7 52 5D         [ 1]  821 	ld	0x525d, a
+                                    822 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2423: }
+      000444 1E 03            [ 2]  823 	ldw	x, (3, sp)
+      000446 5B 06            [ 2]  824 	addw	sp, #6
+      000448 FC               [ 2]  825 	jp	(x)
+                                    826 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2443: static void TI4_Config(uint8_t TIM1_ICPolarity,
+                                    827 ;	-----------------------------------------
+                                    828 ;	 function TI4_Config
+                                    829 ;	-----------------------------------------
+      000449                        830 _TI4_Config:
+      000449 52 02            [ 2]  831 	sub	sp, #2
+      00044B 6B 02            [ 1]  832 	ld	(0x02, sp), a
+                                    833 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2448: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4E);
+      00044D 72 19 52 5D      [ 1]  834 	bres	0x525d, #4
+                                    835 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2451: TIM1->CCMR4 = (uint8_t)((uint8_t)(TIM1->CCMR4 & (uint8_t)(~(uint8_t)(TIM1_CCMR_CCxS | TIM1_CCMR_ICxF))) | (uint8_t)(((TIM1_ICSelection)) | ((uint8_t)(TIM1_ICFilter << 4))));
+      000451 C6 52 5B         [ 1]  836 	ld	a, 0x525b
+      000454 A4 0C            [ 1]  837 	and	a, #0x0c
+      000456 6B 01            [ 1]  838 	ld	(0x01, sp), a
+      000458 7B 06            [ 1]  839 	ld	a, (0x06, sp)
+      00045A 4E               [ 1]  840 	swap	a
+      00045B A4 F0            [ 1]  841 	and	a, #0xf0
+      00045D 1A 05            [ 1]  842 	or	a, (0x05, sp)
+      00045F 1A 01            [ 1]  843 	or	a, (0x01, sp)
+      000461 C7 52 5B         [ 1]  844 	ld	0x525b, a
+                                    845 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2448: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4E);
+      000464 C6 52 5D         [ 1]  846 	ld	a, 0x525d
+                                    847 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2454: if (TIM1_ICPolarity != TIM1_ICPOLARITY_RISING)
+      000467 0D 02            [ 1]  848 	tnz	(0x02, sp)
+      000469 27 07            [ 1]  849 	jreq	00102$
+                                    850 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2456: TIM1->CCER2 |= TIM1_CCER2_CC4P;
+      00046B AA 20            [ 1]  851 	or	a, #0x20
+      00046D C7 52 5D         [ 1]  852 	ld	0x525d, a
+      000470 20 05            [ 2]  853 	jra	00103$
+      000472                        854 00102$:
+                                    855 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2460: TIM1->CCER2 &= (uint8_t)(~TIM1_CCER2_CC4P);
+      000472 A4 DF            [ 1]  856 	and	a, #0xdf
+      000474 C7 52 5D         [ 1]  857 	ld	0x525d, a
+      000477                        858 00103$:
+                                    859 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2464: TIM1->CCER2 |= TIM1_CCER2_CC4E;
+      000477 C6 52 5D         [ 1]  860 	ld	a, 0x525d
+      00047A AA 10            [ 1]  861 	or	a, #0x10
+      00047C C7 52 5D         [ 1]  862 	ld	0x525d, a
+                                    863 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c: 2465: }
+      00047F 1E 03            [ 2]  864 	ldw	x, (3, sp)
+      000481 5B 06            [ 2]  865 	addw	sp, #6
+      000483 FC               [ 2]  866 	jp	(x)
+                                    867 	.area CODE
+                                    868 	.area CONST
+                                    869 	.area CONST
+      000000                        870 ___str_0:
+      000000 2F 77 6F 72 6B 73 70   871 	.ascii "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Li"
              61 63 65 2F 53 6F 66
              74 77 61 72 65 2F 46
              69 72 6D 77 61 72 65
@@ -847,10 +877,10 @@
              53 54 4D 38 53 5F 53
              74 64 50 65 72 69 70
              68 5F 4C 69
-      00003C 62 2F 73 72 63 2F 73   842 	.ascii "b/src/stm8s_tim1.c"
+      00003C 62 2F 73 72 63 2F 73   872 	.ascii "b/src/stm8s_tim1.c"
              74 6D 38 73 5F 74 69
              6D 31 2E 63
-      00004E 00                     843 	.db 0x00
-                                    844 	.area CODE
-                                    845 	.area INITIALIZER
-                                    846 	.area CABS (ABS)
+      00004E 00                     873 	.db 0x00
+                                    874 	.area CODE
+                                    875 	.area INITIALIZER
+                                    876 	.area CABS (ABS)
