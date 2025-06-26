@@ -72,7 +72,7 @@
                                      72 	.area GSINIT
                                      73 	.area GSFINAL
                                      74 	.area GSINIT
-      00803B CD 98 76         [ 4]   75 	call	___sdcc_external_startup
+      00803B CD 98 59         [ 4]   75 	call	___sdcc_external_startup
       00803E 4D               [ 1]   76 	tnz	a
       00803F 27 03            [ 1]   77 	jreq	__sdcc_init_data
       008041 CC 80 38         [ 2]   78 	jp	__sdcc_program_startup
@@ -148,7 +148,7 @@
       008263 49               [ 1]  148 	rlc	a
       008264 88               [ 1]  149 	push	a
       008265 4F               [ 1]  150 	clr	a
-      008266 CD 83 2D         [ 4]  151 	call	_user_interface_update_message
+      008266 CD 83 10         [ 4]  151 	call	_user_interface_update_message
                                     152 ;	/workspace/Software/Firmware/new_begining/main.c: 18: user_interface_update_message(USER_INTERFACE_STATE_OK_MSG, (i == 0) ? USER_INTERFACE_DISABLE : USER_INTERFACE_ENABLE);
       008269 CE 00 01         [ 2]  153 	ldw	x, _i+0
       00826C 1D 00 01         [ 2]  154 	subw	x, #0x0001
@@ -156,14 +156,14 @@
       008270 49               [ 1]  156 	rlc	a
       008271 88               [ 1]  157 	push	a
       008272 A6 01            [ 1]  158 	ld	a, #0x01
-      008274 CD 83 2D         [ 4]  159 	call	_user_interface_update_message
+      008274 CD 83 10         [ 4]  159 	call	_user_interface_update_message
                                     160 ;	/workspace/Software/Firmware/new_begining/main.c: 20: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
       008277 5F               [ 1]  161 	clrw	x
       008278 5C               [ 1]  162 	incw	x
-      008279 CD 8D 4D         [ 4]  163 	call	_TIM1_ClearFlag
+      008279 CD 8D 30         [ 4]  163 	call	_TIM1_ClearFlag
                                     164 ;	/workspace/Software/Firmware/new_begining/main.c: 21: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
       00827C A6 01            [ 1]  165 	ld	a, #0x01
-      00827E CD 8D 7A         [ 4]  166 	call	_TIM1_ClearITPendingBit
+      00827E CD 8D 5D         [ 4]  166 	call	_TIM1_ClearITPendingBit
                                     167 ;	/workspace/Software/Firmware/new_begining/main.c: 22: }
       008281 80               [11]  168 	iret
                                     169 ;	/workspace/Software/Firmware/new_begining/main.c: 24: void main()
@@ -172,39 +172,25 @@
                                     172 ;	-----------------------------------------
       008282                        173 _main:
                                     174 ;	/workspace/Software/Firmware/new_begining/main.c: 27: clk_conf_init();
-      008282 CD 83 73         [ 4]  175 	call	_clk_conf_init
+      008282 CD 83 56         [ 4]  175 	call	_clk_conf_init
                                     176 ;	/workspace/Software/Firmware/new_begining/main.c: 29: user_interface_init();
-      008285 CD 83 1B         [ 4]  177 	call	_user_interface_init
+      008285 CD 82 FE         [ 4]  177 	call	_user_interface_init
                                     178 ;	/workspace/Software/Firmware/new_begining/main.c: 30: timer_conf_init();
-      008288 CD 83 B1         [ 4]  179 	call	_timer_conf_init
-                                    180 ;	/workspace/Software/Firmware/new_begining/main.c: 32: GPIOD->DDR |= GPIO_PIN_4;
-      00828B 72 18 50 11      [ 1]  181 	bset	0x5011, #4
-                                    182 ;	/workspace/Software/Firmware/new_begining/main.c: 33: GPIOD->CR1 |= GPIO_PIN_4;
-      00828F C6 50 12         [ 1]  183 	ld	a, 0x5012
-      008292 AA 10            [ 1]  184 	or	a, #0x10
-      008294 C7 50 12         [ 1]  185 	ld	0x5012, a
-                                    186 ;	/workspace/Software/Firmware/new_begining/main.c: 36: TIM1->PSCRL = 125;
-      008297 35 7D 52 61      [ 1]  187 	mov	0x5261+0, #0x7d
-                                    188 ;	/workspace/Software/Firmware/new_begining/main.c: 37: TIM1->ARRH = 1000 >> 8;
-      00829B 35 03 52 62      [ 1]  189 	mov	0x5262+0, #0x03
-                                    190 ;	/workspace/Software/Firmware/new_begining/main.c: 38: TIM1->ARRL = 1000 & 0xFF;
-      00829F 35 E8 52 63      [ 1]  191 	mov	0x5263+0, #0xe8
-                                    192 ;	/workspace/Software/Firmware/new_begining/main.c: 39: TIM1->CR1 = TIM1_CR1_ARPE | TIM1_CR1_CEN;
-      0082A3 35 81 52 50      [ 1]  193 	mov	0x5250+0, #0x81
-                                    194 ;	/workspace/Software/Firmware/new_begining/main.c: 40: TIM1->IER = TIM1_IER_UIE;
-      0082A7 35 01 52 54      [ 1]  195 	mov	0x5254+0, #0x01
-                                    196 ;	/workspace/Software/Firmware/new_begining/main.c: 44: __endasm;
-      0082AB 9A               [ 1]  197 	rim
-                                    198 ;	/workspace/Software/Firmware/new_begining/main.c: 46: while (1)
-      0082AC                        199 00102$:
-                                    200 ;	/workspace/Software/Firmware/new_begining/main.c: 48: wfi();
-      0082AC 8F               [10]  201 	wfi
-      0082AD 20 FD            [ 2]  202 	jra	00102$
-                                    203 ;	/workspace/Software/Firmware/new_begining/main.c: 50: }
-      0082AF 81               [ 4]  204 	ret
-                                    205 	.area CODE
-                                    206 	.area CONST
-                                    207 	.area INITIALIZER
-      008245                        208 __xinit__i:
-      008245 00 00                  209 	.dw #0x0000
-                                    210 	.area CABS (ABS)
+      008288 CD 83 94         [ 4]  179 	call	_timer_conf_init
+                                    180 ;	/workspace/Software/Firmware/new_begining/main.c: 42: timer_conf_init();
+      00828B CD 83 94         [ 4]  181 	call	_timer_conf_init
+                                    182 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 22: enableInterrupts();
+      00828E 9A               [ 1]  183 	rim
+                                    184 ;	/workspace/Software/Firmware/new_begining/main.c: 49: while (1)
+      00828F                        185 00102$:
+                                    186 ;	/workspace/Software/Firmware/new_begining/main.c: 51: wfi();
+      00828F 8F               [10]  187 	wfi
+      008290 20 FD            [ 2]  188 	jra	00102$
+                                    189 ;	/workspace/Software/Firmware/new_begining/main.c: 53: }
+      008292 81               [ 4]  190 	ret
+                                    191 	.area CODE
+                                    192 	.area CONST
+                                    193 	.area INITIALIZER
+      008245                        194 __xinit__i:
+      008245 00 00                  195 	.dw #0x0000
+                                    196 	.area CABS (ABS)

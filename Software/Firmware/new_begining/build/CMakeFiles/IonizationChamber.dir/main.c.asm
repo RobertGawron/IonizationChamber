@@ -177,30 +177,16 @@ _main:
 	call	_user_interface_init
 ;	/workspace/Software/Firmware/new_begining/main.c: 30: timer_conf_init();
 	call	_timer_conf_init
-;	/workspace/Software/Firmware/new_begining/main.c: 32: GPIOD->DDR |= GPIO_PIN_4;
-	bset	0x5011, #4
-;	/workspace/Software/Firmware/new_begining/main.c: 33: GPIOD->CR1 |= GPIO_PIN_4;
-	ld	a, 0x5012
-	or	a, #0x10
-	ld	0x5012, a
-;	/workspace/Software/Firmware/new_begining/main.c: 36: TIM1->PSCRL = 125;
-	mov	0x5261+0, #0x7d
-;	/workspace/Software/Firmware/new_begining/main.c: 37: TIM1->ARRH = 1000 >> 8;
-	mov	0x5262+0, #0x03
-;	/workspace/Software/Firmware/new_begining/main.c: 38: TIM1->ARRL = 1000 & 0xFF;
-	mov	0x5263+0, #0xe8
-;	/workspace/Software/Firmware/new_begining/main.c: 39: TIM1->CR1 = TIM1_CR1_ARPE | TIM1_CR1_CEN;
-	mov	0x5250+0, #0x81
-;	/workspace/Software/Firmware/new_begining/main.c: 40: TIM1->IER = TIM1_IER_UIE;
-	mov	0x5254+0, #0x01
-;	/workspace/Software/Firmware/new_begining/main.c: 44: __endasm;
+;	/workspace/Software/Firmware/new_begining/main.c: 42: timer_conf_init();
+	call	_timer_conf_init
+;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 22: enableInterrupts();
 	rim
-;	/workspace/Software/Firmware/new_begining/main.c: 46: while (1)
+;	/workspace/Software/Firmware/new_begining/main.c: 49: while (1)
 00102$:
-;	/workspace/Software/Firmware/new_begining/main.c: 48: wfi();
+;	/workspace/Software/Firmware/new_begining/main.c: 51: wfi();
 	wfi
 	jra	00102$
-;	/workspace/Software/Firmware/new_begining/main.c: 50: }
+;	/workspace/Software/Firmware/new_begining/main.c: 53: }
 	ret
 	.area CODE
 	.area CONST

@@ -50,11 +50,11 @@
                                      50 ;	-----------------------------------------
                                      51 ;	 function assert_failed
                                      52 ;	-----------------------------------------
-      0082B0                         53 _assert_failed:
+      008293                         53 _assert_failed:
                                      54 ;	/workspace/Software/Firmware/new_begining/assert_impl.c: 5: }
-      0082B0 1E 01            [ 2]   55 	ldw	x, (1, sp)
-      0082B2 5B 06            [ 2]   56 	addw	sp, #6
-      0082B4 FC               [ 2]   57 	jp	(x)
+      008293 1E 01            [ 2]   55 	ldw	x, (1, sp)
+      008295 5B 06            [ 2]   56 	addw	sp, #6
+      008297 FC               [ 2]   57 	jp	(x)
                                      58 	.area CODE
                                      59 	.area CONST
                                      60 	.area INITIALIZER

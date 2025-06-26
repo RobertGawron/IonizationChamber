@@ -29,19 +29,22 @@ void main()
     user_interface_init();
     timer_conf_init();
     // Configure PD4
-    GPIOD->DDR |= GPIO_PIN_4;
-    GPIOD->CR1 |= GPIO_PIN_4;
+    // GPIOD->DDR |= GPIO_PIN_4;
+    // GPIOD->CR1 |= GPIO_PIN_4;
 
-    // Configure TIM1
-    TIM1->PSCRL = 125;
-    TIM1->ARRH = 1000 >> 8;
-    TIM1->ARRL = 1000 & 0xFF;
-    TIM1->CR1 = TIM1_CR1_ARPE | TIM1_CR1_CEN;
-    TIM1->IER = TIM1_IER_UIE;
+    /*    // Configure TIM1
+        TIM1->PSCRL = 125;
+        TIM1->ARRH = 1000 >> 8;
+        TIM1->ARRL = 1000 & 0xFF;
+        TIM1->CR1 = TIM1_CR1_ARPE | TIM1_CR1_CEN;
+        TIM1->IER = TIM1_IER_UIE;
+    */
+    timer_conf_init();
 
     // Enable interrupts
-    __asm rim
-        __endasm;
+    //    __asm rim
+    //        __endasm;
+    interrupt_control_enable();
 
     while (1)
     {
