@@ -85,12 +85,12 @@ clean: CMakeFiles/IonizationChamber.dir/clean
 CMakeFiles/IonizationChamber.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target IonizationChamber"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Built target IonizationChamber"
 .PHONY : CMakeFiles/IonizationChamber.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/IonizationChamber.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/Software/Firmware/new_begining/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/Software/Firmware/new_begining/build/CMakeFiles 12
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/IonizationChamber.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /workspace/Software/Firmware/new_begining/build/CMakeFiles 0
 .PHONY : CMakeFiles/IonizationChamber.dir/rule
@@ -102,7 +102,7 @@ IonizationChamber: CMakeFiles/IonizationChamber.dir/rule
 # codegen rule for target.
 CMakeFiles/IonizationChamber.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Finished codegen for target IonizationChamber"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12 "Finished codegen for target IonizationChamber"
 .PHONY : CMakeFiles/IonizationChamber.dir/codegen
 
 # clean rule for target.

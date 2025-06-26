@@ -177,30 +177,6 @@ Driver/clk_conf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.s
 .PHONY : Driver/clk_conf.c.s
 
-Driver/stm8_it.rel: Driver/stm8_it.c.rel
-.PHONY : Driver/stm8_it.rel
-
-# target to build an object file
-Driver/stm8_it.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/stm8_it.c.rel
-.PHONY : Driver/stm8_it.c.rel
-
-Driver/stm8_it.i: Driver/stm8_it.c.i
-.PHONY : Driver/stm8_it.i
-
-# target to preprocess a source file
-Driver/stm8_it.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/stm8_it.c.i
-.PHONY : Driver/stm8_it.c.i
-
-Driver/stm8_it.s: Driver/stm8_it.c.s
-.PHONY : Driver/stm8_it.s
-
-# target to generate assembly for a file
-Driver/stm8_it.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/stm8_it.c.s
-.PHONY : Driver/stm8_it.c.s
-
 Driver/timer_conf.rel: Driver/timer_conf.c.rel
 .PHONY : Driver/timer_conf.rel
 
@@ -321,30 +297,6 @@ STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
 
-STM8S_StdPeriph_Lib/src/stm8s_itc.rel: STM8S_StdPeriph_Lib/src/stm8s_itc.c.rel
-.PHONY : STM8S_StdPeriph_Lib/src/stm8s_itc.rel
-
-# target to build an object file
-STM8S_StdPeriph_Lib/src/stm8s_itc.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_itc.c.rel
-.PHONY : STM8S_StdPeriph_Lib/src/stm8s_itc.c.rel
-
-STM8S_StdPeriph_Lib/src/stm8s_itc.i: STM8S_StdPeriph_Lib/src/stm8s_itc.c.i
-.PHONY : STM8S_StdPeriph_Lib/src/stm8s_itc.i
-
-# target to preprocess a source file
-STM8S_StdPeriph_Lib/src/stm8s_itc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_itc.c.i
-.PHONY : STM8S_StdPeriph_Lib/src/stm8s_itc.c.i
-
-STM8S_StdPeriph_Lib/src/stm8s_itc.s: STM8S_StdPeriph_Lib/src/stm8s_itc.c.s
-.PHONY : STM8S_StdPeriph_Lib/src/stm8s_itc.s
-
-# target to generate assembly for a file
-STM8S_StdPeriph_Lib/src/stm8s_itc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_itc.c.s
-.PHONY : STM8S_StdPeriph_Lib/src/stm8s_itc.c.s
-
 STM8S_StdPeriph_Lib/src/stm8s_tim1.rel: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_tim1.rel
 
@@ -456,9 +408,6 @@ help:
 	@echo "... Driver/clk_conf.rel"
 	@echo "... Driver/clk_conf.i"
 	@echo "... Driver/clk_conf.s"
-	@echo "... Driver/stm8_it.rel"
-	@echo "... Driver/stm8_it.i"
-	@echo "... Driver/stm8_it.s"
 	@echo "... Driver/timer_conf.rel"
 	@echo "... Driver/timer_conf.i"
 	@echo "... Driver/timer_conf.s"
@@ -474,9 +423,6 @@ help:
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_i2c.rel"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_i2c.i"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_i2c.s"
-	@echo "... STM8S_StdPeriph_Lib/src/stm8s_itc.rel"
-	@echo "... STM8S_StdPeriph_Lib/src/stm8s_itc.i"
-	@echo "... STM8S_StdPeriph_Lib/src/stm8s_itc.s"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_tim1.rel"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_tim1.i"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_tim1.s"
