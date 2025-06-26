@@ -129,6 +129,78 @@ IonizationChamber/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/build
 .PHONY : IonizationChamber/fast
 
+Application/app_builder.rel: Application/app_builder.c.rel
+.PHONY : Application/app_builder.rel
+
+# target to build an object file
+Application/app_builder.c.rel:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel
+.PHONY : Application/app_builder.c.rel
+
+Application/app_builder.i: Application/app_builder.c.i
+.PHONY : Application/app_builder.i
+
+# target to preprocess a source file
+Application/app_builder.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/app_builder.c.i
+.PHONY : Application/app_builder.c.i
+
+Application/app_builder.s: Application/app_builder.c.s
+.PHONY : Application/app_builder.s
+
+# target to generate assembly for a file
+Application/app_builder.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/app_builder.c.s
+.PHONY : Application/app_builder.c.s
+
+Driver/clk_conf.rel: Driver/clk_conf.c.rel
+.PHONY : Driver/clk_conf.rel
+
+# target to build an object file
+Driver/clk_conf.c.rel:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel
+.PHONY : Driver/clk_conf.c.rel
+
+Driver/clk_conf.i: Driver/clk_conf.c.i
+.PHONY : Driver/clk_conf.i
+
+# target to preprocess a source file
+Driver/clk_conf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.i
+.PHONY : Driver/clk_conf.c.i
+
+Driver/clk_conf.s: Driver/clk_conf.c.s
+.PHONY : Driver/clk_conf.s
+
+# target to generate assembly for a file
+Driver/clk_conf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.s
+.PHONY : Driver/clk_conf.c.s
+
+Driver/user_interface.rel: Driver/user_interface.c.rel
+.PHONY : Driver/user_interface.rel
+
+# target to build an object file
+Driver/user_interface.c.rel:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel
+.PHONY : Driver/user_interface.c.rel
+
+Driver/user_interface.i: Driver/user_interface.c.i
+.PHONY : Driver/user_interface.i
+
+# target to preprocess a source file
+Driver/user_interface.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.i
+.PHONY : Driver/user_interface.c.i
+
+Driver/user_interface.s: Driver/user_interface.c.s
+.PHONY : Driver/user_interface.s
+
+# target to generate assembly for a file
+Driver/user_interface.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.s
+.PHONY : Driver/user_interface.c.s
+
 STM8S_StdPeriph_Lib/src/stm8s_clk.rel: STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_clk.rel
 
@@ -306,6 +378,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... IonizationChamber"
+	@echo "... Application/app_builder.rel"
+	@echo "... Application/app_builder.i"
+	@echo "... Application/app_builder.s"
+	@echo "... Driver/clk_conf.rel"
+	@echo "... Driver/clk_conf.i"
+	@echo "... Driver/clk_conf.s"
+	@echo "... Driver/user_interface.rel"
+	@echo "... Driver/user_interface.i"
+	@echo "... Driver/user_interface.s"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_clk.rel"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_clk.i"
 	@echo "... STM8S_StdPeriph_Lib/src/stm8s_clk.s"

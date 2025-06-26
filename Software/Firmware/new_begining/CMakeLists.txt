@@ -10,14 +10,21 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "")
 
 project(IonizationChamber C)
 # todo think about new standard
-SET(CMAKE_C_FLAGS "-mstm8 --std-c99 -DSTM8S003 -D__SDCC__ -DUSE_STDPERIPH_DRIVER")
+SET(CMAKE_C_FLAGS "-mstm8 --std-sdcc11 --std-c99 -DSTM8S003 -D__SDCC__ -DUSE_STDPERIPH_DRIVER")
 
 include_directories(${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc)
+include_directories(${CMAKE_SOURCE_DIR}/Application)
+include_directories(${CMAKE_SOURCE_DIR}/Driver)
+
 include_directories(${CMAKE_SOURCE_DIR})
 
 add_executable(IonizationChamber
         main.c
         assert_impl.c
+        Application/app_builder.c
+        Driver/user_interface.c
+        Driver/clk_conf.c
+        
         #Src/ApplicationBuilder.c
         #Src/ClockConfigurator.c
         #Src/MeasurementFrame

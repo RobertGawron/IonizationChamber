@@ -98,9 +98,48 @@ CMakeFiles/IonizationChamber.dir/assert_impl.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/IonizationChamber.dir/assert_impl.c.s"
 	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_ASSEMBLY_SOURCE
 
+CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
+CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel: /workspace/Software/Firmware/new_begining/Application/app_builder.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel"
+	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel -c /workspace/Software/Firmware/new_begining/Application/app_builder.c
+
+CMakeFiles/IonizationChamber.dir/Application/app_builder.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/IonizationChamber.dir/Application/app_builder.c.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/IonizationChamber.dir/Application/app_builder.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/IonizationChamber.dir/Application/app_builder.c.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
+CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel: /workspace/Software/Firmware/new_begining/Driver/user_interface.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel"
+	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel -c /workspace/Software/Firmware/new_begining/Driver/user_interface.c
+
+CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_ASSEMBLY_SOURCE
+
+CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
+CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel: /workspace/Software/Firmware/new_begining/Driver/clk_conf.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel"
+	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel -c /workspace/Software/Firmware/new_begining/Driver/clk_conf.c
+
+CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.i"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_PREPROCESSED_SOURCE
+
+CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.s"
+	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_C_CREATE_ASSEMBLY_SOURCE
+
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel: /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel"
 	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel -c /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i: cmake_force
@@ -113,7 +152,7 @@ CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s: cmake_f
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel: /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_i2c.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel"
 	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel -c /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_i2c.c
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i: cmake_force
@@ -126,7 +165,7 @@ CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s: cmake_fo
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel: /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel"
 	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel -c /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_tim1.c
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i: cmake_force
@@ -139,7 +178,7 @@ CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s: cmake_f
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel: /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_clk.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel"
 	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel -c /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_clk.c
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.i: cmake_force
@@ -152,7 +191,7 @@ CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.s: cmake_fo
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel: CMakeFiles/IonizationChamber.dir/flags.make
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel: /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_uart1.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel"
 	/usr/bin/sdcc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel -c /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_uart1.c
 
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i: cmake_force
@@ -167,6 +206,9 @@ CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s: cmake_
 IonizationChamber_OBJECTS = \
 "CMakeFiles/IonizationChamber.dir/main.c.rel" \
 "CMakeFiles/IonizationChamber.dir/assert_impl.c.rel" \
+"CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel" \
+"CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel" \
+"CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel" \
 "CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel" \
 "CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel" \
 "CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel" \
@@ -178,6 +220,9 @@ IonizationChamber_EXTERNAL_OBJECTS =
 
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/main.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/assert_impl.c.rel
+IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel
+IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel
+IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
@@ -185,7 +230,7 @@ IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/build.make
 IonizationChamber.ihx: CMakeFiles/IonizationChamber.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking C executable IonizationChamber.ihx"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/workspace/Software/Firmware/new_begining/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking C executable IonizationChamber.ihx"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IonizationChamber.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

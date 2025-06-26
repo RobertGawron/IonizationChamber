@@ -54,210 +54,210 @@
                                      54 ;	-----------------------------------------
                                      55 ;	 function GPIO_DeInit
                                      56 ;	-----------------------------------------
-      008219                         57 _GPIO_DeInit:
-      008219 51               [ 1]   58 	exgw	x, y
+      0082C2                         57 _GPIO_DeInit:
+      0082C2 51               [ 1]   58 	exgw	x, y
                                      59 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 55: GPIOx->ODR = GPIO_ODR_RESET_VALUE; /* Reset Output Data Register */
-      00821A 90 7F            [ 1]   60 	clr	(y)
+      0082C3 90 7F            [ 1]   60 	clr	(y)
                                      61 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 56: GPIOx->DDR = GPIO_DDR_RESET_VALUE; /* Reset Data Direction Register */
-      00821C 93               [ 1]   62 	ldw	x, y
-      00821D 5C               [ 1]   63 	incw	x
-      00821E 5C               [ 1]   64 	incw	x
-      00821F 7F               [ 1]   65 	clr	(x)
+      0082C5 93               [ 1]   62 	ldw	x, y
+      0082C6 5C               [ 1]   63 	incw	x
+      0082C7 5C               [ 1]   64 	incw	x
+      0082C8 7F               [ 1]   65 	clr	(x)
                                      66 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 57: GPIOx->CR1 = GPIO_CR1_RESET_VALUE; /* Reset Control Register 1 */
-      008220 93               [ 1]   67 	ldw	x, y
-      008221 6F 03            [ 1]   68 	clr	(0x0003, x)
+      0082C9 93               [ 1]   67 	ldw	x, y
+      0082CA 6F 03            [ 1]   68 	clr	(0x0003, x)
                                      69 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 58: GPIOx->CR2 = GPIO_CR2_RESET_VALUE; /* Reset Control Register 2 */
-      008223 93               [ 1]   70 	ldw	x, y
-      008224 6F 04            [ 1]   71 	clr	(0x0004, x)
+      0082CC 93               [ 1]   70 	ldw	x, y
+      0082CD 6F 04            [ 1]   71 	clr	(0x0004, x)
                                      72 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 59: }
-      008226 81               [ 4]   73 	ret
+      0082CF 81               [ 4]   73 	ret
                                      74 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 71: void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef GPIO_Pin, GPIO_Mode_TypeDef GPIO_Mode)
                                      75 ;	-----------------------------------------
                                      76 ;	 function GPIO_Init
                                      77 ;	-----------------------------------------
-      008227                         78 _GPIO_Init:
-      008227 52 06            [ 2]   79 	sub	sp, #6
-      008229 1F 05            [ 2]   80 	ldw	(0x05, sp), x
-      00822B 6B 04            [ 1]   81 	ld	(0x04, sp), a
+      0082D0                         78 _GPIO_Init:
+      0082D0 52 06            [ 2]   79 	sub	sp, #6
+      0082D2 1F 05            [ 2]   80 	ldw	(0x05, sp), x
+      0082D4 6B 04            [ 1]   81 	ld	(0x04, sp), a
                                      82 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 77: assert_param(IS_GPIO_MODE_OK(GPIO_Mode));
-      00822D 0D 09            [ 1]   83 	tnz	(0x09, sp)
-      00822F 27 4E            [ 1]   84 	jreq	00116$
-      008231 7B 09            [ 1]   85 	ld	a, (0x09, sp)
-      008233 A1 40            [ 1]   86 	cp	a, #0x40
-      008235 27 48            [ 1]   87 	jreq	00116$
-      008237 7B 09            [ 1]   88 	ld	a, (0x09, sp)
-      008239 A1 20            [ 1]   89 	cp	a, #0x20
-      00823B 27 42            [ 1]   90 	jreq	00116$
-      00823D 7B 09            [ 1]   91 	ld	a, (0x09, sp)
-      00823F A1 60            [ 1]   92 	cp	a, #0x60
-      008241 27 3C            [ 1]   93 	jreq	00116$
-      008243 7B 09            [ 1]   94 	ld	a, (0x09, sp)
-      008245 A1 A0            [ 1]   95 	cp	a, #0xa0
-      008247 27 36            [ 1]   96 	jreq	00116$
-      008249 7B 09            [ 1]   97 	ld	a, (0x09, sp)
-      00824B A1 E0            [ 1]   98 	cp	a, #0xe0
-      00824D 27 30            [ 1]   99 	jreq	00116$
-      00824F 7B 09            [ 1]  100 	ld	a, (0x09, sp)
-      008251 A1 80            [ 1]  101 	cp	a, #0x80
-      008253 27 2A            [ 1]  102 	jreq	00116$
-      008255 7B 09            [ 1]  103 	ld	a, (0x09, sp)
-      008257 A1 C0            [ 1]  104 	cp	a, #0xc0
-      008259 27 24            [ 1]  105 	jreq	00116$
-      00825B 7B 09            [ 1]  106 	ld	a, (0x09, sp)
-      00825D A1 B0            [ 1]  107 	cp	a, #0xb0
-      00825F 27 1E            [ 1]  108 	jreq	00116$
-      008261 7B 09            [ 1]  109 	ld	a, (0x09, sp)
-      008263 A1 F0            [ 1]  110 	cp	a, #0xf0
-      008265 27 18            [ 1]  111 	jreq	00116$
-      008267 7B 09            [ 1]  112 	ld	a, (0x09, sp)
-      008269 A1 90            [ 1]  113 	cp	a, #0x90
-      00826B 27 12            [ 1]  114 	jreq	00116$
-      00826D 7B 09            [ 1]  115 	ld	a, (0x09, sp)
-      00826F A1 D0            [ 1]  116 	cp	a, #0xd0
-      008271 27 0C            [ 1]  117 	jreq	00116$
-      008273 4B 4D            [ 1]  118 	push	#0x4d
-      008275 5F               [ 1]  119 	clrw	x
-      008276 89               [ 2]  120 	pushw	x
-      008277 4B 00            [ 1]  121 	push	#0x00
-      008279 AE 80 2D         [ 2]  122 	ldw	x, #(___str_0+0)
-      00827C CD 82 14         [ 4]  123 	call	_assert_failed
-      00827F                        124 00116$:
+      0082D6 0D 09            [ 1]   83 	tnz	(0x09, sp)
+      0082D8 27 4E            [ 1]   84 	jreq	00116$
+      0082DA 7B 09            [ 1]   85 	ld	a, (0x09, sp)
+      0082DC A1 40            [ 1]   86 	cp	a, #0x40
+      0082DE 27 48            [ 1]   87 	jreq	00116$
+      0082E0 7B 09            [ 1]   88 	ld	a, (0x09, sp)
+      0082E2 A1 20            [ 1]   89 	cp	a, #0x20
+      0082E4 27 42            [ 1]   90 	jreq	00116$
+      0082E6 7B 09            [ 1]   91 	ld	a, (0x09, sp)
+      0082E8 A1 60            [ 1]   92 	cp	a, #0x60
+      0082EA 27 3C            [ 1]   93 	jreq	00116$
+      0082EC 7B 09            [ 1]   94 	ld	a, (0x09, sp)
+      0082EE A1 A0            [ 1]   95 	cp	a, #0xa0
+      0082F0 27 36            [ 1]   96 	jreq	00116$
+      0082F2 7B 09            [ 1]   97 	ld	a, (0x09, sp)
+      0082F4 A1 E0            [ 1]   98 	cp	a, #0xe0
+      0082F6 27 30            [ 1]   99 	jreq	00116$
+      0082F8 7B 09            [ 1]  100 	ld	a, (0x09, sp)
+      0082FA A1 80            [ 1]  101 	cp	a, #0x80
+      0082FC 27 2A            [ 1]  102 	jreq	00116$
+      0082FE 7B 09            [ 1]  103 	ld	a, (0x09, sp)
+      008300 A1 C0            [ 1]  104 	cp	a, #0xc0
+      008302 27 24            [ 1]  105 	jreq	00116$
+      008304 7B 09            [ 1]  106 	ld	a, (0x09, sp)
+      008306 A1 B0            [ 1]  107 	cp	a, #0xb0
+      008308 27 1E            [ 1]  108 	jreq	00116$
+      00830A 7B 09            [ 1]  109 	ld	a, (0x09, sp)
+      00830C A1 F0            [ 1]  110 	cp	a, #0xf0
+      00830E 27 18            [ 1]  111 	jreq	00116$
+      008310 7B 09            [ 1]  112 	ld	a, (0x09, sp)
+      008312 A1 90            [ 1]  113 	cp	a, #0x90
+      008314 27 12            [ 1]  114 	jreq	00116$
+      008316 7B 09            [ 1]  115 	ld	a, (0x09, sp)
+      008318 A1 D0            [ 1]  116 	cp	a, #0xd0
+      00831A 27 0C            [ 1]  117 	jreq	00116$
+      00831C 4B 4D            [ 1]  118 	push	#0x4d
+      00831E 5F               [ 1]  119 	clrw	x
+      00831F 89               [ 2]  120 	pushw	x
+      008320 4B 00            [ 1]  121 	push	#0x00
+      008322 AE 80 2D         [ 2]  122 	ldw	x, #(___str_0+0)
+      008325 CD 81 CD         [ 4]  123 	call	_assert_failed
+      008328                        124 00116$:
                                     125 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 78: assert_param(IS_GPIO_PIN_OK(GPIO_Pin));
-      00827F 0D 04            [ 1]  126 	tnz	(0x04, sp)
-      008281 26 0C            [ 1]  127 	jrne	00151$
-      008283 4B 4E            [ 1]  128 	push	#0x4e
-      008285 5F               [ 1]  129 	clrw	x
-      008286 89               [ 2]  130 	pushw	x
-      008287 4B 00            [ 1]  131 	push	#0x00
-      008289 AE 80 2D         [ 2]  132 	ldw	x, #(___str_0+0)
-      00828C CD 82 14         [ 4]  133 	call	_assert_failed
-      00828F                        134 00151$:
+      008328 0D 04            [ 1]  126 	tnz	(0x04, sp)
+      00832A 26 0C            [ 1]  127 	jrne	00151$
+      00832C 4B 4E            [ 1]  128 	push	#0x4e
+      00832E 5F               [ 1]  129 	clrw	x
+      00832F 89               [ 2]  130 	pushw	x
+      008330 4B 00            [ 1]  131 	push	#0x00
+      008332 AE 80 2D         [ 2]  132 	ldw	x, #(___str_0+0)
+      008335 CD 81 CD         [ 4]  133 	call	_assert_failed
+      008338                        134 00151$:
                                     135 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 81: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
-      00828F 1E 05            [ 2]  136 	ldw	x, (0x05, sp)
-      008291 1C 00 04         [ 2]  137 	addw	x, #0x0004
-      008294 1F 01            [ 2]  138 	ldw	(0x01, sp), x
-      008296 F6               [ 1]  139 	ld	a, (x)
-      008297 88               [ 1]  140 	push	a
-      008298 7B 05            [ 1]  141 	ld	a, (0x05, sp)
-      00829A 43               [ 1]  142 	cpl	a
-      00829B 6B 04            [ 1]  143 	ld	(0x04, sp), a
-      00829D 84               [ 1]  144 	pop	a
-      00829E 14 03            [ 1]  145 	and	a, (0x03, sp)
-      0082A0 1E 01            [ 2]  146 	ldw	x, (0x01, sp)
-      0082A2 F7               [ 1]  147 	ld	(x), a
+      008338 1E 05            [ 2]  136 	ldw	x, (0x05, sp)
+      00833A 1C 00 04         [ 2]  137 	addw	x, #0x0004
+      00833D 1F 01            [ 2]  138 	ldw	(0x01, sp), x
+      00833F F6               [ 1]  139 	ld	a, (x)
+      008340 88               [ 1]  140 	push	a
+      008341 7B 05            [ 1]  141 	ld	a, (0x05, sp)
+      008343 43               [ 1]  142 	cpl	a
+      008344 6B 04            [ 1]  143 	ld	(0x04, sp), a
+      008346 84               [ 1]  144 	pop	a
+      008347 14 03            [ 1]  145 	and	a, (0x03, sp)
+      008349 1E 01            [ 2]  146 	ldw	x, (0x01, sp)
+      00834B F7               [ 1]  147 	ld	(x), a
                                     148 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 98: GPIOx->DDR |= (uint8_t)GPIO_Pin;
-      0082A3 1E 05            [ 2]  149 	ldw	x, (0x05, sp)
-      0082A5 5C               [ 1]  150 	incw	x
-      0082A6 5C               [ 1]  151 	incw	x
+      00834C 1E 05            [ 2]  149 	ldw	x, (0x05, sp)
+      00834E 5C               [ 1]  150 	incw	x
+      00834F 5C               [ 1]  151 	incw	x
                                     152 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 87: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x80) != (uint8_t)0x00) /* Output mode */
-      0082A7 0D 09            [ 1]  153 	tnz	(0x09, sp)
-      0082A9 2A 20            [ 1]  154 	jrpl	00105$
+      008350 0D 09            [ 1]  153 	tnz	(0x09, sp)
+      008352 2A 20            [ 1]  154 	jrpl	00105$
                                     155 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 91: GPIOx->ODR |= (uint8_t)GPIO_Pin;
-      0082AB 16 05            [ 2]  156 	ldw	y, (0x05, sp)
-      0082AD 90 F6            [ 1]  157 	ld	a, (y)
+      008354 16 05            [ 2]  156 	ldw	y, (0x05, sp)
+      008356 90 F6            [ 1]  157 	ld	a, (y)
                                     158 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 89: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x10) != (uint8_t)0x00) /* High level */
-      0082AF 88               [ 1]  159 	push	a
-      0082B0 7B 0A            [ 1]  160 	ld	a, (0x0a, sp)
-      0082B2 A5 10            [ 1]  161 	bcp	a, #0x10
-      0082B4 84               [ 1]  162 	pop	a
-      0082B5 27 08            [ 1]  163 	jreq	00102$
+      008358 88               [ 1]  159 	push	a
+      008359 7B 0A            [ 1]  160 	ld	a, (0x0a, sp)
+      00835B A5 10            [ 1]  161 	bcp	a, #0x10
+      00835D 84               [ 1]  162 	pop	a
+      00835E 27 08            [ 1]  163 	jreq	00102$
                                     164 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 91: GPIOx->ODR |= (uint8_t)GPIO_Pin;
-      0082B7 1A 04            [ 1]  165 	or	a, (0x04, sp)
-      0082B9 16 05            [ 2]  166 	ldw	y, (0x05, sp)
-      0082BB 90 F7            [ 1]  167 	ld	(y), a
-      0082BD 20 06            [ 2]  168 	jra	00103$
-      0082BF                        169 00102$:
+      008360 1A 04            [ 1]  165 	or	a, (0x04, sp)
+      008362 16 05            [ 2]  166 	ldw	y, (0x05, sp)
+      008364 90 F7            [ 1]  167 	ld	(y), a
+      008366 20 06            [ 2]  168 	jra	00103$
+      008368                        169 00102$:
                                     170 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 95: GPIOx->ODR &= (uint8_t)(~(GPIO_Pin));
-      0082BF 14 03            [ 1]  171 	and	a, (0x03, sp)
-      0082C1 16 05            [ 2]  172 	ldw	y, (0x05, sp)
-      0082C3 90 F7            [ 1]  173 	ld	(y), a
-      0082C5                        174 00103$:
+      008368 14 03            [ 1]  171 	and	a, (0x03, sp)
+      00836A 16 05            [ 2]  172 	ldw	y, (0x05, sp)
+      00836C 90 F7            [ 1]  173 	ld	(y), a
+      00836E                        174 00103$:
                                     175 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 98: GPIOx->DDR |= (uint8_t)GPIO_Pin;
-      0082C5 F6               [ 1]  176 	ld	a, (x)
-      0082C6 1A 04            [ 1]  177 	or	a, (0x04, sp)
-      0082C8 F7               [ 1]  178 	ld	(x), a
-      0082C9 20 04            [ 2]  179 	jra	00106$
-      0082CB                        180 00105$:
+      00836E F6               [ 1]  176 	ld	a, (x)
+      00836F 1A 04            [ 1]  177 	or	a, (0x04, sp)
+      008371 F7               [ 1]  178 	ld	(x), a
+      008372 20 04            [ 2]  179 	jra	00106$
+      008374                        180 00105$:
                                     181 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 103: GPIOx->DDR &= (uint8_t)(~(GPIO_Pin));
-      0082CB F6               [ 1]  182 	ld	a, (x)
-      0082CC 14 03            [ 1]  183 	and	a, (0x03, sp)
-      0082CE F7               [ 1]  184 	ld	(x), a
-      0082CF                        185 00106$:
+      008374 F6               [ 1]  182 	ld	a, (x)
+      008375 14 03            [ 1]  183 	and	a, (0x03, sp)
+      008377 F7               [ 1]  184 	ld	(x), a
+      008378                        185 00106$:
                                     186 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 112: GPIOx->CR1 |= (uint8_t)GPIO_Pin;
-      0082CF 1E 05            [ 2]  187 	ldw	x, (0x05, sp)
-      0082D1 1C 00 03         [ 2]  188 	addw	x, #0x0003
-      0082D4 F6               [ 1]  189 	ld	a, (x)
+      008378 1E 05            [ 2]  187 	ldw	x, (0x05, sp)
+      00837A 1C 00 03         [ 2]  188 	addw	x, #0x0003
+      00837D F6               [ 1]  189 	ld	a, (x)
                                     190 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 110: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x40) != (uint8_t)0x00) /* Pull-Up or Push-Pull */
-      0082D5 88               [ 1]  191 	push	a
-      0082D6 7B 0A            [ 1]  192 	ld	a, (0x0a, sp)
-      0082D8 A5 40            [ 1]  193 	bcp	a, #0x40
-      0082DA 84               [ 1]  194 	pop	a
-      0082DB 27 05            [ 1]  195 	jreq	00108$
+      00837E 88               [ 1]  191 	push	a
+      00837F 7B 0A            [ 1]  192 	ld	a, (0x0a, sp)
+      008381 A5 40            [ 1]  193 	bcp	a, #0x40
+      008383 84               [ 1]  194 	pop	a
+      008384 27 05            [ 1]  195 	jreq	00108$
                                     196 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 112: GPIOx->CR1 |= (uint8_t)GPIO_Pin;
-      0082DD 1A 04            [ 1]  197 	or	a, (0x04, sp)
-      0082DF F7               [ 1]  198 	ld	(x), a
-      0082E0 20 03            [ 2]  199 	jra	00109$
-      0082E2                        200 00108$:
+      008386 1A 04            [ 1]  197 	or	a, (0x04, sp)
+      008388 F7               [ 1]  198 	ld	(x), a
+      008389 20 03            [ 2]  199 	jra	00109$
+      00838B                        200 00108$:
                                     201 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 116: GPIOx->CR1 &= (uint8_t)(~(GPIO_Pin));
-      0082E2 14 03            [ 1]  202 	and	a, (0x03, sp)
-      0082E4 F7               [ 1]  203 	ld	(x), a
-      0082E5                        204 00109$:
+      00838B 14 03            [ 1]  202 	and	a, (0x03, sp)
+      00838D F7               [ 1]  203 	ld	(x), a
+      00838E                        204 00109$:
                                     205 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 81: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
-      0082E5 1E 01            [ 2]  206 	ldw	x, (0x01, sp)
-      0082E7 F6               [ 1]  207 	ld	a, (x)
+      00838E 1E 01            [ 2]  206 	ldw	x, (0x01, sp)
+      008390 F6               [ 1]  207 	ld	a, (x)
                                     208 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 123: if ((((uint8_t)(GPIO_Mode)) & (uint8_t)0x20) != (uint8_t)0x00) /* Interrupt or Slow slope */
-      0082E8 88               [ 1]  209 	push	a
-      0082E9 7B 0A            [ 1]  210 	ld	a, (0x0a, sp)
-      0082EB A5 20            [ 1]  211 	bcp	a, #0x20
-      0082ED 84               [ 1]  212 	pop	a
-      0082EE 27 07            [ 1]  213 	jreq	00111$
+      008391 88               [ 1]  209 	push	a
+      008392 7B 0A            [ 1]  210 	ld	a, (0x0a, sp)
+      008394 A5 20            [ 1]  211 	bcp	a, #0x20
+      008396 84               [ 1]  212 	pop	a
+      008397 27 07            [ 1]  213 	jreq	00111$
                                     214 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 125: GPIOx->CR2 |= (uint8_t)GPIO_Pin;
-      0082F0 1A 04            [ 1]  215 	or	a, (0x04, sp)
-      0082F2 1E 01            [ 2]  216 	ldw	x, (0x01, sp)
-      0082F4 F7               [ 1]  217 	ld	(x), a
-      0082F5 20 05            [ 2]  218 	jra	00113$
-      0082F7                        219 00111$:
+      008399 1A 04            [ 1]  215 	or	a, (0x04, sp)
+      00839B 1E 01            [ 2]  216 	ldw	x, (0x01, sp)
+      00839D F7               [ 1]  217 	ld	(x), a
+      00839E 20 05            [ 2]  218 	jra	00113$
+      0083A0                        219 00111$:
                                     220 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 129: GPIOx->CR2 &= (uint8_t)(~(GPIO_Pin));
-      0082F7 14 03            [ 1]  221 	and	a, (0x03, sp)
-      0082F9 1E 01            [ 2]  222 	ldw	x, (0x01, sp)
-      0082FB F7               [ 1]  223 	ld	(x), a
-      0082FC                        224 00113$:
+      0083A0 14 03            [ 1]  221 	and	a, (0x03, sp)
+      0083A2 1E 01            [ 2]  222 	ldw	x, (0x01, sp)
+      0083A4 F7               [ 1]  223 	ld	(x), a
+      0083A5                        224 00113$:
                                     225 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 131: }
-      0082FC 5B 06            [ 2]  226 	addw	sp, #6
-      0082FE 85               [ 2]  227 	popw	x
-      0082FF 84               [ 1]  228 	pop	a
-      008300 FC               [ 2]  229 	jp	(x)
+      0083A5 5B 06            [ 2]  226 	addw	sp, #6
+      0083A7 85               [ 2]  227 	popw	x
+      0083A8 84               [ 1]  228 	pop	a
+      0083A9 FC               [ 2]  229 	jp	(x)
                                     230 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 157: void GPIO_WriteHigh(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
                                     231 ;	-----------------------------------------
                                     232 ;	 function GPIO_WriteHigh
                                     233 ;	-----------------------------------------
-      008301                        234 _GPIO_WriteHigh:
-      008301 88               [ 1]  235 	push	a
-      008302 6B 01            [ 1]  236 	ld	(0x01, sp), a
+      0083AA                        234 _GPIO_WriteHigh:
+      0083AA 88               [ 1]  235 	push	a
+      0083AB 6B 01            [ 1]  236 	ld	(0x01, sp), a
                                     237 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 159: GPIOx->ODR |= (uint8_t)PortPins;
-      008304 F6               [ 1]  238 	ld	a, (x)
-      008305 1A 01            [ 1]  239 	or	a, (0x01, sp)
-      008307 F7               [ 1]  240 	ld	(x), a
+      0083AD F6               [ 1]  238 	ld	a, (x)
+      0083AE 1A 01            [ 1]  239 	or	a, (0x01, sp)
+      0083B0 F7               [ 1]  240 	ld	(x), a
                                     241 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 160: }
-      008308 84               [ 1]  242 	pop	a
-      008309 81               [ 4]  243 	ret
+      0083B1 84               [ 1]  242 	pop	a
+      0083B2 81               [ 4]  243 	ret
                                     244 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 172: void GPIO_WriteLow(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
                                     245 ;	-----------------------------------------
                                     246 ;	 function GPIO_WriteLow
                                     247 ;	-----------------------------------------
-      00830A                        248 _GPIO_WriteLow:
-      00830A 88               [ 1]  249 	push	a
+      0083B3                        248 _GPIO_WriteLow:
+      0083B3 88               [ 1]  249 	push	a
                                     250 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 174: GPIOx->ODR &= (uint8_t)(~PortPins);
-      00830B 88               [ 1]  251 	push	a
-      00830C F6               [ 1]  252 	ld	a, (x)
-      00830D 6B 02            [ 1]  253 	ld	(0x02, sp), a
-      00830F 84               [ 1]  254 	pop	a
-      008310 43               [ 1]  255 	cpl	a
-      008311 14 01            [ 1]  256 	and	a, (0x01, sp)
-      008313 F7               [ 1]  257 	ld	(x), a
+      0083B4 88               [ 1]  251 	push	a
+      0083B5 F6               [ 1]  252 	ld	a, (x)
+      0083B6 6B 02            [ 1]  253 	ld	(0x02, sp), a
+      0083B8 84               [ 1]  254 	pop	a
+      0083B9 43               [ 1]  255 	cpl	a
+      0083BA 14 01            [ 1]  256 	and	a, (0x01, sp)
+      0083BC F7               [ 1]  257 	ld	(x), a
                                     258 ;	/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c: 175: }
-      008314 84               [ 1]  259 	pop	a
-      008315 81               [ 4]  260 	ret
+      0083BD 84               [ 1]  259 	pop	a
+      0083BE 81               [ 4]  260 	ret
                                     261 	.area CODE
                                     262 	.area CONST
                                     263 	.area CONST

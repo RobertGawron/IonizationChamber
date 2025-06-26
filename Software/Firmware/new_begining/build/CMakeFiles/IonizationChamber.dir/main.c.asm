@@ -9,7 +9,8 @@
 ; Public variables in this module
 ;--------------------------------------------------------
 	.globl _main
-	.globl _delay_ms
+	.globl _app_builder_run
+	.globl _app_builder_init
 ;--------------------------------------------------------
 ; ram data
 ;--------------------------------------------------------
@@ -87,71 +88,19 @@ __sdcc_program_startup:
 ; code
 ;--------------------------------------------------------
 	.area CODE
-;	/workspace/Software/Firmware/new_begining/main.c: 16: void delay_ms(uint16_t ms)
-;	-----------------------------------------
-;	 function delay_ms
-;	-----------------------------------------
-_delay_ms:
-	sub	sp, #4
-	ldw	(0x01, sp), x
-;	/workspace/Software/Firmware/new_begining/main.c: 19: for (uint16_t i = 0; i < ms; i++)
-	clrw	x
-	ldw	(0x03, sp), x
-00107$:
-	ldw	x, (0x03, sp)
-	cpw	x, (0x01, sp)
-	jrnc	00109$
-;	/workspace/Software/Firmware/new_begining/main.c: 21: for (uint16_t j = 0; j < 1600; j++)
-	clrw	x
-00104$:
-	ldw	y, x
-	cpw	y, #0x0640
-	jrnc	00108$
-;	/workspace/Software/Firmware/new_begining/main.c: 23: __asm__("nop");
-	nop
-;	/workspace/Software/Firmware/new_begining/main.c: 21: for (uint16_t j = 0; j < 1600; j++)
-	incw	x
-	jra	00104$
-00108$:
-;	/workspace/Software/Firmware/new_begining/main.c: 19: for (uint16_t i = 0; i < ms; i++)
-	ldw	x, (0x03, sp)
-	incw	x
-	ldw	(0x03, sp), x
-	jra	00107$
-00109$:
-;	/workspace/Software/Firmware/new_begining/main.c: 26: }
-	addw	sp, #4
-	ret
-;	/workspace/Software/Firmware/new_begining/main.c: 28: void main()
+;	/workspace/Software/Firmware/new_begining/main.c: 12: int main()
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	/workspace/Software/Firmware/new_begining/main.c: 31: CLK_PCKENR1 |= (1 << 3); // Enable GPIOD clock (bit 3)
-	bset	0x50c7, #3
-;	/workspace/Software/Firmware/new_begining/main.c: 34: GPIOD_DDR |= (1 << PIN_GREEN) | (1 << PIN_RED);
-	ld	a, 0x5011
-	or	a, #0x0c
-	ld	0x5011, a
-;	/workspace/Software/Firmware/new_begining/main.c: 37: GPIOD_CR1 |= (1 << PIN_GREEN) | (1 << PIN_RED);
-	ld	a, 0x5012
-	or	a, #0x0c
-	ld	0x5012, a
-;	/workspace/Software/Firmware/new_begining/main.c: 41: GPIOD_ODR &= ~((1 << PIN_GREEN) | (1 << PIN_RED));
-	ld	a, 0x500f
-	and	a, #0xf3
-	ld	0x500f, a
-;	/workspace/Software/Firmware/new_begining/main.c: 46: while (1)
+;	/workspace/Software/Firmware/new_begining/main.c: 14: app_builder_init();
+	call	_app_builder_init
 00102$:
-;	/workspace/Software/Firmware/new_begining/main.c: 49: GPIOD_ODR ^= (1 << PIN_GREEN) | (1 << PIN_RED);
-	ld	a, 0x500f
-	xor	a, #0x0c
-	ld	0x500f, a
-;	/workspace/Software/Firmware/new_begining/main.c: 52: delay_ms(1000); // 1 second delay
-	ldw	x, #0x03e8
-	call	_delay_ms
+;	/workspace/Software/Firmware/new_begining/main.c: 18: app_builder_run();
+	call	_app_builder_run
 	jra	00102$
-;	/workspace/Software/Firmware/new_begining/main.c: 57: }
+;	/workspace/Software/Firmware/new_begining/main.c: 21: return 0;
+;	/workspace/Software/Firmware/new_begining/main.c: 22: }
 	ret
 	.area CODE
 	.area CONST

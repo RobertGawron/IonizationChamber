@@ -8,6 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
+  "/workspace/Software/Firmware/new_begining/Application/app_builder.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel"
+  "/workspace/Software/Firmware/new_begining/Driver/clk_conf.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel"
+  "/workspace/Software/Firmware/new_begining/Driver/user_interface.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel"
   "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_clk.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel"
   "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_gpio.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel"
   "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/src/stm8s_i2c.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel"
@@ -21,6 +24,8 @@ set(CMAKE_C_COMPILER_ID "SDCC")
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc"
+  "/workspace/Software/Firmware/new_begining/Application"
+  "/workspace/Software/Firmware/new_begining/Driver"
   "/workspace/Software/Firmware/new_begining"
   )
 
