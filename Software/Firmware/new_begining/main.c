@@ -1,5 +1,5 @@
 #include <stdint.h>
-
+#include "assert_impl.h"
 // Correct GPIOD registers
 #define GPIOD_ODR (*(volatile uint8_t *)(0x500F))
 #define GPIOD_DDR (*(volatile uint8_t *)(0x5011))
