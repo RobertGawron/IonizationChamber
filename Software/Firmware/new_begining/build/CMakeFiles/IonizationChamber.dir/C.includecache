@@ -47,10 +47,6 @@ timer_conf.h
 /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
 stm8s_tim1.h
 /workspace/Software/Firmware/new_begining/Driver/stm8s_tim1.h
-stm8s_clk.h
-/workspace/Software/Firmware/new_begining/Driver/stm8s_clk.h
-stm8s_itc.h
-/workspace/Software/Firmware/new_begining/Driver/stm8s_itc.h
 
 /workspace/Software/Firmware/new_begining/Driver/timer_conf.h
 
