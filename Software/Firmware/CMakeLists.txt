@@ -1,55 +1,37 @@
-cmake_minimum_required(VERSION 3.5)
-project(STM8_IonizationChamber LANGUAGES C)
+cmake_minimum_required(VERSION 3.16)
 
-# SDCC Compiler Configuration
-set(CMAKE_C_COMPILER sdcc)
+# 1. FORCE SDCC COMPILER - MUST BE BEFORE PROJECT()
 set(CMAKE_SYSTEM_NAME Generic)
 
-# Critical SDCC Flags
-set(STM8_CHIP "STM8S003")
-set(SDCC_DEBUG_FLAGS "--debug --out-fmt-elf")  # ELF output with debug symbols
-set(SDCC_COMMON_FLAGS "-mstm8 -D${STM8_CHIP} -D__SDCC__ -I${CMAKE_SOURCE_DIR}/Inc")
+# Find SDCC and use absolute path
+find_program(SDCC_PATH sdcc REQUIRED)
+message(STATUS "Using SDCC compiler: ${SDCC_PATH}")
+set(CMAKE_C_COMPILER ${SDCC_PATH} CACHE FILEPATH "SDCC C Compiler" FORCE)
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)  # Critical for SDCC
+set(CMAKE_C_COMPILER_FORCED TRUE)  # Bypass compiler checks
 
-# Compiler and Linker Flags
-set(CMAKE_C_FLAGS "${SDCC_COMMON_FLAGS} ${SDCC_DEBUG_FLAGS} --stack-auto --opt-code-size")
-set(CMAKE_EXE_LINKER_FLAGS "${SDCC_DEBUG_FLAGS} -Wl-m")
+# 2. SDCC-SPECIFIC SETTINGS
+project(IonizationChamber C)
+message(STATUS "Active C compiler: ${CMAKE_C_COMPILER}")  # Verify compiler
 
-# Output Configuration
 set(CMAKE_C_OUTPUT_EXTENSION ".rel")
-set(CMAKE_EXECUTABLE_SUFFIX ".elf")
+set(CMAKE_EXECUTABLE_SUFFIX ".ihx")
 
-# Library Configuration
-set(CMAKE_STATIC_LIBRARY_PREFIX "")
-set(CMAKE_STATIC_LIBRARY_SUFFIX ".lib")
-set(CMAKE_FIND_LIBRARY_SUFFIXES ".lib")
-
-# Override link command for SDCC
-set(CMAKE_C_LINK_EXECUTABLE 
-    "sdcc <FLAGS> <CMAKE_C_LINK_FLAGS> <LINK_FLAGS> <OBJECTS> -o <TARGET> <LINK_LIBRARIES>"
+# 3. CRITICAL SDCC FLAGS (AS SEPARATE ITEMS)
+set(SDCC_FLAGS 
+    -mstm8 
+    --std-sdcc11 
+    --opt-code-size 
+    --stack-auto
+)
+set(SDCC_DEFINITIONS 
+    STM8S003
+    __SDCC__
+    USE_STDPERIPH_DRIVER
 )
 
-# Include Directories
-include_directories(
-    ${CMAKE_SOURCE_DIR}/Application
-    ${CMAKE_SOURCE_DIR}/Device
-    ${CMAKE_SOURCE_DIR}/Driver
-    ${CMAKE_SOURCE_DIR}/Inc
-    ${CMAKE_SOURCE_DIR}
-    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
-)
-
-# Source Files
-set(SOURCES
-    main.c
-    Application/application_builder.c
-    Application/measurement_frame.c
-    Application/measurement_collector.c
-    Driver/stm8_it.c
-    Driver/clock_configurator.c
-    Driver/timer_configurator.c
-    Driver/user_interface.c
-    Driver/logger.c
-    Driver/mcp3425.c
+# Create StdPeriph library
+add_library(STM8StdPeriph STATIC
     STM8S_StdPeriph_Lib/src/stm8s_gpio.c
     STM8S_StdPeriph_Lib/src/stm8s_i2c.c
     STM8S_StdPeriph_Lib/src/stm8s_tim1.c
@@ -57,18 +39,71 @@ set(SOURCES
     STM8S_StdPeriph_Lib/src/stm8s_uart1.c
 )
 
-# Executable Target
-add_executable(IonizationChamber ${SOURCES})
-
-# Post-Build Steps
-add_custom_command(TARGET IonizationChamber POST_BUILD
-    COMMAND ${CMAKE_OBJCOPY} -I elf32-stm8 -O ihex $<TARGET_FILE:IonizationChamber> ${CMAKE_CURRENT_BINARY_DIR}/IonizationChamber.hex
-    COMMAND ${CMAKE_OBJCOPY} -I elf32-stm8 -O binary $<TARGET_FILE:IonizationChamber> ${CMAKE_CURRENT_BINARY_DIR}/IonizationChamber.bin
-    COMMENT "Generating HEX and BIN files"
+# Set compiler options and definitions for the library
+target_compile_options(STM8StdPeriph PRIVATE
+    -mstm8
+    --verbose
 )
 
-# Find objcopy
-find_program(CMAKE_OBJCOPY NAMES stm8-objcopy sdobjcopy objcopy)
-if(NOT CMAKE_OBJCOPY)
-    message(FATAL_ERROR "objcopy not found! Install stm8-binutils")
-endif()
+target_compile_definitions(STM8StdPeriph PRIVATE
+    STM8S003
+    __SDCC__
+    USE_STDPERIPH_DRIVER
+)
+
+
+# Set include directories for the library
+target_include_directories(STM8StdPeriph PUBLIC
+${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Device
+    ${CMAKE_SOURCE_DIR}/Driver
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+)
+
+
+# 7. Executable Target
+add_executable(IonizationChamber
+    main.c
+    Application/application_builder.c
+    Application/measurement_frame.c
+    Application/measurement_collector.c
+    Driver/timer_configurator.c
+    Driver/clock_configurator.c
+    Driver/user_interface.c
+    Driver/stm8_it.c
+    Driver/logger.c
+    Driver/mcp3425.c
+)
+
+# Set include directories for the library
+target_include_directories(IonizationChamber PUBLIC
+${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Device
+    ${CMAKE_SOURCE_DIR}/Driver
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+)
+
+
+# 8. Apply SDCC options to executable (FIXED: SEPARATE FLAGS)
+target_compile_options(IonizationChamber PRIVATE 
+    ${SDCC_FLAGS}  # Now passes as separate arguments
+)
+target_compile_definitions(IonizationChamber PRIVATE 
+    ${SDCC_DEFINITIONS}
+)
+target_include_directories(IonizationChamber PRIVATE
+    ${CMAKE_SOURCE_DIR}/Inc
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Driver
+)
+
+target_link_libraries(IonizationChamber PRIVATE STM8StdPeriph)
+
+
+# 9. Link settings (FIXED: SEPARATE FLAGS)
+target_link_options(IonizationChamber PRIVATE
+    ${SDCC_FLAGS}  # Separate arguments
+    --out-fmt-ihx
+)

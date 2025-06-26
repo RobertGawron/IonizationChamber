@@ -1,0 +1,3 @@
+/workspace/Software/Firmware/new_begining/build/CMakeFiles/main.ihx.dir
+/workspace/Software/Firmware/new_begining/build/CMakeFiles/edit_cache.dir
+/workspace/Software/Firmware/new_begining/build/CMakeFiles/rebuild_cache.dir

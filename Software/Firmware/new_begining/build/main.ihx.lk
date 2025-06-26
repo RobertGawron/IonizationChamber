@@ -1,0 +1,10 @@
+-muwx
+-i main.ihx.ihx
+-b HOME = 0x8000
+-b DATA = 0x0001
+-k /usr/bin/../share/sdcc/lib/stm8
+-k /usr/share/sdcc/lib/stm8
+-l stm8
+CMakeFiles/main.ihx.dir/main.c.rel
+
+-e

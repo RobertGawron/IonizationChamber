@@ -28,7 +28,8 @@ int main(void)
 
     for (;;)
     {
-        application_builder_run();
+        //      application_builder_run();
+        volatile int i = 0;
     }
 
     return 0;

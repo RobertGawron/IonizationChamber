@@ -26,20 +26,24 @@ volatile unsigned char app_tick_flag = 0;
 
 void application_builder_init()
 {
-    /* user_interface_update_message(
-         USER_INTERFACE_COLLECTING_DATA_MSG,
-         USER_INTERFACE_ENABLE);
- */
-    clock_configurator_init();
+    user_interface_update_message(
+        USER_INTERFACE_COLLECTING_DATA_MSG,
+        USER_INTERFACE_ENABLE);
+
+    // clock_configurator_init();
     // enableInterrupts();
     timer_configurator_init();
-    logger_init();
+    // logger_init();
     user_interface_init();
+
+    user_interface_update_message(
+        USER_INTERFACE_COLLECTING_DATA_MSG,
+        USER_INTERFACE_ENABLE);
     //  radioactivity_measurer_init();
 
     // interrupt_configurator_enable();
     // TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
-    enableInterrupts();
+    // enableInterrupts();
     //__asm__("rim\n");
     /* Initialization is over, we can enable interrupts */
     // logger_print("dupa", 3);

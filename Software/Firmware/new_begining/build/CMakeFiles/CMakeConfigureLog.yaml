@@ -1,0 +1,97 @@
+
+---
+events:
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineSystem.cmake:200 (message)"
+      - "CMakeLists.txt:11 (project)"
+    message: |
+      The target system is: Generic -  - 
+      The host system is: Linux - 6.8.0-56-generic - x86_64
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:11 (project)"
+    message: |
+      Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+      Compiler: /usr/bin/sdcc 
+      Build flags: 
+      Id flags:  
+      
+      The output was:
+      0
+      
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.asm"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.ihx"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.lk"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.lst"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.map"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.mem"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.rel"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.rst"
+      
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.sym"
+      
+      The C compiler identification is SDCC, found in:
+        /workspace/Software/Firmware/new_begining/build/CMakeFiles/3.31.6/CompilerIdC/CMakeCCompilerId.asm
+      
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:74 (try_compile)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:11 (project)"
+    checks:
+      - "Detecting C compiler ABI info"
+    directories:
+      source: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-8TVvBi"
+      binary: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-8TVvBi"
+    cmakeVariables:
+      CMAKE_C_FLAGS: ""
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_C_ABI_COMPILED"
+      cached: true
+      stdout: |
+        Change Dir: '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-8TVvBi'
+        
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_2d71a/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_2d71a.dir/build.make CMakeFiles/cmTC_2d71a.dir/build
+        gmake[1]: Entering directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-8TVvBi'
+        Building C object CMakeFiles/cmTC_2d71a.dir/CMakeCCompilerABI.c.rel
+        /usr/bin/sdcc    -o CMakeFiles/cmTC_2d71a.dir/CMakeCCompilerABI.c.rel -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
+        Linking C executable cmTC_2d71a.ihx
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2d71a.dir/link.txt --verbose=1
+        /usr/bin/sdcc CMakeFiles/cmTC_2d71a.dir/CMakeCCompilerABI.c.rel -o cmTC_2d71a.ihx
+        gmake[1]: Leaving directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-8TVvBi'
+        
+      exitCode: 0
+  -
+    kind: "message-v1"
+    backtrace:
+      - "/usr/share/cmake-3.31/Modules/CMakeDetermineCompilerABI.cmake:218 (message)"
+      - "/usr/share/cmake-3.31/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:11 (project)"
+    message: |
+      Parsed C implicit link information:
+        link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
+        linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?))("|,| |$)]
+        implicit libs: []
+        implicit objs: []
+        implicit dirs: []
+        implicit fwks: []
+      
+      
+...
