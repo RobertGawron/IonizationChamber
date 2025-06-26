@@ -25,30 +25,15 @@ void app_builder_init(void)
 {
 
     clk_conf_init();
-    //
     user_interface_init();
     timer_conf_init();
-
-    // interrupt_control_enable();
-    // Disable all interrupts first
-    disableInterrupts();
-
-    // Clear any pending interrupts
-    __asm__("sim");
-
-    // Now enable
-    enableInterrupts();
-
-    while (1)
-    {
-        // wfi();
-        if (app_tick_flag)
-            user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
-    }
+    interrupt_control_enable();
 }
 
 void app_builder_run(void)
 {
+    interrupt_control_wait();
+#if 0
     // user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
     /*
     user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, USER_INTERFACE_ENABLE);
@@ -69,6 +54,7 @@ void app_builder_run(void)
         // app_builder_tick();
         app_tick_flag = 0; // Reset flag
     }
+#endif
 }
 
 void app_builder_tick(void)

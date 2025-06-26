@@ -21,8 +21,11 @@ void timer_isr(void) __interrupt(11)
     TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 }
 
-void main()
+int main()
 {
+
+    app_builder_init();
+#if 0
     // Enable clock to GPIOD and TIM1
     clk_conf_init();
     //
@@ -45,11 +48,21 @@ void main()
     //    __asm rim
     //        __endasm;
     interrupt_control_enable();
+#endif
 
+    for (;;)
+    {
+        app_builder_run();
+    }
+
+    return 0;
+
+#if 0
     while (1)
     {
         wfi();
     }
+#endif
 }
 
 /*

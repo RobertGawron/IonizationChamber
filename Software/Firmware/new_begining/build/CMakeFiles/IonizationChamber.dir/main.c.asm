@@ -11,9 +11,8 @@
 	.globl _main
 	.globl _timer_isr
 	.globl _user_interface_update_message
-	.globl _user_interface_init
-	.globl _timer_conf_init
-	.globl _clk_conf_init
+	.globl _app_builder_run
+	.globl _app_builder_init
 	.globl _TIM1_ClearITPendingBit
 	.globl _TIM1_ClearFlag
 ;--------------------------------------------------------
@@ -140,17 +139,8 @@ _timer_isr:
 ;	/workspace/Software/Firmware/new_begining/main.c: 16: i = ~i;
 	ldw	x, _i+0
 	cplw	x
-;	/workspace/Software/Firmware/new_begining/main.c: 17: user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, (i == 0) ? USER_INTERFACE_ENABLE : USER_INTERFACE_DISABLE);
-	ldw	_i+0, x
-	subw	x, #0x0001
-	clr	a
-	ccf
-	rlc	a
-	push	a
-	clr	a
-	call	_user_interface_update_message
 ;	/workspace/Software/Firmware/new_begining/main.c: 18: user_interface_update_message(USER_INTERFACE_STATE_OK_MSG, (i == 0) ? USER_INTERFACE_DISABLE : USER_INTERFACE_ENABLE);
-	ldw	x, _i+0
+	ldw	_i+0, x
 	subw	x, #0x0001
 	clr	a
 	rlc	a
@@ -166,27 +156,19 @@ _timer_isr:
 	call	_TIM1_ClearITPendingBit
 ;	/workspace/Software/Firmware/new_begining/main.c: 22: }
 	iret
-;	/workspace/Software/Firmware/new_begining/main.c: 24: void main()
+;	/workspace/Software/Firmware/new_begining/main.c: 24: int main()
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	/workspace/Software/Firmware/new_begining/main.c: 27: clk_conf_init();
-	call	_clk_conf_init
-;	/workspace/Software/Firmware/new_begining/main.c: 29: user_interface_init();
-	call	_user_interface_init
-;	/workspace/Software/Firmware/new_begining/main.c: 30: timer_conf_init();
-	call	_timer_conf_init
-;	/workspace/Software/Firmware/new_begining/main.c: 42: timer_conf_init();
-	call	_timer_conf_init
-;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 22: enableInterrupts();
-	rim
-;	/workspace/Software/Firmware/new_begining/main.c: 49: while (1)
+;	/workspace/Software/Firmware/new_begining/main.c: 27: app_builder_init();
+	call	_app_builder_init
 00102$:
-;	/workspace/Software/Firmware/new_begining/main.c: 51: wfi();
-	wfi
+;	/workspace/Software/Firmware/new_begining/main.c: 55: app_builder_run();
+	call	_app_builder_run
 	jra	00102$
-;	/workspace/Software/Firmware/new_begining/main.c: 53: }
+;	/workspace/Software/Firmware/new_begining/main.c: 58: return 0;
+;	/workspace/Software/Firmware/new_begining/main.c: 66: }
 	ret
 	.area CODE
 	.area CONST

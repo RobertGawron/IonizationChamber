@@ -15,14 +15,13 @@ Symbol Table
   5 __sdcc_program_startup                                         000038 R
   3 __start__stack                                                 000000 R
   9 __xinit__i                                                     000000 R
-    _clk_conf_init                                                 ****** GX
+    _app_builder_init                                              ****** GX
+    _app_builder_run                                               ****** GX
   2 _i                                                             000000 R
   A _interrupt_control_enable                                      000000 R
   A _interrupt_control_wait                                        000002 R
-  A _main                                                          000039 GR
-    _timer_conf_init                                               ****** GX
+  A _main                                                          00002B GR
   A _timer_isr                                                     000004 GR
-    _user_interface_init                                           ****** GX
     _user_interface_update_message                                 ****** GX
     l_DATA                                                         ****** GX
     l_INITIALIZER                                                  ****** GX
@@ -30,6 +29,7 @@ Symbol Table
     s_GSINIT                                                       ****** GX
     s_INITIALIZED                                                  ****** GX
     s_INITIALIZER                                                  ****** GX
+
 
 ASxxxx Assembler V02.00 + NoICE + SDCC mods  (STMicroelectronics STM8)  Page 2
 Hexadecimal [24-Bits]
@@ -46,6 +46,6 @@ Area Table
    7 GSFINAL                                    size      3   flags    0
    8 CONST                                      size      0   flags    0
    9 INITIALIZER                                size      2   flags    0
-   A CODE                                       size     4A   flags    0
+   A CODE                                       size     34   flags    0
    B CABS                                       size      0   flags    8
 
