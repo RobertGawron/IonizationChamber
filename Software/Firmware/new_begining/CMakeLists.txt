@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31)
+cmake_minimum_required(VERSION 3.16)
 
 # Compiler setup
 set(CMAKE_C_OUTPUT_EXTENSION ".rel")
@@ -11,7 +11,6 @@ set(CMAKE_EXE_LINKER_FLAGS_INIT "")
 
 project(IonizationChamber C)
 
-# Improved flag handling: Separate flags and definitions
 set(SDCC_FLAGS
     -mstm8
     --std-sdcc11
@@ -34,16 +33,13 @@ add_library(STM8StdPeriph STATIC
     STM8S_StdPeriph_Lib/src/stm8s_uart1.c
 )
 
-# Apply flags and definitions to library
 target_compile_options(STM8StdPeriph PRIVATE ${SDCC_FLAGS})
 target_compile_definitions(STM8StdPeriph PRIVATE ${SDCC_DEFINITIONS})
 
-# Library-specific includes with proper scoping
-target_include_directories(STM8StdPeriph
-    PUBLIC  # Public interface for library users
-        ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
-    PRIVATE # Internal includes
-        ${CMAKE_SOURCE_DIR}
+# Library-specific includes (only what the library needs)
+target_include_directories(STM8StdPeriph PRIVATE
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+     ${CMAKE_SOURCE_DIR}
 )
 
 # Main executable
@@ -57,22 +53,23 @@ add_executable(IonizationChamber
     Driver/timer_conf.c
 )
 
-# Apply flags and definitions to executable
+# Apply flags using LIST-BASED assignment
 target_compile_options(IonizationChamber PRIVATE ${SDCC_FLAGS})
 target_compile_definitions(IonizationChamber PRIVATE ${SDCC_DEFINITIONS})
 
 # Executable-specific includes
-target_include_directories(IonizationChamber
-    PRIVATE # Application-specific includes
-        ${CMAKE_SOURCE_DIR}/Application
-        ${CMAKE_SOURCE_DIR}/Device
-        ${CMAKE_SOURCE_DIR}/Driver
-        ${CMAKE_SOURCE_DIR}
+target_include_directories(IonizationChamber PRIVATE
+    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+    ${CMAKE_SOURCE_DIR}/Application
+    ${CMAKE_SOURCE_DIR}/Device
+    ${CMAKE_SOURCE_DIR}/Driver
+    ${CMAKE_SOURCE_DIR}
 )
 
-# Link library to executable with proper linker flags
+# Link library to executable
 target_link_libraries(IonizationChamber PRIVATE STM8StdPeriph)
+
 target_link_options(IonizationChamber PRIVATE
-    ${SDCC_FLAGS}  # Reuse the same flags for linking
-    --out-fmt-ihx  # Ensure IHX output format
+    ${SDCC_FLAGS}  # List-based propagation
+    --out-fmt-ihx
 )

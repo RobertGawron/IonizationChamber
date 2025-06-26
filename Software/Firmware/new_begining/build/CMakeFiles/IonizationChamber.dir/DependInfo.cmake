@@ -27,11 +27,11 @@ set(CMAKE_TARGET_DEFINITIONS_C
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
+  "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc"
   "/workspace/Software/Firmware/new_begining/Application"
   "/workspace/Software/Firmware/new_begining/Device"
   "/workspace/Software/Firmware/new_begining/Driver"
   "/workspace/Software/Firmware/new_begining"
-  "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc"
   )
 
 # The set of dependency files which are needed:
