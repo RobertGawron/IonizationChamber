@@ -4,7 +4,7 @@
 # compile C with /usr/bin/sdcc
 C_DEFINES = -DSTM8S003 -DUSE_STDPERIPH_DRIVER -D__SDCC__
 
-C_INCLUDES = -I/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc -I/workspace/Software/Firmware/new_begining/Application -I/workspace/Software/Firmware/new_begining/Device -I/workspace/Software/Firmware/new_begining/Driver -I/workspace/Software/Firmware/new_begining
+C_INCLUDES = -I/workspace/Software/Firmware/new_begining/Application -I/workspace/Software/Firmware/new_begining/Device -I/workspace/Software/Firmware/new_begining/Driver -I/workspace/Software/Firmware/new_begining -I/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc
 
 C_FLAGS = -mstm8 --std-sdcc11 --opt-code-size --stack-auto
 

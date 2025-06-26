@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.31)
 
 # Compiler setup
 set(CMAKE_C_OUTPUT_EXTENSION ".rel")
@@ -38,10 +38,12 @@ add_library(STM8StdPeriph STATIC
 target_compile_options(STM8StdPeriph PRIVATE ${SDCC_FLAGS})
 target_compile_definitions(STM8StdPeriph PRIVATE ${SDCC_DEFINITIONS})
 
-# Library-specific includes
-target_include_directories(STM8StdPeriph PRIVATE
-    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
-    ${CMAKE_SOURCE_DIR}
+# Library-specific includes with proper scoping
+target_include_directories(STM8StdPeriph
+    PUBLIC  # Public interface for library users
+        ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
+    PRIVATE # Internal includes
+        ${CMAKE_SOURCE_DIR}
 )
 
 # Main executable
@@ -60,12 +62,12 @@ target_compile_options(IonizationChamber PRIVATE ${SDCC_FLAGS})
 target_compile_definitions(IonizationChamber PRIVATE ${SDCC_DEFINITIONS})
 
 # Executable-specific includes
-target_include_directories(IonizationChamber PRIVATE
-    ${CMAKE_SOURCE_DIR}/STM8S_StdPeriph_Lib/inc
-    ${CMAKE_SOURCE_DIR}/Application
-    ${CMAKE_SOURCE_DIR}/Device
-    ${CMAKE_SOURCE_DIR}/Driver
-    ${CMAKE_SOURCE_DIR}
+target_include_directories(IonizationChamber
+    PRIVATE # Application-specific includes
+        ${CMAKE_SOURCE_DIR}/Application
+        ${CMAKE_SOURCE_DIR}/Device
+        ${CMAKE_SOURCE_DIR}/Driver
+        ${CMAKE_SOURCE_DIR}
 )
 
 # Link library to executable with proper linker flags
