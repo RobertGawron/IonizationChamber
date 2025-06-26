@@ -117,6 +117,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named STM8StdPeriph
+
+# Build rule for target.
+STM8StdPeriph: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 STM8StdPeriph
+.PHONY : STM8StdPeriph
+
+# fast build rule for target.
+STM8StdPeriph/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/build
+.PHONY : STM8StdPeriph/fast
+
+#=============================================================================
 # Target rules for targets named IonizationChamber
 
 # Build rule for target.
@@ -254,7 +267,7 @@ STM8S_StdPeriph_Lib/src/stm8s_clk.rel: STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel
 
 # target to build an object file
 STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_clk.c.rel
 
 STM8S_StdPeriph_Lib/src/stm8s_clk.i: STM8S_StdPeriph_Lib/src/stm8s_clk.c.i
@@ -262,7 +275,7 @@ STM8S_StdPeriph_Lib/src/stm8s_clk.i: STM8S_StdPeriph_Lib/src/stm8s_clk.c.i
 
 # target to preprocess a source file
 STM8S_StdPeriph_Lib/src/stm8s_clk.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.i
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_clk.c.i
 
 STM8S_StdPeriph_Lib/src/stm8s_clk.s: STM8S_StdPeriph_Lib/src/stm8s_clk.c.s
@@ -270,7 +283,7 @@ STM8S_StdPeriph_Lib/src/stm8s_clk.s: STM8S_StdPeriph_Lib/src/stm8s_clk.c.s
 
 # target to generate assembly for a file
 STM8S_StdPeriph_Lib/src/stm8s_clk.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_clk.c.s
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_clk.c.s
 
 STM8S_StdPeriph_Lib/src/stm8s_gpio.rel: STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
@@ -278,7 +291,7 @@ STM8S_StdPeriph_Lib/src/stm8s_gpio.rel: STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
 
 # target to build an object file
 STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
 
 STM8S_StdPeriph_Lib/src/stm8s_gpio.i: STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i
@@ -286,7 +299,7 @@ STM8S_StdPeriph_Lib/src/stm8s_gpio.i: STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i
 
 # target to preprocess a source file
 STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_gpio.c.i
 
 STM8S_StdPeriph_Lib/src/stm8s_gpio.s: STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s
@@ -294,7 +307,7 @@ STM8S_StdPeriph_Lib/src/stm8s_gpio.s: STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s
 
 # target to generate assembly for a file
 STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_gpio.c.s
 
 STM8S_StdPeriph_Lib/src/stm8s_i2c.rel: STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
@@ -302,7 +315,7 @@ STM8S_StdPeriph_Lib/src/stm8s_i2c.rel: STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
 
 # target to build an object file
 STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel
 
 STM8S_StdPeriph_Lib/src/stm8s_i2c.i: STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i
@@ -310,7 +323,7 @@ STM8S_StdPeriph_Lib/src/stm8s_i2c.i: STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i
 
 # target to preprocess a source file
 STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_i2c.c.i
 
 STM8S_StdPeriph_Lib/src/stm8s_i2c.s: STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
@@ -318,7 +331,7 @@ STM8S_StdPeriph_Lib/src/stm8s_i2c.s: STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
 
 # target to generate assembly for a file
 STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_i2c.c.s
 
 STM8S_StdPeriph_Lib/src/stm8s_tim1.rel: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
@@ -326,7 +339,7 @@ STM8S_StdPeriph_Lib/src/stm8s_tim1.rel: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
 
 # target to build an object file
 STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_tim1.c.rel
 
 STM8S_StdPeriph_Lib/src/stm8s_tim1.i: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i
@@ -334,7 +347,7 @@ STM8S_StdPeriph_Lib/src/stm8s_tim1.i: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i
 
 # target to preprocess a source file
 STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_tim1.c.i
 
 STM8S_StdPeriph_Lib/src/stm8s_tim1.s: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s
@@ -342,7 +355,7 @@ STM8S_StdPeriph_Lib/src/stm8s_tim1.s: STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s
 
 # target to generate assembly for a file
 STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_tim1.c.s
 
 STM8S_StdPeriph_Lib/src/stm8s_uart1.rel: STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel
@@ -350,7 +363,7 @@ STM8S_StdPeriph_Lib/src/stm8s_uart1.rel: STM8S_StdPeriph_Lib/src/stm8s_uart1.c.r
 
 # target to build an object file
 STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_uart1.c.rel
 
 STM8S_StdPeriph_Lib/src/stm8s_uart1.i: STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i
@@ -358,7 +371,7 @@ STM8S_StdPeriph_Lib/src/stm8s_uart1.i: STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i
 
 # target to preprocess a source file
 STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_uart1.c.i
 
 STM8S_StdPeriph_Lib/src/stm8s_uart1.s: STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s
@@ -366,7 +379,7 @@ STM8S_StdPeriph_Lib/src/stm8s_uart1.s: STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s
 
 # target to generate assembly for a file
 STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/STM8StdPeriph.dir/build.make CMakeFiles/STM8StdPeriph.dir/STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s
 .PHONY : STM8S_StdPeriph_Lib/src/stm8s_uart1.c.s
 
 assert_impl.rel: assert_impl.c.rel
@@ -426,6 +439,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... IonizationChamber"
+	@echo "... STM8StdPeriph"
 	@echo "... Application/app_builder.rel"
 	@echo "... Application/app_builder.i"
 	@echo "... Application/app_builder.s"

@@ -190,15 +190,6 @@ IonizationChamber_SOURCE_DIR:STATIC=/workspace/Software/Firmware/new_begining
 //Path to a program.
 SDCCAR_EXECUTABLE:FILEPATH=/usr/bin/sdar
 
-//Value Computed by CMake
-STM8Blink_BINARY_DIR:STATIC=/workspace/Software/Firmware/new_begining/build
-
-//Value Computed by CMake
-STM8Blink_IS_TOP_LEVEL:STATIC=ON
-
-//Value Computed by CMake
-STM8Blink_SOURCE_DIR:STATIC=/workspace/Software/Firmware/new_begining
-
 
 ########################
 # INTERNAL cache entries

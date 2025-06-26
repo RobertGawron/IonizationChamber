@@ -60,7 +60,7 @@
       008028 82 00 00 00             60 	int 0x000000 ; int8
       00802C 82 00 00 00             61 	int 0x000000 ; int9
       008030 82 00 00 00             62 	int 0x000000 ; int10
-      008034 82 00 82 01             63 	int _tim1_isr ; int11
+      008034 82 00 81 63             63 	int _tim1_isr ; int11
                                      64 ;--------------------------------------------------------
                                      65 ; global & static initialisations
                                      66 ;--------------------------------------------------------
@@ -68,7 +68,7 @@
                                      68 	.area GSINIT
                                      69 	.area GSFINAL
                                      70 	.area GSINIT
-      00803B CD 95 10         [ 4]   71 	call	___sdcc_external_startup
+      00803B CD 8C 86         [ 4]   71 	call	___sdcc_external_startup
       00803E 4D               [ 1]   72 	tnz	a
       00803F 27 03            [ 1]   73 	jreq	__sdcc_init_data
       008041 CC 80 38         [ 2]   74 	jp	__sdcc_program_startup
@@ -84,7 +84,7 @@
       008050 AE 00 02         [ 2]   84 	ldw	x, #l_INITIALIZER
       008053 27 09            [ 1]   85 	jreq	00004$
       008055                         86 00003$:
-      008055 D6 81 FA         [ 1]   87 	ld	a, (s_INITIALIZER - 1, x)
+      008055 D6 81 5C         [ 1]   87 	ld	a, (s_INITIALIZER - 1, x)
       008058 D7 00 02         [ 1]   88 	ld	(s_INITIALIZED - 1, x), a
       00805B 5A               [ 2]   89 	decw	x
       00805C 26 F7            [ 1]   90 	jrne	00003$
@@ -98,7 +98,7 @@
                                      98 	.area HOME
                                      99 	.area HOME
       008038                        100 __sdcc_program_startup:
-      008038 CC 82 13         [ 2]  101 	jp	_main
+      008038 CC 81 75         [ 2]  101 	jp	_main
                                     102 ;	return from main will return to caller
                                     103 ;--------------------------------------------------------
                                     104 ; code
@@ -108,54 +108,54 @@
                                     108 ;	-----------------------------------------
                                     109 ;	 function interrupt_control_enable
                                     110 ;	-----------------------------------------
-      0081FD                        111 _interrupt_control_enable:
+      00815F                        111 _interrupt_control_enable:
                                     112 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 22: enableInterrupts();
-      0081FD 9A               [ 1]  113 	rim
+      00815F 9A               [ 1]  113 	rim
                                     114 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 23: }
-      0081FE 81               [ 4]  115 	ret
+      008160 81               [ 4]  115 	ret
                                     116 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 32: static inline void interrupt_control_wait(
                                     117 ;	-----------------------------------------
                                     118 ;	 function interrupt_control_wait
                                     119 ;	-----------------------------------------
-      0081FF                        120 _interrupt_control_wait:
+      008161                        120 _interrupt_control_wait:
                                     121 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 35: wfi();
-      0081FF 8F               [10]  122 	wfi
+      008161 8F               [10]  122 	wfi
                                     123 ;	/workspace/Software/Firmware/new_begining/Driver/interrupt_control.h: 36: }
-      008200 81               [ 4]  124 	ret
+      008162 81               [ 4]  124 	ret
                                     125 ;	/workspace/Software/Firmware/new_begining/main.c: 11: void tim1_isr(void) __interrupt(11)
                                     126 ;	-----------------------------------------
                                     127 ;	 function tim1_isr
                                     128 ;	-----------------------------------------
-      008201                        129 _tim1_isr:
-      008201 4F               [ 1]  130 	clr	a
-      008202 62               [ 2]  131 	div	x, a
+      008163                        129 _tim1_isr:
+      008163 4F               [ 1]  130 	clr	a
+      008164 62               [ 2]  131 	div	x, a
                                     132 ;	/workspace/Software/Firmware/new_begining/main.c: 13: app_tick_flag = 1;
-      008203 5F               [ 1]  133 	clrw	x
-      008204 5C               [ 1]  134 	incw	x
-      008205 CF 00 03         [ 2]  135 	ldw	_app_tick_flag+0, x
+      008165 5F               [ 1]  133 	clrw	x
+      008166 5C               [ 1]  134 	incw	x
+      008167 CF 00 03         [ 2]  135 	ldw	_app_tick_flag+0, x
                                     136 ;	/workspace/Software/Firmware/new_begining/main.c: 15: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
-      008208 5F               [ 1]  137 	clrw	x
-      008209 5C               [ 1]  138 	incw	x
-      00820A CD 8C 11         [ 4]  139 	call	_TIM1_ClearFlag
+      00816A 5F               [ 1]  137 	clrw	x
+      00816B 5C               [ 1]  138 	incw	x
+      00816C CD 86 D3         [ 4]  139 	call	_TIM1_ClearFlag
                                     140 ;	/workspace/Software/Firmware/new_begining/main.c: 16: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
-      00820D A6 01            [ 1]  141 	ld	a, #0x01
-      00820F CD 8C 3E         [ 4]  142 	call	_TIM1_ClearITPendingBit
+      00816F A6 01            [ 1]  141 	ld	a, #0x01
+      008171 CD 87 00         [ 4]  142 	call	_TIM1_ClearITPendingBit
                                     143 ;	/workspace/Software/Firmware/new_begining/main.c: 17: }
-      008212 80               [11]  144 	iret
+      008174 80               [11]  144 	iret
                                     145 ;	/workspace/Software/Firmware/new_begining/main.c: 19: int main()
                                     146 ;	-----------------------------------------
                                     147 ;	 function main
                                     148 ;	-----------------------------------------
-      008213                        149 _main:
+      008175                        149 _main:
                                     150 ;	/workspace/Software/Firmware/new_begining/main.c: 21: app_builder_init();
-      008213 CD 82 25         [ 4]  151 	call	_app_builder_init
-      008216                        152 00102$:
+      008175 CD 81 87         [ 4]  151 	call	_app_builder_init
+      008178                        152 00102$:
                                     153 ;	/workspace/Software/Firmware/new_begining/main.c: 25: app_builder_run();
-      008216 CD 82 30         [ 4]  154 	call	_app_builder_run
-      008219 20 FB            [ 2]  155 	jra	00102$
+      008178 CD 81 92         [ 4]  154 	call	_app_builder_run
+      00817B 20 FB            [ 2]  155 	jra	00102$
                                     156 ;	/workspace/Software/Firmware/new_begining/main.c: 28: return 0;
                                     157 ;	/workspace/Software/Firmware/new_begining/main.c: 29: }
-      00821B 81               [ 4]  158 	ret
+      00817D 81               [ 4]  158 	ret
                                     159 	.area CODE
                                     160 	.area CONST
                                     161 	.area INITIALIZER

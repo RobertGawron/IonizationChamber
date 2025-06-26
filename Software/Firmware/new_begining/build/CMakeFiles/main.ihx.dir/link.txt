@@ -1,1 +1,0 @@
-/usr/bin/sdcc -mstm8 --std-c99 CMakeFiles/main.ihx.dir/main.c.rel -o main.ihx.ihx

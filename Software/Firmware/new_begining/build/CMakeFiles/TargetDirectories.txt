@@ -1,3 +1,4 @@
+/workspace/Software/Firmware/new_begining/build/CMakeFiles/STM8StdPeriph.dir
 /workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir
 /workspace/Software/Firmware/new_begining/build/CMakeFiles/edit_cache.dir
 /workspace/Software/Firmware/new_begining/build/CMakeFiles/rebuild_cache.dir
