@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
   "/workspace/Software/Firmware/new_begining/Application/app_builder.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel"
+  "/workspace/Software/Firmware/new_begining/Application/data_acquisition.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Application/data_acquisition.c.rel"
   "/workspace/Software/Firmware/new_begining/Driver/clk_conf.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel"
   "/workspace/Software/Firmware/new_begining/Driver/timer_conf.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.rel"
   "/workspace/Software/Firmware/new_begining/Driver/user_interface.c" "/workspace/Software/Firmware/new_begining/build/CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel"
@@ -26,6 +27,7 @@ set(CMAKE_C_COMPILER_ID "SDCC")
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc"
   "/workspace/Software/Firmware/new_begining/Application"
+  "/workspace/Software/Firmware/new_begining/Device"
   "/workspace/Software/Firmware/new_begining/Driver"
   "/workspace/Software/Firmware/new_begining"
   )

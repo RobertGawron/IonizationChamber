@@ -153,6 +153,30 @@ Application/app_builder.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/app_builder.c.s
 .PHONY : Application/app_builder.c.s
 
+Application/data_acquisition.rel: Application/data_acquisition.c.rel
+.PHONY : Application/data_acquisition.rel
+
+# target to build an object file
+Application/data_acquisition.c.rel:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/data_acquisition.c.rel
+.PHONY : Application/data_acquisition.c.rel
+
+Application/data_acquisition.i: Application/data_acquisition.c.i
+.PHONY : Application/data_acquisition.i
+
+# target to preprocess a source file
+Application/data_acquisition.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/data_acquisition.c.i
+.PHONY : Application/data_acquisition.c.i
+
+Application/data_acquisition.s: Application/data_acquisition.c.s
+.PHONY : Application/data_acquisition.s
+
+# target to generate assembly for a file
+Application/data_acquisition.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Application/data_acquisition.c.s
+.PHONY : Application/data_acquisition.c.s
+
 Driver/clk_conf.rel: Driver/clk_conf.c.rel
 .PHONY : Driver/clk_conf.rel
 
@@ -405,6 +429,9 @@ help:
 	@echo "... Application/app_builder.rel"
 	@echo "... Application/app_builder.i"
 	@echo "... Application/app_builder.s"
+	@echo "... Application/data_acquisition.rel"
+	@echo "... Application/data_acquisition.i"
+	@echo "... Application/data_acquisition.s"
 	@echo "... Driver/clk_conf.rel"
 	@echo "... Driver/clk_conf.i"
 	@echo "... Driver/clk_conf.s"

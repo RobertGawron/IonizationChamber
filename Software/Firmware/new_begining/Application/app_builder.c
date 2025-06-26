@@ -6,9 +6,11 @@
 #include "timer_conf.h"
 #include "interrupt_control.h"
 #include "user_interface.h"
+#include "data_acquisition.h"
 
 volatile int app_tick_flag = 0;
 
+/*
 void delay_ms(uint16_t ms)
 {
     // More accurate delay for 16MHz HSI
@@ -20,7 +22,7 @@ void delay_ms(uint16_t ms)
         }
     }
 }
-
+*/
 void app_builder_init(void)
 {
 
@@ -47,4 +49,6 @@ void app_builder_tick(void)
     i = ~i;
     user_interface_update_message(USER_INTERFACE_COLLECTING_DATA_MSG, (i == 0) ? USER_INTERFACE_ENABLE : USER_INTERFACE_DISABLE);
     user_interface_update_message(USER_INTERFACE_STATE_OK_MSG, (i == 0) ? USER_INTERFACE_DISABLE : USER_INTERFACE_ENABLE);
+
+    data_acquisition_tick();
 }

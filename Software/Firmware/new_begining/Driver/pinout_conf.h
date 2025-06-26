@@ -1,5 +1,5 @@
-#ifndef PinoutConfiguration_h
-#define PinoutConfiguration_h
+#ifndef pinout_conf_h
+#define pinout_conf_h
 
 #define PORT_UART GPIOD
 #define PIN_TX GPIO_PIN_5

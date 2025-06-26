@@ -1,5 +1,5 @@
-#ifndef TimerConfigurator_h
-#define TimerConfigurator_h
+#ifndef timer_conf_h
+#define timer_conf_h
 
 /**
  * @file timer_conf.h

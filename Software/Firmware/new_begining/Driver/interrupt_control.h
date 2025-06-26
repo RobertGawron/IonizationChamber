@@ -1,5 +1,5 @@
-#ifndef InterruptConfigurator_h
-#define InterruptConfigurator_h
+#ifndef interrupt_control_h
+#define interrupt_control_h
 
 /**
  * @file interrupt_control.h

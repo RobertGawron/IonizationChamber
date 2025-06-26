@@ -1,5 +1,5 @@
-#ifndef ClockConfigurator_h
-#define ClockConfigurator_h
+#ifndef clk_conf_h
+#define clk_conf_h
 
 /**
  * @file clk_conf.h

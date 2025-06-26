@@ -1,5 +1,5 @@
-#ifndef UserInterface_h
-#define UserInterface_h
+#ifndef user_interface_h
+#define user_interface_h
 
 typedef enum UserInterface_Message
 {

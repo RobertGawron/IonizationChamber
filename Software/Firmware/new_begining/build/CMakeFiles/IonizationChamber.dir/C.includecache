@@ -21,8 +21,22 @@ interrupt_control.h
 /workspace/Software/Firmware/new_begining/Application/interrupt_control.h
 user_interface.h
 /workspace/Software/Firmware/new_begining/Application/user_interface.h
+data_acquisition.h
+/workspace/Software/Firmware/new_begining/Application/data_acquisition.h
 
 /workspace/Software/Firmware/new_begining/Application/app_builder.h
+
+/workspace/Software/Firmware/new_begining/Application/data_acquisition.c
+data_acquisition.h
+/workspace/Software/Firmware/new_begining/Application/data_acquisition.h
+radioactivity_measurer.h
+/workspace/Software/Firmware/new_begining/Application/radioactivity_measurer.h
+
+/workspace/Software/Firmware/new_begining/Application/data_acquisition.h
+
+/workspace/Software/Firmware/new_begining/Device/radioactivity_measurer.h
+mcp3425.h
+/workspace/Software/Firmware/new_begining/Device/mcp3425.h
 
 /workspace/Software/Firmware/new_begining/Driver/clk_conf.c
 clk_conf.h
@@ -33,6 +47,10 @@ stm8s_clk.h
 /workspace/Software/Firmware/new_begining/Driver/clk_conf.h
 
 /workspace/Software/Firmware/new_begining/Driver/interrupt_control.h
+stm8s_conf_wrapper.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
+
+/workspace/Software/Firmware/new_begining/Driver/mcp3425.h
 stm8s_conf_wrapper.h
 /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
 

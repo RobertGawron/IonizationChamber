@@ -68,7 +68,7 @@
                                      68 	.area GSINIT
                                      69 	.area GSFINAL
                                      70 	.area GSINIT
-      00803B CD 95 31         [ 4]   71 	call	___sdcc_external_startup
+      00803B CD 95 10         [ 4]   71 	call	___sdcc_external_startup
       00803E 4D               [ 1]   72 	tnz	a
       00803F 27 03            [ 1]   73 	jreq	__sdcc_init_data
       008041 CC 80 38         [ 2]   74 	jp	__sdcc_program_startup
@@ -136,10 +136,10 @@
                                     136 ;	/workspace/Software/Firmware/new_begining/main.c: 15: TIM1_ClearFlag(TIM1_FLAG_UPDATE);
       008208 5F               [ 1]  137 	clrw	x
       008209 5C               [ 1]  138 	incw	x
-      00820A CD 8C 32         [ 4]  139 	call	_TIM1_ClearFlag
+      00820A CD 8C 11         [ 4]  139 	call	_TIM1_ClearFlag
                                     140 ;	/workspace/Software/Firmware/new_begining/main.c: 16: TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
       00820D A6 01            [ 1]  141 	ld	a, #0x01
-      00820F CD 8C 5F         [ 4]  142 	call	_TIM1_ClearITPendingBit
+      00820F CD 8C 3E         [ 4]  142 	call	_TIM1_ClearITPendingBit
                                     143 ;	/workspace/Software/Firmware/new_begining/main.c: 17: }
       008212 80               [11]  144 	iret
                                     145 ;	/workspace/Software/Firmware/new_begining/main.c: 19: int main()
@@ -148,10 +148,10 @@
                                     148 ;	-----------------------------------------
       008213                        149 _main:
                                     150 ;	/workspace/Software/Firmware/new_begining/main.c: 21: app_builder_init();
-      008213 CD 82 49         [ 4]  151 	call	_app_builder_init
+      008213 CD 82 25         [ 4]  151 	call	_app_builder_init
       008216                        152 00102$:
                                     153 ;	/workspace/Software/Firmware/new_begining/main.c: 25: app_builder_run();
-      008216 CD 82 54         [ 4]  154 	call	_app_builder_run
+      008216 CD 82 30         [ 4]  154 	call	_app_builder_run
       008219 20 FB            [ 2]  155 	jra	00102$
                                     156 ;	/workspace/Software/Firmware/new_begining/main.c: 28: return 0;
                                     157 ;	/workspace/Software/Firmware/new_begining/main.c: 29: }

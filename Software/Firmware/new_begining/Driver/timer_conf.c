@@ -1,7 +1,7 @@
 #include "timer_conf.h"
 #include "stm8s_tim1.h"
 
-void timer_conf_init()
+void timer_conf_init(void)
 {
     /* Disable timer before configuration */
     TIM1_Cmd(DISABLE);

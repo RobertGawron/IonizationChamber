@@ -4,6 +4,7 @@
 CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel: \
  /workspace/Software/Firmware/new_begining/Application/app_builder.c \
  /workspace/Software/Firmware/new_begining/Application/app_builder.h \
+ /workspace/Software/Firmware/new_begining/Application/data_acquisition.h \
  /workspace/Software/Firmware/new_begining/Driver/clk_conf.h \
  /workspace/Software/Firmware/new_begining/Driver/interrupt_control.h \
  /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h \
@@ -35,6 +36,38 @@ CMakeFiles/IonizationChamber.dir/Application/app_builder.c.rel: \
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart3.h \
  /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h \
  /workspace/Software/Firmware/new_begining/assert_impl.h \
+ /workspace/Software/Firmware/new_begining/stm8s_conf.h
+CMakeFiles/IonizationChamber.dir/Application/data_acquisition.c.rel: \
+ /workspace/Software/Firmware/new_begining/Application/data_acquisition.c \
+ /workspace/Software/Firmware/new_begining/Application/data_acquisition.h \
+ /workspace/Software/Firmware/new_begining/Device/radioactivity_measurer.h \
+ /workspace/Software/Firmware/new_begining/Driver/mcp3425.h \
+ /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc1.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_adc2.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_awu.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_beep.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_can.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_clk.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_exti.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_flash.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_gpio.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_i2c.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_itc.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_iwdg.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_rst.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_spi.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim1.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim2.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim3.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim4.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim5.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_tim6.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart1.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart2.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_uart3.h \
+ /workspace/Software/Firmware/new_begining/STM8S_StdPeriph_Lib/inc/stm8s_wwdg.h \
  /workspace/Software/Firmware/new_begining/stm8s_conf.h
 CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel: \
  /workspace/Software/Firmware/new_begining/Driver/clk_conf.c \

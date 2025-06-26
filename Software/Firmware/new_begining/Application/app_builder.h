@@ -1,5 +1,5 @@
-#ifndef ApplicationBuilder_h
-#define ApplicationBuilder_h
+#ifndef app_builder_h
+#define app_builder_h
 
 /**
  * @file app_builder.h
