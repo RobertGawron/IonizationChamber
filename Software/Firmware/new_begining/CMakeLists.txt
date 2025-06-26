@@ -24,6 +24,7 @@ add_executable(IonizationChamber
         Application/app_builder.c
         Driver/user_interface.c
         Driver/clk_conf.c
+        Driver/timer_conf.c
         
         #Src/ApplicationBuilder.c
         #Src/ClockConfigurator.c

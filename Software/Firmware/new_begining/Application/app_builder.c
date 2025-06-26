@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include "assert_impl.h"
 #include "clk_conf.h"
+#include "timer_conf.h"
 #include "user_interface.h"
 
 void delay_ms(uint16_t ms)
@@ -20,6 +21,7 @@ void delay_ms(uint16_t ms)
 void app_builder_init(void)
 {
     clk_conf_init();
+    timer_conf_init();
     user_interface_init();
 }
 

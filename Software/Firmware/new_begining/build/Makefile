@@ -177,6 +177,30 @@ Driver/clk_conf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.s
 .PHONY : Driver/clk_conf.c.s
 
+Driver/timer_conf.rel: Driver/timer_conf.c.rel
+.PHONY : Driver/timer_conf.rel
+
+# target to build an object file
+Driver/timer_conf.c.rel:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.rel
+.PHONY : Driver/timer_conf.c.rel
+
+Driver/timer_conf.i: Driver/timer_conf.c.i
+.PHONY : Driver/timer_conf.i
+
+# target to preprocess a source file
+Driver/timer_conf.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.i
+.PHONY : Driver/timer_conf.c.i
+
+Driver/timer_conf.s: Driver/timer_conf.c.s
+.PHONY : Driver/timer_conf.s
+
+# target to generate assembly for a file
+Driver/timer_conf.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.s
+.PHONY : Driver/timer_conf.c.s
+
 Driver/user_interface.rel: Driver/user_interface.c.rel
 .PHONY : Driver/user_interface.rel
 
@@ -384,6 +408,9 @@ help:
 	@echo "... Driver/clk_conf.rel"
 	@echo "... Driver/clk_conf.i"
 	@echo "... Driver/clk_conf.s"
+	@echo "... Driver/timer_conf.rel"
+	@echo "... Driver/timer_conf.i"
+	@echo "... Driver/timer_conf.s"
 	@echo "... Driver/user_interface.rel"
 	@echo "... Driver/user_interface.i"
 	@echo "... Driver/user_interface.s"

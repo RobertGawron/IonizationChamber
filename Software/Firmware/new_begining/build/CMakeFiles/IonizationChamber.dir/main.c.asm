@@ -88,19 +88,19 @@ __sdcc_program_startup:
 ; code
 ;--------------------------------------------------------
 	.area CODE
-;	/workspace/Software/Firmware/new_begining/main.c: 12: int main()
+;	/workspace/Software/Firmware/new_begining/main.c: 5: int main()
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-;	/workspace/Software/Firmware/new_begining/main.c: 14: app_builder_init();
+;	/workspace/Software/Firmware/new_begining/main.c: 7: app_builder_init();
 	call	_app_builder_init
 00102$:
-;	/workspace/Software/Firmware/new_begining/main.c: 18: app_builder_run();
+;	/workspace/Software/Firmware/new_begining/main.c: 11: app_builder_run();
 	call	_app_builder_run
 	jra	00102$
-;	/workspace/Software/Firmware/new_begining/main.c: 21: return 0;
-;	/workspace/Software/Firmware/new_begining/main.c: 22: }
+;	/workspace/Software/Firmware/new_begining/main.c: 14: return 0;
+;	/workspace/Software/Firmware/new_begining/main.c: 15: }
 	ret
 	.area CODE
 	.area CONST

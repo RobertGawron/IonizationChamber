@@ -15,6 +15,8 @@ assert_impl.h
 /workspace/Software/Firmware/new_begining/Application/assert_impl.h
 clk_conf.h
 /workspace/Software/Firmware/new_begining/Application/clk_conf.h
+timer_conf.h
+/workspace/Software/Firmware/new_begining/Application/timer_conf.h
 user_interface.h
 /workspace/Software/Firmware/new_begining/Application/user_interface.h
 
@@ -29,6 +31,16 @@ stm8s_clk.h
 /workspace/Software/Firmware/new_begining/Driver/clk_conf.h
 
 /workspace/Software/Firmware/new_begining/Driver/pinout_conf.h
+
+/workspace/Software/Firmware/new_begining/Driver/timer_conf.c
+timer_conf.h
+/workspace/Software/Firmware/new_begining/Driver/timer_conf.h
+stm8s_tim1.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s_tim1.h
+stm8s_clk.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s_clk.h
+
+/workspace/Software/Firmware/new_begining/Driver/timer_conf.h
 
 /workspace/Software/Firmware/new_begining/Driver/user_interface.c
 user_interface.h
@@ -177,14 +189,6 @@ stm8s.h
 /workspace/Software/Firmware/new_begining/stm8s.h
 
 /workspace/Software/Firmware/new_begining/main.c
-stdint.h
--
-assert_impl.h
-/workspace/Software/Firmware/new_begining/assert_impl.h
-clk_conf.h
-/workspace/Software/Firmware/new_begining/clk_conf.h
-user_interface.h
-/workspace/Software/Firmware/new_begining/user_interface.h
 app_builder.h
 /workspace/Software/Firmware/new_begining/app_builder.h
 

@@ -25,7 +25,7 @@ Area                                    Addr        Size        Decimal Bytes (A
      00000007  l_HOME                          
      00000023  l_GSINIT                        
      00000196  l_CONST                         
-     00001356  l_CODE                          
+     0000137A  l_CODE                          
      00008000  s_HOME                          
      00008007  s_GSINIT                        
      0000802A  s_GSFINAL                       
@@ -104,7 +104,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000081C4    00001356 =        4950. bytes (REL,CON)
+CODE                                000081C4    0000137A =        4986. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -112,69 +112,70 @@ CODE                                000081C4    00001356 =        4950. bytes (R
      000081CD  _assert_failed                     assert_impl
      000081D2  _delay_ms                          app_builder
      000081F6  _app_builder_init                  app_builder
-     000081FC  _app_builder_run                   app_builder
-     00008214  _app_builder_tick                  app_builder
-     0000822C  _user_interface_init               user_interface
-     0000823E  _user_interface_update_message     user_interface
-     00008284  _clk_conf_init                     clk_conf
-     000082C2  _GPIO_DeInit                       stm8s_gpio
-     000082D0  _GPIO_Init                         stm8s_gpio
-     000083AA  _GPIO_WriteHigh                    stm8s_gpio
-     000083B3  _GPIO_WriteLow                     stm8s_gpio
-     000083BF  _I2C_DeInit                        stm8s_i2c
-     000083E4  _I2C_Init                          stm8s_i2c
-     0000859C  _I2C_Cmd                           stm8s_i2c
-     000085C6  _I2C_GenerateSTART                 stm8s_i2c
-     000085F0  _I2C_GenerateSTOP                  stm8s_i2c
-     0000861A  _I2C_AcknowledgeConfig             stm8s_i2c
-     0000866E  _I2C_ITConfig                      stm8s_i2c
-     000086CC  _I2C_ReceiveData                   stm8s_i2c
-     000086D0  _I2C_Send7bitAddress               stm8s_i2c
-     00008708  _I2C_SendData                      stm8s_i2c
-     0000870C  _I2C_CheckEvent                    stm8s_i2c
-     000087C8  _I2C_GetFlagStatus                 stm8s_i2c
-     0000885F  _TIM1_DeInit                       stm8s_tim1
-     000088F8  _TIM1_TimeBaseInit                 stm8s_tim1
-     0000894C  _TIM1_ICInit                       stm8s_tim1
-     00008A4C  _TIM1_Cmd                          stm8s_tim1
-     00008A76  _TIM1_ITConfig                     stm8s_tim1
-     00008ABB  _TIM1_SetIC1Prescaler              stm8s_tim1
-     00008AEA  _TIM1_SetIC2Prescaler              stm8s_tim1
-     00008B19  _TIM1_SetIC3Prescaler              stm8s_tim1
-     00008B48  _TIM1_SetIC4Prescaler              stm8s_tim1
-     00008B77  _TIM1_GetCapture1                  stm8s_tim1
-     00008B86  _TIM1_ClearFlag                    stm8s_tim1
-     00008BB3  _TIM1_ClearITPendingBit            stm8s_tim1
-     00008CB9  _CLK_DeInit                        stm8s_clk
-     00008CEF  _CLK_HSECmd                        stm8s_clk
-     00008D19  _CLK_HSICmd                        stm8s_clk
-     00008D43  _CLK_LSICmd                        stm8s_clk
-     00008D6D  _CLK_ClockSwitchCmd                stm8s_clk
-     00008D97  _CLK_PeripheralClockConfig         stm8s_clk
-     00008E61  _CLK_ClockSwitchConfig             stm8s_clk
-     00008F67  _CLK_HSIPrescalerConfig            stm8s_clk
-     00008F9C  _CLK_SYSCLKConfig                  stm8s_clk
-     0000901A  _CLK_GetClockFreq                  stm8s_clk
-     00009061  _CLK_GetFlagStatus                 stm8s_clk
-     000090E0  _UART1_DeInit                      stm8s_uart1
-     0000910B  _UART1_Init                        stm8s_uart1
+     000081FF  _app_builder_run                   app_builder
+     00008217  _app_builder_tick                  app_builder
+     0000822F  _user_interface_init               user_interface
+     00008241  _user_interface_update_message     user_interface
+     00008287  _clk_conf_init                     clk_conf
+     000082C5  _timer_conf_init                   timer_conf
+     000082E6  _GPIO_DeInit                       stm8s_gpio
+     000082F4  _GPIO_Init                         stm8s_gpio
+     000083CE  _GPIO_WriteHigh                    stm8s_gpio
+     000083D7  _GPIO_WriteLow                     stm8s_gpio
+     000083E3  _I2C_DeInit                        stm8s_i2c
+     00008408  _I2C_Init                          stm8s_i2c
+     000085C0  _I2C_Cmd                           stm8s_i2c
+     000085EA  _I2C_GenerateSTART                 stm8s_i2c
+     00008614  _I2C_GenerateSTOP                  stm8s_i2c
+     0000863E  _I2C_AcknowledgeConfig             stm8s_i2c
+     00008692  _I2C_ITConfig                      stm8s_i2c
+     000086F0  _I2C_ReceiveData                   stm8s_i2c
+     000086F4  _I2C_Send7bitAddress               stm8s_i2c
+     0000872C  _I2C_SendData                      stm8s_i2c
+     00008730  _I2C_CheckEvent                    stm8s_i2c
+     000087EC  _I2C_GetFlagStatus                 stm8s_i2c
+     00008883  _TIM1_DeInit                       stm8s_tim1
+     0000891C  _TIM1_TimeBaseInit                 stm8s_tim1
+     00008970  _TIM1_ICInit                       stm8s_tim1
+     00008A70  _TIM1_Cmd                          stm8s_tim1
+     00008A9A  _TIM1_ITConfig                     stm8s_tim1
+     00008ADF  _TIM1_SetIC1Prescaler              stm8s_tim1
+     00008B0E  _TIM1_SetIC2Prescaler              stm8s_tim1
+     00008B3D  _TIM1_SetIC3Prescaler              stm8s_tim1
+     00008B6C  _TIM1_SetIC4Prescaler              stm8s_tim1
+     00008B9B  _TIM1_GetCapture1                  stm8s_tim1
+     00008BAA  _TIM1_ClearFlag                    stm8s_tim1
+     00008BD7  _TIM1_ClearITPendingBit            stm8s_tim1
+     00008CDD  _CLK_DeInit                        stm8s_clk
+     00008D13  _CLK_HSECmd                        stm8s_clk
+     00008D3D  _CLK_HSICmd                        stm8s_clk
+     00008D67  _CLK_LSICmd                        stm8s_clk
+     00008D91  _CLK_ClockSwitchCmd                stm8s_clk
+     00008DBB  _CLK_PeripheralClockConfig         stm8s_clk
+     00008E85  _CLK_ClockSwitchConfig             stm8s_clk
+     00008F8B  _CLK_HSIPrescalerConfig            stm8s_clk
+     00008FC0  _CLK_SYSCLKConfig                  stm8s_clk
+     0000903E  _CLK_GetClockFreq                  stm8s_clk
+     00009085  _CLK_GetFlagStatus                 stm8s_clk
+     00009104  _UART1_DeInit                      stm8s_uart1
 ASxxxx Linker V03.00/V05.40 + sdld,  page 10.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CODE                                000081C4    00001356 =        4950. bytes (REL,CON)
+CODE                                000081C4    0000137A =        4986. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00009357  _UART1_Cmd                         stm8s_uart1
-     0000936F  _UART1_SendData8                   stm8s_uart1
-     00009373  _UART1_GetFlagStatus               stm8s_uart1
-     00009400  _UART1_ClearFlag                   stm8s_uart1
-     0000942C  __divulong                         _divulong
-     00009485  ___sdcc_external_startup           _startup
-     00009487  __mullong                          
-     00009503  __divsint                          
+     0000912F  _UART1_Init                        stm8s_uart1
+     0000937B  _UART1_Cmd                         stm8s_uart1
+     00009393  _UART1_SendData8                   stm8s_uart1
+     00009397  _UART1_GetFlagStatus               stm8s_uart1
+     00009424  _UART1_ClearFlag                   stm8s_uart1
+     00009450  __divulong                         _divulong
+     000094A9  ___sdcc_external_startup           _startup
+     000094AB  __mullong                          
+     00009527  __divsint                          
 
 ASxxxx Linker V03.00/V05.40 + sdld,  page 11.
 
@@ -190,6 +191,8 @@ CMakeFiles/IonizationChamber.dir/Driver/user_interface.c.rel
                                           [ user_interface ]
 CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.rel
                                           [ clk_conf ]
+CMakeFiles/IonizationChamber.dir/Driver/timer_conf.c.rel
+                                          [ timer_conf ]
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_gpio.c.rel
                                           [ stm8s_gpio ]
 CMakeFiles/IonizationChamber.dir/STM8S_StdPeriph_Lib/src/stm8s_i2c.c.rel

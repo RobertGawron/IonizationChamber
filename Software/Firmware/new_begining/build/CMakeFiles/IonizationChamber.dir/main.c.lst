@@ -88,19 +88,19 @@
                                      88 ; code
                                      89 ;--------------------------------------------------------
                                      90 	.area CODE
-                                     91 ;	/workspace/Software/Firmware/new_begining/main.c: 12: int main()
+                                     91 ;	/workspace/Software/Firmware/new_begining/main.c: 5: int main()
                                      92 ;	-----------------------------------------
                                      93 ;	 function main
                                      94 ;	-----------------------------------------
       000000                         95 _main:
-                                     96 ;	/workspace/Software/Firmware/new_begining/main.c: 14: app_builder_init();
+                                     96 ;	/workspace/Software/Firmware/new_begining/main.c: 7: app_builder_init();
       000000 CDr00r00         [ 4]   97 	call	_app_builder_init
       000003                         98 00102$:
-                                     99 ;	/workspace/Software/Firmware/new_begining/main.c: 18: app_builder_run();
+                                     99 ;	/workspace/Software/Firmware/new_begining/main.c: 11: app_builder_run();
       000003 CDr00r00         [ 4]  100 	call	_app_builder_run
       000006 20 FB            [ 2]  101 	jra	00102$
-                                    102 ;	/workspace/Software/Firmware/new_begining/main.c: 21: return 0;
-                                    103 ;	/workspace/Software/Firmware/new_begining/main.c: 22: }
+                                    102 ;	/workspace/Software/Firmware/new_begining/main.c: 14: return 0;
+                                    103 ;	/workspace/Software/Firmware/new_begining/main.c: 15: }
       000008 81               [ 4]  104 	ret
                                     105 	.area CODE
                                     106 	.area CONST

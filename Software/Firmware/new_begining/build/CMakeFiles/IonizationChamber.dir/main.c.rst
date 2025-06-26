@@ -52,7 +52,7 @@
                                      52 	.area GSINIT
                                      53 	.area GSFINAL
                                      54 	.area GSINIT
-      008007 CD 94 85         [ 4]   55 	call	___sdcc_external_startup
+      008007 CD 94 A9         [ 4]   55 	call	___sdcc_external_startup
       00800A 4D               [ 1]   56 	tnz	a
       00800B 27 03            [ 1]   57 	jreq	__sdcc_init_data
       00800D CC 80 04         [ 2]   58 	jp	__sdcc_program_startup
@@ -88,19 +88,19 @@
                                      88 ; code
                                      89 ;--------------------------------------------------------
                                      90 	.area CODE
-                                     91 ;	/workspace/Software/Firmware/new_begining/main.c: 12: int main()
+                                     91 ;	/workspace/Software/Firmware/new_begining/main.c: 5: int main()
                                      92 ;	-----------------------------------------
                                      93 ;	 function main
                                      94 ;	-----------------------------------------
       0081C4                         95 _main:
-                                     96 ;	/workspace/Software/Firmware/new_begining/main.c: 14: app_builder_init();
+                                     96 ;	/workspace/Software/Firmware/new_begining/main.c: 7: app_builder_init();
       0081C4 CD 81 F6         [ 4]   97 	call	_app_builder_init
       0081C7                         98 00102$:
-                                     99 ;	/workspace/Software/Firmware/new_begining/main.c: 18: app_builder_run();
-      0081C7 CD 81 FC         [ 4]  100 	call	_app_builder_run
+                                     99 ;	/workspace/Software/Firmware/new_begining/main.c: 11: app_builder_run();
+      0081C7 CD 81 FF         [ 4]  100 	call	_app_builder_run
       0081CA 20 FB            [ 2]  101 	jra	00102$
-                                    102 ;	/workspace/Software/Firmware/new_begining/main.c: 21: return 0;
-                                    103 ;	/workspace/Software/Firmware/new_begining/main.c: 22: }
+                                    102 ;	/workspace/Software/Firmware/new_begining/main.c: 14: return 0;
+                                    103 ;	/workspace/Software/Firmware/new_begining/main.c: 15: }
       0081CC 81               [ 4]  104 	ret
                                     105 	.area CODE
                                     106 	.area CONST
