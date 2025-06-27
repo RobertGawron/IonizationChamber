@@ -29,13 +29,12 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm8_it.h"
-#include "application_builder.h"
+
 #include "user_interface.h"
+#include "app_builder.h"
 /** @addtogroup Template_Project
  * @{
  */
-
-#include "application_builder.h" // Include the flag declaration
 
 extern unsigned char timer_flag;
 
@@ -241,12 +240,13 @@ INTERRUPT_HANDLER(TIM1_UPD_OVF_TRG_BRK_IRQHandler, 11)
         USER_INTERFACE_COLLECTING_DATA_MSG,
         USER_INTERFACE_DISABLE);
   */
-
-  user_interface_update_message(
-      USER_INTERFACE_COLLECTING_DATA_MSG,
-      USER_INTERFACE_ENABLE);
-
-  app_tick_flag = 1;
+  /*
+    user_interface_update_message(
+        USER_INTERFACE_COLLECTING_DATA_MSG,
+        USER_INTERFACE_ENABLE);
+  */
+  xx app_builder_tick();
+  // app_tick_flag = 1;
   TIM1_ClearITPendingBit(TIM1_IT_UPDATE);
 }
 

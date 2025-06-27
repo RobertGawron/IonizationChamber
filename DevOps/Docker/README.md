@@ -29,7 +29,11 @@ docker-compose exec ionizationchamber  bash
 End of Work
 
 To log out from the Docker container, press Ctrl+D.
-To stop and clean up the Docker environment, use:
+To stop and clean up the Docker
+
+
+
+ environment, use:
 
 docker-compose down --remove-orphans
 
@@ -274,5 +278,87 @@ stm8flash -c stlinkv2 -p stm8s003f3 -w /workspace/firmwarev3/IonizationChamber.e
 ------------
 
 
-openocd -f interface/stlink.cfg -f target/stm8s.cfg -c "program /workspace/firmwarev3/IonizationChamber.elf verify reset exit"
+openocd -f interface/stlink.cfg -f target/stm8s.cfg -c "program IonizationChamber.elf verify reset exit"
 
+-------------
+
+
+SWITCH TO MAKFILE
+
+
+openocd   -f interface/stlink.cfg   -f target/stm8s.cfg   -c "init; reset halt; load_image IonizationChamber.elf 0x8000; reset halt; exit"
+
+
+
+openocd \
+  -f interface/stlink.cfg \
+  -f target/stm8s.cfg \
+  -c "init; reset halt; load_image /workspace/Software/Firmware/IonizationChamber.elf  0x8000; reset halt"
+
+
+
+  stm8-gdb /workspace/Software/Firmware/IonizationChamber.elf \
+    -ex "set architecture stm8" \
+    -ex "target extended-remote :3333"
+
+
+for sdcc to have elf
+sudo apt install build-essential libboost-all-dev bison flex texinfo zlib1g-dev
+
+we dont have elf possibility in this shit
+need to update docker for ubuntu version
+
+sudo apt install software-properties-common
+
+
+root@faedc67c011c:/workspace/Software/Firmware#  add-apt-repository ppa:mhier/libboost-latest
+
+
+it all failed try again:
+
+
+sudo add-apt-repository ppa:mhier/libboost-latest
+
+sudo apt update
+
+Step 2: Install the desired Boost version (e.g., 1.83)
+
+sudo apt install libboost1.83-dev
+
+
+and then faild, disable other chips:
+
+
+./configure --enable-stm8 --disable-hc08 --disable-s08 --disable-mcs51 --disable-z80 --disable-z180 --disable-r2k --disable-r3ka --disable-gbz80 --disable-tlcs90 --disable-ds390 --disable-ds400 --disable-pic14 --disable-pic16 --disable-ucsim
+
+
+
+===========================
+
+
+give up, start new docker
+
+apt install autoconf automake libtool
+
+git clone git@github.com:ntfreak/openocd.git
+cd openocd
+./bootstrap
+./configure
+make -j24
+make install
+
+what?
+
+        git config --global --add safe.directory /workspace/Software/downloads/openocd
+
+        ./configure --disable-werror
+
+
+-- shit didint work
+        apt-get install texinfo
+
+
+ok make sure the link is ok to the gz file
+
+
+CPPFLAGS="-D_XOPEN_SOURCE=1" 
