@@ -23,7 +23,7 @@ loop Repeat for each measurement
 "Transport Layer" -> "Application Layer" : frame
 "Application Layer" -> "State Machine" : measurement
 
-"State Machine" -> "Measurement Storage" : saveMeasurement()
+"State Machine" -> "Measurement Storage" : save_measurement()
 "Measurement Storage" -> File : Write data to CSV
 
 "State Machine" -> Console : Display measurement

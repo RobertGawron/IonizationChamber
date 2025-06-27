@@ -1,0 +1,35 @@
+@startuml
+!theme plain
+title: Tick Sequence Diagram
+
+legend
+Application Layer : blue color
+Device Layer : green color
+Driver Layer : orange color
+Peripheral : yelow color
+end legend
+
+participant "data_acquisition" as DataAcquisition #lightblue
+participant "data_frame" as DataFrame #lightblue
+
+participant "data_logger" as Logger #lightgreen
+participant "radioactivity_measurer" as RadioactivityMeasurer #lightgreen
+
+participant "mcp3425" as MCP3425 #orange
+participant "uart" as UARTDriver #orange
+
+participant "I2C" as I2C #yellow
+participant "UART" as UART #yellow
+
+DataAcquisition -> RadioactivityMeasurer : radioactivity_measurer_get_conf()
+RadioactivityMeasurer -> MCP3425 : mcp3425_get_conf()
+
+DataAcquisition -> RadioactivityMeasurer : radioactivity_measurer_get_sample()
+RadioactivityMeasurer -> MCP3425 : mcp3425_get_value()
+MCP3425 -> I2C
+
+DataAcquisition -> DataFrame : data_frame_create()
+DataAcquisition -> Logger : data_logger_write()
+Logger -> UARTDriver : uart_write()
+UARTDriver -> UART
+@enduml

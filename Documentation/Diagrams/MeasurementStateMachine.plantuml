@@ -1,31 +1,42 @@
 @startuml
-state "Ionization Chamber State Machine" as SM {
-    [*] --> InitIonizationChamber : Start
-
-    state "Init Ionization Chamber" as InitIonizationChamber {
-    }
-    InitIonizationChamber --> InitMeasurementStorage : Connected
-
-    state "Init Measurement Storage" as InitMeasurementStorage {
-    }
-    InitMeasurementStorage --> GetMeasurementFromIonizationChamber : Storage Ready
-
-    state "Get Measurement From Ionization Chamber" as GetMeasurementFromIonizationChamber {
-    }
-    GetMeasurementFromIonizationChamber --> SaveMeasurement : Measurement Acquired
-
-    state "Save Measurement" as SaveMeasurement {
-    }
-    SaveMeasurement --> ShowMeasurementToUser : Saved
-
-    state "Show Measurement To User" as ShowMeasurementToUser {
-    }
-    ShowMeasurementToUser --> GetMeasurementFromIonizationChamber : Continue Measurement
-
-    InitIonizationChamber --> [*] : Failure
-    InitMeasurementStorage --> [*] : Failure
-    GetMeasurementFromIonizationChamber --> [*] : Failure
-    SaveMeasurement --> [*] : Failure
-    ShowMeasurementToUser --> [*] : Failure
+!theme plain
+skinparam state {
+    BackgroundColor LightGray
 }
+title Measurement-Acquisition State Machine (error causes shown)
+
+' ──────────────── start-up phase ─────────────────
+[*] --> InitIonizationChamber : start()
+
+state InitIonizationChamber
+InitIonizationChamber : entry / application_layer.connect()
+InitIonizationChamber --> InitMeasurementStorage : connected
+InitIonizationChamber --> Error : ConnectionError
+
+state InitMeasurementStorage
+InitMeasurementStorage : entry / measurement_storage.connect()
+InitMeasurementStorage --> GetMeasurement : ready
+InitMeasurementStorage --> Error : OSError\nIOError
+
+' ──────────────── operational loop ───────────────
+state GetMeasurement
+GetMeasurement : entry / device_measurement =\n  application_layer.get_measurement()
+GetMeasurement --> SaveMeasurement : ok
+GetMeasurement --> Error : InvalidCRC\nInvalidMsgLength\nMissingFrame\nValueError
+
+state SaveMeasurement
+SaveMeasurement : entry / measurement_storage.save_measurement(\nnow(), device_measurement)
+SaveMeasurement --> ShowMeasurement : saved
+SaveMeasurement --> Error : RuntimeError\nIOError
+
+state ShowMeasurement
+ShowMeasurement : entry / print(device_measurement)
+ShowMeasurement --> GetMeasurement : next tick
+ShowMeasurement --> Error : IOError
+
+' ──────────────── error sink ─────────────────────
+state Error #F55
+Error : un-handled exception
+Error --> [*]
+
 @enduml

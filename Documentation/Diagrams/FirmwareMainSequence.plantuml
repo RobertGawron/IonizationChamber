@@ -1,0 +1,50 @@
+@startuml
+!theme plain
+
+title: Main Sequence Diagram
+
+legend
+Application Layer : blue color
+Device Layer : green color
+Driver Layer : orange color
+Peripheral : yelow color
+end legend
+
+actor User 
+
+participant "main" as Main #lightblue
+participant "app_builder" as AppBuilder #lightblue
+participant "data_acquisition" as DataAcquisition #lightblue
+
+participant "user_interface" as UI #lightgreen
+participant "data_logger" as DataLogger #lightgreen
+
+participant "clk_conf" as Clock #orange
+participant "timer_conf" as Timer #orange
+participant "TIM1" as TIM1 #yellow
+
+User -> Main : Power on the device
+Main -> AppBuilder : app_builder_init()
+AppBuilder -> Clock : clk_conf_init()
+AppBuilder -> UI : user_interface_init()
+AppBuilder -> Timer : timer_conf_init()
+Timer -> TIM1
+AppBuilder -> DataLogger : data_logger_init()
+AppBuilder -> DataAcquisition : data_acquisition_init()
+
+== Main Loop ==
+
+loop #lightgray
+    Main -> AppBuilder : app_builder_run()
+
+    AppBuilder -> AppBuilder : Enter Sleep Mode
+    TIM1 -> AppBuilder : **TIM1 Interrupt** (wake up)
+    
+    AppBuilder -> AppBuilder : app_builder_tick()
+    AppBuilder -> UI : user_interface_indicate_alive()
+    AppBuilder -> DataAcquisition : data_acquisition_tick()
+    
+    DataAcquisition -> DataAcquisition : Measure sensor data
+    DataAcquisition -> DataAcquisition : Process and store data
+end
+@enduml

@@ -1,0 +1,15 @@
+@startjson
+{ 
+  "preamble": {
+    "msg_type": "4 bits",
+    "msg_length": "4 bits",
+    "ADC configuration": "1 byte"
+  },
+  "data": {
+    
+    "ADC_MSB":  "1 byte" ,
+    "ADC_LSB":  "1 byte" 
+  },
+  "CRC": "1 byte"
+}
+@endjson

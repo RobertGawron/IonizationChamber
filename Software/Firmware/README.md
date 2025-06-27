@@ -2,13 +2,15 @@
 
 Below is the sequence diagram for the firmware.
 
-![firmware sequence diagram](../../Documentation/Diagrams/FirmwareSequenceDiagram.svg)
+![firmware main sequence diagram](../../Documentation/Diagrams/FirmwareMainSequence.svg)
+
+![firmware tick sequence diagram](../../Documentation/Diagrams/FirmwareTickSequence.svg)
 
 # Building Firmware
 
 Docker is used to create an isolated and reproducible work environment.
 
-[Detailed information about setting up the environment.](../../DevOps/Docker/README.md)
+[Detailed information about setting up the environment.](../../Documentation/Manuals/README.md)
 
 # Protocol for sending measurements via UART
 
@@ -20,7 +22,7 @@ To ensure data integrity when sending information from the ionization chamber de
 
 ### Definition of the message
 
-<img src="../Documentation/Diagrams/UARTFrameFormat.svg" width="100%">
+![uart frame format diagram](../../Documentation/Diagrams/UartFrameFormat.svg)
 
 The field “msg length” describes the number of bytes in the “data” section.
 

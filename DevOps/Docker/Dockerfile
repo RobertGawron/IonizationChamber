@@ -1,10 +1,8 @@
-# Use an official Ubuntu as a base image
-FROM ubuntu:20.04 AS build
+# Use Ubuntu 25.04 base
+FROM ubuntu:25.04 AS build
 
-# Set environment variables to prevent interaction during installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install git, build tools, and dependencies
 RUN apt-get update && apt-get install -y \
     git \
     build-essential \
@@ -13,17 +11,14 @@ RUN apt-get update && apt-get install -y \
     libusb-1.0-0-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Install stm8flash
-RUN git clone https://github.com/vdudouyt/stm8flash.git
-RUN cd stm8flash && make -j$(nproc)
+RUN git clone https://github.com/vdudouyt/stm8flash.git \
+    && cd stm8flash && make -j$(nproc)
 
-# Use another Ubuntu image for runtime
-FROM ubuntu:20.04 AS runtime
+FROM ubuntu:25.04 AS runtime
 
-# Set environment variables to prevent interaction during installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Install runtime dependencies
+# Install all dependencies in one layer
 RUN apt-get update && apt-get install -y \
     libusb-1.0-0 \
     sdcc \
@@ -38,32 +33,54 @@ RUN apt-get update && apt-get install -y \
     uncrustify \
     python3-pip \
     poppler-utils \
-    cppcheck \
     r-base-core \
-    shellcheck \
-    dos2unix \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update && apt-get install -y \
     python3-venv \
+    libcunit1-dev \
+    libcmocka-dev \
+    tree \
+    vim \
+    lcov \
+    gcovr \
+    clang \
+    clang-tidy \
+    gcc \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy the stm8flash binary from the build stage
 COPY --from=build /stm8flash/stm8flash /usr/bin/
 
-# Install flake8 in a Python virtual environment
-RUN python3 -m venv /workspace/venv && \
-    /workspace/venv/bin/pip install --upgrade pip && \
-    /workspace/venv/bin/pip install flake8 flake8-html pyserial
+# Create virtual environment and install Python packages
+RUN python3 -m venv /workspace/venv \
+    && /workspace/venv/bin/pip install --upgrade pip \
+    && /workspace/venv/bin/pip install \
+        flake8 \
+        flake8-html \
+        pyserial \
+        CodeChecker \
+        coverxygen \
+        prospector \
+        vjunit
 
-# Install R libraries
-RUN R -e "install.packages('latticeExtra', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('gridExtra', repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages('Hmisc', repos='http://cran.rstudio.com/')"
+# Install R packages
+RUN R -e "install.packages(c('latticeExtra', 'gridExtra', 'Hmisc'), repos='http://cran.rstudio.com/')"
+RUN R -e 'install.packages("lintr", repos="https://cloud.r-project.org")'
+RUN R -e 'install.packages("styler")'
 
-# Create workspace directory and set it as the working directory
-RUN mkdir -p /workspace/build
+
+RUN python3 -m venv /workspace/venv \
+    && /workspace/venv/bin/pip install --upgrade pip \
+    && /workspace/venv/bin/pip install \
+        coverage pytest pytest-html black 
+
+
+#COPY Software/MeasurementAcquisition /workspace/MeasurementAcquisition
+
+#WORKDIR /workspace/MeasurementAcquisition
+
+#RUN python3 -m venv /workspace/venv \
+#    && /workspace/venv/bin/pip install --upgrade pip \
+#    && /workspace/venv/bin/pip install .
+
+
 WORKDIR /workspace/build
 
-# Command to run the container
 CMD ["bash"]
