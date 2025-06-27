@@ -56,8 +56,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-2i0Rb8"
-      binary: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-2i0Rb8"
+      source: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-TdK2Zi"
+      binary: "/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-TdK2Zi"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: ""
@@ -66,17 +66,17 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-2i0Rb8'
+        Change Dir: '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-TdK2Zi'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_92ee2/fast
-        /usr/bin/gmake  -f CMakeFiles/cmTC_92ee2.dir/build.make CMakeFiles/cmTC_92ee2.dir/build
-        gmake[1]: Entering directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-2i0Rb8'
-        Building C object CMakeFiles/cmTC_92ee2.dir/CMakeCCompilerABI.c.rel
-        /usr/bin/sdcc    -o CMakeFiles/cmTC_92ee2.dir/CMakeCCompilerABI.c.rel -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
-        Linking C executable cmTC_92ee2.ihx
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_92ee2.dir/link.txt --verbose=1
-        /usr/bin/sdcc CMakeFiles/cmTC_92ee2.dir/CMakeCCompilerABI.c.rel -o cmTC_92ee2.ihx
-        gmake[1]: Leaving directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-2i0Rb8'
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_42fa0/fast
+        /usr/bin/gmake  -f CMakeFiles/cmTC_42fa0.dir/build.make CMakeFiles/cmTC_42fa0.dir/build
+        gmake[1]: Entering directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-TdK2Zi'
+        Building C object CMakeFiles/cmTC_42fa0.dir/CMakeCCompilerABI.c.rel
+        /usr/bin/sdcc    -o CMakeFiles/cmTC_42fa0.dir/CMakeCCompilerABI.c.rel -c /usr/share/cmake-3.31/Modules/CMakeCCompilerABI.c
+        Linking C executable cmTC_42fa0.ihx
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_42fa0.dir/link.txt --verbose=1
+        /usr/bin/sdcc CMakeFiles/cmTC_42fa0.dir/CMakeCCompilerABI.c.rel -o cmTC_42fa0.ihx
+        gmake[1]: Leaving directory '/workspace/Software/Firmware/new_begining/build/CMakeFiles/CMakeScratch/TryCompile-TdK2Zi'
         
       exitCode: 0
   -

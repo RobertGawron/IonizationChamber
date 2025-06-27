@@ -50,6 +50,16 @@ stm8s_clk.h
 stm8s_conf_wrapper.h
 /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h
 
+/workspace/Software/Firmware/new_begining/Driver/mcp3425.c
+mcp3425.h
+/workspace/Software/Firmware/new_begining/Driver/mcp3425.h
+pinout_conf.h
+/workspace/Software/Firmware/new_begining/Driver/pinout_conf.h
+user_interface.h
+/workspace/Software/Firmware/new_begining/Driver/user_interface.h
+stm8s_i2c.h
+/workspace/Software/Firmware/new_begining/Driver/stm8s_i2c.h
+
 /workspace/Software/Firmware/new_begining/Driver/mcp3425.h
 stm8s_conf_wrapper.h
 /workspace/Software/Firmware/new_begining/Driver/stm8s_conf_wrapper.h

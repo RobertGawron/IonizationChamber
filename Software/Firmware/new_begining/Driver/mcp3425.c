@@ -1,5 +1,5 @@
 #include "mcp3425.h"
-#include "pinout_configuration.h"
+#include "pinout_conf.h"
 #include "user_interface.h"
 #include "stm8s_i2c.h"
 

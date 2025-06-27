@@ -51,6 +51,7 @@ add_executable(IonizationChamber
     Driver/user_interface.c
     Driver/clk_conf.c
     Driver/timer_conf.c
+    Driver/mcp3425.c
 )
 
 # Apply flags using LIST-BASED assignment

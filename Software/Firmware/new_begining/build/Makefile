@@ -214,6 +214,30 @@ Driver/clk_conf.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/clk_conf.c.s
 .PHONY : Driver/clk_conf.c.s
 
+Driver/mcp3425.rel: Driver/mcp3425.c.rel
+.PHONY : Driver/mcp3425.rel
+
+# target to build an object file
+Driver/mcp3425.c.rel:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/mcp3425.c.rel
+.PHONY : Driver/mcp3425.c.rel
+
+Driver/mcp3425.i: Driver/mcp3425.c.i
+.PHONY : Driver/mcp3425.i
+
+# target to preprocess a source file
+Driver/mcp3425.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/mcp3425.c.i
+.PHONY : Driver/mcp3425.c.i
+
+Driver/mcp3425.s: Driver/mcp3425.c.s
+.PHONY : Driver/mcp3425.s
+
+# target to generate assembly for a file
+Driver/mcp3425.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IonizationChamber.dir/build.make CMakeFiles/IonizationChamber.dir/Driver/mcp3425.c.s
+.PHONY : Driver/mcp3425.c.s
+
 Driver/timer_conf.rel: Driver/timer_conf.c.rel
 .PHONY : Driver/timer_conf.rel
 
@@ -449,6 +473,9 @@ help:
 	@echo "... Driver/clk_conf.rel"
 	@echo "... Driver/clk_conf.i"
 	@echo "... Driver/clk_conf.s"
+	@echo "... Driver/mcp3425.rel"
+	@echo "... Driver/mcp3425.i"
+	@echo "... Driver/mcp3425.s"
 	@echo "... Driver/timer_conf.rel"
 	@echo "... Driver/timer_conf.i"
 	@echo "... Driver/timer_conf.s"
