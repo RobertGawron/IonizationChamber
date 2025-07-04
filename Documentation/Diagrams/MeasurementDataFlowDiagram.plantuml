@@ -1,0 +1,25 @@
+@startuml
+!theme plain
+
+[COM Port] as comport #LightBlue
+[Python Script] as pyscript #LightGrey
+[.csv File] as csvfile #LightGreen
+[R Script] as rscript #LightGrey
+[.png Diagram] as png #LightGreen
+
+comport <- pyscript : reads
+pyscript -> csvfile : saves\ndata file
+csvfile <- rscript : reads\ndata file
+rscript -> png 
+
+note bottom of pyscript
+Script from:
+Software/MeasurementAcquisition
+end note
+
+note bottom of rscript
+Script from:
+Software/MeasurementAnalysis
+end note
+
+@enduml

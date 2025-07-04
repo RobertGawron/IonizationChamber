@@ -1,34 +1,75 @@
 # Purpose
 
-This is a set of scripts that take .csv files and generate diagrams for easy analysis of measurements.
+Scripts for analyzing and visualizing radiation measurement data from ionization chamber sensor.
 
-# Plotting Signal Value in Time Domain + Plotting Histogram
+# Content
 
-This mode is useful for observing measurement changes over time.
+## Single Sample Analysis (radiation_analysis_single.R)
 
-After collecting data, run the script to post-process it and generate diagrams:
+![time_domain](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Plots/time_domain_example.png)
 
-Rscript main.R
+#### Purpose:
 
-A new .png image with a timestamp in its name will be created in the directory where the script is located.
+Analyzes a single radiation sample, producing:
 
-Below is an example of such a generated plot.
+Time series plot of radiation counts
 
-![boxplot](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Plots/time_domain_example.png)
+Histogram of radiation distribution
 
+#### Input
 
-# Plotting Values from Different Measurements [(box plot)](https://en.wikipedia.org/wiki/Box_plot)
+A CSV file (data.csv) with two columns:
 
-Collect data from different samples as separate .csv files.
+Time: Timestamps in %Y-%m-%d %H:%M:%S.%OS format
 
-Edit boxplot.R to match the filenames of the .csv files and the labels of the measurements.
+Voltage: Measured voltage from ionization chamber
 
-Run:
+#### Output
 
-Rscript boxplot.R
+Two image files (PNG and SVG) with the filename pattern:
+radiation_analysis_single_<timestamp>.<ext>
 
-A new .png image with a timestamp in its name will be created in the directory where the script is located.
+#### Usage
 
-Below is an example of such a generated plot.
+Place your data in data.csv in the same directory
+
+Run the script:
+
+Rscript radiation_analysis_single.R
+
+## Multi-Sample Comparison (radiation_analysis_multi.R)
 
 ![boxplot](https://raw.githubusercontent.com/RobertGawron/IonizationChamber/master/Documentation/Plots/box_plot_example.png)
+
+#### Purpose
+
+Compares radiation levels across multiple samples using boxplots.
+
+#### Input
+
+Multiple CSV files (configured in the script) each containing:
+
+Time: Timestamps (optional, used for footer)
+
+Voltage: Radiation counts (required)
+
+#### Output
+
+Two image files (PNG and SVG) with the pattern:
+radiation_comparison_<timestamp>.<ext>
+
+#### Usage
+
+Configure samples in the radiation_analysis_multi.R script (search for line shown below)
+
+samples <- list(
+  background = list(file = "DataNoSample.csv", name = "Background Radiation"),
+  americium = list(file = "DataSample1.csv", name = "Am-241 (Smoke Detector)"),
+  radium = list(file = "DataSample2.csv", name = "Ra-226 (Old Compass)")
+)
+
+Run the script:
+
+Rscript radiation_analysis_multi.R
+
+

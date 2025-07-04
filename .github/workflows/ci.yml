@@ -23,24 +23,21 @@ jobs:
 
       - name: Build and Start Docker Compose
         run: |
-          docker-compose up -d --build
+          docker-compose up -d 
 
       - name: Run C Static Analysis
         run: |
-          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_c_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_c_static_code_analysis.sh"
+          docker-compose exec -T ionizationchamber bash -c "python3 -m venv /workspace/venv && source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make cstatic"
 
       - name: Copy C Analysis Reports to Host
         run: |
-          docker cp app:/workspace/build/C_Lint_ReportApplicationOnly.txt .
-          docker cp app:/workspace/build/C_Lint_ReportFull.txt .
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/CStaticAnalysis .
 
       - name: Archive C Analysis Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: c-lint-reports
-          path: |
-            C_Lint_ReportApplicationOnly.txt
-            C_Lint_ReportFull.txt
+          path: CStaticAnalysis
 
       - name: Clean Up Containers
         run: |
@@ -60,28 +57,28 @@ jobs:
 
       - name: Build and Start Docker Compose
         run: |
-          docker-compose up -d --build
+          docker-compose up -d 
 
       - name: Run Python Static Analysis
         run: |
-          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_python_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_python_static_code_analysis.sh"
+          docker-compose exec -T ionizationchamber bash -c "python3 -m venv /workspace/venv && source /workspace/venv/bin/activate && pip install -e /workspace/Software/MeasurementAcquisition && cd /workspace/build/ && cmake .. && make pystatic"
 
       - name: Copy Python Analysis Reports to Host
         run: |
-          docker cp app:/workspace/build/python_lint_report ./python_lint_report
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/PyStaticAnalysis .
 
       - name: Archive Python Analysis Reports
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: python-lint-reports
-          path: python_lint_report
+          path: PyStaticAnalysis
 
       - name: Clean Up Containers
         run: |
           docker-compose down
 
-  run-shell-static-analysis:
-    name: Run Shell Static Analysis
+  run-r-static-analysis:
+    name: Run R Static Analysis
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -94,21 +91,21 @@ jobs:
 
       - name: Build and Start Docker Compose
         run: |
-          docker-compose up -d --build
+          docker-compose up -d 
 
-      - name: Run Shell Static Analysis
+      - name: Run R Static Analysis
         run: |
-          docker-compose exec -T app bash -c "dos2unix /workspace/ContinuousIntegration/run_shellscripts_static_code_analysis.sh && bash /workspace/ContinuousIntegration/run_shellscripts_static_code_analysis.sh"
+          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make rstatic"
 
-      - name: Copy Shell Analysis Report to Host
+      - name: Copy R Analysis Reports to Host
         run: |
-          docker cp app:/workspace/build/Shell_Script_Lint_Report.txt Shell_Script_Lint_Report.txt
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/RStaticAnalysis .
 
-      - name: Archive Shell Analysis Report
-        uses: actions/upload-artifact@v3
+      - name: Archive R Analysis Reports
+        uses: actions/upload-artifact@v4
         with:
-          name: shell-lint-report
-          path: Shell_Script_Lint_Report.txt
+          name: r-lint-reports
+          path: RStaticAnalysis
 
       - name: Clean Up Containers
         run: |
@@ -128,28 +125,128 @@ jobs:
 
       - name: Build and Start Docker Compose
         run: |
-          docker-compose up -d --build
+          docker-compose up -d 
 
       - name: Build Firmware
         run: |
-          docker-compose exec -T app bash -c "cd /workspace/build && cmake ../Software/Firmware/ && make -j$(nproc)"
+          docker-compose exec -T ionizationchamber bash -c "mkdir -p /workspace/build/firmware && cd /workspace/build/firmware && cmake -DCMAKE_TOOLCHAIN_FILE=/workspace/Software/Firmware/sdcc-stm8.cmake -B . -S /workspace/Software/Firmware/ && cmake --build . -j$(nproc)"
 
       - name: Copy Firmware Files to Host
         run: |
-          docker cp app:/workspace/build/IonizationChamber.cdb .
-          docker cp app:/workspace/build/IonizationChamber.lk .
-          docker cp app:/workspace/build/IonizationChamber.ihx .
-          docker cp app:/workspace/build/IonizationChamber.map .
+          docker cp ionizationchamber:/workspace/build/firmware/IonizationChamber.lk .
+          docker cp ionizationchamber:/workspace/build/firmware/IonizationChamber.ihx .
+          docker cp ionizationchamber:/workspace/build/firmware/IonizationChamber.map .
 
       - name: Archive Firmware Build Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: firmware-build-artifacts
           path: |
-            IonizationChamber.cdb
             IonizationChamber.lk
             IonizationChamber.ihx
             IonizationChamber.map
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  docs-coverage:
+    name: Documentation Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d 
+
+      - name: Generate Documentation
+        run: |
+          docker-compose exec -T ionizationchamber bash -c "python3 -m venv /workspace/venv && source /workspace/venv/bin/activate && cd /workspace/build/ && cmake .. && make docs"
+
+      - name: Copy Documentation Coverage Report
+        run: |
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/DocsCoverage .
+
+      - name: Archive Documentation Coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: docs-coverage-report
+          path: DocsCoverage
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  c-code-coverage:
+    name: C Code Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d 
+
+      - name: Generate C Code Coverage
+        run: |
+          docker-compose exec -T ionizationchamber bash -c "mkdir -p /workspace/build/ut && cd /workspace/build/ut && cmake -DCMAKE_BUILD_TYPE=Debug /workspace/Software/Firmware/UnitTest/ && make -j$(nproc) && make run_all_tests  && make coverage"
+
+      - name: Copy C Code Coverage Report
+        run: |
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/CCodeCoverage .
+
+      - name: Archive C Code Coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: c-code-coverage-report
+          path: CCodeCoverage
+
+      - name: Clean Up Containers
+        run: |
+          docker-compose down
+
+  run-python-code-coverage:
+    name: Run Python Code Coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build and Start Docker Compose
+        run: |
+          docker-compose up -d 
+
+      - name: Run Python Code Coverage
+        run: |
+          docker-compose exec -T ionizationchamber bash -c "source /workspace/venv/bin/activate && cd /workspace/build && cmake .. && make pycoverage"
+
+      - name: Copy Python Analysis Reports to Host
+        run: |
+          docker cp ionizationchamber:/workspace/DevOps/BuildArtifacts/PyCodeCoverage .
+
+      - name: Archive Python Analysis Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-code-coverage-reports
+          path: PyCodeCoverage
 
       - name: Clean Up Containers
         run: |

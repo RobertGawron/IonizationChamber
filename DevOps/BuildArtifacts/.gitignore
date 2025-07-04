@@ -1,0 +1,8 @@
+DocsCoverage/
+PyStaticAnalysis/
+PyCodeCoverage/
+CStaticAnalysis/
+CCodeCoverage/
+RStaticAnalysis/
+*.png
+*.svg

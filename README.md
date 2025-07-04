@@ -64,4 +64,4 @@ A simple mockup was created to generate dummy test data without the need for the
 
 All software is developed inside a Docker container.
 
-[More information about setting up the environment.](./DevOps/Docker/README.md)
+[More information about setting up the environment.](./Documentation/Manuals/README.md)
