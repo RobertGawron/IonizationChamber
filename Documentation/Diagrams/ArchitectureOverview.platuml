@@ -1,0 +1,35 @@
+@startuml
+!theme plain
+skinparam rectangle {
+    BackgroundColor LightGray
+}
+
+rectangle "Radioactive sample" as sample 
+
+package "Ionization chamber device" #lightblue {
+    rectangle "Ionization chamber" as chamber
+    rectangle "HV power supply\n(3x12V DC)" as hwpower 
+    rectangle "Amplifier" as amplifier 
+    rectangle "ADC\n(MCP3425A0T-ECH)" as adc 
+    rectangle "Acquisition\n(STM8S003F3P6TR)" as cpu 
+    rectangle "User Interface\n(3xLED)" as gui 
+}
+
+rectangle "UART over USB\n(USB UART FTDI Converter)" as uartconverter 
+rectangle "STM8 programator\n(stlink v2)" as stm8programmer 
+rectangle "Data processing and firmware flashing\n(RaspberryPi 3B)" as pi 
+rectangle "Local PC\n(OS independent)" as pc 
+
+sample -down-> chamber : "Radioactive decay"
+hwpower -> chamber
+chamber -down-> amplifier
+amplifier -down-> adc
+adc -down-> cpu : "I2C"
+cpu -right-> gui : "GPIO"
+cpu --> uartconverter : "UART"
+stm8programmer -> cpu : "SWIM"
+pi -up-> stm8programmer : "USB"
+uartconverter --> pi : "USB"
+pi --> pc : "Ethernet"
+pc --> pi
+@enduml

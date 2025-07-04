@@ -1,2 +1,7 @@
 __pycache__
+.pytest_cache
+reports/
+measurement_acquisition/__pycache__
+measurement_acquisition/.pytest_cache
+measurement_acquisition.egg-info/
 *.csv

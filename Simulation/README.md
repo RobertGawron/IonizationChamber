@@ -2,8 +2,11 @@
 
 ## Purpose
 
-This simulation generates .csv data with random values. The purpose is to test processing scripts without requiring the actual device. It uses a real Python application but stubs the low-level Python module that communicates with the device.
+
+This simulation spits out .csv files filled with random values that mimic a real device sending measurements to the PC over UART. It lets us exercise the data-processing scripts without having the actual hardware on hand.
+
+We run the real Python application but swap in a stub for the low-level serial module. That way the identical codebase runs in both simulation and production-only the UART driver gets replaced.
 
 # Usage
 
-[Information on how to use this tool can be found in the "Building, running, and stopping a Docker image" and "Running Simulation" sections.](../DevOps/Docker/README.md)
+[Information on how to use this tool.](../Documentation/Manuals/README.md)

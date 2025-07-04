@@ -4,7 +4,7 @@
 
 This application gathers data from the device via UART over USB and stores timestamped measurements in a .csv file for further processing.
 
-It was developed to run on a Raspberry Pi but should work on any Linux or Windows system. One note for running it on Windows is that the name of the COM port (configured in myDeviceId) has a different format.
+It was developed to run on a Raspberry Pi but should work on any Linux or Windows system. One note for running it on Windows is that the name of the COM port (configured in DEVICE_ID) has a different format.
 
 # Usage
 

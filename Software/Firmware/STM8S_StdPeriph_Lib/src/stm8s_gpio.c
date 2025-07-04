@@ -183,7 +183,7 @@ void GPIO_WriteLow(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
   *         data register.
   * @retval None
   */
-#if 0  
+#if 1  
 void GPIO_WriteReverse(GPIO_TypeDef* GPIOx, GPIO_Pin_TypeDef PortPins)
 {
   GPIOx->ODR ^= (uint8_t)PortPins;
